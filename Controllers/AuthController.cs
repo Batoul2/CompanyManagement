@@ -46,6 +46,7 @@ namespace DotnetAPI.Controllers
             return Ok(new { Token = token });
         }
 
+        [Authorize(Roles = "admin")]
         [HttpPost("assign-role")]
         public async Task<IActionResult> AssignRoleToUser([FromBody] AssignRoleDto model)
         {
@@ -58,15 +59,15 @@ namespace DotnetAPI.Controllers
 
             if (result.Contains("Error"))
             {
-                return StatusCode(500, result); // Internal server error
+                return StatusCode(500, result); 
             }
 
             if (result.Contains("not found"))
             {
-                return NotFound(result); // User or role not found
+                return NotFound(result); 
             }
 
-            return Ok(result); // Success message
+            return Ok(result); 
         }
 
   }

@@ -57,7 +57,7 @@ namespace DotnetAPI.Services
 
     private string GenerateJwtToken(ApplicationUser user)
         {
-            // Create claims for the token
+
             var claims = new List<Claim>
             {
                 new Claim(JwtRegisteredClaimNames.Sub, user.UserName ?? string.Empty),
@@ -65,7 +65,6 @@ namespace DotnetAPI.Services
                 new Claim(ClaimTypes.NameIdentifier, user.Id)
             };
 
-            // Add user roles to the claims
             var roles = _userManager.GetRolesAsync(user).Result;
             claims.AddRange(roles.Select(role => new Claim(ClaimTypes.Role, role)));
 
@@ -75,7 +74,6 @@ namespace DotnetAPI.Services
 #pragma warning restore CS8604 // Possible null reference argument.
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 
-            // Create the JWT token
             var token = new JwtSecurityToken(
                 issuer: _configuration["Jwt:Issuer"],
                 audience: _configuration["Jwt:Audience"],
@@ -89,21 +87,18 @@ namespace DotnetAPI.Services
 
         public async Task<string> AssignRoleToUserAsync(string username, string role)
         {
-            // Check if the user exists
             var user = await _userManager.FindByNameAsync(username);
             if (user == null)
             {
                 return "User not found.";
             }
 
-            // Check if the role exists
             var roleExists = await _roleManager.RoleExistsAsync(role);
             if (!roleExists)
             {
                 return "Role not found.";
             }
 
-            // Assign the role to the user
             var result = await _userManager.AddToRoleAsync(user, role);
             if (result.Succeeded)
             {
