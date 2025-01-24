@@ -2,6 +2,8 @@ using DotnetAPI.Data;
 using DotnetAPI.Models;
 using DotnetAPI.Repositories;
 using DotnetAPI.Services;
+using Microsoft.AspNetCore.Identity;
+
 //using DotnetAPI.Middleware;
 using Microsoft.EntityFrameworkCore;
 using NLog;
@@ -21,13 +23,26 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+
 builder.Services.AddDbContext<CompanyDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options =>
+    {
+        options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(15); // lockout duration
+        options.Lockout.MaxFailedAccessAttempts = 5; // max failed attempts before lockout
+        options.Lockout.AllowedForNewUsers = true; // lockout applies to new users
+    })
+    .AddEntityFrameworkStores<CompanyDbContext>()
+    .AddDefaultTokenProviders();
 
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 builder.Services.AddScoped<ICompanyService, CompanyService>();
 builder.Services.AddScoped<IEmployeeService, EmployeeService>();
 builder.Services.AddScoped<IProjectService, ProjectService>();
+builder.Services.AddScoped<AuthService>();
+
+
 
 // CORS Policy
 builder.Services.AddCors(options =>

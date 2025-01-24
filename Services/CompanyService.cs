@@ -22,7 +22,7 @@ namespace DotnetAPI.Services
         {
             // Start with a queryable of Companies
             var query = _context.Companies
-                .Include(c => c.CompanyEmployees)
+                .Include(c => c.CompanyEmployee)
                 .ThenInclude(ce => ce.Employee)
                 .AsQueryable();
 
@@ -43,7 +43,7 @@ namespace DotnetAPI.Services
         public async Task<CompanyDto> GetCompanyByIdAsync(int id)
         {
             var company = await _context.Companies
-                .Include(c => c.CompanyEmployees)
+                .Include(c => c.CompanyEmployee)
                 .ThenInclude(ce => ce.Employee)
                 .FirstOrDefaultAsync(c => c.Id == id);
 

@@ -21,9 +21,9 @@ namespace DotnetAPI.Services
         public async Task<IEnumerable<EmployeeDto>> GetAllEmployeesAsync()
         {
             var employees = await _dbContext.Employees
-                .Include(e => e.CompanyEmployees)
+                .Include(e => e.CompanyEmployee)
                     .ThenInclude(ce => ce.Company)
-                .Include(e => e.EmployeeProjects)
+                .Include(e => e.EmployeeProject)
                     .ThenInclude(ep => ep.Project)
                 .ToListAsync();
             return _mapper.Map<IEnumerable<EmployeeDto>>(employees);
@@ -32,9 +32,9 @@ namespace DotnetAPI.Services
         public async Task<EmployeeDto> GetEmployeeByIdAsync(int id)
         {
             var employee = await _dbContext.Employees
-                .Include(e => e.CompanyEmployees)
+                .Include(e => e.CompanyEmployee)
                     .ThenInclude(ce => ce.Company)
-                .Include(e => e.EmployeeProjects)
+                .Include(e => e.EmployeeProject)
                     .ThenInclude(ep => ep.Project)
                 .FirstOrDefaultAsync(e => e.Id == id);
 
@@ -55,7 +55,7 @@ namespace DotnetAPI.Services
                 Employee = employee
             }).ToList();
 
-            employee.CompanyEmployees = companyEmployees;
+            employee.CompanyEmployee = companyEmployees;
 
             // Handle Project Assignments
             var employeeProjects = inputModel.ProjectIds.Select(projectId => new EmployeeProject
@@ -64,7 +64,7 @@ namespace DotnetAPI.Services
                 Employee = employee
             }).ToList();
 
-            employee.EmployeeProjects = employeeProjects;
+            employee.EmployeeProject = employeeProjects;
 
             await _dbContext.Employees.AddAsync(employee);
             await _dbContext.SaveChangesAsync();
@@ -75,8 +75,8 @@ namespace DotnetAPI.Services
         public async Task<EmployeeDto> UpdateEmployeeAsync(int id, EmployeeInputModel inputModel)
         {
             var employee = await _dbContext.Employees
-                .Include(e => e.CompanyEmployees)
-                .Include(e => e.EmployeeProjects)
+                .Include(e => e.CompanyEmployee)
+                .Include(e => e.EmployeeProject)
                 .FirstOrDefaultAsync(e => e.Id == id);
 
             if (employee == null)
@@ -86,16 +86,16 @@ namespace DotnetAPI.Services
             employee.Position = inputModel.Position;
 
             // Update Company Assignments
-            employee.CompanyEmployees.Clear();
-            employee.CompanyEmployees = inputModel.CompanyIds.Select(companyId => new CompanyEmployee
+            employee.CompanyEmployee.Clear();
+            employee.CompanyEmployee = inputModel.CompanyIds.Select(companyId => new CompanyEmployee
             {
                 CompanyId = companyId,
                 EmployeeId = id
             }).ToList();
 
             // Update Project Assignments
-            employee.EmployeeProjects.Clear();
-            employee.EmployeeProjects = inputModel.ProjectIds.Select(projectId => new EmployeeProject
+            employee.EmployeeProject.Clear();
+            employee.EmployeeProject = inputModel.ProjectIds.Select(projectId => new EmployeeProject
             {
                 ProjectId = projectId,
                 EmployeeId = id
@@ -132,19 +132,19 @@ namespace DotnetAPI.Services
                 ProjectId = projectId
             };
 
-            _dbContext.EmployeeProjects.Add(employeeProject);
+            _dbContext.EmployeeProject.Add(employeeProject);
             await _dbContext.SaveChangesAsync();
         }
 
         public async Task RemoveProjectFromEmployeeAsync(int employeeId, int projectId)
         {
-            var employeeProject = await _dbContext.EmployeeProjects
+            var employeeProject = await _dbContext.EmployeeProject
                 .FirstOrDefaultAsync(ep => ep.EmployeeId == employeeId && ep.ProjectId == projectId);
 
             if (employeeProject == null)
                 throw new KeyNotFoundException("Employee-Project relationship not found");
 
-            _dbContext.EmployeeProjects.Remove(employeeProject);
+            _dbContext.EmployeeProject.Remove(employeeProject);
             await _dbContext.SaveChangesAsync();
         }
     }

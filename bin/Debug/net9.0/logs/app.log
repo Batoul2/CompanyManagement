@@ -189,3 +189,1852 @@ POSITION: 218
 2025-01-23 13:47:34.1588 Info Executed endpoint 'DotnetAPI.Controllers.CompanyController.GetAllCompanies (CompanyManagement)' 
 2025-01-23 13:47:34.1872 Info Request finished HTTP/1.1 GET http://localhost:5292/api/Company?sortBy=Name&sortDirection=asc - 500 - application/json 1322.5560ms 
 2025-01-23 13:47:44.2924 Info Application is shutting down... 
+2025-01-23 14:49:55.4285 Info Now listening on: http://localhost:5292 
+2025-01-23 14:49:55.4285 Info Application started. Press Ctrl+C to shut down. 
+2025-01-23 14:49:55.4285 Info Hosting environment: Development 
+2025-01-23 14:49:55.4285 Info Content root path: C:\Users\hp\CompanyManagement\CompanyManagement 
+2025-01-23 14:49:55.5616 Info Request starting HTTP/1.1 GET http://localhost:5292/index.html - - - 
+2025-01-23 14:49:55.5840 Warn Failed to determine the https port for redirect. 
+2025-01-23 14:49:55.6954 Info Request finished HTTP/1.1 GET http://localhost:5292/index.html - 200 - text/html;charset=utf-8 125.1661ms 
+2025-01-23 14:49:55.7099 Info Request starting HTTP/1.1 GET http://localhost:5292/index.js - - - 
+2025-01-23 14:49:55.7099 Info Request starting HTTP/1.1 GET http://localhost:5292/_framework/aspnetcore-browser-refresh.js - - - 
+2025-01-23 14:49:55.7099 Info Request finished HTTP/1.1 GET http://localhost:5292/_framework/aspnetcore-browser-refresh.js - 200 13748 application/javascript;+charset=utf-8 2.8074ms 
+2025-01-23 14:49:55.7099 Info Request finished HTTP/1.1 GET http://localhost:5292/index.js - 200 - application/javascript;charset=utf-8 4.1909ms 
+2025-01-23 14:49:55.9582 Info Request starting HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - - - 
+2025-01-23 14:49:56.0760 Info Request finished HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - 200 - application/json;charset=utf-8 117.7806ms 
+2025-01-23 14:49:59.8442 Info Request starting HTTP/1.1 GET http://localhost:5292/api/Company?sortBy=Name&sortDirection=asc - - - 
+2025-01-23 14:49:59.8442 Info Executing endpoint 'DotnetAPI.Controllers.CompanyController.GetAllCompanies (CompanyManagement)' 
+2025-01-23 14:49:59.8721 Info Route matched with {action = "GetAllCompanies", controller = "Company"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllCompanies(System.String, System.String) on controller DotnetAPI.Controllers.CompanyController (CompanyManagement). 
+2025-01-23 14:50:01.3596 Error Failed executing DbCommand (19ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT c."Id", c."Name", s."CompanyId", s."EmployeeId", s."Id", s."FullName", s."Position"
+FROM "Companies" AS c
+LEFT JOIN (
+    SELECT c0."CompanyId", c0."EmployeeId", e."Id", e."FullName", e."Position"
+    FROM "CompanyEmployees" AS c0
+    INNER JOIN "Employees" AS e ON c0."EmployeeId" = e."Id"
+) AS s ON c."Id" = s."CompanyId"
+ORDER BY c."Name", c."Id", s."CompanyId", s."EmployeeId" 
+2025-01-23 14:50:01.3796 Error An exception occurred while iterating over the results of a query for context type 'DotnetAPI.Data.CompanyDbContext'.
+Npgsql.PostgresException (0x80004005): 42P01: relation "CompanyEmployees" does not exist
+
+POSITION: 218
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+  Exception data:
+    Severity: ERROR
+    SqlState: 42P01
+    MessageText: relation "CompanyEmployees" does not exist
+    Position: 218
+    File: parse_relation.c
+    Line: 1452
+    Routine: parserOpenTable Npgsql.PostgresException (0x80004005): 42P01: relation "CompanyEmployees" does not exist
+
+POSITION: 218
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+  Exception data:
+    Severity: ERROR
+    SqlState: 42P01
+    MessageText: relation "CompanyEmployees" does not exist
+    Position: 218
+    File: parse_relation.c
+    Line: 1452
+    Routine: parserOpenTable Severity: ERROR;InvariantSeverity: ERROR;SqlState: 42P01;MessageText: relation "CompanyEmployees" does not exist;Position: 218;File: parse_relation.c;Line: 1452;Routine: parserOpenTable
+2025-01-23 14:50:01.3974 Info Executed action DotnetAPI.Controllers.CompanyController.GetAllCompanies (CompanyManagement) in 1519.2761ms 
+2025-01-23 14:50:01.3974 Info Executed endpoint 'DotnetAPI.Controllers.CompanyController.GetAllCompanies (CompanyManagement)' 
+2025-01-23 14:50:01.4334 Info Request finished HTTP/1.1 GET http://localhost:5292/api/Company?sortBy=Name&sortDirection=asc - 500 - application/json 1589.1373ms 
+2025-01-23 14:50:52.6825 Info Application is shutting down... 
+2025-01-23 15:01:48.5075 Info Executed DbCommand (12ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId"; 
+2025-01-23 15:01:48.6612 Info Executed DbCommand (6ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+CREATE TABLE IF NOT EXISTS "__EFMigrationsHistory" (
+    "MigrationId" character varying(150) NOT NULL,
+    "ProductVersion" character varying(32) NOT NULL,
+    CONSTRAINT "PK___EFMigrationsHistory" PRIMARY KEY ("MigrationId")
+); 
+2025-01-23 15:01:48.6686 Info Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long. 
+2025-01-23 15:01:48.6767 Info Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+LOCK TABLE "__EFMigrationsHistory" IN ACCESS EXCLUSIVE MODE 
+2025-01-23 15:01:48.6767 Info Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId"; 
+2025-01-23 15:01:48.6767 Info Applying migration '20250123114510_InitialCreate'. 
+2025-01-23 15:01:48.7168 Error Failed executing DbCommand (20ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+CREATE TABLE "Companies" (
+    "Id" integer GENERATED BY DEFAULT AS IDENTITY,
+    "Name" text NOT NULL,
+    CONSTRAINT "PK_Companies" PRIMARY KEY ("Id")
+); 
+2025-01-23 15:09:02.7649 Info Now listening on: http://localhost:5292 
+2025-01-23 15:09:02.7952 Info Application started. Press Ctrl+C to shut down. 
+2025-01-23 15:09:02.7952 Info Hosting environment: Development 
+2025-01-23 15:09:02.7952 Info Content root path: C:\Users\hp\CompanyManagement\CompanyManagement 
+2025-01-23 15:09:05.6903 Info Request starting HTTP/1.1 GET http://localhost:5292/index.html - - - 
+2025-01-23 15:09:05.7169 Warn Failed to determine the https port for redirect. 
+2025-01-23 15:09:05.8040 Info Request finished HTTP/1.1 GET http://localhost:5292/index.html - 200 - text/html;charset=utf-8 110.8270ms 
+2025-01-23 15:09:05.8512 Info Request starting HTTP/1.1 GET http://localhost:5292/index.js - - - 
+2025-01-23 15:09:05.8512 Info Request starting HTTP/1.1 GET http://localhost:5292/_framework/aspnetcore-browser-refresh.js - - - 
+2025-01-23 15:09:05.8512 Info Request finished HTTP/1.1 GET http://localhost:5292/_framework/aspnetcore-browser-refresh.js - 200 13748 application/javascript;+charset=utf-8 2.6036ms 
+2025-01-23 15:09:05.8512 Info Request finished HTTP/1.1 GET http://localhost:5292/index.js - 200 - application/javascript;charset=utf-8 4.0889ms 
+2025-01-23 15:09:06.0826 Info Request starting HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - - - 
+2025-01-23 15:09:06.1979 Info Request finished HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - 200 - application/json;charset=utf-8 115.3180ms 
+2025-01-23 15:09:12.0078 Info Request starting HTTP/1.1 GET http://localhost:5292/api/Employee - - - 
+2025-01-23 15:09:12.0209 Info Executing endpoint 'DotnetAPI.Controllers.EmployeeController.GetAllEmployees (CompanyManagement)' 
+2025-01-23 15:09:12.0413 Info Route matched with {action = "GetAllEmployees", controller = "Employee"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[DotnetAPI.DTOs.EmployeeDto]]] GetAllEmployees() on controller DotnetAPI.Controllers.EmployeeController (CompanyManagement). 
+2025-01-23 15:09:12.9788 Warn Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'. 
+2025-01-23 15:09:13.2504 Error Failed executing DbCommand (20ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT e."Id", e."FullName", e."Position", s."CompanyId", s."EmployeeId", s."Id", s."Name", s0."EmployeeId", s0."ProjectId", s0."Id", s0."Duration", s0."Title"
+FROM "Employees" AS e
+LEFT JOIN (
+    SELECT c."CompanyId", c."EmployeeId", c0."Id", c0."Name"
+    FROM "CompanyEmployees" AS c
+    INNER JOIN "Companies" AS c0 ON c."CompanyId" = c0."Id"
+) AS s ON e."Id" = s."EmployeeId"
+LEFT JOIN (
+    SELECT e0."EmployeeId", e0."ProjectId", p."Id", p."Duration", p."Title"
+    FROM "EmployeeProjects" AS e0
+    INNER JOIN "Projects" AS p ON e0."ProjectId" = p."Id"
+) AS s0 ON e."Id" = s0."EmployeeId"
+ORDER BY e."Id", s."CompanyId", s."EmployeeId", s."Id", s0."EmployeeId", s0."ProjectId" 
+2025-01-23 15:09:13.2728 Error An exception occurred while iterating over the results of a query for context type 'DotnetAPI.Data.CompanyDbContext'.
+Npgsql.PostgresException (0x80004005): 42P01: relation "CompanyEmployees" does not exist
+
+POSITION: 269
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+  Exception data:
+    Severity: ERROR
+    SqlState: 42P01
+    MessageText: relation "CompanyEmployees" does not exist
+    Position: 269
+    File: parse_relation.c
+    Line: 1452
+    Routine: parserOpenTable Npgsql.PostgresException (0x80004005): 42P01: relation "CompanyEmployees" does not exist
+
+POSITION: 269
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+  Exception data:
+    Severity: ERROR
+    SqlState: 42P01
+    MessageText: relation "CompanyEmployees" does not exist
+    Position: 269
+    File: parse_relation.c
+    Line: 1452
+    Routine: parserOpenTable Severity: ERROR;InvariantSeverity: ERROR;SqlState: 42P01;MessageText: relation "CompanyEmployees" does not exist;Position: 269;File: parse_relation.c;Line: 1452;Routine: parserOpenTable
+2025-01-23 15:09:13.2896 Info Executed action DotnetAPI.Controllers.EmployeeController.GetAllEmployees (CompanyManagement) in 1244.2288ms 
+2025-01-23 15:09:13.2896 Info Executed endpoint 'DotnetAPI.Controllers.EmployeeController.GetAllEmployees (CompanyManagement)' 
+2025-01-23 15:09:13.3119 Info Request finished HTTP/1.1 GET http://localhost:5292/api/Employee - 500 - application/json 1304.0942ms 
+2025-01-23 15:09:59.3518 Info Request starting HTTP/1.1 GET http://localhost:5292/index.html - - - 
+2025-01-23 15:09:59.3532 Info Request finished HTTP/1.1 GET http://localhost:5292/index.html - 200 - text/html;charset=utf-8 1.4820ms 
+2025-01-23 15:09:59.3705 Info Request starting HTTP/1.1 GET http://localhost:5292/_framework/aspnetcore-browser-refresh.js - - - 
+2025-01-23 15:09:59.3705 Info Request starting HTTP/1.1 GET http://localhost:5292/index.js - - - 
+2025-01-23 15:09:59.3705 Info Request finished HTTP/1.1 GET http://localhost:5292/_framework/aspnetcore-browser-refresh.js - 200 13748 application/javascript;+charset=utf-8 1.3468ms 
+2025-01-23 15:09:59.3705 Info Request finished HTTP/1.1 GET http://localhost:5292/index.js - 200 - application/javascript;charset=utf-8 1.6490ms 
+2025-01-23 15:09:59.5326 Info Request starting HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - - - 
+2025-01-23 15:09:59.5506 Info Request finished HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - 200 - application/json;charset=utf-8 17.9690ms 
+2025-01-23 15:10:24.8941 Info Request starting HTTP/1.1 GET http://localhost:5292/index.html - - - 
+2025-01-23 15:10:24.8941 Info Request finished HTTP/1.1 GET http://localhost:5292/index.html - 200 - text/html;charset=utf-8 2.0240ms 
+2025-01-23 15:10:24.9121 Info Request starting HTTP/1.1 GET http://localhost:5292/index.js - - - 
+2025-01-23 15:10:24.9121 Info Request starting HTTP/1.1 GET http://localhost:5292/_framework/aspnetcore-browser-refresh.js - - - 
+2025-01-23 15:10:24.9121 Info Request finished HTTP/1.1 GET http://localhost:5292/_framework/aspnetcore-browser-refresh.js - 200 13748 application/javascript;+charset=utf-8 0.5564ms 
+2025-01-23 15:10:24.9121 Info Request finished HTTP/1.1 GET http://localhost:5292/index.js - 200 - application/javascript;charset=utf-8 1.0608ms 
+2025-01-23 15:10:24.9624 Info Request starting HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - - - 
+2025-01-23 15:10:24.9624 Info Request finished HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - 200 - application/json;charset=utf-8 10.7284ms 
+2025-01-23 15:10:28.8521 Info Request starting HTTP/1.1 GET http://localhost:5292/api/Company?sortBy=Name&sortDirection=asc - - - 
+2025-01-23 15:10:28.8521 Info Executing endpoint 'DotnetAPI.Controllers.CompanyController.GetAllCompanies (CompanyManagement)' 
+2025-01-23 15:10:28.8714 Info Route matched with {action = "GetAllCompanies", controller = "Company"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllCompanies(System.String, System.String) on controller DotnetAPI.Controllers.CompanyController (CompanyManagement). 
+2025-01-23 15:10:28.9705 Error Failed executing DbCommand (4ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT c."Id", c."Name", s."CompanyId", s."EmployeeId", s."Id", s."FullName", s."Position"
+FROM "Companies" AS c
+LEFT JOIN (
+    SELECT c0."CompanyId", c0."EmployeeId", e."Id", e."FullName", e."Position"
+    FROM "CompanyEmployees" AS c0
+    INNER JOIN "Employees" AS e ON c0."EmployeeId" = e."Id"
+) AS s ON c."Id" = s."CompanyId"
+ORDER BY c."Name", c."Id", s."CompanyId", s."EmployeeId" 
+2025-01-23 15:10:28.9705 Error An exception occurred while iterating over the results of a query for context type 'DotnetAPI.Data.CompanyDbContext'.
+Npgsql.PostgresException (0x80004005): 42P01: relation "CompanyEmployees" does not exist
+
+POSITION: 218
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+  Exception data:
+    Severity: ERROR
+    SqlState: 42P01
+    MessageText: relation "CompanyEmployees" does not exist
+    Position: 218
+    File: parse_relation.c
+    Line: 1452
+    Routine: parserOpenTable Npgsql.PostgresException (0x80004005): 42P01: relation "CompanyEmployees" does not exist
+
+POSITION: 218
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+  Exception data:
+    Severity: ERROR
+    SqlState: 42P01
+    MessageText: relation "CompanyEmployees" does not exist
+    Position: 218
+    File: parse_relation.c
+    Line: 1452
+    Routine: parserOpenTable Severity: ERROR;InvariantSeverity: ERROR;SqlState: 42P01;MessageText: relation "CompanyEmployees" does not exist;Position: 218;File: parse_relation.c;Line: 1452;Routine: parserOpenTable
+2025-01-23 15:10:28.9829 Info Executed action DotnetAPI.Controllers.CompanyController.GetAllCompanies (CompanyManagement) in 110.753ms 
+2025-01-23 15:10:28.9829 Info Executed endpoint 'DotnetAPI.Controllers.CompanyController.GetAllCompanies (CompanyManagement)' 
+2025-01-23 15:10:28.9829 Info Request finished HTTP/1.1 GET http://localhost:5292/api/Company?sortBy=Name&sortDirection=asc - 500 - application/json 134.4943ms 
+2025-01-23 15:11:44.7721 Info Request starting HTTP/1.1 GET http://localhost:5292/index.html - - - 
+2025-01-23 15:11:44.7721 Info Request finished HTTP/1.1 GET http://localhost:5292/index.html - 200 - text/html;charset=utf-8 1.1944ms 
+2025-01-23 15:11:44.7849 Info Request starting HTTP/1.1 GET http://localhost:5292/_framework/aspnetcore-browser-refresh.js - - - 
+2025-01-23 15:11:44.7849 Info Request starting HTTP/1.1 GET http://localhost:5292/index.js - - - 
+2025-01-23 15:11:44.7849 Info Request finished HTTP/1.1 GET http://localhost:5292/_framework/aspnetcore-browser-refresh.js - 200 13748 application/javascript;+charset=utf-8 0.5499ms 
+2025-01-23 15:11:44.7849 Info Request finished HTTP/1.1 GET http://localhost:5292/index.js - 200 - application/javascript;charset=utf-8 0.9048ms 
+2025-01-23 15:11:44.8400 Info Request starting HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - - - 
+2025-01-23 15:11:44.8471 Info Request finished HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - 200 - application/json;charset=utf-8 7.0038ms 
+2025-01-23 15:11:48.6410 Info Request starting HTTP/1.1 GET http://localhost:5292/api/Company?sortBy=Name&sortDirection=asc - - - 
+2025-01-23 15:11:48.6433 Info Executing endpoint 'DotnetAPI.Controllers.CompanyController.GetAllCompanies (CompanyManagement)' 
+2025-01-23 15:11:48.6433 Info Route matched with {action = "GetAllCompanies", controller = "Company"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllCompanies(System.String, System.String) on controller DotnetAPI.Controllers.CompanyController (CompanyManagement). 
+2025-01-23 15:11:48.7465 Error Failed executing DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT c."Id", c."Name", s."CompanyId", s."EmployeeId", s."Id", s."FullName", s."Position"
+FROM "Companies" AS c
+LEFT JOIN (
+    SELECT c0."CompanyId", c0."EmployeeId", e."Id", e."FullName", e."Position"
+    FROM "CompanyEmployees" AS c0
+    INNER JOIN "Employees" AS e ON c0."EmployeeId" = e."Id"
+) AS s ON c."Id" = s."CompanyId"
+ORDER BY c."Name", c."Id", s."CompanyId", s."EmployeeId" 
+2025-01-23 15:11:48.7465 Error An exception occurred while iterating over the results of a query for context type 'DotnetAPI.Data.CompanyDbContext'.
+Npgsql.PostgresException (0x80004005): 42P01: relation "CompanyEmployees" does not exist
+
+POSITION: 218
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+  Exception data:
+    Severity: ERROR
+    SqlState: 42P01
+    MessageText: relation "CompanyEmployees" does not exist
+    Position: 218
+    File: parse_relation.c
+    Line: 1452
+    Routine: parserOpenTable Npgsql.PostgresException (0x80004005): 42P01: relation "CompanyEmployees" does not exist
+
+POSITION: 218
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+  Exception data:
+    Severity: ERROR
+    SqlState: 42P01
+    MessageText: relation "CompanyEmployees" does not exist
+    Position: 218
+    File: parse_relation.c
+    Line: 1452
+    Routine: parserOpenTable Severity: ERROR;InvariantSeverity: ERROR;SqlState: 42P01;MessageText: relation "CompanyEmployees" does not exist;Position: 218;File: parse_relation.c;Line: 1452;Routine: parserOpenTable
+2025-01-23 15:11:48.7465 Info Executed action DotnetAPI.Controllers.CompanyController.GetAllCompanies (CompanyManagement) in 111.0426ms 
+2025-01-23 15:11:48.7465 Info Executed endpoint 'DotnetAPI.Controllers.CompanyController.GetAllCompanies (CompanyManagement)' 
+2025-01-23 15:11:48.7465 Info Request finished HTTP/1.1 GET http://localhost:5292/api/Company?sortBy=Name&sortDirection=asc - 500 - application/json 115.2218ms 
+2025-01-23 15:12:15.2543 Info Request starting HTTP/1.1 GET http://localhost:5292/index.html - - - 
+2025-01-23 15:12:15.2543 Info Request finished HTTP/1.1 GET http://localhost:5292/index.html - 200 - text/html;charset=utf-8 1.4907ms 
+2025-01-23 15:12:15.2724 Info Request starting HTTP/1.1 GET http://localhost:5292/_framework/aspnetcore-browser-refresh.js - - - 
+2025-01-23 15:12:15.2724 Info Request starting HTTP/1.1 GET http://localhost:5292/index.js - - - 
+2025-01-23 15:12:15.2724 Info Request finished HTTP/1.1 GET http://localhost:5292/_framework/aspnetcore-browser-refresh.js - 200 13748 application/javascript;+charset=utf-8 0.8332ms 
+2025-01-23 15:12:15.2724 Info Request finished HTTP/1.1 GET http://localhost:5292/index.js - 200 - application/javascript;charset=utf-8 2.6287ms 
+2025-01-23 15:12:15.3270 Info Request starting HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - - - 
+2025-01-23 15:12:15.3342 Info Request finished HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - 200 - application/json;charset=utf-8 7.2458ms 
+2025-01-23 15:12:19.3441 Info Request starting HTTP/1.1 GET http://localhost:5292/api/Company?sortBy=Name&sortDirection=asc - - - 
+2025-01-23 15:12:19.3441 Info Executing endpoint 'DotnetAPI.Controllers.CompanyController.GetAllCompanies (CompanyManagement)' 
+2025-01-23 15:12:19.3441 Info Route matched with {action = "GetAllCompanies", controller = "Company"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllCompanies(System.String, System.String) on controller DotnetAPI.Controllers.CompanyController (CompanyManagement). 
+2025-01-23 15:12:19.3441 Error Failed executing DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT c."Id", c."Name", s."CompanyId", s."EmployeeId", s."Id", s."FullName", s."Position"
+FROM "Companies" AS c
+LEFT JOIN (
+    SELECT c0."CompanyId", c0."EmployeeId", e."Id", e."FullName", e."Position"
+    FROM "CompanyEmployees" AS c0
+    INNER JOIN "Employees" AS e ON c0."EmployeeId" = e."Id"
+) AS s ON c."Id" = s."CompanyId"
+ORDER BY c."Name", c."Id", s."CompanyId", s."EmployeeId" 
+2025-01-23 15:12:19.3441 Error An exception occurred while iterating over the results of a query for context type 'DotnetAPI.Data.CompanyDbContext'.
+Npgsql.PostgresException (0x80004005): 42P01: relation "CompanyEmployees" does not exist
+
+POSITION: 218
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+  Exception data:
+    Severity: ERROR
+    SqlState: 42P01
+    MessageText: relation "CompanyEmployees" does not exist
+    Position: 218
+    File: parse_relation.c
+    Line: 1452
+    Routine: parserOpenTable Npgsql.PostgresException (0x80004005): 42P01: relation "CompanyEmployees" does not exist
+
+POSITION: 218
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+  Exception data:
+    Severity: ERROR
+    SqlState: 42P01
+    MessageText: relation "CompanyEmployees" does not exist
+    Position: 218
+    File: parse_relation.c
+    Line: 1452
+    Routine: parserOpenTable Severity: ERROR;InvariantSeverity: ERROR;SqlState: 42P01;MessageText: relation "CompanyEmployees" does not exist;Position: 218;File: parse_relation.c;Line: 1452;Routine: parserOpenTable
+2025-01-23 15:12:19.3441 Info Executed action DotnetAPI.Controllers.CompanyController.GetAllCompanies (CompanyManagement) in 16.6496ms 
+2025-01-23 15:12:19.3441 Info Executed endpoint 'DotnetAPI.Controllers.CompanyController.GetAllCompanies (CompanyManagement)' 
+2025-01-23 15:12:19.3441 Info Request finished HTTP/1.1 GET http://localhost:5292/api/Company?sortBy=Name&sortDirection=asc - 500 - application/json 20.4128ms 
+2025-01-23 15:13:33.2249 Info Request starting HTTP/1.1 GET http://localhost:5292/api/Company/1 - - - 
+2025-01-23 15:13:33.2249 Info Executing endpoint 'DotnetAPI.Controllers.CompanyController.GetCompanyById (CompanyManagement)' 
+2025-01-23 15:13:33.2249 Info Route matched with {action = "GetCompanyById", controller = "Company"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[DotnetAPI.DTOs.CompanyDto]] GetCompanyById(Int32) on controller DotnetAPI.Controllers.CompanyController (CompanyManagement). 
+2025-01-23 15:13:33.3430 Error Failed executing DbCommand (30ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT c1."Id", c1."Name", s."CompanyId", s."EmployeeId", s."Id", s."FullName", s."Position"
+FROM (
+    SELECT c."Id", c."Name"
+    FROM "Companies" AS c
+    WHERE c."Id" = @__id_0
+    LIMIT 1
+) AS c1
+LEFT JOIN (
+    SELECT c0."CompanyId", c0."EmployeeId", e."Id", e."FullName", e."Position"
+    FROM "CompanyEmployees" AS c0
+    INNER JOIN "Employees" AS e ON c0."EmployeeId" = e."Id"
+) AS s ON c1."Id" = s."CompanyId"
+ORDER BY c1."Id", s."CompanyId", s."EmployeeId" 
+2025-01-23 15:13:33.3430 Error An exception occurred while iterating over the results of a query for context type 'DotnetAPI.Data.CompanyDbContext'.
+Npgsql.PostgresException (0x80004005): 42P01: relation "CompanyEmployees" does not exist
+
+POSITION: 306
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+  Exception data:
+    Severity: ERROR
+    SqlState: 42P01
+    MessageText: relation "CompanyEmployees" does not exist
+    Position: 306
+    File: parse_relation.c
+    Line: 1452
+    Routine: parserOpenTable Npgsql.PostgresException (0x80004005): 42P01: relation "CompanyEmployees" does not exist
+
+POSITION: 306
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+  Exception data:
+    Severity: ERROR
+    SqlState: 42P01
+    MessageText: relation "CompanyEmployees" does not exist
+    Position: 306
+    File: parse_relation.c
+    Line: 1452
+    Routine: parserOpenTable Severity: ERROR;InvariantSeverity: ERROR;SqlState: 42P01;MessageText: relation "CompanyEmployees" does not exist;Position: 306;File: parse_relation.c;Line: 1452;Routine: parserOpenTable
+2025-01-23 15:13:33.3609 Info Executed action DotnetAPI.Controllers.CompanyController.GetCompanyById (CompanyManagement) in 125.7379ms 
+2025-01-23 15:13:33.3609 Info Executed endpoint 'DotnetAPI.Controllers.CompanyController.GetCompanyById (CompanyManagement)' 
+2025-01-23 15:13:33.3609 Info Request finished HTTP/1.1 GET http://localhost:5292/api/Company/1 - 500 - application/json 136.8717ms 
+2025-01-23 15:13:48.2140 Info Application is shutting down... 
+2025-01-23 16:25:53.2545 Info Executed DbCommand (10ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId"; 
+2025-01-23 16:25:53.4078 Info Executed DbCommand (5ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+CREATE TABLE IF NOT EXISTS "__EFMigrationsHistory" (
+    "MigrationId" character varying(150) NOT NULL,
+    "ProductVersion" character varying(32) NOT NULL,
+    CONSTRAINT "PK___EFMigrationsHistory" PRIMARY KEY ("MigrationId")
+); 
+2025-01-23 16:25:53.4078 Info Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long. 
+2025-01-23 16:25:53.4206 Info Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+LOCK TABLE "__EFMigrationsHistory" IN ACCESS EXCLUSIVE MODE 
+2025-01-23 16:25:53.4206 Info Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId"; 
+2025-01-23 16:25:53.4206 Info Applying migration '20250123114510_InitialCreate'. 
+2025-01-23 16:25:53.4542 Error Failed executing DbCommand (16ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+CREATE TABLE "Companies" (
+    "Id" integer GENERATED BY DEFAULT AS IDENTITY,
+    "Name" text NOT NULL,
+    CONSTRAINT "PK_Companies" PRIMARY KEY ("Id")
+); 
+2025-01-23 16:27:05.7334 Info Now listening on: http://localhost:5292 
+2025-01-23 16:27:05.7493 Info Application started. Press Ctrl+C to shut down. 
+2025-01-23 16:27:05.7493 Info Hosting environment: Development 
+2025-01-23 16:27:05.7493 Info Content root path: C:\Users\hp\CompanyManagement\CompanyManagement 
+2025-01-23 16:27:08.2423 Info Request starting HTTP/1.1 GET http://localhost:5292/index.html - - - 
+2025-01-23 16:27:08.2614 Warn Failed to determine the https port for redirect. 
+2025-01-23 16:27:08.3350 Info Request finished HTTP/1.1 GET http://localhost:5292/index.html - 200 - text/html;charset=utf-8 89.0897ms 
+2025-01-23 16:27:08.3812 Info Request starting HTTP/1.1 GET http://localhost:5292/index.js - - - 
+2025-01-23 16:27:08.3812 Info Request starting HTTP/1.1 GET http://localhost:5292/_framework/aspnetcore-browser-refresh.js - - - 
+2025-01-23 16:27:08.3812 Info Request finished HTTP/1.1 GET http://localhost:5292/_framework/aspnetcore-browser-refresh.js - 200 13748 application/javascript;+charset=utf-8 3.0927ms 
+2025-01-23 16:27:08.3812 Info Request finished HTTP/1.1 GET http://localhost:5292/index.js - 200 - application/javascript;charset=utf-8 3.2925ms 
+2025-01-23 16:27:08.6074 Info Request starting HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - - - 
+2025-01-23 16:27:08.7092 Info Request finished HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - 200 - application/json;charset=utf-8 101.8323ms 
+2025-01-23 16:27:11.9285 Info Request starting HTTP/1.1 GET http://localhost:5292/api/Company?sortBy=Name&sortDirection=asc - - - 
+2025-01-23 16:27:11.9285 Info Executing endpoint 'DotnetAPI.Controllers.CompanyController.GetAllCompanies (CompanyManagement)' 
+2025-01-23 16:27:11.9690 Info Route matched with {action = "GetAllCompanies", controller = "Company"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllCompanies(System.String, System.String) on controller DotnetAPI.Controllers.CompanyController (CompanyManagement). 
+2025-01-23 16:27:13.6921 Info Executed DbCommand (23ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT c."Id", c."Name", s."CompanyId", s."EmployeeId", s."Id", s."FullName", s."Position"
+FROM "Companies" AS c
+LEFT JOIN (
+    SELECT c0."CompanyId", c0."EmployeeId", e."Id", e."FullName", e."Position"
+    FROM "CompanyEmployee" AS c0
+    INNER JOIN "Employees" AS e ON c0."EmployeeId" = e."Id"
+) AS s ON c."Id" = s."CompanyId"
+ORDER BY c."Name", c."Id", s."CompanyId", s."EmployeeId" 
+2025-01-23 16:27:13.8085 Info Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[DotnetAPI.DTOs.CompanyDto, CompanyManagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'. 
+2025-01-23 16:27:13.8347 Info Executed action DotnetAPI.Controllers.CompanyController.GetAllCompanies (CompanyManagement) in 1859.457ms 
+2025-01-23 16:27:13.8355 Info Executed endpoint 'DotnetAPI.Controllers.CompanyController.GetAllCompanies (CompanyManagement)' 
+2025-01-23 16:27:13.8355 Info Request finished HTTP/1.1 GET http://localhost:5292/api/Company?sortBy=Name&sortDirection=asc - 200 - application/json;+charset=utf-8 1915.8470ms 
+2025-01-23 16:27:22.9116 Info Request starting HTTP/1.1 GET http://localhost:5292/api/Employee - - - 
+2025-01-23 16:27:22.9116 Info Executing endpoint 'DotnetAPI.Controllers.EmployeeController.GetAllEmployees (CompanyManagement)' 
+2025-01-23 16:27:22.9116 Info Route matched with {action = "GetAllEmployees", controller = "Employee"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[DotnetAPI.DTOs.EmployeeDto]]] GetAllEmployees() on controller DotnetAPI.Controllers.EmployeeController (CompanyManagement). 
+2025-01-23 16:27:22.9595 Warn Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'. 
+2025-01-23 16:27:22.9934 Info Executed DbCommand (9ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT e."Id", e."FullName", e."Position", s."CompanyId", s."EmployeeId", s."Id", s."Name", s0."EmployeeId", s0."ProjectId", s0."Id", s0."Duration", s0."Title"
+FROM "Employees" AS e
+LEFT JOIN (
+    SELECT c."CompanyId", c."EmployeeId", c0."Id", c0."Name"
+    FROM "CompanyEmployee" AS c
+    INNER JOIN "Companies" AS c0 ON c."CompanyId" = c0."Id"
+) AS s ON e."Id" = s."EmployeeId"
+LEFT JOIN (
+    SELECT e0."EmployeeId", e0."ProjectId", p."Id", p."Duration", p."Title"
+    FROM "EmployeeProject" AS e0
+    INNER JOIN "Projects" AS p ON e0."ProjectId" = p."Id"
+) AS s0 ON e."Id" = s0."EmployeeId"
+ORDER BY e."Id", s."CompanyId", s."EmployeeId", s."Id", s0."EmployeeId", s0."ProjectId" 
+2025-01-23 16:27:23.0147 Info Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[DotnetAPI.DTOs.EmployeeDto, CompanyManagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'. 
+2025-01-23 16:27:23.0270 Info Executed action DotnetAPI.Controllers.EmployeeController.GetAllEmployees (CompanyManagement) in 104.408ms 
+2025-01-23 16:27:23.0270 Info Executed endpoint 'DotnetAPI.Controllers.EmployeeController.GetAllEmployees (CompanyManagement)' 
+2025-01-23 16:27:23.0270 Info Request finished HTTP/1.1 GET http://localhost:5292/api/Employee - 200 - application/json;+charset=utf-8 116.9093ms 
+2025-01-23 16:27:44.8439 Info Request starting HTTP/1.1 GET http://localhost:5292/api/Project?title=we - - - 
+2025-01-23 16:27:44.8439 Info Executing endpoint 'DotnetAPI.Controllers.ProjectController.GetFilteredProjects (CompanyManagement)' 
+2025-01-23 16:27:44.8439 Info Route matched with {action = "GetFilteredProjects", controller = "Project"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetFilteredProjects(System.String) on controller DotnetAPI.Controllers.ProjectController (CompanyManagement). 
+2025-01-23 16:27:44.9295 Info Executed DbCommand (6ms) [Parameters=[@__title_0_contains='?'], CommandType='Text', CommandTimeout='30']
+SELECT p."Id", p."Duration", p."Title"
+FROM "Projects" AS p
+WHERE p."Title" LIKE @__title_0_contains 
+2025-01-23 16:27:44.9351 Info Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[DotnetAPI.DTOs.ProjectDto, CompanyManagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'. 
+2025-01-23 16:27:44.9351 Info Executed action DotnetAPI.Controllers.ProjectController.GetFilteredProjects (CompanyManagement) in 87.6305ms 
+2025-01-23 16:27:44.9351 Info Executed endpoint 'DotnetAPI.Controllers.ProjectController.GetFilteredProjects (CompanyManagement)' 
+2025-01-23 16:27:44.9351 Info Request finished HTTP/1.1 GET http://localhost:5292/api/Project?title=we - 200 - application/json;+charset=utf-8 94.8825ms 
+2025-01-23 16:27:55.3787 Info Application is shutting down... 
+2025-01-24 09:22:13.8824 Info Executed DbCommand (15ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId"; 
+2025-01-24 09:22:14.0812 Info Executed DbCommand (9ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+CREATE TABLE IF NOT EXISTS "__EFMigrationsHistory" (
+    "MigrationId" character varying(150) NOT NULL,
+    "ProductVersion" character varying(32) NOT NULL,
+    CONSTRAINT "PK___EFMigrationsHistory" PRIMARY KEY ("MigrationId")
+); 
+2025-01-24 09:22:14.0812 Info Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long. 
+2025-01-24 09:22:14.0936 Info Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+LOCK TABLE "__EFMigrationsHistory" IN ACCESS EXCLUSIVE MODE 
+2025-01-24 09:22:14.0936 Info Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId"; 
+2025-01-24 09:22:14.0936 Info Applying migration '20250123114510_InitialCreate'. 
+2025-01-24 09:22:14.1299 Error Failed executing DbCommand (20ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+CREATE TABLE "Companies" (
+    "Id" integer GENERATED BY DEFAULT AS IDENTITY,
+    "Name" text NOT NULL,
+    CONSTRAINT "PK_Companies" PRIMARY KEY ("Id")
+); 
+2025-01-24 09:23:27.1772 Info User profile is available. Using 'C:\Users\hp\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest. 
+2025-01-24 09:23:27.3124 Info Now listening on: http://localhost:5292 
+2025-01-24 09:23:27.3124 Info Application started. Press Ctrl+C to shut down. 
+2025-01-24 09:23:27.3124 Info Hosting environment: Development 
+2025-01-24 09:23:27.3124 Info Content root path: C:\Users\hp\CompanyManagement\CompanyManagement 
+2025-01-24 09:23:36.1015 Info Request starting HTTP/1.1 GET http://localhost:5292/index.html - - - 
+2025-01-24 09:23:36.1330 Warn Failed to determine the https port for redirect. 
+2025-01-24 09:23:36.2508 Info Request finished HTTP/1.1 GET http://localhost:5292/index.html - 200 - text/html;charset=utf-8 144.8922ms 
+2025-01-24 09:23:36.2882 Info Request starting HTTP/1.1 GET http://localhost:5292/_framework/aspnetcore-browser-refresh.js - - - 
+2025-01-24 09:23:36.2882 Info Request starting HTTP/1.1 GET http://localhost:5292/index.js - - - 
+2025-01-24 09:23:36.2882 Info Request finished HTTP/1.1 GET http://localhost:5292/_framework/aspnetcore-browser-refresh.js - 200 13748 application/javascript;+charset=utf-8 2.7295ms 
+2025-01-24 09:23:36.2947 Info Request finished HTTP/1.1 GET http://localhost:5292/index.js - 200 - application/javascript;charset=utf-8 6.3844ms 
+2025-01-24 09:23:36.5087 Info Request starting HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - - - 
+2025-01-24 09:23:36.6815 Info Request finished HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - 200 - application/json;charset=utf-8 172.8496ms 
+2025-01-24 09:24:10.8269 Info Request starting HTTP/1.1 POST http://localhost:5292/api/Auth/register - application/json 112 
+2025-01-24 09:24:10.8269 Info CORS policy execution successful. 
+2025-01-24 09:24:10.8399 Info Executing endpoint 'DotnetAPI.Controllers.AuthController.Register (CompanyManagement)' 
+2025-01-24 09:24:10.8631 Info Route matched with {action = "Register", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Register(DotnetAPI.DTOs.RegisterUserDto) on controller DotnetAPI.Controllers.AuthController (CompanyManagement). 
+2025-01-24 09:24:11.6410 Info Executing BadRequestObjectResult, writing value of type 'System.Collections.Generic.List`1[[Microsoft.AspNetCore.Identity.IdentityError, Microsoft.Extensions.Identity.Core, Version=9.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60]]'. 
+2025-01-24 09:24:11.6593 Info Executed action DotnetAPI.Controllers.AuthController.Register (CompanyManagement) in 790.5006ms 
+2025-01-24 09:24:11.6593 Info Executed endpoint 'DotnetAPI.Controllers.AuthController.Register (CompanyManagement)' 
+2025-01-24 09:24:11.6593 Info Request finished HTTP/1.1 POST http://localhost:5292/api/Auth/register - 400 - application/json;+charset=utf-8 835.1534ms 
+2025-01-24 09:24:26.2436 Info Request starting HTTP/1.1 POST http://localhost:5292/api/Auth/register - application/json 112 
+2025-01-24 09:24:26.2436 Info CORS policy execution successful. 
+2025-01-24 09:24:26.2436 Info Executing endpoint 'DotnetAPI.Controllers.AuthController.Register (CompanyManagement)' 
+2025-01-24 09:24:26.2436 Info Route matched with {action = "Register", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Register(DotnetAPI.DTOs.RegisterUserDto) on controller DotnetAPI.Controllers.AuthController (CompanyManagement). 
+2025-01-24 09:24:27.1913 Error Failed executing DbCommand (41ms) [Parameters=[@__normalizedUserName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."Email", a."EmailConfirmed", a."LockoutEnabled", a."LockoutEnd", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."SecurityStamp", a."TwoFactorEnabled", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."NormalizedUserName" = @__normalizedUserName_0
+LIMIT 1 
+2025-01-24 09:24:27.2096 Error An exception occurred while iterating over the results of a query for context type 'DotnetAPI.Data.CompanyDbContext'.
+Npgsql.PostgresException (0x80004005): 42P01: relation "AspNetUsers" does not exist
+
+POSITION: 294
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+  Exception data:
+    Severity: ERROR
+    SqlState: 42P01
+    MessageText: relation "AspNetUsers" does not exist
+    Position: 294
+    File: parse_relation.c
+    Line: 1452
+    Routine: parserOpenTable Npgsql.PostgresException (0x80004005): 42P01: relation "AspNetUsers" does not exist
+
+POSITION: 294
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+  Exception data:
+    Severity: ERROR
+    SqlState: 42P01
+    MessageText: relation "AspNetUsers" does not exist
+    Position: 294
+    File: parse_relation.c
+    Line: 1452
+    Routine: parserOpenTable Severity: ERROR;InvariantSeverity: ERROR;SqlState: 42P01;MessageText: relation "AspNetUsers" does not exist;Position: 294;File: parse_relation.c;Line: 1452;Routine: parserOpenTable
+2025-01-24 09:24:27.2247 Info Executed action DotnetAPI.Controllers.AuthController.Register (CompanyManagement) in 976.3242ms 
+2025-01-24 09:24:27.2247 Info Executed endpoint 'DotnetAPI.Controllers.AuthController.Register (CompanyManagement)' 
+2025-01-24 09:24:27.2413 Info Request finished HTTP/1.1 POST http://localhost:5292/api/Auth/register - 500 - application/json 997.7764ms 
+2025-01-24 09:26:32.4586 Info Application is shutting down... 
+2025-01-24 09:26:44.0635 Info Executed DbCommand (12ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId"; 
+2025-01-24 09:26:44.2319 Info Executed DbCommand (5ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+CREATE TABLE IF NOT EXISTS "__EFMigrationsHistory" (
+    "MigrationId" character varying(150) NOT NULL,
+    "ProductVersion" character varying(32) NOT NULL,
+    CONSTRAINT "PK___EFMigrationsHistory" PRIMARY KEY ("MigrationId")
+); 
+2025-01-24 09:26:44.2383 Info Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long. 
+2025-01-24 09:26:44.2383 Info Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+LOCK TABLE "__EFMigrationsHistory" IN ACCESS EXCLUSIVE MODE 
+2025-01-24 09:26:44.2383 Info Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId"; 
+2025-01-24 09:26:44.2383 Info Applying migration '20250123114510_InitialCreate'. 
+2025-01-24 09:26:44.2733 Error Failed executing DbCommand (12ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+CREATE TABLE "Companies" (
+    "Id" integer GENERATED BY DEFAULT AS IDENTITY,
+    "Name" text NOT NULL,
+    CONSTRAINT "PK_Companies" PRIMARY KEY ("Id")
+); 
+2025-01-24 09:28:56.1628 Info Executed DbCommand (11ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId"; 
+2025-01-24 09:29:53.5196 Info Executed DbCommand (10ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId"; 
+2025-01-24 09:29:53.6819 Info Executed DbCommand (5ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+CREATE TABLE IF NOT EXISTS "__EFMigrationsHistory" (
+    "MigrationId" character varying(150) NOT NULL,
+    "ProductVersion" character varying(32) NOT NULL,
+    CONSTRAINT "PK___EFMigrationsHistory" PRIMARY KEY ("MigrationId")
+); 
+2025-01-24 09:29:53.6819 Info Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long. 
+2025-01-24 09:29:53.6819 Info Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+LOCK TABLE "__EFMigrationsHistory" IN ACCESS EXCLUSIVE MODE 
+2025-01-24 09:29:53.6819 Info Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId"; 
+2025-01-24 09:29:53.6977 Info Applying migration '20250123114510_InitialCreate'. 
+2025-01-24 09:29:53.7215 Error Failed executing DbCommand (13ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+CREATE TABLE "Companies" (
+    "Id" integer GENERATED BY DEFAULT AS IDENTITY,
+    "Name" text NOT NULL,
+    CONSTRAINT "PK_Companies" PRIMARY KEY ("Id")
+); 
+2025-01-24 09:36:29.0468 Info Executed DbCommand (10ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId"; 
+2025-01-24 09:36:29.2141 Info Executed DbCommand (5ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+CREATE TABLE IF NOT EXISTS "__EFMigrationsHistory" (
+    "MigrationId" character varying(150) NOT NULL,
+    "ProductVersion" character varying(32) NOT NULL,
+    CONSTRAINT "PK___EFMigrationsHistory" PRIMARY KEY ("MigrationId")
+); 
+2025-01-24 09:36:29.2141 Info Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long. 
+2025-01-24 09:36:29.2265 Info Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+LOCK TABLE "__EFMigrationsHistory" IN ACCESS EXCLUSIVE MODE 
+2025-01-24 09:36:29.2265 Info Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId"; 
+2025-01-24 09:36:29.2265 Info Applying migration '20250123114510_InitialCreate'. 
+2025-01-24 09:36:29.2599 Error Failed executing DbCommand (16ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+CREATE TABLE "Companies" (
+    "Id" integer GENERATED BY DEFAULT AS IDENTITY,
+    "Name" text NOT NULL,
+    CONSTRAINT "PK_Companies" PRIMARY KEY ("Id")
+); 
+2025-01-24 09:42:17.4706 Info Executed DbCommand (11ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId"; 
+2025-01-24 09:42:32.4636 Info Executed DbCommand (11ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId"; 
+2025-01-24 09:42:32.7401 Info Executed DbCommand (7ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+CREATE TABLE IF NOT EXISTS "__EFMigrationsHistory" (
+    "MigrationId" character varying(150) NOT NULL,
+    "ProductVersion" character varying(32) NOT NULL,
+    CONSTRAINT "PK___EFMigrationsHistory" PRIMARY KEY ("MigrationId")
+); 
+2025-01-24 09:42:32.7468 Info Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long. 
+2025-01-24 09:42:32.7468 Info Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+LOCK TABLE "__EFMigrationsHistory" IN ACCESS EXCLUSIVE MODE 
+2025-01-24 09:42:32.7468 Info Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId"; 
+2025-01-24 09:42:32.7589 Info Applying migration '20250123114510_InitialCreate'. 
+2025-01-24 09:42:32.7832 Error Failed executing DbCommand (12ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+CREATE TABLE "Companies" (
+    "Id" integer GENERATED BY DEFAULT AS IDENTITY,
+    "Name" text NOT NULL,
+    CONSTRAINT "PK_Companies" PRIMARY KEY ("Id")
+); 
+2025-01-24 09:55:49.6042 Info Executed DbCommand (10ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId"; 
+2025-01-24 09:56:45.3548 Info Executed DbCommand (11ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId"; 
+2025-01-24 09:56:45.5244 Info Executed DbCommand (5ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+CREATE TABLE IF NOT EXISTS "__EFMigrationsHistory" (
+    "MigrationId" character varying(150) NOT NULL,
+    "ProductVersion" character varying(32) NOT NULL,
+    CONSTRAINT "PK___EFMigrationsHistory" PRIMARY KEY ("MigrationId")
+); 
+2025-01-24 09:56:45.5307 Info Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long. 
+2025-01-24 09:56:45.5307 Info Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+LOCK TABLE "__EFMigrationsHistory" IN ACCESS EXCLUSIVE MODE 
+2025-01-24 09:56:45.5307 Info Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId"; 
+2025-01-24 09:56:45.5434 Info Applying migration '20250123114510_InitialCreate'. 
+2025-01-24 09:56:45.5685 Error Failed executing DbCommand (14ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+CREATE TABLE "Companies" (
+    "Id" integer GENERATED BY DEFAULT AS IDENTITY,
+    "Name" text NOT NULL,
+    CONSTRAINT "PK_Companies" PRIMARY KEY ("Id")
+); 
+2025-01-24 09:58:38.1721 Info Executed DbCommand (10ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId"; 
+2025-01-24 09:59:11.0539 Info Executed DbCommand (10ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId"; 
+2025-01-24 10:00:51.9341 Info Executed DbCommand (11ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId"; 
+2025-01-24 10:00:52.1289 Info Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+CREATE TABLE IF NOT EXISTS "__EFMigrationsHistory" (
+    "MigrationId" character varying(150) NOT NULL,
+    "ProductVersion" character varying(32) NOT NULL,
+    CONSTRAINT "PK___EFMigrationsHistory" PRIMARY KEY ("MigrationId")
+); 
+2025-01-24 10:00:52.1361 Info Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long. 
+2025-01-24 10:00:52.1361 Info Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+LOCK TABLE "__EFMigrationsHistory" IN ACCESS EXCLUSIVE MODE 
+2025-01-24 10:00:52.1361 Info Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId"; 
+2025-01-24 10:00:52.1478 Info Applying migration '20250123114510_InitialCreate'. 
+2025-01-24 10:00:52.1678 Error Failed executing DbCommand (9ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+CREATE TABLE "Companies" (
+    "Id" integer GENERATED BY DEFAULT AS IDENTITY,
+    "Name" text NOT NULL,
+    CONSTRAINT "PK_Companies" PRIMARY KEY ("Id")
+); 
+2025-01-24 10:23:30.5213 Info Executed DbCommand (11ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId"; 
+2025-01-24 10:30:52.4840 Info Executed DbCommand (10ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId"; 
+2025-01-24 10:31:12.1396 Info Executed DbCommand (11ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId"; 
+2025-01-24 10:31:35.7060 Info Executed DbCommand (11ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId"; 
+2025-01-24 10:31:48.3042 Info Executed DbCommand (11ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId"; 
+2025-01-24 10:32:16.0305 Info Executed DbCommand (12ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId"; 
+2025-01-24 10:32:16.1986 Info Executed DbCommand (5ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+CREATE TABLE IF NOT EXISTS "__EFMigrationsHistory" (
+    "MigrationId" character varying(150) NOT NULL,
+    "ProductVersion" character varying(32) NOT NULL,
+    CONSTRAINT "PK___EFMigrationsHistory" PRIMARY KEY ("MigrationId")
+); 
+2025-01-24 10:32:16.2044 Info Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long. 
+2025-01-24 10:32:16.2044 Info Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+LOCK TABLE "__EFMigrationsHistory" IN ACCESS EXCLUSIVE MODE 
+2025-01-24 10:32:16.2044 Info Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId"; 
+2025-01-24 10:32:16.2044 Info Applying migration '20250124083203_InitialCreate'. 
+2025-01-24 10:32:16.2505 Info Executed DbCommand (17ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+CREATE TABLE "AspNetRoles" (
+    "Id" text NOT NULL,
+    "Name" character varying(256),
+    "NormalizedName" character varying(256),
+    "ConcurrencyStamp" text,
+    CONSTRAINT "PK_AspNetRoles" PRIMARY KEY ("Id")
+); 
+2025-01-24 10:32:16.2546 Info Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+CREATE TABLE "AspNetUsers" (
+    "Id" text NOT NULL,
+    "UserName" character varying(256),
+    "NormalizedUserName" character varying(256),
+    "Email" character varying(256),
+    "NormalizedEmail" character varying(256),
+    "EmailConfirmed" boolean NOT NULL,
+    "PasswordHash" text,
+    "SecurityStamp" text,
+    "ConcurrencyStamp" text,
+    "PhoneNumber" text,
+    "PhoneNumberConfirmed" boolean NOT NULL,
+    "TwoFactorEnabled" boolean NOT NULL,
+    "LockoutEnd" timestamp with time zone,
+    "LockoutEnabled" boolean NOT NULL,
+    "AccessFailedCount" integer NOT NULL,
+    CONSTRAINT "PK_AspNetUsers" PRIMARY KEY ("Id")
+); 
+2025-01-24 10:32:16.2674 Error Failed executing DbCommand (10ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+CREATE TABLE "Companies" (
+    "Id" integer GENERATED BY DEFAULT AS IDENTITY,
+    "Name" text NOT NULL,
+    CONSTRAINT "PK_Companies" PRIMARY KEY ("Id")
+); 
+2025-01-24 10:34:30.7743 Info Executed DbCommand (10ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId"; 
+2025-01-24 10:35:24.0193 Info Executed DbCommand (10ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId"; 
+2025-01-24 10:36:20.2743 Info Executed DbCommand (11ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId"; 
+2025-01-24 10:36:20.3146 Info No migrations were found in assembly 'CompanyManagement'. A migration needs to be added before the database can be updated. 
+2025-01-24 10:36:20.4190 Info Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+CREATE TABLE IF NOT EXISTS "__EFMigrationsHistory" (
+    "MigrationId" character varying(150) NOT NULL,
+    "ProductVersion" character varying(32) NOT NULL,
+    CONSTRAINT "PK___EFMigrationsHistory" PRIMARY KEY ("MigrationId")
+); 
+2025-01-24 10:36:20.4249 Info Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long. 
+2025-01-24 10:36:20.4249 Info Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+LOCK TABLE "__EFMigrationsHistory" IN ACCESS EXCLUSIVE MODE 
+2025-01-24 10:36:20.4249 Info Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId"; 
+2025-01-24 10:38:14.7505 Info Executed DbCommand (11ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId"; 
+2025-01-24 10:39:53.2070 Info Executed DbCommand (11ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId"; 
+2025-01-24 10:39:53.3770 Info Executed DbCommand (6ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+CREATE TABLE IF NOT EXISTS "__EFMigrationsHistory" (
+    "MigrationId" character varying(150) NOT NULL,
+    "ProductVersion" character varying(32) NOT NULL,
+    CONSTRAINT "PK___EFMigrationsHistory" PRIMARY KEY ("MigrationId")
+); 
+2025-01-24 10:39:53.3770 Info Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long. 
+2025-01-24 10:39:53.3902 Info Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+LOCK TABLE "__EFMigrationsHistory" IN ACCESS EXCLUSIVE MODE 
+2025-01-24 10:39:53.3902 Info Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId"; 
+2025-01-24 10:39:53.3902 Info Applying migration '20250124083838_InitialCreate'. 
+2025-01-24 10:39:53.4311 Info Executed DbCommand (15ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+CREATE TABLE "AspNetRoles" (
+    "Id" text NOT NULL,
+    "Name" character varying(256),
+    "NormalizedName" character varying(256),
+    "ConcurrencyStamp" text,
+    CONSTRAINT "PK_AspNetRoles" PRIMARY KEY ("Id")
+); 
+2025-01-24 10:39:53.4346 Info Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+CREATE TABLE "AspNetUsers" (
+    "Id" text NOT NULL,
+    "UserName" character varying(256),
+    "NormalizedUserName" character varying(256),
+    "Email" character varying(256),
+    "NormalizedEmail" character varying(256),
+    "EmailConfirmed" boolean NOT NULL,
+    "PasswordHash" text,
+    "SecurityStamp" text,
+    "ConcurrencyStamp" text,
+    "PhoneNumber" text,
+    "PhoneNumberConfirmed" boolean NOT NULL,
+    "TwoFactorEnabled" boolean NOT NULL,
+    "LockoutEnd" timestamp with time zone,
+    "LockoutEnabled" boolean NOT NULL,
+    "AccessFailedCount" integer NOT NULL,
+    CONSTRAINT "PK_AspNetUsers" PRIMARY KEY ("Id")
+); 
+2025-01-24 10:39:53.4346 Error Failed executing DbCommand (8ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+CREATE TABLE "Companies" (
+    "Id" integer GENERATED BY DEFAULT AS IDENTITY,
+    "Name" text NOT NULL,
+    CONSTRAINT "PK_Companies" PRIMARY KEY ("Id")
+); 
+2025-01-24 10:40:06.8153 Info User profile is available. Using 'C:\Users\hp\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest. 
+2025-01-24 10:40:06.9905 Info Now listening on: http://localhost:5292 
+2025-01-24 10:40:06.9905 Info Application started. Press Ctrl+C to shut down. 
+2025-01-24 10:40:06.9955 Info Hosting environment: Development 
+2025-01-24 10:40:06.9955 Info Content root path: C:\Users\hp\CompanyManagement\CompanyManagement 
+2025-01-24 10:40:07.9698 Info Request starting HTTP/1.1 GET http://localhost:5292/index.html - - - 
+2025-01-24 10:40:08.0025 Warn Failed to determine the https port for redirect. 
+2025-01-24 10:40:08.1029 Info Request finished HTTP/1.1 GET http://localhost:5292/index.html - 200 - text/html;charset=utf-8 128.5519ms 
+2025-01-24 10:40:08.1838 Info Request starting HTTP/1.1 GET http://localhost:5292/index.js - - - 
+2025-01-24 10:40:08.1838 Info Request starting HTTP/1.1 GET http://localhost:5292/_framework/aspnetcore-browser-refresh.js - - - 
+2025-01-24 10:40:08.1838 Info Request finished HTTP/1.1 GET http://localhost:5292/_framework/aspnetcore-browser-refresh.js - 200 13748 application/javascript;+charset=utf-8 3.0981ms 
+2025-01-24 10:40:08.1838 Info Request finished HTTP/1.1 GET http://localhost:5292/index.js - 200 - application/javascript;charset=utf-8 5.8629ms 
+2025-01-24 10:40:08.5275 Info Request starting HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - - - 
+2025-01-24 10:40:08.6673 Info Request finished HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - 200 - application/json;charset=utf-8 139.8402ms 
+2025-01-24 10:40:15.3165 Info Request starting HTTP/1.1 GET http://localhost:5292/api/Company?sortBy=Name&sortDirection=asc - - - 
+2025-01-24 10:40:15.3300 Info Executing endpoint 'DotnetAPI.Controllers.CompanyController.GetAllCompanies (CompanyManagement)' 
+2025-01-24 10:40:15.3592 Info Route matched with {action = "GetAllCompanies", controller = "Company"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllCompanies(System.String, System.String) on controller DotnetAPI.Controllers.CompanyController (CompanyManagement). 
+2025-01-24 10:40:16.3901 Info Executed DbCommand (19ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT c."Id", c."Name", s."CompanyId", s."EmployeeId", s."Id", s."FullName", s."Position"
+FROM "Companies" AS c
+LEFT JOIN (
+    SELECT c0."CompanyId", c0."EmployeeId", e."Id", e."FullName", e."Position"
+    FROM "CompanyEmployee" AS c0
+    INNER JOIN "Employees" AS e ON c0."EmployeeId" = e."Id"
+) AS s ON c."Id" = s."CompanyId"
+ORDER BY c."Name", c."Id", s."CompanyId", s."EmployeeId" 
+2025-01-24 10:40:16.4814 Info Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[DotnetAPI.DTOs.CompanyDto, CompanyManagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'. 
+2025-01-24 10:40:16.4982 Info Executed action DotnetAPI.Controllers.CompanyController.GetAllCompanies (CompanyManagement) in 1132.195ms 
+2025-01-24 10:40:16.4982 Info Executed endpoint 'DotnetAPI.Controllers.CompanyController.GetAllCompanies (CompanyManagement)' 
+2025-01-24 10:40:16.4982 Info Request finished HTTP/1.1 GET http://localhost:5292/api/Company?sortBy=Name&sortDirection=asc - 200 - application/json;+charset=utf-8 1187.9050ms 
+2025-01-24 10:40:24.8459 Info Request starting HTTP/1.1 GET http://localhost:5292/api/Employee - - - 
+2025-01-24 10:40:24.8459 Info Executing endpoint 'DotnetAPI.Controllers.EmployeeController.GetAllEmployees (CompanyManagement)' 
+2025-01-24 10:40:24.8560 Info Route matched with {action = "GetAllEmployees", controller = "Employee"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[DotnetAPI.DTOs.EmployeeDto]]] GetAllEmployees() on controller DotnetAPI.Controllers.EmployeeController (CompanyManagement). 
+2025-01-24 10:40:24.8926 Warn Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'. 
+2025-01-24 10:40:24.9241 Info Executed DbCommand (6ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT e."Id", e."FullName", e."Position", s."CompanyId", s."EmployeeId", s."Id", s."Name", s0."EmployeeId", s0."ProjectId", s0."Id", s0."Duration", s0."Title"
+FROM "Employees" AS e
+LEFT JOIN (
+    SELECT c."CompanyId", c."EmployeeId", c0."Id", c0."Name"
+    FROM "CompanyEmployee" AS c
+    INNER JOIN "Companies" AS c0 ON c."CompanyId" = c0."Id"
+) AS s ON e."Id" = s."EmployeeId"
+LEFT JOIN (
+    SELECT e0."EmployeeId", e0."ProjectId", p."Id", p."Duration", p."Title"
+    FROM "EmployeeProject" AS e0
+    INNER JOIN "Projects" AS p ON e0."ProjectId" = p."Id"
+) AS s0 ON e."Id" = s0."EmployeeId"
+ORDER BY e."Id", s."CompanyId", s."EmployeeId", s."Id", s0."EmployeeId", s0."ProjectId" 
+2025-01-24 10:40:24.9522 Info Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[DotnetAPI.DTOs.EmployeeDto, CompanyManagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'. 
+2025-01-24 10:40:24.9522 Info Executed action DotnetAPI.Controllers.EmployeeController.GetAllEmployees (CompanyManagement) in 101.7576ms 
+2025-01-24 10:40:24.9522 Info Executed endpoint 'DotnetAPI.Controllers.EmployeeController.GetAllEmployees (CompanyManagement)' 
+2025-01-24 10:40:24.9522 Info Request finished HTTP/1.1 GET http://localhost:5292/api/Employee - 200 - application/json;+charset=utf-8 114.0447ms 
+2025-01-24 10:40:34.4305 Info Request starting HTTP/1.1 GET http://localhost:5292/api/Project?title=W - - - 
+2025-01-24 10:40:34.4305 Info Executing endpoint 'DotnetAPI.Controllers.ProjectController.GetFilteredProjects (CompanyManagement)' 
+2025-01-24 10:40:34.4382 Info Route matched with {action = "GetFilteredProjects", controller = "Project"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetFilteredProjects(System.String) on controller DotnetAPI.Controllers.ProjectController (CompanyManagement). 
+2025-01-24 10:40:34.5419 Info Executed DbCommand (7ms) [Parameters=[@__title_0_contains='?'], CommandType='Text', CommandTimeout='30']
+SELECT p."Id", p."Duration", p."Title"
+FROM "Projects" AS p
+WHERE p."Title" LIKE @__title_0_contains 
+2025-01-24 10:40:34.5419 Info Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[DotnetAPI.DTOs.ProjectDto, CompanyManagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'. 
+2025-01-24 10:40:34.5419 Info Executed action DotnetAPI.Controllers.ProjectController.GetFilteredProjects (CompanyManagement) in 111.756ms 
+2025-01-24 10:40:34.5419 Info Executed endpoint 'DotnetAPI.Controllers.ProjectController.GetFilteredProjects (CompanyManagement)' 
+2025-01-24 10:40:34.5419 Info Request finished HTTP/1.1 GET http://localhost:5292/api/Project?title=W - 200 - application/json;+charset=utf-8 121.2275ms 
+2025-01-24 10:40:42.8848 Info Application is shutting down... 
+2025-01-24 10:42:28.9214 Info Executed DbCommand (10ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId"; 
+2025-01-24 10:42:29.0913 Info Executed DbCommand (6ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+CREATE TABLE IF NOT EXISTS "__EFMigrationsHistory" (
+    "MigrationId" character varying(150) NOT NULL,
+    "ProductVersion" character varying(32) NOT NULL,
+    CONSTRAINT "PK___EFMigrationsHistory" PRIMARY KEY ("MigrationId")
+); 
+2025-01-24 10:42:29.0913 Info Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long. 
+2025-01-24 10:42:29.1025 Info Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+LOCK TABLE "__EFMigrationsHistory" IN ACCESS EXCLUSIVE MODE 
+2025-01-24 10:42:29.1025 Info Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId"; 
+2025-01-24 10:42:29.1025 Info Applying migration '20250124083838_InitialCreate'. 
+2025-01-24 10:42:29.1418 Info Executed DbCommand (14ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+CREATE TABLE "AspNetRoles" (
+    "Id" text NOT NULL,
+    "Name" character varying(256),
+    "NormalizedName" character varying(256),
+    "ConcurrencyStamp" text,
+    CONSTRAINT "PK_AspNetRoles" PRIMARY KEY ("Id")
+); 
+2025-01-24 10:42:29.1418 Info Executed DbCommand (4ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+CREATE TABLE "AspNetUsers" (
+    "Id" text NOT NULL,
+    "UserName" character varying(256),
+    "NormalizedUserName" character varying(256),
+    "Email" character varying(256),
+    "NormalizedEmail" character varying(256),
+    "EmailConfirmed" boolean NOT NULL,
+    "PasswordHash" text,
+    "SecurityStamp" text,
+    "ConcurrencyStamp" text,
+    "PhoneNumber" text,
+    "PhoneNumberConfirmed" boolean NOT NULL,
+    "TwoFactorEnabled" boolean NOT NULL,
+    "LockoutEnd" timestamp with time zone,
+    "LockoutEnabled" boolean NOT NULL,
+    "AccessFailedCount" integer NOT NULL,
+    CONSTRAINT "PK_AspNetUsers" PRIMARY KEY ("Id")
+); 
+2025-01-24 10:42:29.1586 Error Failed executing DbCommand (11ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+CREATE TABLE "Companies" (
+    "Id" integer GENERATED BY DEFAULT AS IDENTITY,
+    "Name" text NOT NULL,
+    CONSTRAINT "PK_Companies" PRIMARY KEY ("Id")
+); 
+2025-01-24 10:45:18.0806 Info Executed DbCommand (11ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId"; 
+2025-01-24 10:45:57.0315 Info Executed DbCommand (13ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId"; 
+2025-01-24 10:45:57.2078 Info Executed DbCommand (5ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+CREATE TABLE IF NOT EXISTS "__EFMigrationsHistory" (
+    "MigrationId" character varying(150) NOT NULL,
+    "ProductVersion" character varying(32) NOT NULL,
+    CONSTRAINT "PK___EFMigrationsHistory" PRIMARY KEY ("MigrationId")
+); 
+2025-01-24 10:45:57.2138 Info Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long. 
+2025-01-24 10:45:57.2138 Info Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+LOCK TABLE "__EFMigrationsHistory" IN ACCESS EXCLUSIVE MODE 
+2025-01-24 10:45:57.2138 Info Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId"; 
+2025-01-24 10:45:57.2259 Info Applying migration '20250124083838_InitialCreate'. 
+2025-01-24 10:45:57.2575 Info Executed DbCommand (14ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+CREATE TABLE "AspNetRoles" (
+    "Id" text NOT NULL,
+    "Name" character varying(256),
+    "NormalizedName" character varying(256),
+    "ConcurrencyStamp" text,
+    CONSTRAINT "PK_AspNetRoles" PRIMARY KEY ("Id")
+); 
+2025-01-24 10:45:57.2575 Info Executed DbCommand (5ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+CREATE TABLE "AspNetUsers" (
+    "Id" text NOT NULL,
+    "UserName" character varying(256),
+    "NormalizedUserName" character varying(256),
+    "Email" character varying(256),
+    "NormalizedEmail" character varying(256),
+    "EmailConfirmed" boolean NOT NULL,
+    "PasswordHash" text,
+    "SecurityStamp" text,
+    "ConcurrencyStamp" text,
+    "PhoneNumber" text,
+    "PhoneNumberConfirmed" boolean NOT NULL,
+    "TwoFactorEnabled" boolean NOT NULL,
+    "LockoutEnd" timestamp with time zone,
+    "LockoutEnabled" boolean NOT NULL,
+    "AccessFailedCount" integer NOT NULL,
+    CONSTRAINT "PK_AspNetUsers" PRIMARY KEY ("Id")
+); 
+2025-01-24 10:45:57.2750 Error Failed executing DbCommand (11ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+CREATE TABLE "Companies" (
+    "Id" integer GENERATED BY DEFAULT AS IDENTITY,
+    "Name" text NOT NULL,
+    CONSTRAINT "PK_Companies" PRIMARY KEY ("Id")
+); 
+2025-01-24 10:52:03.8407 Info Executed DbCommand (13ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId"; 
+2025-01-24 10:52:04.0479 Info Executed DbCommand (5ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+CREATE TABLE IF NOT EXISTS "__EFMigrationsHistory" (
+    "MigrationId" character varying(150) NOT NULL,
+    "ProductVersion" character varying(32) NOT NULL,
+    CONSTRAINT "PK___EFMigrationsHistory" PRIMARY KEY ("MigrationId")
+); 
+2025-01-24 10:52:04.0555 Info Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long. 
+2025-01-24 10:52:04.0555 Info Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+LOCK TABLE "__EFMigrationsHistory" IN ACCESS EXCLUSIVE MODE 
+2025-01-24 10:52:04.0555 Info Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId"; 
+2025-01-24 10:52:04.0691 Info Applying migration '20250124083838_InitialCreate'. 
+2025-01-24 10:52:04.1000 Info Executed DbCommand (13ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+CREATE TABLE "AspNetRoles" (
+    "Id" text NOT NULL,
+    "Name" character varying(256),
+    "NormalizedName" character varying(256),
+    "ConcurrencyStamp" text,
+    CONSTRAINT "PK_AspNetRoles" PRIMARY KEY ("Id")
+); 
+2025-01-24 10:52:04.1000 Info Executed DbCommand (4ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+CREATE TABLE "AspNetUsers" (
+    "Id" text NOT NULL,
+    "UserName" character varying(256),
+    "NormalizedUserName" character varying(256),
+    "Email" character varying(256),
+    "NormalizedEmail" character varying(256),
+    "EmailConfirmed" boolean NOT NULL,
+    "PasswordHash" text,
+    "SecurityStamp" text,
+    "ConcurrencyStamp" text,
+    "PhoneNumber" text,
+    "PhoneNumberConfirmed" boolean NOT NULL,
+    "TwoFactorEnabled" boolean NOT NULL,
+    "LockoutEnd" timestamp with time zone,
+    "LockoutEnabled" boolean NOT NULL,
+    "AccessFailedCount" integer NOT NULL,
+    CONSTRAINT "PK_AspNetUsers" PRIMARY KEY ("Id")
+); 
+2025-01-24 10:52:04.1152 Error Failed executing DbCommand (9ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+CREATE TABLE "Companies" (
+    "Id" integer GENERATED BY DEFAULT AS IDENTITY,
+    "Name" text NOT NULL,
+    CONSTRAINT "PK_Companies" PRIMARY KEY ("Id")
+); 
+2025-01-24 10:55:00.0537 Info User profile is available. Using 'C:\Users\hp\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest. 
+2025-01-24 10:55:00.1995 Info Now listening on: http://localhost:5292 
+2025-01-24 10:55:00.1995 Info Application started. Press Ctrl+C to shut down. 
+2025-01-24 10:55:00.1995 Info Hosting environment: Development 
+2025-01-24 10:55:00.1995 Info Content root path: C:\Users\hp\CompanyManagement\CompanyManagement 
+2025-01-24 10:55:00.3834 Info Request starting HTTP/1.1 GET http://localhost:5292/index.html - - - 
+2025-01-24 10:55:00.4174 Warn Failed to determine the https port for redirect. 
+2025-01-24 10:55:00.5404 Info Request finished HTTP/1.1 GET http://localhost:5292/index.html - 200 - text/html;charset=utf-8 153.2966ms 
+2025-01-24 10:55:00.6146 Info Request starting HTTP/1.1 GET http://localhost:5292/index.js - - - 
+2025-01-24 10:55:00.6146 Info Request starting HTTP/1.1 GET http://localhost:5292/_framework/aspnetcore-browser-refresh.js - - - 
+2025-01-24 10:55:00.6146 Info Request finished HTTP/1.1 GET http://localhost:5292/_framework/aspnetcore-browser-refresh.js - 200 13748 application/javascript;+charset=utf-8 3.6161ms 
+2025-01-24 10:55:00.6146 Info Request finished HTTP/1.1 GET http://localhost:5292/index.js - 200 - application/javascript;charset=utf-8 5.6981ms 
+2025-01-24 10:55:01.0070 Info Request starting HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - - - 
+2025-01-24 10:55:01.1812 Info Request finished HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - 200 - application/json;charset=utf-8 174.1290ms 
+2025-01-24 10:55:09.2905 Info Request starting HTTP/1.1 GET http://localhost:5292/api/Company/4 - - - 
+2025-01-24 10:55:09.3015 Info Executing endpoint 'DotnetAPI.Controllers.CompanyController.GetCompanyById (CompanyManagement)' 
+2025-01-24 10:55:09.3375 Info Route matched with {action = "GetCompanyById", controller = "Company"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[DotnetAPI.DTOs.CompanyDto]] GetCompanyById(Int32) on controller DotnetAPI.Controllers.CompanyController (CompanyManagement). 
+2025-01-24 10:55:10.8690 Info Executed DbCommand (55ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT c1."Id", c1."Name", s."CompanyId", s."EmployeeId", s."Id", s."FullName", s."Position"
+FROM (
+    SELECT c."Id", c."Name"
+    FROM "Companies" AS c
+    WHERE c."Id" = @__id_0
+    LIMIT 1
+) AS c1
+LEFT JOIN (
+    SELECT c0."CompanyId", c0."EmployeeId", e."Id", e."FullName", e."Position"
+    FROM "CompanyEmployee" AS c0
+    INNER JOIN "Employees" AS e ON c0."EmployeeId" = e."Id"
+) AS s ON c1."Id" = s."CompanyId"
+ORDER BY c1."Id", s."CompanyId", s."EmployeeId" 
+2025-01-24 10:55:10.9651 Info Executing OkObjectResult, writing value of type 'DotnetAPI.DTOs.CompanyDto'. 
+2025-01-24 10:55:10.9870 Info Executed action DotnetAPI.Controllers.CompanyController.GetCompanyById (CompanyManagement) in 1644.5242ms 
+2025-01-24 10:55:10.9870 Info Executed endpoint 'DotnetAPI.Controllers.CompanyController.GetCompanyById (CompanyManagement)' 
+2025-01-24 10:55:10.9870 Info Request finished HTTP/1.1 GET http://localhost:5292/api/Company/4 - 200 - application/json;+charset=utf-8 1708.2285ms 
+2025-01-24 10:55:22.2001 Info Request starting HTTP/1.1 POST http://localhost:5292/api/Company - application/json 21 
+2025-01-24 10:55:22.2001 Info CORS policy execution successful. 
+2025-01-24 10:55:22.2041 Info Executing endpoint 'DotnetAPI.Controllers.CompanyController.AddCompany (CompanyManagement)' 
+2025-01-24 10:55:22.2041 Info Route matched with {action = "AddCompany", controller = "Company"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddCompany(DotnetAPI.InputModels.CompanyInputModel) on controller DotnetAPI.Controllers.CompanyController (CompanyManagement). 
+2025-01-24 10:55:22.2393 Info Attempting to add a new company: newww 
+2025-01-24 10:55:22.3553 Info Executed DbCommand (8ms) [Parameters=[@p0='?'], CommandType='Text', CommandTimeout='30']
+INSERT INTO "Companies" ("Name")
+VALUES (@p0)
+RETURNING "Id"; 
+2025-01-24 10:55:22.3787 Info Successfully added company: newww 
+2025-01-24 10:55:22.3787 Info Executing CreatedAtActionResult, writing value of type 'DotnetAPI.InputModels.CompanyInputModel'. 
+2025-01-24 10:55:22.3998 Info Executed action DotnetAPI.Controllers.CompanyController.AddCompany (CompanyManagement) in 184.1817ms 
+2025-01-24 10:55:22.3998 Info Executed endpoint 'DotnetAPI.Controllers.CompanyController.AddCompany (CompanyManagement)' 
+2025-01-24 10:55:22.3998 Info Request finished HTTP/1.1 POST http://localhost:5292/api/Company - 201 - application/json;+charset=utf-8 200.8417ms 
+2025-01-24 10:55:50.3207 Info Request starting HTTP/1.1 POST http://localhost:5292/api/Auth/register - application/json 102 
+2025-01-24 10:55:50.3207 Info CORS policy execution successful. 
+2025-01-24 10:55:50.3207 Info Executing endpoint 'DotnetAPI.Controllers.AuthController.Register (CompanyManagement)' 
+2025-01-24 10:55:50.3307 Info Route matched with {action = "Register", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Register(DotnetAPI.DTOs.RegisterUserDto) on controller DotnetAPI.Controllers.AuthController (CompanyManagement). 
+2025-01-24 10:55:50.3563 Info Executing BadRequestObjectResult, writing value of type 'System.Collections.Generic.List`1[[Microsoft.AspNetCore.Identity.IdentityError, Microsoft.Extensions.Identity.Core, Version=9.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60]]'. 
+2025-01-24 10:55:50.3639 Info Executed action DotnetAPI.Controllers.AuthController.Register (CompanyManagement) in 32.2869ms 
+2025-01-24 10:55:50.3639 Info Executed endpoint 'DotnetAPI.Controllers.AuthController.Register (CompanyManagement)' 
+2025-01-24 10:55:50.3639 Info Request finished HTTP/1.1 POST http://localhost:5292/api/Auth/register - 400 - application/json;+charset=utf-8 44.5926ms 
+2025-01-24 10:56:03.4375 Info Request starting HTTP/1.1 POST http://localhost:5292/api/Auth/register - application/json 106 
+2025-01-24 10:56:03.4384 Info CORS policy execution successful. 
+2025-01-24 10:56:03.4384 Info Executing endpoint 'DotnetAPI.Controllers.AuthController.Register (CompanyManagement)' 
+2025-01-24 10:56:03.4384 Info Route matched with {action = "Register", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Register(DotnetAPI.DTOs.RegisterUserDto) on controller DotnetAPI.Controllers.AuthController (CompanyManagement). 
+2025-01-24 10:56:03.4384 Info Executing BadRequestObjectResult, writing value of type 'System.Collections.Generic.List`1[[Microsoft.AspNetCore.Identity.IdentityError, Microsoft.Extensions.Identity.Core, Version=9.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60]]'. 
+2025-01-24 10:56:03.4384 Info Executed action DotnetAPI.Controllers.AuthController.Register (CompanyManagement) in 5.535ms 
+2025-01-24 10:56:03.4384 Info Executed endpoint 'DotnetAPI.Controllers.AuthController.Register (CompanyManagement)' 
+2025-01-24 10:56:03.4384 Info Request finished HTTP/1.1 POST http://localhost:5292/api/Auth/register - 400 - application/json;+charset=utf-8 8.6883ms 
+2025-01-24 10:56:18.7636 Info Request starting HTTP/1.1 POST http://localhost:5292/api/Auth/register - application/json 110 
+2025-01-24 10:56:18.7636 Info CORS policy execution successful. 
+2025-01-24 10:56:18.7636 Info Executing endpoint 'DotnetAPI.Controllers.AuthController.Register (CompanyManagement)' 
+2025-01-24 10:56:18.7636 Info Route matched with {action = "Register", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Register(DotnetAPI.DTOs.RegisterUserDto) on controller DotnetAPI.Controllers.AuthController (CompanyManagement). 
+2025-01-24 10:56:18.9532 Error Failed executing DbCommand (8ms) [Parameters=[@__normalizedUserName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."Email", a."EmailConfirmed", a."LockoutEnabled", a."LockoutEnd", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."SecurityStamp", a."TwoFactorEnabled", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."NormalizedUserName" = @__normalizedUserName_0
+LIMIT 1 
+2025-01-24 10:56:18.9765 Error An exception occurred while iterating over the results of a query for context type 'DotnetAPI.Data.CompanyDbContext'.
+Npgsql.PostgresException (0x80004005): 42P01: relation "AspNetUsers" does not exist
+
+POSITION: 294
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+  Exception data:
+    Severity: ERROR
+    SqlState: 42P01
+    MessageText: relation "AspNetUsers" does not exist
+    Position: 294
+    File: parse_relation.c
+    Line: 1452
+    Routine: parserOpenTable Npgsql.PostgresException (0x80004005): 42P01: relation "AspNetUsers" does not exist
+
+POSITION: 294
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+  Exception data:
+    Severity: ERROR
+    SqlState: 42P01
+    MessageText: relation "AspNetUsers" does not exist
+    Position: 294
+    File: parse_relation.c
+    Line: 1452
+    Routine: parserOpenTable Severity: ERROR;InvariantSeverity: ERROR;SqlState: 42P01;MessageText: relation "AspNetUsers" does not exist;Position: 294;File: parse_relation.c;Line: 1452;Routine: parserOpenTable
+2025-01-24 10:56:18.9857 Info Executed action DotnetAPI.Controllers.AuthController.Register (CompanyManagement) in 219.9241ms 
+2025-01-24 10:56:18.9857 Info Executed endpoint 'DotnetAPI.Controllers.AuthController.Register (CompanyManagement)' 
+2025-01-24 10:56:18.9857 Info Request finished HTTP/1.1 POST http://localhost:5292/api/Auth/register - 500 - application/json 233.3949ms 
+2025-01-24 10:56:26.7497 Info Application is shutting down... 
+2025-01-24 11:00:54.1501 Info Executed DbCommand (10ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId"; 
+2025-01-24 11:00:54.3141 Info Executed DbCommand (4ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+CREATE TABLE IF NOT EXISTS "__EFMigrationsHistory" (
+    "MigrationId" character varying(150) NOT NULL,
+    "ProductVersion" character varying(32) NOT NULL,
+    CONSTRAINT "PK___EFMigrationsHistory" PRIMARY KEY ("MigrationId")
+); 
+2025-01-24 11:00:54.3141 Info Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long. 
+2025-01-24 11:00:54.3284 Info Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+LOCK TABLE "__EFMigrationsHistory" IN ACCESS EXCLUSIVE MODE 
+2025-01-24 11:00:54.3284 Info Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId"; 
+2025-01-24 11:00:54.3284 Info Applying migration '20250124083838_InitialCreate'. 
+2025-01-24 11:00:54.3661 Info Executed DbCommand (13ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+CREATE TABLE "AspNetRoles" (
+    "Id" text NOT NULL,
+    "Name" character varying(256),
+    "NormalizedName" character varying(256),
+    "ConcurrencyStamp" text,
+    CONSTRAINT "PK_AspNetRoles" PRIMARY KEY ("Id")
+); 
+2025-01-24 11:00:54.3661 Info Executed DbCommand (4ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+CREATE TABLE "AspNetUsers" (
+    "Id" text NOT NULL,
+    "UserName" character varying(256),
+    "NormalizedUserName" character varying(256),
+    "Email" character varying(256),
+    "NormalizedEmail" character varying(256),
+    "EmailConfirmed" boolean NOT NULL,
+    "PasswordHash" text,
+    "SecurityStamp" text,
+    "ConcurrencyStamp" text,
+    "PhoneNumber" text,
+    "PhoneNumberConfirmed" boolean NOT NULL,
+    "TwoFactorEnabled" boolean NOT NULL,
+    "LockoutEnd" timestamp with time zone,
+    "LockoutEnabled" boolean NOT NULL,
+    "AccessFailedCount" integer NOT NULL,
+    CONSTRAINT "PK_AspNetUsers" PRIMARY KEY ("Id")
+); 
+2025-01-24 11:00:54.3794 Error Failed executing DbCommand (7ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+CREATE TABLE "Companies" (
+    "Id" integer GENERATED BY DEFAULT AS IDENTITY,
+    "Name" text NOT NULL,
+    CONSTRAINT "PK_Companies" PRIMARY KEY ("Id")
+); 
+2025-01-24 11:05:09.7311 Info User profile is available. Using 'C:\Users\hp\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest. 
+2025-01-24 11:05:09.8422 Info Now listening on: http://localhost:5292 
+2025-01-24 11:05:09.8422 Info Application started. Press Ctrl+C to shut down. 
+2025-01-24 11:05:09.8422 Info Hosting environment: Development 
+2025-01-24 11:05:09.8422 Info Content root path: C:\Users\hp\CompanyManagement\CompanyManagement 
+2025-01-24 11:05:09.9505 Info Request starting HTTP/1.1 GET http://localhost:5292/index.html - - - 
+2025-01-24 11:05:09.9832 Warn Failed to determine the https port for redirect. 
+2025-01-24 11:05:10.0793 Info Request finished HTTP/1.1 GET http://localhost:5292/index.html - 200 - text/html;charset=utf-8 124.5255ms 
+2025-01-24 11:05:10.1044 Info Request starting HTTP/1.1 GET http://localhost:5292/_framework/aspnetcore-browser-refresh.js - - - 
+2025-01-24 11:05:10.1044 Info Request starting HTTP/1.1 GET http://localhost:5292/index.js - - - 
+2025-01-24 11:05:10.1075 Info Request finished HTTP/1.1 GET http://localhost:5292/_framework/aspnetcore-browser-refresh.js - 200 13748 application/javascript;+charset=utf-8 2.9347ms 
+2025-01-24 11:05:10.1075 Info Request finished HTTP/1.1 GET http://localhost:5292/index.js - 200 - application/javascript;charset=utf-8 4.5088ms 
+2025-01-24 11:05:10.3069 Info Request starting HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - - - 
+2025-01-24 11:05:10.4327 Info Request finished HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - 200 - application/json;charset=utf-8 125.7327ms 
+2025-01-24 11:05:16.1753 Info Request starting HTTP/1.1 GET http://localhost:5292/api/Company?sortBy=Name&sortDirection=asc - - - 
+2025-01-24 11:05:16.1841 Info Executing endpoint 'DotnetAPI.Controllers.CompanyController.GetAllCompanies (CompanyManagement)' 
+2025-01-24 11:05:16.2065 Info Route matched with {action = "GetAllCompanies", controller = "Company"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllCompanies(System.String, System.String) on controller DotnetAPI.Controllers.CompanyController (CompanyManagement). 
+2025-01-24 11:05:17.2298 Info Executed DbCommand (24ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT c."Id", c."Name", s."CompanyId", s."EmployeeId", s."Id", s."FullName", s."Position"
+FROM "Companies" AS c
+LEFT JOIN (
+    SELECT c0."CompanyId", c0."EmployeeId", e."Id", e."FullName", e."Position"
+    FROM "CompanyEmployee" AS c0
+    INNER JOIN "Employees" AS e ON c0."EmployeeId" = e."Id"
+) AS s ON c."Id" = s."CompanyId"
+ORDER BY c."Name", c."Id", s."CompanyId", s."EmployeeId" 
+2025-01-24 11:05:17.3382 Info Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[DotnetAPI.DTOs.CompanyDto, CompanyManagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'. 
+2025-01-24 11:05:17.3637 Info Executed action DotnetAPI.Controllers.CompanyController.GetAllCompanies (CompanyManagement) in 1149.685ms 
+2025-01-24 11:05:17.3637 Info Executed endpoint 'DotnetAPI.Controllers.CompanyController.GetAllCompanies (CompanyManagement)' 
+2025-01-24 11:05:17.3637 Info Request finished HTTP/1.1 GET http://localhost:5292/api/Company?sortBy=Name&sortDirection=asc - 200 - application/json;+charset=utf-8 1195.3787ms 
+2025-01-24 11:05:28.5410 Info Application is shutting down... 
+2025-01-24 11:07:38.7538 Info Executed DbCommand (11ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId"; 
+2025-01-24 11:09:14.7486 Info Executed DbCommand (11ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId"; 
+2025-01-24 11:09:14.9242 Info Executed DbCommand (5ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+CREATE TABLE IF NOT EXISTS "__EFMigrationsHistory" (
+    "MigrationId" character varying(150) NOT NULL,
+    "ProductVersion" character varying(32) NOT NULL,
+    CONSTRAINT "PK___EFMigrationsHistory" PRIMARY KEY ("MigrationId")
+); 
+2025-01-24 11:09:14.9242 Info Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long. 
+2025-01-24 11:09:14.9367 Info Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+LOCK TABLE "__EFMigrationsHistory" IN ACCESS EXCLUSIVE MODE 
+2025-01-24 11:09:14.9367 Info Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId"; 
+2025-01-24 11:09:14.9367 Info Applying migration '20250124083838_InitialCreate'. 
+2025-01-24 11:09:14.9746 Info Executed DbCommand (16ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+CREATE TABLE "AspNetRoles" (
+    "Id" text NOT NULL,
+    "Name" character varying(256),
+    "NormalizedName" character varying(256),
+    "ConcurrencyStamp" text,
+    CONSTRAINT "PK_AspNetRoles" PRIMARY KEY ("Id")
+); 
+2025-01-24 11:09:14.9808 Info Executed DbCommand (4ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+CREATE TABLE "AspNetUsers" (
+    "Id" text NOT NULL,
+    "UserName" character varying(256),
+    "NormalizedUserName" character varying(256),
+    "Email" character varying(256),
+    "NormalizedEmail" character varying(256),
+    "EmailConfirmed" boolean NOT NULL,
+    "PasswordHash" text,
+    "SecurityStamp" text,
+    "ConcurrencyStamp" text,
+    "PhoneNumber" text,
+    "PhoneNumberConfirmed" boolean NOT NULL,
+    "TwoFactorEnabled" boolean NOT NULL,
+    "LockoutEnd" timestamp with time zone,
+    "LockoutEnabled" boolean NOT NULL,
+    "AccessFailedCount" integer NOT NULL,
+    CONSTRAINT "PK_AspNetUsers" PRIMARY KEY ("Id")
+); 
+2025-01-24 11:09:14.9957 Error Failed executing DbCommand (9ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+CREATE TABLE "Companies" (
+    "Id" integer GENERATED BY DEFAULT AS IDENTITY,
+    "Name" text NOT NULL,
+    CONSTRAINT "PK_Companies" PRIMARY KEY ("Id")
+); 
+2025-01-24 11:09:46.4236 Info Executed DbCommand (11ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId"; 
+2025-01-24 11:12:55.6916 Error Failed executing DbCommand (12ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId"; 
+2025-01-24 11:12:55.8570 Info Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long. 
+2025-01-24 11:12:55.8570 Info Applying migration '20250124083838_InitialCreate'. 
+2025-01-24 11:14:06.9519 Info Executed DbCommand (13ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId"; 
+2025-01-24 11:14:07.1516 Info Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+CREATE TABLE IF NOT EXISTS "__EFMigrationsHistory" (
+    "MigrationId" character varying(150) NOT NULL,
+    "ProductVersion" character varying(32) NOT NULL,
+    CONSTRAINT "PK___EFMigrationsHistory" PRIMARY KEY ("MigrationId")
+); 
+2025-01-24 11:14:07.1516 Info Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long. 
+2025-01-24 11:14:07.1516 Info Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+LOCK TABLE "__EFMigrationsHistory" IN ACCESS EXCLUSIVE MODE 
+2025-01-24 11:14:07.1516 Info Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId"; 
+2025-01-24 11:14:07.1690 Info Applying migration '20250124091355_UpdateRelationship'. 
+2025-01-24 11:14:07.1690 Info Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+INSERT INTO "__EFMigrationsHistory" ("MigrationId", "ProductVersion")
+VALUES ('20250124091355_UpdateRelationship', '9.0.1'); 
+2025-01-24 11:15:19.6672 Info Executed DbCommand (11ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId"; 
+2025-01-24 11:15:19.8327 Info Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+CREATE TABLE IF NOT EXISTS "__EFMigrationsHistory" (
+    "MigrationId" character varying(150) NOT NULL,
+    "ProductVersion" character varying(32) NOT NULL,
+    CONSTRAINT "PK___EFMigrationsHistory" PRIMARY KEY ("MigrationId")
+); 
+2025-01-24 11:15:19.8387 Info Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long. 
+2025-01-24 11:15:19.8387 Info Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+LOCK TABLE "__EFMigrationsHistory" IN ACCESS EXCLUSIVE MODE 
+2025-01-24 11:15:19.8387 Info Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId"; 
+2025-01-24 11:15:19.8387 Info Applying migration '20250124091506_NormalizeManyToMany'. 
+2025-01-24 11:15:19.8566 Info Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+INSERT INTO "__EFMigrationsHistory" ("MigrationId", "ProductVersion")
+VALUES ('20250124091506_NormalizeManyToMany', '9.0.1'); 
+2025-01-24 11:15:55.6290 Info Executed DbCommand (11ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId"; 
+2025-01-24 11:15:55.8086 Info Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+CREATE TABLE IF NOT EXISTS "__EFMigrationsHistory" (
+    "MigrationId" character varying(150) NOT NULL,
+    "ProductVersion" character varying(32) NOT NULL,
+    CONSTRAINT "PK___EFMigrationsHistory" PRIMARY KEY ("MigrationId")
+); 
+2025-01-24 11:15:55.8086 Info Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long. 
+2025-01-24 11:15:55.8086 Info Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+LOCK TABLE "__EFMigrationsHistory" IN ACCESS EXCLUSIVE MODE 
+2025-01-24 11:15:55.8086 Info Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId"; 
+2025-01-24 11:15:55.8240 Info Applying migration '20250124091543_AddIdentityTables'. 
+2025-01-24 11:15:55.8240 Info Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+INSERT INTO "__EFMigrationsHistory" ("MigrationId", "ProductVersion")
+VALUES ('20250124091543_AddIdentityTables', '9.0.1'); 
+2025-01-24 11:16:16.6150 Info User profile is available. Using 'C:\Users\hp\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest. 
+2025-01-24 11:16:16.7547 Info Now listening on: http://localhost:5292 
+2025-01-24 11:16:16.7579 Info Application started. Press Ctrl+C to shut down. 
+2025-01-24 11:16:16.7579 Info Hosting environment: Development 
+2025-01-24 11:16:16.7579 Info Content root path: C:\Users\hp\CompanyManagement\CompanyManagement 
+2025-01-24 11:16:16.8235 Info Request starting HTTP/1.1 GET http://localhost:5292/index.html - - - 
+2025-01-24 11:16:16.8647 Warn Failed to determine the https port for redirect. 
+2025-01-24 11:16:17.0130 Info Request finished HTTP/1.1 GET http://localhost:5292/index.html - 200 - text/html;charset=utf-8 179.2987ms 
+2025-01-24 11:16:17.0827 Info Request starting HTTP/1.1 GET http://localhost:5292/_framework/aspnetcore-browser-refresh.js - - - 
+2025-01-24 11:16:17.0827 Info Request starting HTTP/1.1 GET http://localhost:5292/index.js - - - 
+2025-01-24 11:16:17.0864 Info Request finished HTTP/1.1 GET http://localhost:5292/_framework/aspnetcore-browser-refresh.js - 200 13748 application/javascript;+charset=utf-8 3.7206ms 
+2025-01-24 11:16:17.0864 Info Request finished HTTP/1.1 GET http://localhost:5292/index.js - 200 - application/javascript;charset=utf-8 5.8159ms 
+2025-01-24 11:16:17.4331 Info Request starting HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - - - 
+2025-01-24 11:16:17.5865 Info Request finished HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - 200 - application/json;charset=utf-8 153.4044ms 
+2025-01-24 11:16:21.0053 Info Request starting HTTP/1.1 GET http://localhost:5292/api/Company?sortBy=Name&sortDirection=asc - - - 
+2025-01-24 11:16:21.0171 Info Executing endpoint 'DotnetAPI.Controllers.CompanyController.GetAllCompanies (CompanyManagement)' 
+2025-01-24 11:16:21.0415 Info Route matched with {action = "GetAllCompanies", controller = "Company"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllCompanies(System.String, System.String) on controller DotnetAPI.Controllers.CompanyController (CompanyManagement). 
+2025-01-24 11:16:21.9858 Info Executed DbCommand (18ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT c."Id", c."Name", s."CompanyId", s."EmployeeId", s."Id", s."FullName", s."Position"
+FROM "Companies" AS c
+LEFT JOIN (
+    SELECT c0."CompanyId", c0."EmployeeId", e."Id", e."FullName", e."Position"
+    FROM "CompanyEmployee" AS c0
+    INNER JOIN "Employees" AS e ON c0."EmployeeId" = e."Id"
+) AS s ON c."Id" = s."CompanyId"
+ORDER BY c."Name", c."Id", s."CompanyId", s."EmployeeId" 
+2025-01-24 11:16:22.0129 Info Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[DotnetAPI.DTOs.CompanyDto, CompanyManagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'. 
+2025-01-24 11:16:22.0345 Info Executed action DotnetAPI.Controllers.CompanyController.GetAllCompanies (CompanyManagement) in 985.1726ms 
+2025-01-24 11:16:22.0345 Info Executed endpoint 'DotnetAPI.Controllers.CompanyController.GetAllCompanies (CompanyManagement)' 
+2025-01-24 11:16:22.0419 Info Request finished HTTP/1.1 GET http://localhost:5292/api/Company?sortBy=Name&sortDirection=asc - 200 - application/json;+charset=utf-8 1036.3558ms 
+2025-01-24 11:16:33.8027 Info Request starting HTTP/1.1 POST http://localhost:5292/api/Company - application/json 19 
+2025-01-24 11:16:33.8054 Info CORS policy execution successful. 
+2025-01-24 11:16:33.8054 Info Executing endpoint 'DotnetAPI.Controllers.CompanyController.AddCompany (CompanyManagement)' 
+2025-01-24 11:16:33.8054 Info Route matched with {action = "AddCompany", controller = "Company"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddCompany(DotnetAPI.InputModels.CompanyInputModel) on controller DotnetAPI.Controllers.CompanyController (CompanyManagement). 
+2025-01-24 11:16:33.8514 Info Attempting to add a new company: AST 
+2025-01-24 11:16:34.0290 Info Executed DbCommand (24ms) [Parameters=[@p0='?'], CommandType='Text', CommandTimeout='30']
+INSERT INTO "Companies" ("Name")
+VALUES (@p0)
+RETURNING "Id"; 
+2025-01-24 11:16:34.0524 Info Successfully added company: AST 
+2025-01-24 11:16:34.0524 Info Executing CreatedAtActionResult, writing value of type 'DotnetAPI.InputModels.CompanyInputModel'. 
+2025-01-24 11:16:34.0726 Info Executed action DotnetAPI.Controllers.CompanyController.AddCompany (CompanyManagement) in 255.8565ms 
+2025-01-24 11:16:34.0726 Info Executed endpoint 'DotnetAPI.Controllers.CompanyController.AddCompany (CompanyManagement)' 
+2025-01-24 11:16:34.0726 Info Request finished HTTP/1.1 POST http://localhost:5292/api/Company - 201 - application/json;+charset=utf-8 271.6244ms 
+2025-01-24 11:16:42.2017 Info Request starting HTTP/1.1 POST http://localhost:5292/api/Company - application/json 23 
+2025-01-24 11:16:42.2017 Info CORS policy execution successful. 
+2025-01-24 11:16:42.2017 Info Executing endpoint 'DotnetAPI.Controllers.CompanyController.AddCompany (CompanyManagement)' 
+2025-01-24 11:16:42.2017 Info Route matched with {action = "AddCompany", controller = "Company"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddCompany(DotnetAPI.InputModels.CompanyInputModel) on controller DotnetAPI.Controllers.CompanyController (CompanyManagement). 
+2025-01-24 11:16:42.2143 Info Attempting to add a new company: Assurex 
+2025-01-24 11:16:42.2819 Info Executed DbCommand (1ms) [Parameters=[@p0='?'], CommandType='Text', CommandTimeout='30']
+INSERT INTO "Companies" ("Name")
+VALUES (@p0)
+RETURNING "Id"; 
+2025-01-24 11:16:42.2819 Info Successfully added company: Assurex 
+2025-01-24 11:16:42.2819 Info Executing CreatedAtActionResult, writing value of type 'DotnetAPI.InputModels.CompanyInputModel'. 
+2025-01-24 11:16:42.2819 Info Executed action DotnetAPI.Controllers.CompanyController.AddCompany (CompanyManagement) in 79.4267ms 
+2025-01-24 11:16:42.2819 Info Executed endpoint 'DotnetAPI.Controllers.CompanyController.AddCompany (CompanyManagement)' 
+2025-01-24 11:16:42.2819 Info Request finished HTTP/1.1 POST http://localhost:5292/api/Company - 201 - application/json;+charset=utf-8 84.3648ms 
+2025-01-24 11:16:57.5469 Info Request starting HTTP/1.1 POST http://localhost:5292/api/Company - application/json 29 
+2025-01-24 11:16:57.5469 Info CORS policy execution successful. 
+2025-01-24 11:16:57.5469 Info Executing endpoint 'DotnetAPI.Controllers.CompanyController.AddCompany (CompanyManagement)' 
+2025-01-24 11:16:57.5469 Info Route matched with {action = "AddCompany", controller = "Company"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddCompany(DotnetAPI.InputModels.CompanyInputModel) on controller DotnetAPI.Controllers.CompanyController (CompanyManagement). 
+2025-01-24 11:16:57.5469 Info Attempting to add a new company: DotnetCompany 
+2025-01-24 11:16:57.5469 Info Executed DbCommand (1ms) [Parameters=[@p0='?'], CommandType='Text', CommandTimeout='30']
+INSERT INTO "Companies" ("Name")
+VALUES (@p0)
+RETURNING "Id"; 
+2025-01-24 11:16:57.5469 Info Successfully added company: DotnetCompany 
+2025-01-24 11:16:57.5469 Info Executing CreatedAtActionResult, writing value of type 'DotnetAPI.InputModels.CompanyInputModel'. 
+2025-01-24 11:16:57.5549 Info Executed action DotnetAPI.Controllers.CompanyController.AddCompany (CompanyManagement) in 6.1013ms 
+2025-01-24 11:16:57.5549 Info Executed endpoint 'DotnetAPI.Controllers.CompanyController.AddCompany (CompanyManagement)' 
+2025-01-24 11:16:57.5549 Info Request finished HTTP/1.1 POST http://localhost:5292/api/Company - 201 - application/json;+charset=utf-8 9.1554ms 
+2025-01-24 11:17:08.2427 Info Request starting HTTP/1.1 POST http://localhost:5292/api/Company - application/json 30 
+2025-01-24 11:17:08.2427 Info CORS policy execution successful. 
+2025-01-24 11:17:08.2427 Info Executing endpoint 'DotnetAPI.Controllers.CompanyController.AddCompany (CompanyManagement)' 
+2025-01-24 11:17:08.2427 Info Route matched with {action = "AddCompany", controller = "Company"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddCompany(DotnetAPI.InputModels.CompanyInputModel) on controller DotnetAPI.Controllers.CompanyController (CompanyManagement). 
+2025-01-24 11:17:08.2427 Info Attempting to add a new company: Newest Company 
+2025-01-24 11:17:08.2427 Info Executed DbCommand (1ms) [Parameters=[@p0='?'], CommandType='Text', CommandTimeout='30']
+INSERT INTO "Companies" ("Name")
+VALUES (@p0)
+RETURNING "Id"; 
+2025-01-24 11:17:08.2427 Info Successfully added company: Newest Company 
+2025-01-24 11:17:08.2427 Info Executing CreatedAtActionResult, writing value of type 'DotnetAPI.InputModels.CompanyInputModel'. 
+2025-01-24 11:17:08.2427 Info Executed action DotnetAPI.Controllers.CompanyController.AddCompany (CompanyManagement) in 5.5754ms 
+2025-01-24 11:17:08.2427 Info Executed endpoint 'DotnetAPI.Controllers.CompanyController.AddCompany (CompanyManagement)' 
+2025-01-24 11:17:08.2427 Info Request finished HTTP/1.1 POST http://localhost:5292/api/Company - 201 - application/json;+charset=utf-8 8.3164ms 
+2025-01-24 11:17:15.5087 Info Request starting HTTP/1.1 GET http://localhost:5292/api/Company?sortBy=Name&sortDirection=asc - - - 
+2025-01-24 11:17:15.5087 Info Executing endpoint 'DotnetAPI.Controllers.CompanyController.GetAllCompanies (CompanyManagement)' 
+2025-01-24 11:17:15.5087 Info Route matched with {action = "GetAllCompanies", controller = "Company"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllCompanies(System.String, System.String) on controller DotnetAPI.Controllers.CompanyController (CompanyManagement). 
+2025-01-24 11:17:15.5087 Info Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT c."Id", c."Name", s."CompanyId", s."EmployeeId", s."Id", s."FullName", s."Position"
+FROM "Companies" AS c
+LEFT JOIN (
+    SELECT c0."CompanyId", c0."EmployeeId", e."Id", e."FullName", e."Position"
+    FROM "CompanyEmployee" AS c0
+    INNER JOIN "Employees" AS e ON c0."EmployeeId" = e."Id"
+) AS s ON c."Id" = s."CompanyId"
+ORDER BY c."Name", c."Id", s."CompanyId", s."EmployeeId" 
+2025-01-24 11:17:15.5304 Info Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[DotnetAPI.DTOs.CompanyDto, CompanyManagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'. 
+2025-01-24 11:17:15.5304 Info Executed action DotnetAPI.Controllers.CompanyController.GetAllCompanies (CompanyManagement) in 21.1486ms 
+2025-01-24 11:17:15.5304 Info Executed endpoint 'DotnetAPI.Controllers.CompanyController.GetAllCompanies (CompanyManagement)' 
+2025-01-24 11:17:15.5304 Info Request finished HTTP/1.1 GET http://localhost:5292/api/Company?sortBy=Name&sortDirection=asc - 200 - application/json;+charset=utf-8 23.4634ms 
+2025-01-24 11:17:53.7042 Info Request starting HTTP/1.1 POST http://localhost:5292/api/Project - application/json 50 
+2025-01-24 11:17:53.7042 Info CORS policy execution successful. 
+2025-01-24 11:17:53.7042 Info Executing endpoint 'DotnetAPI.Controllers.ProjectController.AddProject (CompanyManagement)' 
+2025-01-24 11:17:53.7118 Info Route matched with {action = "AddProject", controller = "Project"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddProject(DotnetAPI.InputModels.ProjectInputModel) on controller DotnetAPI.Controllers.ProjectController (CompanyManagement). 
+2025-01-24 11:17:53.7476 Info Executed DbCommand (6ms) [Parameters=[@p0='?' (DbType = Object), @p1='?'], CommandType='Text', CommandTimeout='30']
+INSERT INTO "Projects" ("Duration", "Title")
+VALUES (@p0, @p1)
+RETURNING "Id"; 
+2025-01-24 11:17:53.7476 Info Executing CreatedAtActionResult, writing value of type 'DotnetAPI.InputModels.ProjectInputModel'. 
+2025-01-24 11:17:53.7593 Info Executed action DotnetAPI.Controllers.ProjectController.AddProject (CompanyManagement) in 46.814ms 
+2025-01-24 11:17:53.7593 Info Executed endpoint 'DotnetAPI.Controllers.ProjectController.AddProject (CompanyManagement)' 
+2025-01-24 11:17:53.7593 Info Request finished HTTP/1.1 POST http://localhost:5292/api/Project - 201 - application/json;+charset=utf-8 56.0580ms 
+2025-01-24 11:18:07.8606 Info Request starting HTTP/1.1 POST http://localhost:5292/api/Project - application/json 54 
+2025-01-24 11:18:07.8606 Info CORS policy execution successful. 
+2025-01-24 11:18:07.8606 Info Executing endpoint 'DotnetAPI.Controllers.ProjectController.AddProject (CompanyManagement)' 
+2025-01-24 11:18:07.8606 Info Route matched with {action = "AddProject", controller = "Project"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddProject(DotnetAPI.InputModels.ProjectInputModel) on controller DotnetAPI.Controllers.ProjectController (CompanyManagement). 
+2025-01-24 11:18:07.8606 Info Executed DbCommand (1ms) [Parameters=[@p0='?' (DbType = Object), @p1='?'], CommandType='Text', CommandTimeout='30']
+INSERT INTO "Projects" ("Duration", "Title")
+VALUES (@p0, @p1)
+RETURNING "Id"; 
+2025-01-24 11:18:07.8680 Info Executing CreatedAtActionResult, writing value of type 'DotnetAPI.InputModels.ProjectInputModel'. 
+2025-01-24 11:18:07.8680 Info Executed action DotnetAPI.Controllers.ProjectController.AddProject (CompanyManagement) in 6.2506ms 
+2025-01-24 11:18:07.8680 Info Executed endpoint 'DotnetAPI.Controllers.ProjectController.AddProject (CompanyManagement)' 
+2025-01-24 11:18:07.8680 Info Request finished HTTP/1.1 POST http://localhost:5292/api/Project - 201 - application/json;+charset=utf-8 10.1672ms 
+2025-01-24 11:18:21.6799 Info Request starting HTTP/1.1 POST http://localhost:5292/api/Project - application/json 54 
+2025-01-24 11:18:21.6799 Info CORS policy execution successful. 
+2025-01-24 11:18:21.6799 Info Executing endpoint 'DotnetAPI.Controllers.ProjectController.AddProject (CompanyManagement)' 
+2025-01-24 11:18:21.6799 Info Route matched with {action = "AddProject", controller = "Project"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddProject(DotnetAPI.InputModels.ProjectInputModel) on controller DotnetAPI.Controllers.ProjectController (CompanyManagement). 
+2025-01-24 11:18:21.6799 Info Executed DbCommand (2ms) [Parameters=[@p0='?' (DbType = Object), @p1='?'], CommandType='Text', CommandTimeout='30']
+INSERT INTO "Projects" ("Duration", "Title")
+VALUES (@p0, @p1)
+RETURNING "Id"; 
+2025-01-24 11:18:21.6799 Info Executing CreatedAtActionResult, writing value of type 'DotnetAPI.InputModels.ProjectInputModel'. 
+2025-01-24 11:18:21.6799 Info Executed action DotnetAPI.Controllers.ProjectController.AddProject (CompanyManagement) in 7.5694ms 
+2025-01-24 11:18:21.6799 Info Executed endpoint 'DotnetAPI.Controllers.ProjectController.AddProject (CompanyManagement)' 
+2025-01-24 11:18:21.6799 Info Request finished HTTP/1.1 POST http://localhost:5292/api/Project - 201 - application/json;+charset=utf-8 10.8763ms 
+2025-01-24 11:18:35.1841 Info Request starting HTTP/1.1 POST http://localhost:5292/api/Project - application/json 51 
+2025-01-24 11:18:35.1841 Info CORS policy execution successful. 
+2025-01-24 11:18:35.1841 Info Executing endpoint 'DotnetAPI.Controllers.ProjectController.AddProject (CompanyManagement)' 
+2025-01-24 11:18:35.1841 Info Route matched with {action = "AddProject", controller = "Project"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddProject(DotnetAPI.InputModels.ProjectInputModel) on controller DotnetAPI.Controllers.ProjectController (CompanyManagement). 
+2025-01-24 11:18:35.1841 Info Executed DbCommand (1ms) [Parameters=[@p0='?' (DbType = Object), @p1='?'], CommandType='Text', CommandTimeout='30']
+INSERT INTO "Projects" ("Duration", "Title")
+VALUES (@p0, @p1)
+RETURNING "Id"; 
+2025-01-24 11:18:35.1841 Info Executing CreatedAtActionResult, writing value of type 'DotnetAPI.InputModels.ProjectInputModel'. 
+2025-01-24 11:18:35.1841 Info Executed action DotnetAPI.Controllers.ProjectController.AddProject (CompanyManagement) in 4.6235ms 
+2025-01-24 11:18:35.1841 Info Executed endpoint 'DotnetAPI.Controllers.ProjectController.AddProject (CompanyManagement)' 
+2025-01-24 11:18:35.1841 Info Request finished HTTP/1.1 POST http://localhost:5292/api/Project - 201 - application/json;+charset=utf-8 7.4117ms 
+2025-01-24 11:19:00.3061 Info Request starting HTTP/1.1 GET http://localhost:5292/api/Project - - - 
+2025-01-24 11:19:00.3061 Info Executing endpoint 'DotnetAPI.Controllers.ProjectController.GetFilteredProjects (CompanyManagement)' 
+2025-01-24 11:19:00.3061 Info Route matched with {action = "GetFilteredProjects", controller = "Project"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetFilteredProjects(System.String) on controller DotnetAPI.Controllers.ProjectController (CompanyManagement). 
+2025-01-24 11:19:00.3304 Info Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT p."Id", p."Duration", p."Title"
+FROM "Projects" AS p 
+2025-01-24 11:19:00.3380 Info Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[DotnetAPI.DTOs.ProjectDto, CompanyManagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'. 
+2025-01-24 11:19:00.3380 Info Executed action DotnetAPI.Controllers.ProjectController.GetFilteredProjects (CompanyManagement) in 24.046ms 
+2025-01-24 11:19:00.3380 Info Executed endpoint 'DotnetAPI.Controllers.ProjectController.GetFilteredProjects (CompanyManagement)' 
+2025-01-24 11:19:00.3380 Info Request finished HTTP/1.1 GET http://localhost:5292/api/Project - 200 - application/json;+charset=utf-8 37.7452ms 
+2025-01-24 11:19:37.8929 Info Request starting HTTP/1.1 POST http://localhost:5292/api/Employee - application/json 109 
+2025-01-24 11:19:37.8929 Info CORS policy execution successful. 
+2025-01-24 11:19:37.8929 Info Executing endpoint 'DotnetAPI.Controllers.EmployeeController.AddEmployee (CompanyManagement)' 
+2025-01-24 11:19:37.9063 Info Route matched with {action = "AddEmployee", controller = "Employee"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddEmployee(DotnetAPI.InputModels.EmployeeInputModel) on controller DotnetAPI.Controllers.EmployeeController (CompanyManagement). 
+2025-01-24 11:19:37.9954 Info Executed DbCommand (3ms) [Parameters=[@p0='?', @p1='?'], CommandType='Text', CommandTimeout='30']
+INSERT INTO "Employees" ("FullName", "Position")
+VALUES (@p0, @p1)
+RETURNING "Id"; 
+2025-01-24 11:19:38.0169 Info Executed DbCommand (10ms) [Parameters=[@p2='?' (DbType = Int32), @p3='?' (DbType = Int32), @p4='?' (DbType = Int32), @p5='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+INSERT INTO "CompanyEmployee" ("CompanyId", "EmployeeId")
+VALUES (@p2, @p3);
+INSERT INTO "EmployeeProject" ("EmployeeId", "ProjectId")
+VALUES (@p4, @p5); 
+2025-01-24 11:19:38.0346 Info Executing CreatedAtActionResult, writing value of type 'DotnetAPI.InputModels.EmployeeInputModel'. 
+2025-01-24 11:19:38.0346 Info Executed action DotnetAPI.Controllers.EmployeeController.AddEmployee (CompanyManagement) in 129.2327ms 
+2025-01-24 11:19:38.0346 Info Executed endpoint 'DotnetAPI.Controllers.EmployeeController.AddEmployee (CompanyManagement)' 
+2025-01-24 11:19:38.0346 Info Request finished HTTP/1.1 POST http://localhost:5292/api/Employee - 201 - application/json;+charset=utf-8 143.8040ms 
+2025-01-24 11:20:00.7880 Info Request starting HTTP/1.1 POST http://localhost:5292/api/Employee - application/json 109 
+2025-01-24 11:20:00.7880 Info CORS policy execution successful. 
+2025-01-24 11:20:00.7880 Info Executing endpoint 'DotnetAPI.Controllers.EmployeeController.AddEmployee (CompanyManagement)' 
+2025-01-24 11:20:00.7880 Info Route matched with {action = "AddEmployee", controller = "Employee"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddEmployee(DotnetAPI.InputModels.EmployeeInputModel) on controller DotnetAPI.Controllers.EmployeeController (CompanyManagement). 
+2025-01-24 11:20:00.7880 Info Executed DbCommand (1ms) [Parameters=[@p0='?', @p1='?'], CommandType='Text', CommandTimeout='30']
+INSERT INTO "Employees" ("FullName", "Position")
+VALUES (@p0, @p1)
+RETURNING "Id"; 
+2025-01-24 11:20:00.7880 Info Executed DbCommand (2ms) [Parameters=[@p2='?' (DbType = Int32), @p3='?' (DbType = Int32), @p4='?' (DbType = Int32), @p5='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+INSERT INTO "CompanyEmployee" ("CompanyId", "EmployeeId")
+VALUES (@p2, @p3);
+INSERT INTO "EmployeeProject" ("EmployeeId", "ProjectId")
+VALUES (@p4, @p5); 
+2025-01-24 11:20:00.7880 Info Executing CreatedAtActionResult, writing value of type 'DotnetAPI.InputModels.EmployeeInputModel'. 
+2025-01-24 11:20:00.7880 Info Executed action DotnetAPI.Controllers.EmployeeController.AddEmployee (CompanyManagement) in 11.6627ms 
+2025-01-24 11:20:00.7880 Info Executed endpoint 'DotnetAPI.Controllers.EmployeeController.AddEmployee (CompanyManagement)' 
+2025-01-24 11:20:00.7880 Info Request finished HTTP/1.1 POST http://localhost:5292/api/Employee - 201 - application/json;+charset=utf-8 14.0508ms 
+2025-01-24 11:20:13.4607 Info Request starting HTTP/1.1 POST http://localhost:5292/api/Employee - application/json 112 
+2025-01-24 11:20:13.4607 Info CORS policy execution successful. 
+2025-01-24 11:20:13.4607 Info Executing endpoint 'DotnetAPI.Controllers.EmployeeController.AddEmployee (CompanyManagement)' 
+2025-01-24 11:20:13.4607 Info Route matched with {action = "AddEmployee", controller = "Employee"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddEmployee(DotnetAPI.InputModels.EmployeeInputModel) on controller DotnetAPI.Controllers.EmployeeController (CompanyManagement). 
+2025-01-24 11:20:13.4607 Info Executed DbCommand (1ms) [Parameters=[@p0='?', @p1='?'], CommandType='Text', CommandTimeout='30']
+INSERT INTO "Employees" ("FullName", "Position")
+VALUES (@p0, @p1)
+RETURNING "Id"; 
+2025-01-24 11:20:13.4607 Info Executed DbCommand (1ms) [Parameters=[@p2='?' (DbType = Int32), @p3='?' (DbType = Int32), @p4='?' (DbType = Int32), @p5='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+INSERT INTO "CompanyEmployee" ("CompanyId", "EmployeeId")
+VALUES (@p2, @p3);
+INSERT INTO "EmployeeProject" ("EmployeeId", "ProjectId")
+VALUES (@p4, @p5); 
+2025-01-24 11:20:13.4782 Info Executing CreatedAtActionResult, writing value of type 'DotnetAPI.InputModels.EmployeeInputModel'. 
+2025-01-24 11:20:13.4782 Info Executed action DotnetAPI.Controllers.EmployeeController.AddEmployee (CompanyManagement) in 16.3679ms 
+2025-01-24 11:20:13.4782 Info Executed endpoint 'DotnetAPI.Controllers.EmployeeController.AddEmployee (CompanyManagement)' 
+2025-01-24 11:20:13.4782 Info Request finished HTTP/1.1 POST http://localhost:5292/api/Employee - 201 - application/json;+charset=utf-8 18.8734ms 
+2025-01-24 11:20:18.6344 Info Request starting HTTP/1.1 GET http://localhost:5292/api/Employee - - - 
+2025-01-24 11:20:18.6344 Info Executing endpoint 'DotnetAPI.Controllers.EmployeeController.GetAllEmployees (CompanyManagement)' 
+2025-01-24 11:20:18.6344 Info Route matched with {action = "GetAllEmployees", controller = "Employee"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[DotnetAPI.DTOs.EmployeeDto]]] GetAllEmployees() on controller DotnetAPI.Controllers.EmployeeController (CompanyManagement). 
+2025-01-24 11:20:18.6609 Warn Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'. 
+2025-01-24 11:20:18.6982 Info Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT e."Id", e."FullName", e."Position", s."CompanyId", s."EmployeeId", s."Id", s."Name", s0."EmployeeId", s0."ProjectId", s0."Id", s0."Duration", s0."Title"
+FROM "Employees" AS e
+LEFT JOIN (
+    SELECT c."CompanyId", c."EmployeeId", c0."Id", c0."Name"
+    FROM "CompanyEmployee" AS c
+    INNER JOIN "Companies" AS c0 ON c."CompanyId" = c0."Id"
+) AS s ON e."Id" = s."EmployeeId"
+LEFT JOIN (
+    SELECT e0."EmployeeId", e0."ProjectId", p."Id", p."Duration", p."Title"
+    FROM "EmployeeProject" AS e0
+    INNER JOIN "Projects" AS p ON e0."ProjectId" = p."Id"
+) AS s0 ON e."Id" = s0."EmployeeId"
+ORDER BY e."Id", s."CompanyId", s."EmployeeId", s."Id", s0."EmployeeId", s0."ProjectId" 
+2025-01-24 11:20:18.7193 Info Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[DotnetAPI.DTOs.EmployeeDto, CompanyManagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'. 
+2025-01-24 11:20:18.7193 Info Executed action DotnetAPI.Controllers.EmployeeController.GetAllEmployees (CompanyManagement) in 81.1288ms 
+2025-01-24 11:20:18.7193 Info Executed endpoint 'DotnetAPI.Controllers.EmployeeController.GetAllEmployees (CompanyManagement)' 
+2025-01-24 11:20:18.7193 Info Request finished HTTP/1.1 GET http://localhost:5292/api/Employee - 200 - application/json;+charset=utf-8 87.6443ms 
+2025-01-24 11:22:14.0271 Info Request starting HTTP/1.1 POST http://localhost:5292/api/Auth/register - application/json 114 
+2025-01-24 11:22:14.0271 Info CORS policy execution successful. 
+2025-01-24 11:22:14.0271 Info Executing endpoint 'DotnetAPI.Controllers.AuthController.Register (CompanyManagement)' 
+2025-01-24 11:22:14.0271 Info Route matched with {action = "Register", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Register(DotnetAPI.DTOs.RegisterUserDto) on controller DotnetAPI.Controllers.AuthController (CompanyManagement). 
+2025-01-24 11:22:14.0563 Info Executing BadRequestObjectResult, writing value of type 'System.Collections.Generic.List`1[[Microsoft.AspNetCore.Identity.IdentityError, Microsoft.Extensions.Identity.Core, Version=9.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60]]'. 
+2025-01-24 11:22:14.0563 Info Executed action DotnetAPI.Controllers.AuthController.Register (CompanyManagement) in 23.0341ms 
+2025-01-24 11:22:14.0563 Info Executed endpoint 'DotnetAPI.Controllers.AuthController.Register (CompanyManagement)' 
+2025-01-24 11:22:14.0563 Info Request finished HTTP/1.1 POST http://localhost:5292/api/Auth/register - 400 - application/json;+charset=utf-8 32.4544ms 
+2025-01-24 11:22:30.4516 Info Request starting HTTP/1.1 POST http://localhost:5292/api/Auth/register - application/json 120 
+2025-01-24 11:22:30.4516 Info CORS policy execution successful. 
+2025-01-24 11:22:30.4516 Info Executing endpoint 'DotnetAPI.Controllers.AuthController.Register (CompanyManagement)' 
+2025-01-24 11:22:30.4516 Info Route matched with {action = "Register", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Register(DotnetAPI.DTOs.RegisterUserDto) on controller DotnetAPI.Controllers.AuthController (CompanyManagement). 
+2025-01-24 11:22:30.6157 Info Executed DbCommand (3ms) [Parameters=[@__normalizedUserName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."Email", a."EmailConfirmed", a."LockoutEnabled", a."LockoutEnd", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."SecurityStamp", a."TwoFactorEnabled", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."NormalizedUserName" = @__normalizedUserName_0
+LIMIT 1 
+2025-01-24 11:22:30.6858 Info Executed DbCommand (8ms) [Parameters=[@p0='?', @p1='?' (DbType = Int32), @p2='?', @p3='?', @p4='?' (DbType = Boolean), @p5='?' (DbType = Boolean), @p6='?' (DbType = DateTime), @p7='?', @p8='?', @p9='?', @p10='?', @p11='?' (DbType = Boolean), @p12='?', @p13='?' (DbType = Boolean), @p14='?'], CommandType='Text', CommandTimeout='30']
+INSERT INTO "AspNetUsers" ("Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14); 
+2025-01-24 11:22:30.6858 Info Executing OkObjectResult, writing value of type '<>f__AnonymousType0`1[[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'. 
+2025-01-24 11:22:30.6959 Info Executed action DotnetAPI.Controllers.AuthController.Register (CompanyManagement) in 242.8574ms 
+2025-01-24 11:22:30.6959 Info Executed endpoint 'DotnetAPI.Controllers.AuthController.Register (CompanyManagement)' 
+2025-01-24 11:22:30.6959 Info Request finished HTTP/1.1 POST http://localhost:5292/api/Auth/register - 200 - application/json;+charset=utf-8 245.1389ms 
+2025-01-24 11:24:21.9703 Info Application is shutting down... 
+2025-01-24 11:44:05.2414 Info Executed DbCommand (11ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId"; 
+2025-01-24 11:44:05.4068 Info Executed DbCommand (6ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+CREATE TABLE IF NOT EXISTS "__EFMigrationsHistory" (
+    "MigrationId" character varying(150) NOT NULL,
+    "ProductVersion" character varying(32) NOT NULL,
+    CONSTRAINT "PK___EFMigrationsHistory" PRIMARY KEY ("MigrationId")
+); 
+2025-01-24 11:44:05.4068 Info Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long. 
+2025-01-24 11:44:05.4191 Info Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+LOCK TABLE "__EFMigrationsHistory" IN ACCESS EXCLUSIVE MODE 
+2025-01-24 11:44:05.4191 Info Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId"; 
+2025-01-24 11:44:05.4191 Info No migrations were applied. The database is already up to date. 
+2025-01-24 11:48:35.9690 Info Executed DbCommand (11ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId"; 
+2025-01-24 11:48:36.1535 Info Executed DbCommand (6ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+CREATE TABLE IF NOT EXISTS "__EFMigrationsHistory" (
+    "MigrationId" character varying(150) NOT NULL,
+    "ProductVersion" character varying(32) NOT NULL,
+    CONSTRAINT "PK___EFMigrationsHistory" PRIMARY KEY ("MigrationId")
+); 
+2025-01-24 11:48:36.1535 Info Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long. 
+2025-01-24 11:48:36.1535 Info Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+LOCK TABLE "__EFMigrationsHistory" IN ACCESS EXCLUSIVE MODE 
+2025-01-24 11:48:36.1535 Info Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId"; 
+2025-01-24 11:48:36.1535 Info No migrations were applied. The database is already up to date. 
+2025-01-24 11:48:56.4372 Info User profile is available. Using 'C:\Users\hp\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest. 
+2025-01-24 11:48:56.5860 Info Now listening on: http://localhost:5292 
+2025-01-24 11:48:56.5860 Info Application started. Press Ctrl+C to shut down. 
+2025-01-24 11:48:56.5860 Info Hosting environment: Development 
+2025-01-24 11:48:56.5860 Info Content root path: C:\Users\hp\CompanyManagement\CompanyManagement 
+2025-01-24 11:48:56.7063 Info Request starting HTTP/1.1 GET http://localhost:5292/index.html - - - 
+2025-01-24 11:48:56.7537 Warn Failed to determine the https port for redirect. 
+2025-01-24 11:48:56.9053 Info Request finished HTTP/1.1 GET http://localhost:5292/index.html - 200 - text/html;charset=utf-8 194.5217ms 
+2025-01-24 11:48:56.9907 Info Request starting HTTP/1.1 GET http://localhost:5292/index.js - - - 
+2025-01-24 11:48:56.9907 Info Request starting HTTP/1.1 GET http://localhost:5292/_framework/aspnetcore-browser-refresh.js - - - 
+2025-01-24 11:48:56.9907 Info Request finished HTTP/1.1 GET http://localhost:5292/_framework/aspnetcore-browser-refresh.js - 200 13748 application/javascript;+charset=utf-8 4.1366ms 
+2025-01-24 11:48:56.9907 Info Request finished HTTP/1.1 GET http://localhost:5292/index.js - 200 - application/javascript;charset=utf-8 5.1241ms 
+2025-01-24 11:48:57.2954 Info Request starting HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - - - 
+2025-01-24 11:48:57.4096 Info Request finished HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - 200 - application/json;charset=utf-8 114.1170ms 
+2025-01-24 11:49:39.5370 Info Request starting HTTP/1.1 POST http://localhost:5292/api/Auth/register - application/json 145 
+2025-01-24 11:49:39.5370 Info CORS policy execution successful. 
+2025-01-24 11:49:39.5370 Info Executing endpoint 'DotnetAPI.Controllers.AuthController.Register (CompanyManagement)' 
+2025-01-24 11:49:39.5825 Info Route matched with {action = "Register", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Register(DotnetAPI.DTOs.RegisterUserDto) on controller DotnetAPI.Controllers.AuthController (CompanyManagement). 
+2025-01-24 11:49:40.8197 Info Executed DbCommand (53ms) [Parameters=[@__normalizedUserName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."Email", a."EmailConfirmed", a."LockoutEnabled", a."LockoutEnd", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."SecurityStamp", a."TwoFactorEnabled", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."NormalizedUserName" = @__normalizedUserName_0
+LIMIT 1 
+2025-01-24 11:49:40.9986 Info Executed DbCommand (14ms) [Parameters=[@p0='?', @p1='?' (DbType = Int32), @p2='?', @p3='?', @p4='?' (DbType = Boolean), @p5='?' (DbType = Boolean), @p6='?' (DbType = DateTime), @p7='?', @p8='?', @p9='?', @p10='?', @p11='?' (DbType = Boolean), @p12='?', @p13='?' (DbType = Boolean), @p14='?'], CommandType='Text', CommandTimeout='30']
+INSERT INTO "AspNetUsers" ("Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14); 
+2025-01-24 11:49:41.0124 Info Executing OkObjectResult, writing value of type '<>f__AnonymousType0`1[[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'. 
+2025-01-24 11:49:41.0292 Info Executed action DotnetAPI.Controllers.AuthController.Register (CompanyManagement) in 1441.8532ms 
+2025-01-24 11:49:41.0292 Info Executed endpoint 'DotnetAPI.Controllers.AuthController.Register (CompanyManagement)' 
+2025-01-24 11:49:41.0392 Info Request finished HTTP/1.1 POST http://localhost:5292/api/Auth/register - 200 - application/json;+charset=utf-8 1502.0502ms 
+2025-01-24 11:50:30.2261 Info Application is shutting down... 

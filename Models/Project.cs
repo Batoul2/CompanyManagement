@@ -5,6 +5,6 @@ namespace DotnetAPI.Models
         public int Id { get; set; }
         public string Title { get; set; } = string.Empty;
         public TimeSpan Duration { get; set; }
-        public ICollection<EmployeeProject> EmployeeProjects { get; set; } = new List<EmployeeProject>(); // Link to EmployeeProject
+        public ICollection<EmployeeProject> EmployeeProject { get; set; } = new List<EmployeeProject>(); // Link to EmployeeProject
     }
 }

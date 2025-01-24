@@ -4,6 +4,6 @@ namespace DotnetAPI.Models
     {
         public int Id { get; set; }
         public string Name { get; set; } = string.Empty;
-        public ICollection<CompanyEmployee> CompanyEmployees { get; set; } = new List<CompanyEmployee>(); // Link to CompanyEmployee
+        public ICollection<CompanyEmployee> CompanyEmployee { get; set; } = new List<CompanyEmployee>(); // Link to CompanyEmployee
     }
 }

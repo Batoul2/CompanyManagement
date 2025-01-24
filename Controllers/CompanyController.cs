@@ -36,17 +36,17 @@ namespace DotnetAPI.Controllers
         public async Task<IActionResult> AddCompany(CompanyInputModel inputModel)
         {
             try
-        {
-            _logger.LogInformation("Attempting to add a new company: {CompanyName}", inputModel.Name);
-            await _companyService.AddCompanyAsync(inputModel);
-            _logger.LogInformation("Successfully added company: {CompanyName}", inputModel.Name);
-            return CreatedAtAction(nameof(GetCompanyById), new { id = inputModel }, inputModel);
-        }
-        catch (Exception ex)
-        {
-            _logger.LogError(ex, "An error occurred while adding company: {CompanyName}", inputModel.Name);
-            return StatusCode(500, "Internal server error");
-        }
+            {
+                _logger.LogInformation("Attempting to add a new company: {CompanyName}", inputModel.Name);
+                await _companyService.AddCompanyAsync(inputModel);
+                _logger.LogInformation("Successfully added company: {CompanyName}", inputModel.Name);
+                return CreatedAtAction(nameof(GetCompanyById), new { id = inputModel }, inputModel);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "An error occurred while adding company: {CompanyName}", inputModel.Name);
+                return StatusCode(500, "Internal server error");
+            }
         }
 
         [HttpPut("{id}")]

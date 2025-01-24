@@ -34,7 +34,7 @@ namespace DotnetAPI.Services
         public async Task<ProjectDto> GetProjectByIdAsync(int id)
         {
             var project = await _context.Projects
-                .Include(p => p.EmployeeProjects)
+                .Include(p => p.EmployeeProject)
                 .ThenInclude(ep => ep.Employee)
                 .FirstOrDefaultAsync(p => p.Id == id);
 
