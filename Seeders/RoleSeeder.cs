@@ -7,7 +7,7 @@ namespace DotnetAPI.Seeders
     {
         public static async Task SeedRolesAsync(RoleManager<IdentityRole> roleManager)
         {
-            string[] roles = { "Admin", "User" };
+            string[] roles = { "Admin", "User" ,"Employee"};
 
             foreach (var role in roles)
             {

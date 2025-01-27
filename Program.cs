@@ -13,15 +13,14 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using NLog;
 using NLog.Extensions.Logging;
+using NLog.Web;
 
 var builder = WebApplication.CreateBuilder(args);
-
-LogManager.Setup().LoadConfigurationFromFile("nlog.config");
+LogManager.Setup().LoadConfigurationFromAppSettings();
 
 builder.Logging.ClearProviders();
 builder.Logging.SetMinimumLevel(Microsoft.Extensions.Logging.LogLevel.Trace);
-builder.Logging.AddNLog("nlog.config");
-
+builder.Logging.AddNLog();
 
 builder.Services.AddAutoMapper(typeof(Program).Assembly);
 builder.Services.AddControllers();

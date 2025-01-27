@@ -33,6 +33,12 @@ namespace DotnetAPI.Services
             return IdentityResult.Failed(new IdentityError { Description = "Passwords do not match." });
         }
 
+        var existingUser = await _userManager.FindByEmailAsync(model.Email);
+        if (existingUser != null)
+        {
+            return IdentityResult.Failed(new IdentityError { Description = "Email is already taken." });
+        }
+
         var user = new ApplicationUser
         {
             UserName = model.Username,
@@ -107,5 +113,28 @@ namespace DotnetAPI.Services
 
             return "Error assigning role.";
         }
-}
+
+        public async Task<string?> GeneratePasswordResetTokenAsync(string email)
+        {
+            var user = await _userManager.FindByEmailAsync(email);
+            if (user == null)
+            {
+                return null;
+            }
+
+            return await _userManager.GeneratePasswordResetTokenAsync(user);
+        }
+
+        public async Task<IdentityResult> ResetPasswordAsync(ResetPasswordDto model)
+        {
+            var user = await _userManager.FindByEmailAsync(model.Email);
+            if (user == null)
+            {
+                return IdentityResult.Failed(new IdentityError { Description = "Invalid email." });
+            }
+
+            return await _userManager.ResetPasswordAsync(user, model.Token, model.NewPassword);
+        }
+
+    }
 }
