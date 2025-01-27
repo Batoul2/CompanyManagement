@@ -50,6 +50,13 @@ namespace DotnetAPI.Controllers
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> AssignRoleToUser([FromBody] AssignRoleDto model)
         {
+            var userClaims = HttpContext.User.Claims.ToList();
+            Console.WriteLine("User Claims:");
+            foreach (var claim in userClaims)
+            {
+                Console.WriteLine($"Type: {claim.Type}, Value: {claim.Value}");
+            }
+
             if (model == null || string.IsNullOrEmpty(model.Username) || string.IsNullOrEmpty(model.Role))
             {
                 return BadRequest("Username and Role are required.");

@@ -54,17 +54,16 @@ namespace DotnetAPI.Services
 
     public async Task<string?> LoginAsync(LoginUserDto model)
     {
-        // Find user by username (or email)
         var user = await _userManager.FindByNameAsync(model.Username);
         if (user == null || !await _userManager.CheckPasswordAsync(user, model.Password))
         {
-            return null; 
+            return null;
         }
 
-        return GenerateJwtToken(user);
+        return await GenerateJwtTokenAsync(user);
     }
 
-    private string GenerateJwtToken(ApplicationUser user)
+    private async Task<string> GenerateJwtTokenAsync(ApplicationUser user)
         {
 
             var claims = new List<Claim>
@@ -74,7 +73,7 @@ namespace DotnetAPI.Services
                 new Claim(ClaimTypes.NameIdentifier, user.Id)
             };
 
-            var roles = _userManager.GetRolesAsync(user).Result;
+            var roles = await _userManager.GetRolesAsync(user);
             claims.AddRange(roles.Select(role => new Claim(ClaimTypes.Role, role)));
 
             // Generate the signing key

@@ -1,3 +1,4 @@
+using System.Security.Claims;
 using System.Text;
 using DotnetAPI.Data;
 using DotnetAPI.Models;
@@ -78,7 +79,8 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             ValidateIssuerSigningKey = true,
             ValidIssuer = builder.Configuration["Jwt:Issuer"],
             ValidAudience = builder.Configuration["Jwt:Audience"],
-            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:SecretKey"]))
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:SecretKey"])),
+            RoleClaimType = ClaimTypes.Role
         };
 #pragma warning restore CS8604 // Possible null reference argument.
     });

@@ -3615,3 +3615,151 @@ VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13
 2025-01-27 13:36:06.6213 Info Request starting HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - - - 
 2025-01-27 13:36:06.7102 Info Request finished HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - 200 - application/json;charset=utf-8 88.9905ms 
 2025-01-27 13:45:31.1514 Info Application is shutting down... 
+2025-01-27 14:10:21.0219 Info Executed DbCommand (35ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-01-27 14:10:21.0822 Info Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-01-27 14:10:21.0822 Info Executed DbCommand (0ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-01-27 14:10:21.1496 Info User profile is available. Using 'C:\Users\hp\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest. 
+2025-01-27 14:10:21.2098 Info Now listening on: http://localhost:5292 
+2025-01-27 14:10:21.2098 Info Application started. Press Ctrl+C to shut down. 
+2025-01-27 14:10:21.2098 Info Hosting environment: Development 
+2025-01-27 14:10:21.2098 Info Content root path: C:\Users\hp\CompanyManagement\CompanyManagement 
+2025-01-27 14:10:27.2624 Info Request starting HTTP/1.1 GET http://localhost:5292/index.html - - - 
+2025-01-27 14:10:27.2739 Warn Failed to determine the https port for redirect. 
+2025-01-27 14:10:27.3714 Info Request finished HTTP/1.1 GET http://localhost:5292/index.html - 200 - text/html;charset=utf-8 108.2034ms 
+2025-01-27 14:10:27.3972 Info Request starting HTTP/1.1 GET http://localhost:5292/index.js - - - 
+2025-01-27 14:10:27.3972 Info Request starting HTTP/1.1 GET http://localhost:5292/_framework/aspnetcore-browser-refresh.js - - - 
+2025-01-27 14:10:27.3972 Info Request finished HTTP/1.1 GET http://localhost:5292/index.js - 200 - application/javascript;charset=utf-8 2.1110ms 
+2025-01-27 14:10:27.3972 Info Request finished HTTP/1.1 GET http://localhost:5292/_framework/aspnetcore-browser-refresh.js - 200 13748 application/javascript;+charset=utf-8 2.3951ms 
+2025-01-27 14:10:27.5198 Info Request starting HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - - - 
+2025-01-27 14:10:27.6404 Info Request finished HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - 200 - application/json;charset=utf-8 120.6280ms 
+2025-01-27 14:10:45.8233 Info Request starting HTTP/1.1 POST http://localhost:5292/api/Auth/login - application/json 52 
+2025-01-27 14:10:45.8233 Info CORS policy execution successful. 
+2025-01-27 14:10:45.8683 Info Executing endpoint 'DotnetAPI.Controllers.AuthController.Login (CompanyManagement)' 
+2025-01-27 14:10:45.8904 Info Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(DotnetAPI.DTOs.LoginUserDto) on controller DotnetAPI.Controllers.AuthController (CompanyManagement). 
+2025-01-27 14:10:46.0157 Info Executed DbCommand (5ms) [Parameters=[@__normalizedUserName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."Email", a."EmailConfirmed", a."LockoutEnabled", a."LockoutEnd", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."SecurityStamp", a."TwoFactorEnabled", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."NormalizedUserName" = @__normalizedUserName_0
+LIMIT 1 
+2025-01-27 14:10:46.1822 Info Executed DbCommand (5ms) [Parameters=[@__userId_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a0."Name"
+FROM "AspNetUserRoles" AS a
+INNER JOIN "AspNetRoles" AS a0 ON a."RoleId" = a0."Id"
+WHERE a."UserId" = @__userId_0 
+2025-01-27 14:10:46.2195 Info Executing OkObjectResult, writing value of type '<>f__AnonymousType1`1[[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'. 
+2025-01-27 14:10:46.2389 Info Executed action DotnetAPI.Controllers.AuthController.Login (CompanyManagement) in 339.9409ms 
+2025-01-27 14:10:46.2389 Info Executed endpoint 'DotnetAPI.Controllers.AuthController.Login (CompanyManagement)' 
+2025-01-27 14:10:46.2433 Info Request finished HTTP/1.1 POST http://localhost:5292/api/Auth/login - 200 - application/json;+charset=utf-8 420.0210ms 
+2025-01-27 14:12:05.6042 Info Request starting HTTP/1.1 POST http://localhost:5292/api/Auth/assign-role - application/json 42 
+2025-01-27 14:12:05.6042 Info CORS policy execution successful. 
+2025-01-27 14:12:05.6042 Info Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin) 
+2025-01-27 14:12:05.6042 Info AuthenticationScheme: Identity.Application was challenged. 
+2025-01-27 14:12:05.6042 Info Request finished HTTP/1.1 POST http://localhost:5292/api/Auth/assign-role - 302 0 - 21.1039ms 
+2025-01-27 14:12:05.6349 Info Request starting HTTP/1.1 GET http://localhost:5292/Account/Login?ReturnUrl=%2Fapi%2FAuth%2Fassign-role - - - 
+2025-01-27 14:12:05.6349 Info Request finished HTTP/1.1 GET http://localhost:5292/Account/Login?ReturnUrl=%2Fapi%2FAuth%2Fassign-role - 404 0 - 2.2175ms 
+2025-01-27 14:12:05.6349 Info Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5292/Account/Login, Response status code: 404 
+2025-01-27 14:12:25.4219 Info Request starting HTTP/1.1 POST http://localhost:5292/api/Auth/assign-role - application/json 42 
+2025-01-27 14:12:25.4219 Info CORS policy execution successful. 
+2025-01-27 14:12:25.4245 Info Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin) 
+2025-01-27 14:12:25.4245 Info AuthenticationScheme: Identity.Application was challenged. 
+2025-01-27 14:12:25.4245 Info Request finished HTTP/1.1 POST http://localhost:5292/api/Auth/assign-role - 302 0 - 4.4756ms 
+2025-01-27 14:12:25.4245 Info Request starting HTTP/1.1 GET http://localhost:5292/Account/Login?ReturnUrl=%2Fapi%2FAuth%2Fassign-role - - - 
+2025-01-27 14:12:25.4245 Info Request finished HTTP/1.1 GET http://localhost:5292/Account/Login?ReturnUrl=%2Fapi%2FAuth%2Fassign-role - 404 0 - 0.4460ms 
+2025-01-27 14:12:25.4245 Info Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5292/Account/Login, Response status code: 404 
+2025-01-27 14:12:33.4832 Info Request starting HTTP/1.1 POST http://localhost:5292/api/Auth/assign-role - application/json 42 
+2025-01-27 14:12:33.4832 Info CORS policy execution successful. 
+2025-01-27 14:12:33.4832 Info Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin) 
+2025-01-27 14:12:33.4832 Info AuthenticationScheme: Identity.Application was challenged. 
+2025-01-27 14:12:33.4832 Info Request finished HTTP/1.1 POST http://localhost:5292/api/Auth/assign-role - 302 0 - 2.8954ms 
+2025-01-27 14:12:33.4832 Info Request starting HTTP/1.1 GET http://localhost:5292/Account/Login?ReturnUrl=%2Fapi%2FAuth%2Fassign-role - - - 
+2025-01-27 14:12:33.4832 Info Request finished HTTP/1.1 GET http://localhost:5292/Account/Login?ReturnUrl=%2Fapi%2FAuth%2Fassign-role - 404 0 - 0.4040ms 
+2025-01-27 14:12:33.4832 Info Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5292/Account/Login, Response status code: 404 
+2025-01-27 14:13:54.2751 Info Request starting HTTP/1.1 POST http://localhost:5292/api/Auth/assign-role - application/json 42 
+2025-01-27 14:13:54.2751 Info CORS policy execution successful. 
+2025-01-27 14:13:54.2751 Info Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin) 
+2025-01-27 14:13:54.2751 Info AuthenticationScheme: Identity.Application was challenged. 
+2025-01-27 14:13:54.2751 Info Request finished HTTP/1.1 POST http://localhost:5292/api/Auth/assign-role - 302 0 - 1.2167ms 
+2025-01-27 14:13:54.2855 Info Request starting HTTP/1.1 GET http://localhost:5292/Account/Login?ReturnUrl=%2Fapi%2FAuth%2Fassign-role - - - 
+2025-01-27 14:13:54.2855 Info Request finished HTTP/1.1 GET http://localhost:5292/Account/Login?ReturnUrl=%2Fapi%2FAuth%2Fassign-role - 404 0 - 0.5237ms 
+2025-01-27 14:13:54.2855 Info Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5292/Account/Login, Response status code: 404 
+2025-01-27 14:15:32.6083 Info Application is shutting down... 
+2025-01-27 14:20:52.4986 Info Executed DbCommand (47ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-01-27 14:20:52.5938 Info Executed DbCommand (3ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-01-27 14:20:52.5938 Info Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-01-27 14:20:52.6756 Info User profile is available. Using 'C:\Users\hp\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest. 
+2025-01-27 14:20:52.7447 Info Now listening on: http://localhost:5292 
+2025-01-27 14:20:52.7447 Info Application started. Press Ctrl+C to shut down. 
+2025-01-27 14:20:52.7447 Info Hosting environment: Development 
+2025-01-27 14:20:52.7447 Info Content root path: C:\Users\hp\CompanyManagement\CompanyManagement 
+2025-01-27 14:20:55.6909 Info Request starting HTTP/1.1 GET http://localhost:5292/index.html - - - 
+2025-01-27 14:20:55.6909 Warn Failed to determine the https port for redirect. 
+2025-01-27 14:20:55.7672 Info Request finished HTTP/1.1 GET http://localhost:5292/index.html - 200 - text/html;charset=utf-8 74.8354ms 
+2025-01-27 14:20:55.7837 Info Request starting HTTP/1.1 GET http://localhost:5292/index.js - - - 
+2025-01-27 14:20:55.7837 Info Request finished HTTP/1.1 GET http://localhost:5292/index.js - 200 - application/javascript;charset=utf-8 1.5351ms 
+2025-01-27 14:20:55.7837 Info Request starting HTTP/1.1 GET http://localhost:5292/_framework/aspnetcore-browser-refresh.js - - - 
+2025-01-27 14:20:55.7886 Info Request finished HTTP/1.1 GET http://localhost:5292/_framework/aspnetcore-browser-refresh.js - 200 13748 application/javascript;+charset=utf-8 3.1663ms 
+2025-01-27 14:20:55.9420 Info Request starting HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - - - 
+2025-01-27 14:20:56.0263 Info Request finished HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - 200 - application/json;charset=utf-8 84.2290ms 
+2025-01-27 14:21:21.3041 Info Request starting HTTP/1.1 POST http://localhost:5292/api/Auth/RequestPasswordReset - application/json 32 
+2025-01-27 14:21:21.3041 Info CORS policy execution successful. 
+2025-01-27 14:21:21.3413 Info Executing endpoint 'DotnetAPI.Controllers.AuthController.RequestPasswordReset (CompanyManagement)' 
+2025-01-27 14:21:21.3610 Info Route matched with {action = "RequestPasswordReset", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] RequestPasswordReset(DotnetAPI.DTOs.PasswordResetRequestDto) on controller DotnetAPI.Controllers.AuthController (CompanyManagement). 
+2025-01-27 14:21:21.4660 Info Executed DbCommand (4ms) [Parameters=[@__normalizedEmail_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."Email", a."EmailConfirmed", a."LockoutEnabled", a."LockoutEnd", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."SecurityStamp", a."TwoFactorEnabled", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."NormalizedEmail" = @__normalizedEmail_0
+LIMIT 2 
+2025-01-27 14:21:21.5115 Info Executing OkObjectResult, writing value of type '<>f__AnonymousType1`1[[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'. 
+2025-01-27 14:21:21.5297 Info Executed action DotnetAPI.Controllers.AuthController.RequestPasswordReset (CompanyManagement) in 163.4713ms 
+2025-01-27 14:21:21.5297 Info Executed endpoint 'DotnetAPI.Controllers.AuthController.RequestPasswordReset (CompanyManagement)' 
+2025-01-27 14:21:21.5352 Info Request finished HTTP/1.1 POST http://localhost:5292/api/Auth/RequestPasswordReset - 200 - application/json;+charset=utf-8 231.2823ms 
+2025-01-27 14:22:13.5879 Info Request starting HTTP/1.1 POST http://localhost:5292/api/Auth/ResetPassword - application/json 320 
+2025-01-27 14:22:13.5879 Info CORS policy execution successful. 
+2025-01-27 14:22:13.5879 Info Executing endpoint 'DotnetAPI.Controllers.AuthController.ResetPassword (CompanyManagement)' 
+2025-01-27 14:22:13.5992 Info Route matched with {action = "ResetPassword", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] ResetPassword(DotnetAPI.DTOs.ResetPasswordDto) on controller DotnetAPI.Controllers.AuthController (CompanyManagement). 
+2025-01-27 14:22:13.6217 Info Executed DbCommand (1ms) [Parameters=[@__normalizedEmail_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."Email", a."EmailConfirmed", a."LockoutEnabled", a."LockoutEnd", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."SecurityStamp", a."TwoFactorEnabled", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."NormalizedEmail" = @__normalizedEmail_0
+LIMIT 2 
+2025-01-27 14:22:13.7087 Info Executed DbCommand (1ms) [Parameters=[@__normalizedUserName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."Email", a."EmailConfirmed", a."LockoutEnabled", a."LockoutEnd", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."SecurityStamp", a."TwoFactorEnabled", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."NormalizedUserName" = @__normalizedUserName_0
+LIMIT 1 
+2025-01-27 14:22:13.7837 Info Executed DbCommand (11ms) [Parameters=[@p14='?', @p0='?' (DbType = Int32), @p1='?', @p15='?', @p2='?', @p3='?' (DbType = Boolean), @p4='?' (DbType = Boolean), @p5='?' (DbType = DateTime), @p6='?', @p7='?', @p8='?', @p9='?', @p10='?' (DbType = Boolean), @p11='?', @p12='?' (DbType = Boolean), @p13='?'], CommandType='Text', CommandTimeout='30']
+UPDATE "AspNetUsers" SET "AccessFailedCount" = @p0, "ConcurrencyStamp" = @p1, "Email" = @p2, "EmailConfirmed" = @p3, "LockoutEnabled" = @p4, "LockoutEnd" = @p5, "NormalizedEmail" = @p6, "NormalizedUserName" = @p7, "PasswordHash" = @p8, "PhoneNumber" = @p9, "PhoneNumberConfirmed" = @p10, "SecurityStamp" = @p11, "TwoFactorEnabled" = @p12, "UserName" = @p13
+WHERE "Id" = @p14 AND "ConcurrencyStamp" = @p15; 
+2025-01-27 14:22:13.7879 Info Executing OkObjectResult, writing value of type 'System.String'. 
+2025-01-27 14:22:13.7879 Info Executed action DotnetAPI.Controllers.AuthController.ResetPassword (CompanyManagement) in 188.8879ms 
+2025-01-27 14:22:13.7879 Info Executed endpoint 'DotnetAPI.Controllers.AuthController.ResetPassword (CompanyManagement)' 
+2025-01-27 14:22:13.7879 Info Request finished HTTP/1.1 POST http://localhost:5292/api/Auth/ResetPassword - 200 - text/plain;+charset=utf-8 200.5749ms 
+2025-01-27 14:25:25.9733 Info Application is shutting down... 
