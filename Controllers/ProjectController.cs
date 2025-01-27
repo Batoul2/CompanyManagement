@@ -17,9 +17,9 @@ namespace DotnetAPI.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetFilteredProjects([FromQuery] string? title)
+        public async Task<IActionResult> GetFilteredProjects([FromQuery] string? title,CancellationToken cancellationToken)
         {
-            var projects = await _projectService.GetFilteredProjectsAsync(title);
+            var projects = await _projectService.GetFilteredProjectsAsync(title,cancellationToken);
 
             if (projects == null || !projects.Any())
             {
@@ -36,23 +36,23 @@ namespace DotnetAPI.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddProject(ProjectInputModel inputModel)
+        public async Task<IActionResult> AddProject(ProjectInputModel inputModel,CancellationToken cancellationToken)
         {
-            await _projectService.AddProjectAsync(inputModel);
+            await _projectService.AddProjectAsync(inputModel,cancellationToken);
             return CreatedAtAction(nameof(GetProjectById), new { id = inputModel }, inputModel);
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateProject(int id, ProjectInputModel inputModel)
+        public async Task<IActionResult> UpdateProject(int id, ProjectInputModel inputModel,CancellationToken cancellationToken)
         {
-            await _projectService.UpdateProjectAsync(id, inputModel);
+            await _projectService.UpdateProjectAsync(id, inputModel,cancellationToken);
             return NoContent();
         }
 
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteProject(int id)
+        public async Task<IActionResult> DeleteProject(int id,CancellationToken cancellationToken)
         {
-            await _projectService.DeleteProjectAsync(id);
+            await _projectService.DeleteProjectAsync(id,cancellationToken);
             return NoContent();
         }
 

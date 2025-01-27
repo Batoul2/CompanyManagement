@@ -18,7 +18,7 @@ namespace DotnetAPI.Services
             _mapper = mapper;
         }
 
-        public async Task<IEnumerable<ProjectDto>> GetFilteredProjectsAsync(string? title)
+        public async Task<IEnumerable<ProjectDto>> GetFilteredProjectsAsync(string? title, CancellationToken cancellationToken)
         {
             var query = _context.Projects.AsQueryable();
 
@@ -26,7 +26,7 @@ namespace DotnetAPI.Services
             {
                 query = query.Where(p => p.Title.Contains(title));
             }
-            var projects = await query.ToListAsync();
+            var projects = await query.ToListAsync(cancellationToken);
             return _mapper.Map<IEnumerable<ProjectDto>>(projects);
         }
 
@@ -43,33 +43,33 @@ namespace DotnetAPI.Services
             return _mapper.Map<ProjectDto>(project);
         }
 
-        public async Task<ProjectDto> AddProjectAsync(ProjectInputModel inputModel)
+        public async Task<ProjectDto> AddProjectAsync(ProjectInputModel inputModel,CancellationToken cancellationToken)
         {
             var project = _mapper.Map<Project>(inputModel);
             _context.Projects.Add(project);
-            await _context.SaveChangesAsync();
+            await _context.SaveChangesAsync(cancellationToken);
             var projectDto = _mapper.Map<ProjectDto>(project);
             return projectDto;
         }
 
-        public async Task<ProjectDto> UpdateProjectAsync(int id, ProjectInputModel inputModel)
+        public async Task<ProjectDto> UpdateProjectAsync(int id, ProjectInputModel inputModel,CancellationToken cancellationToken)
         {
-            var project = await _context.Projects.FindAsync(id);
+            var project = await _context.Projects.FindAsync(id,cancellationToken);
             if (project == null) throw new KeyNotFoundException("Project not found");
 
             _mapper.Map(inputModel, project);
-            await _context.SaveChangesAsync();
+            await _context.SaveChangesAsync(cancellationToken);
             var projectDto = _mapper.Map<ProjectDto>(project);
             return projectDto;
         }
 
-        public async Task<bool> DeleteProjectAsync(int id)
+        public async Task<bool> DeleteProjectAsync(int id,CancellationToken cancellationToken)
         {
-            var project = await _context.Projects.FindAsync(id);
+            var project = await _context.Projects.FindAsync(id,cancellationToken);
             if (project == null) throw new KeyNotFoundException("Project not found");
 
             _context.Projects.Remove(project);
-            await _context.SaveChangesAsync();
+            await _context.SaveChangesAsync(cancellationToken);
             return true;
         }
     }

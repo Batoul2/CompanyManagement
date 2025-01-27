@@ -7,12 +7,12 @@ namespace DotnetAPI.Services
     {
         Task<IEnumerable<EmployeeDto>> GetAllEmployeesAsync();
         Task<EmployeeDto> GetEmployeeByIdAsync(int id);
-        Task<EmployeeDto> AddEmployeeAsync(EmployeeInputModel inputModel);
-        Task<EmployeeDto> UpdateEmployeeAsync(int id, EmployeeInputModel inputModel);
-        Task<bool> DeleteEmployeeAsync(int id);
+        Task<EmployeeDto> AddEmployeeAsync(EmployeeInputModel inputModel,CancellationToken cancellationToken);
+        Task<EmployeeDto> UpdateEmployeeAsync(int id, EmployeeInputModel inputModel, CancellationToken cancellationToken);
+        Task<bool> DeleteEmployeeAsync(int id, CancellationToken cancellationToken);
 
-        Task AssignProjectToEmployeeAsync(int employeeId, int projectId);
-        Task RemoveProjectFromEmployeeAsync(int employeeId, int projectId);
+        Task AssignProjectToEmployeeAsync(int employeeId, int projectId, CancellationToken cancellationToken);
+        Task RemoveProjectFromEmployeeAsync(int employeeId, int projectId, CancellationToken cancellationToken);
     }
 
 }

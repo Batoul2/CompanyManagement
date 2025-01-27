@@ -35,9 +35,9 @@ namespace DotnetAPI.Controllers
       }
 
       [HttpPost("login")]
-        public async Task<IActionResult> Login([FromBody] LoginUserDto model)
+        public async Task<IActionResult> Login([FromBody] LoginUserDto model,  CancellationToken cancellationToken)
         {
-            var token = await _authService.LoginAsync(model);
+            var token = await _authService.LoginAsync(model, cancellationToken);
             if (token == null)
             {
                 return Unauthorized("Invalid credentials.");
@@ -48,7 +48,7 @@ namespace DotnetAPI.Controllers
 
         [HttpPost("assign-role")]
         [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> AssignRoleToUser([FromBody] AssignRoleDto model)
+        public async Task<IActionResult> AssignRoleToUser([FromBody] AssignRoleDto model,  CancellationToken cancellationToken)
         {
             var userClaims = HttpContext.User.Claims.ToList();
             Console.WriteLine("User Claims:");
@@ -62,7 +62,7 @@ namespace DotnetAPI.Controllers
                 return BadRequest("Username and Role are required.");
             }
 
-            var result = await _authService.AssignRoleToUserAsync(model.Username, model.Role);
+            var result = await _authService.AssignRoleToUserAsync(model.Username, model.Role, cancellationToken);
 
             if (result.Contains("Error"))
             {
@@ -78,9 +78,9 @@ namespace DotnetAPI.Controllers
         }
 
         [HttpPost("RequestPasswordReset")]
-        public async Task<IActionResult> RequestPasswordReset([FromBody] PasswordResetRequestDto model)
+        public async Task<IActionResult> RequestPasswordReset([FromBody] PasswordResetRequestDto model,  CancellationToken cancellationToken)
         {
-            var token = await _authService.GeneratePasswordResetTokenAsync(model.Email);
+            var token = await _authService.GeneratePasswordResetTokenAsync(model.Email, cancellationToken);
             if (token == null)
             {
                 return BadRequest("If the email exists, a reset link will be sent.");
@@ -90,9 +90,9 @@ namespace DotnetAPI.Controllers
         }
 
         [HttpPost("ResetPassword")]
-        public async Task<IActionResult> ResetPassword([FromBody] ResetPasswordDto model)
+        public async Task<IActionResult> ResetPassword([FromBody] ResetPasswordDto model,  CancellationToken cancellationToken)
         {
-            var result = await _authService.ResetPasswordAsync(model);
+            var result = await _authService.ResetPasswordAsync(model, cancellationToken);
 
             if (!result.Succeeded)
             {

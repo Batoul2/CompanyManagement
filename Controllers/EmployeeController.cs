@@ -29,37 +29,37 @@ namespace DotnetAPI.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddEmployee(EmployeeInputModel inputModel)
+        public async Task<IActionResult> AddEmployee(EmployeeInputModel inputModel,CancellationToken cancellationToken)
         {
-            await _employeeService.AddEmployeeAsync(inputModel);
+            await _employeeService.AddEmployeeAsync(inputModel,cancellationToken);
             return CreatedAtAction(nameof(GetEmployeeById), new { id = inputModel }, inputModel);
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateEmployee(int id, EmployeeInputModel inputModel)
+        public async Task<IActionResult> UpdateEmployee(int id, EmployeeInputModel inputModel,CancellationToken cancellationToken)
         {
-            await _employeeService.UpdateEmployeeAsync(id, inputModel);
+            await _employeeService.UpdateEmployeeAsync(id, inputModel,cancellationToken);
             return NoContent();
         }
 
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteEmployee(int id)
+        public async Task<IActionResult> DeleteEmployee(int id,CancellationToken cancellationToken)
         {
-            await _employeeService.DeleteEmployeeAsync(id);
+            await _employeeService.DeleteEmployeeAsync(id,cancellationToken);
             return NoContent();
         }
 
         [HttpPost("{employeeId}/projects/{projectId}")]
-        public async Task<IActionResult> AssignProjectToEmployee(int employeeId, int projectId)
+        public async Task<IActionResult> AssignProjectToEmployee(int employeeId, int projectId,CancellationToken cancellationToken)
         {
-            await _employeeService.AssignProjectToEmployeeAsync(employeeId, projectId);
+            await _employeeService.AssignProjectToEmployeeAsync(employeeId, projectId,cancellationToken);
             return Ok("Project assigned successfully");
         }
 
         [HttpDelete("{employeeId}/projects/{projectId}")]
-        public async Task<IActionResult> RemoveProjectFromEmployee(int employeeId, int projectId)
+        public async Task<IActionResult> RemoveProjectFromEmployee(int employeeId, int projectId,CancellationToken cancellationToken)
         {
-            await _employeeService.RemoveProjectFromEmployeeAsync(employeeId, projectId);
+            await _employeeService.RemoveProjectFromEmployeeAsync(employeeId, projectId,cancellationToken);
             return Ok("Project removed successfully");
         }
     }

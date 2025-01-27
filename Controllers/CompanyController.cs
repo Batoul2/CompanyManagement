@@ -19,26 +19,26 @@ namespace DotnetAPI.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAllCompanies([FromQuery] string sortBy = "Name", [FromQuery] string sortDirection = "asc")
+        public async Task<IActionResult> GetAllCompanies(CancellationToken cancellationToken,[FromQuery] string sortBy = "Name", [FromQuery] string sortDirection = "asc")
         {
-            var companies = await _companyService.GetAllCompaniesAsync(sortBy, sortDirection);
+            var companies = await _companyService.GetAllCompaniesAsync(cancellationToken,sortBy, sortDirection);
             return Ok(companies);
         }
 
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<CompanyDto>> GetCompanyById(int id)
+        public async Task<ActionResult<CompanyDto>> GetCompanyById(int id,CancellationToken cancellationToken)
         {
-            return Ok(await _companyService.GetCompanyByIdAsync(id));
+            return Ok(await _companyService.GetCompanyByIdAsync(id,cancellationToken));
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddCompany(CompanyInputModel inputModel)
+        public async Task<IActionResult> AddCompany(CompanyInputModel inputModel,CancellationToken cancellationToken)
         {
             try
             {
                 _logger.LogInformation("Attempting to add a new company: {CompanyName}", inputModel.Name);
-                await _companyService.AddCompanyAsync(inputModel);
+                await _companyService.AddCompanyAsync(inputModel,cancellationToken);
                 _logger.LogInformation("Successfully added company: {CompanyName}", inputModel.Name);
                 return CreatedAtAction(nameof(GetCompanyById), new { id = inputModel }, inputModel);
             }
@@ -50,16 +50,16 @@ namespace DotnetAPI.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateCompany(int id, CompanyInputModel inputModel)
+        public async Task<IActionResult> UpdateCompany(int id, CompanyInputModel inputModel,CancellationToken cancellationToken)
         {
-            await _companyService.UpdateCompanyAsync(id, inputModel);
+            await _companyService.UpdateCompanyAsync(id, inputModel,cancellationToken);
             return NoContent();
         }
 
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteCompany(int id)
+        public async Task<IActionResult> DeleteCompany(int id,CancellationToken cancellationToken)
         {
-            await _companyService.DeleteCompanyAsync(id);
+            await _companyService.DeleteCompanyAsync(id,cancellationToken);
             return NoContent();
         }
     }

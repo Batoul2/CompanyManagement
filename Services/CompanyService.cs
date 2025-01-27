@@ -18,7 +18,7 @@ namespace DotnetAPI.Services
             _mapper = mapper;
         }
 
-        public async Task<IEnumerable<CompanyDto>> GetAllCompaniesAsync(string sortBy = "Name", string sortDirection = "asc")
+        public async Task<IEnumerable<CompanyDto>> GetAllCompaniesAsync(CancellationToken cancellationToken, string sortBy = "Name", string sortDirection = "asc")
         {
             // Start with a queryable of Companies
             var query = _context.Companies
@@ -35,12 +35,12 @@ namespace DotnetAPI.Services
             };
 
             // Execute the query and map the results to DTOs
-            var companies = await query.ToListAsync();
+            var companies = await query.ToListAsync(cancellationToken);
             return _mapper.Map<IEnumerable<CompanyDto>>(companies);
         }
 
 
-        public async Task<CompanyDto> GetCompanyByIdAsync(int id)
+        public async Task<CompanyDto> GetCompanyByIdAsync(int id, CancellationToken cancellationToken)
         {
             var company = await _context.Companies
                 .Include(c => c.CompanyEmployee)
@@ -52,33 +52,33 @@ namespace DotnetAPI.Services
             return _mapper.Map<CompanyDto>(company);
         }
 
-        public async Task<CompanyDto> AddCompanyAsync(CompanyInputModel inputModel)
+        public async Task<CompanyDto> AddCompanyAsync(CompanyInputModel inputModel, CancellationToken cancellationToken)
         {
             var company = _mapper.Map<Company>(inputModel);
             _context.Companies.Add(company);
-            await _context.SaveChangesAsync();
+            await _context.SaveChangesAsync(cancellationToken);
             var companyDto = _mapper.Map<CompanyDto>(company);
             return companyDto;
         }
 
-        public async Task<CompanyDto> UpdateCompanyAsync(int id, CompanyInputModel inputModel)
+        public async Task<CompanyDto> UpdateCompanyAsync(int id, CompanyInputModel inputModel, CancellationToken cancellationToken)
         {
-            var company = await _context.Companies.FindAsync(id);
+            var company = await _context.Companies.FindAsync(id, cancellationToken);
             if (company == null) throw new KeyNotFoundException("Company not found");
 
             _mapper.Map(inputModel, company);
-            await _context.SaveChangesAsync();
+            await _context.SaveChangesAsync(cancellationToken);
             var companyDto = _mapper.Map<CompanyDto>(company);
             return companyDto;
         }
 
-        public async Task<bool> DeleteCompanyAsync(int id)
+        public async Task<bool> DeleteCompanyAsync(int id, CancellationToken cancellationToken)
         {
-            var company = await _context.Companies.FindAsync(id);
+            var company = await _context.Companies.FindAsync(id, cancellationToken);
             if (company == null) throw new KeyNotFoundException("Company not found");
 
             _context.Companies.Remove(company);
-            await _context.SaveChangesAsync();
+            await _context.SaveChangesAsync(cancellationToken);
             return true;
         }
     }

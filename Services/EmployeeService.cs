@@ -44,7 +44,7 @@ namespace DotnetAPI.Services
             return _mapper.Map<EmployeeDto>(employee);
         }
 
-        public async Task<EmployeeDto>  AddEmployeeAsync(EmployeeInputModel inputModel)
+        public async Task<EmployeeDto>  AddEmployeeAsync(EmployeeInputModel inputModel, CancellationToken cancellationToken)
         {
             var employee = _mapper.Map<Employee>(inputModel);
 
@@ -67,12 +67,12 @@ namespace DotnetAPI.Services
             employee.EmployeeProject = employeeProjects;
 
             await _dbContext.Employees.AddAsync(employee);
-            await _dbContext.SaveChangesAsync();
+            await _dbContext.SaveChangesAsync(cancellationToken);
             var employeeDto = _mapper.Map<EmployeeDto>(employee);
             return employeeDto;
         }
 
-        public async Task<EmployeeDto> UpdateEmployeeAsync(int id, EmployeeInputModel inputModel)
+        public async Task<EmployeeDto> UpdateEmployeeAsync(int id, EmployeeInputModel inputModel,CancellationToken cancellationToken)
         {
             var employee = await _dbContext.Employees
                 .Include(e => e.CompanyEmployee)
@@ -101,24 +101,24 @@ namespace DotnetAPI.Services
                 EmployeeId = id
             }).ToList();
 
-            await _dbContext.SaveChangesAsync();
+            await _dbContext.SaveChangesAsync(cancellationToken);
             var employeeDto = _mapper.Map<EmployeeDto>(employee);
             return employeeDto;
         }
 
-        public async Task<bool> DeleteEmployeeAsync(int id)
+        public async Task<bool> DeleteEmployeeAsync(int id, CancellationToken cancellationToken)
         {
-            var employee = await _dbContext.Employees.FindAsync(id);
+            var employee = await _dbContext.Employees.FindAsync(id,cancellationToken);
 
             if (employee == null)
                 throw new KeyNotFoundException("Employee not found");
 
             _dbContext.Employees.Remove(employee);
-            await _dbContext.SaveChangesAsync();
+            await _dbContext.SaveChangesAsync(cancellationToken);
             return true;
         }
 
-        public async Task AssignProjectToEmployeeAsync(int employeeId, int projectId)
+        public async Task AssignProjectToEmployeeAsync(int employeeId, int projectId, CancellationToken cancellationToken)
         {
             var employee = await _dbContext.Employees.FindAsync(employeeId);
             var project = await _dbContext.Projects.FindAsync(projectId);
@@ -133,10 +133,10 @@ namespace DotnetAPI.Services
             };
 
             _dbContext.EmployeeProject.Add(employeeProject);
-            await _dbContext.SaveChangesAsync();
+            await _dbContext.SaveChangesAsync(cancellationToken);
         }
 
-        public async Task RemoveProjectFromEmployeeAsync(int employeeId, int projectId)
+        public async Task RemoveProjectFromEmployeeAsync(int employeeId, int projectId, CancellationToken cancellationToken)
         {
             var employeeProject = await _dbContext.EmployeeProject
                 .FirstOrDefaultAsync(ep => ep.EmployeeId == employeeId && ep.ProjectId == projectId);
@@ -145,7 +145,7 @@ namespace DotnetAPI.Services
                 throw new KeyNotFoundException("Employee-Project relationship not found");
 
             _dbContext.EmployeeProject.Remove(employeeProject);
-            await _dbContext.SaveChangesAsync();
+            await _dbContext.SaveChangesAsync(cancellationToken);
         }
     }
 }
