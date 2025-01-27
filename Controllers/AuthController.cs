@@ -17,14 +17,14 @@ namespace DotnetAPI.Controllers
       }
 
       [HttpPost("register")]
-      public async Task<IActionResult> Register([FromBody] RegisterUserDto model)
+      public async Task<IActionResult> Register([FromBody] RegisterUserDto model,  CancellationToken cancellationToken)
       {
           if (!ModelState.IsValid)
           {
               return BadRequest(ModelState);
           }
 
-          var result = await _authService.RegisterUserAsync(model);
+          var result = await _authService.RegisterUserAsync(model, cancellationToken);
 
           if (!result.Succeeded)
           {

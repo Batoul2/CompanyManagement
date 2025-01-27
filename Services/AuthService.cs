@@ -25,19 +25,22 @@ namespace DotnetAPI.Services
         _configuration = configuration;
         _roleManager = roleManager;
     }
-
-    public async Task<IdentityResult> RegisterUserAsync(RegisterUserDto model)
+    //performed the cancellation token here
+    public async Task<IdentityResult> RegisterUserAsync(RegisterUserDto model, CancellationToken cancellationToken)
     {
         if (model.Password != model.ConfirmPassword)
         {
             return IdentityResult.Failed(new IdentityError { Description = "Passwords do not match." });
         }
 
+        cancellationToken.ThrowIfCancellationRequested();
+
         var existingUser = await _userManager.FindByEmailAsync(model.Email);
         if (existingUser != null)
         {
             return IdentityResult.Failed(new IdentityError { Description = "Email is already taken." });
         }
+        cancellationToken.ThrowIfCancellationRequested();
 
         var user = new ApplicationUser
         {
