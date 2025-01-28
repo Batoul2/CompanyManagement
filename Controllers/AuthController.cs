@@ -64,16 +64,6 @@ namespace DotnetAPI.Controllers
 
             var result = await _authService.AssignRoleToUserAsync(model.Username, model.Role, cancellationToken);
 
-            if (result.Contains("Error"))
-            {
-                return StatusCode(500, result); 
-            }
-
-            if (result.Contains("not found"))
-            {
-                return NotFound(result); 
-            }
-
             return Ok(result); 
         }
 

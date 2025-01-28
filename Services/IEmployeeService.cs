@@ -12,7 +12,7 @@ namespace DotnetAPI.Services
         Task<bool> DeleteEmployeeAsync(int id, CancellationToken cancellationToken);
 
         Task AssignProjectToEmployeeAsync(int employeeId, int projectId, CancellationToken cancellationToken);
-        Task RemoveProjectFromEmployeeAsync(int employeeId, int projectId, CancellationToken cancellationToken);
+        Task<bool> RemoveProjectFromEmployeeAsync(int employeeId, int projectId, CancellationToken cancellationToken);
     }
 
 }

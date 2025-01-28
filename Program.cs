@@ -67,23 +67,24 @@ builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options =>
     .AddEntityFrameworkStores<CompanyDbContext>()
     .AddDefaultTokenProviders();
 
+
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
     {
-#pragma warning disable CS8604 // Possible null reference argument.
         options.TokenValidationParameters = new TokenValidationParameters
         {
             ValidateIssuer = true,
             ValidateAudience = true,
             ValidateLifetime = true,
             ValidateIssuerSigningKey = true,
-            ValidIssuer = builder.Configuration["Jwt:Issuer"],
-            ValidAudience = builder.Configuration["Jwt:Audience"],
-            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:SecretKey"])),
-            RoleClaimType = ClaimTypes.Role
+            ValidIssuer = "CompanyManagement",
+            ValidAudience = "YourAudienceName",
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("iJg8kQIYL/QP1uRpT1lBukwi3mltJroPNGJVQ4XqYEdtqDxcKj/0egZU+gLBe9jd"))
         };
-#pragma warning restore CS8604 // Possible null reference argument.
-});
+    });
+
+builder.Services.AddAuthorization();
+
 
 
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));

@@ -4245,3 +4245,573 @@ RolesAuthorizationRequirement:User.IsInRole must be true for one of the followin
 2025-01-28 09:24:37.2344 Info Request starting HTTP/1.1 GET http://localhost:5292/Account/Login?ReturnUrl=%2Fapi%2FCompany - - - 
 2025-01-28 09:24:37.2344 Info Request finished HTTP/1.1 GET http://localhost:5292/Account/Login?ReturnUrl=%2Fapi%2FCompany - 404 0 - 15.5636ms 
 2025-01-28 09:24:37.2344 Info Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5292/Account/Login, Response status code: 404 
+2025-01-28 10:07:03.2484 Info Executed DbCommand (59ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-01-28 10:07:03.3523 Info Executed DbCommand (4ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-01-28 10:07:03.3523 Info Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-01-28 10:07:03.4764 Info User profile is available. Using 'C:\Users\hp\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest. 
+2025-01-28 10:07:03.5448 Info Now listening on: http://localhost:5292 
+2025-01-28 10:07:03.5448 Info Application started. Press Ctrl+C to shut down. 
+2025-01-28 10:07:03.5448 Info Hosting environment: Development 
+2025-01-28 10:07:03.5448 Info Content root path: C:\Users\hp\CompanyManagement\CompanyManagement 
+2025-01-28 10:07:03.6270 Info Request starting HTTP/1.1 GET http://localhost:5292/index.html - - - 
+2025-01-28 10:07:03.6344 Warn Failed to determine the https port for redirect. 
+2025-01-28 10:07:03.7270 Info Request finished HTTP/1.1 GET http://localhost:5292/index.html - 200 - text/html;charset=utf-8 99.2471ms 
+2025-01-28 10:07:03.7582 Info Request starting HTTP/1.1 GET http://localhost:5292/index.js - - - 
+2025-01-28 10:07:03.7582 Info Request starting HTTP/1.1 GET http://localhost:5292/_framework/aspnetcore-browser-refresh.js - - - 
+2025-01-28 10:07:03.7582 Info Request finished HTTP/1.1 GET http://localhost:5292/_framework/aspnetcore-browser-refresh.js - 200 13748 application/javascript;+charset=utf-8 1.3719ms 
+2025-01-28 10:07:03.7582 Info Request finished HTTP/1.1 GET http://localhost:5292/index.js - 200 - application/javascript;charset=utf-8 1.9922ms 
+2025-01-28 10:07:03.9678 Info Request starting HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - - - 
+2025-01-28 10:07:04.0627 Info Request finished HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - 200 - application/json;charset=utf-8 95.0568ms 
+2025-01-28 10:07:18.5440 Info Request starting HTTP/1.1 POST http://localhost:5292/api/Auth/login - application/json 52 
+2025-01-28 10:07:18.5440 Info CORS policy execution successful. 
+2025-01-28 10:07:18.5828 Info Executing endpoint 'DotnetAPI.Controllers.AuthController.Login (CompanyManagement)' 
+2025-01-28 10:07:18.6009 Info Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(DotnetAPI.DTOs.LoginUserDto, System.Threading.CancellationToken) on controller DotnetAPI.Controllers.AuthController (CompanyManagement). 
+2025-01-28 10:07:18.7127 Info Executed DbCommand (5ms) [Parameters=[@__normalizedUserName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."Email", a."EmailConfirmed", a."LockoutEnabled", a."LockoutEnd", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."SecurityStamp", a."TwoFactorEnabled", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."NormalizedUserName" = @__normalizedUserName_0
+LIMIT 1 
+2025-01-28 10:07:18.8787 Info Executed DbCommand (4ms) [Parameters=[@__userId_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a0."Name"
+FROM "AspNetUserRoles" AS a
+INNER JOIN "AspNetRoles" AS a0 ON a."RoleId" = a0."Id"
+WHERE a."UserId" = @__userId_0 
+2025-01-28 10:07:18.9095 Info Executing OkObjectResult, writing value of type '<>f__AnonymousType1`1[[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'. 
+2025-01-28 10:07:18.9262 Info Executed action DotnetAPI.Controllers.AuthController.Login (CompanyManagement) in 320.0066ms 
+2025-01-28 10:07:18.9262 Info Executed endpoint 'DotnetAPI.Controllers.AuthController.Login (CompanyManagement)' 
+2025-01-28 10:07:18.9262 Info Request finished HTTP/1.1 POST http://localhost:5292/api/Auth/login - 200 - application/json;+charset=utf-8 387.2847ms 
+2025-01-28 10:09:52.5556 Info Request starting HTTP/1.1 GET http://localhost:5292/index.html - - - 
+2025-01-28 10:09:52.5556 Info Request finished HTTP/1.1 GET http://localhost:5292/index.html - 200 - text/html;charset=utf-8 0.8686ms 
+2025-01-28 10:09:52.5845 Info Request starting HTTP/1.1 GET http://localhost:5292/index.js - - - 
+2025-01-28 10:09:52.5845 Info Request starting HTTP/1.1 GET http://localhost:5292/_framework/aspnetcore-browser-refresh.js - - - 
+2025-01-28 10:09:52.5845 Info Request finished HTTP/1.1 GET http://localhost:5292/index.js - 200 - application/javascript;charset=utf-8 0.4926ms 
+2025-01-28 10:09:52.5845 Info Request finished HTTP/1.1 GET http://localhost:5292/_framework/aspnetcore-browser-refresh.js - 200 13748 application/javascript;+charset=utf-8 0.7419ms 
+2025-01-28 10:09:52.7921 Info Request starting HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - - - 
+2025-01-28 10:09:52.8168 Info Request finished HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - 200 - application/json;charset=utf-8 24.7517ms 
+2025-01-28 10:18:52.3160 Info Request starting HTTP/1.1 GET http://localhost:5292/index.html - - - 
+2025-01-28 10:18:52.3160 Info Request finished HTTP/1.1 GET http://localhost:5292/index.html - 200 - text/html;charset=utf-8 5.5224ms 
+2025-01-28 10:18:52.3501 Info Request starting HTTP/1.1 GET http://localhost:5292/_framework/aspnetcore-browser-refresh.js - - - 
+2025-01-28 10:18:52.3501 Info Request starting HTTP/1.1 GET http://localhost:5292/index.js - - - 
+2025-01-28 10:18:52.3501 Info Request finished HTTP/1.1 GET http://localhost:5292/_framework/aspnetcore-browser-refresh.js - 200 13748 application/javascript;+charset=utf-8 0.7702ms 
+2025-01-28 10:18:52.3501 Info Request finished HTTP/1.1 GET http://localhost:5292/index.js - 200 - application/javascript;charset=utf-8 1.5186ms 
+2025-01-28 10:18:52.5518 Info Request starting HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - - - 
+2025-01-28 10:18:52.5837 Info Request finished HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - 200 - application/json;charset=utf-8 31.9556ms 
+2025-01-28 10:19:24.4106 Info Request starting HTTP/1.1 GET http://localhost:5292/index.html - - - 
+2025-01-28 10:19:24.4106 Info Request finished HTTP/1.1 GET http://localhost:5292/index.html - 200 - text/html;charset=utf-8 1.5374ms 
+2025-01-28 10:19:24.4373 Info Request starting HTTP/1.1 GET http://localhost:5292/index.js - - - 
+2025-01-28 10:19:24.4373 Info Request starting HTTP/1.1 GET http://localhost:5292/_framework/aspnetcore-browser-refresh.js - - - 
+2025-01-28 10:19:24.4373 Info Request finished HTTP/1.1 GET http://localhost:5292/index.js - 200 - application/javascript;charset=utf-8 0.8278ms 
+2025-01-28 10:19:24.4373 Info Request finished HTTP/1.1 GET http://localhost:5292/_framework/aspnetcore-browser-refresh.js - 200 13748 application/javascript;+charset=utf-8 0.5497ms 
+2025-01-28 10:19:24.6369 Info Request starting HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - - - 
+2025-01-28 10:19:24.6628 Info Request finished HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - 200 - application/json;charset=utf-8 25.8298ms 
+2025-01-28 10:24:40.8258 Info Request starting HTTP/1.1 GET http://localhost:5292/index.html - - - 
+2025-01-28 10:24:40.8377 Info Request finished HTTP/1.1 GET http://localhost:5292/index.html - 200 - text/html;charset=utf-8 11.6817ms 
+2025-01-28 10:24:40.8632 Info Request starting HTTP/1.1 GET http://localhost:5292/_framework/aspnetcore-browser-refresh.js - - - 
+2025-01-28 10:24:40.8632 Info Request starting HTTP/1.1 GET http://localhost:5292/index.js - - - 
+2025-01-28 10:24:40.8632 Info Request finished HTTP/1.1 GET http://localhost:5292/index.js - 200 - application/javascript;charset=utf-8 1.1323ms 
+2025-01-28 10:24:40.8632 Info Request finished HTTP/1.1 GET http://localhost:5292/_framework/aspnetcore-browser-refresh.js - 200 13748 application/javascript;+charset=utf-8 2.6718ms 
+2025-01-28 10:24:41.0164 Info Request starting HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - - - 
+2025-01-28 10:24:41.0734 Info Request finished HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - 200 - application/json;charset=utf-8 56.9982ms 
+2025-01-28 10:24:59.2667 Info Executed DbCommand (55ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-01-28 10:24:59.3528 Info Executed DbCommand (3ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-01-28 10:24:59.3528 Info Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-01-28 10:24:59.4304 Info User profile is available. Using 'C:\Users\hp\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest. 
+2025-01-28 10:24:59.4801 Info Now listening on: http://localhost:5292 
+2025-01-28 10:24:59.4801 Info Application started. Press Ctrl+C to shut down. 
+2025-01-28 10:24:59.4801 Info Hosting environment: Development 
+2025-01-28 10:24:59.4801 Info Content root path: C:\Users\hp\CompanyManagement\CompanyManagement 
+2025-01-28 10:25:14.7583 Info Request starting HTTP/1.1 GET http://localhost:5292/index.html - - - 
+2025-01-28 10:25:14.7715 Warn Failed to determine the https port for redirect. 
+2025-01-28 10:25:14.8989 Info Request starting HTTP/1.1 GET http://localhost:5292/index.js - - - 
+2025-01-28 10:25:14.8989 Info Request finished HTTP/1.1 GET http://localhost:5292/index.html - 200 - text/html;charset=utf-8 138.3906ms 
+2025-01-28 10:25:14.8989 Info Request starting HTTP/1.1 GET http://localhost:5292/_framework/aspnetcore-browser-refresh.js - - - 
+2025-01-28 10:25:14.8989 Info Request finished HTTP/1.1 GET http://localhost:5292/index.js - 200 - application/javascript;charset=utf-8 3.1216ms 
+2025-01-28 10:25:14.8989 Info Request finished HTTP/1.1 GET http://localhost:5292/_framework/aspnetcore-browser-refresh.js - 200 13748 application/javascript;+charset=utf-8 3.4093ms 
+2025-01-28 10:25:14.9550 Info Request starting HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - - - 
+2025-01-28 10:25:15.0686 Info Request finished HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - 200 - application/json;charset=utf-8 113.3670ms 
+2025-01-28 10:25:26.1936 Info Request starting HTTP/1.1 GET http://localhost:5292/api/Project?title=game - - - 
+2025-01-28 10:25:26.2282 Info Executing endpoint 'DotnetAPI.Controllers.ProjectController.GetFilteredProjects (CompanyManagement)' 
+2025-01-28 10:25:26.2483 Info Route matched with {action = "GetFilteredProjects", controller = "Project"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetFilteredProjects(System.String, System.Threading.CancellationToken) on controller DotnetAPI.Controllers.ProjectController (CompanyManagement). 
+2025-01-28 10:25:26.3934 Info Executed DbCommand (4ms) [Parameters=[@__title_0_contains='?'], CommandType='Text', CommandTimeout='30']
+SELECT p."Id", p."Duration", p."Title"
+FROM "Projects" AS p
+WHERE p."Title" LIKE @__title_0_contains 
+2025-01-28 10:25:26.3934 Info Executing OkObjectResult, writing value of type 'DotnetAPI.Models.Project[]'. 
+2025-01-28 10:25:26.4244 Info Executed action DotnetAPI.Controllers.ProjectController.GetFilteredProjects (CompanyManagement) in 172.8903ms 
+2025-01-28 10:25:26.4244 Info Executed endpoint 'DotnetAPI.Controllers.ProjectController.GetFilteredProjects (CompanyManagement)' 
+2025-01-28 10:25:26.4244 Info Request finished HTTP/1.1 GET http://localhost:5292/api/Project?title=game - 200 - application/json;+charset=utf-8 233.9218ms 
+2025-01-28 10:28:04.2350 Info Request starting HTTP/1.1 GET http://localhost:5292/api/Project/5 - - - 
+2025-01-28 10:28:04.2350 Info Executing endpoint 'DotnetAPI.Controllers.ProjectController.GetProjectById (CompanyManagement)' 
+2025-01-28 10:28:04.2350 Info Route matched with {action = "GetProjectById", controller = "Project"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[DotnetAPI.DTOs.ProjectDto]] GetProjectById(Int32) on controller DotnetAPI.Controllers.ProjectController (CompanyManagement). 
+2025-01-28 10:28:04.4384 Info Executed DbCommand (11ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT p0."Id", p0."Duration", p0."Title", s."EmployeeId", s."ProjectId", s."Id", s."FullName", s."Position"
+FROM (
+    SELECT p."Id", p."Duration", p."Title"
+    FROM "Projects" AS p
+    WHERE p."Id" = @__id_0
+    LIMIT 1
+) AS p0
+LEFT JOIN (
+    SELECT e."EmployeeId", e."ProjectId", e0."Id", e0."FullName", e0."Position"
+    FROM "EmployeeProject" AS e
+    INNER JOIN "Employees" AS e0 ON e."EmployeeId" = e0."Id"
+) AS s ON p0."Id" = s."ProjectId"
+ORDER BY p0."Id", s."EmployeeId", s."ProjectId" 
+2025-01-28 10:28:04.4452 Info Executed action DotnetAPI.Controllers.ProjectController.GetProjectById (CompanyManagement) in 195.3136ms 
+2025-01-28 10:28:04.4452 Info Executed endpoint 'DotnetAPI.Controllers.ProjectController.GetProjectById (CompanyManagement)' 
+2025-01-28 10:28:04.4624 Info Request finished HTTP/1.1 GET http://localhost:5292/api/Project/5 - 404 - application/json 227.4032ms 
+2025-01-28 10:28:39.0411 Info Request starting HTTP/1.1 GET http://localhost:5292/index.html - - - 
+2025-01-28 10:28:39.0411 Info Request finished HTTP/1.1 GET http://localhost:5292/index.html - 200 - text/html;charset=utf-8 2.9986ms 
+2025-01-28 10:28:39.0684 Info Request starting HTTP/1.1 GET http://localhost:5292/_framework/aspnetcore-browser-refresh.js - - - 
+2025-01-28 10:28:39.0684 Info Request starting HTTP/1.1 GET http://localhost:5292/index.js - - - 
+2025-01-28 10:28:39.0684 Info Request finished HTTP/1.1 GET http://localhost:5292/_framework/aspnetcore-browser-refresh.js - 200 13748 application/javascript;+charset=utf-8 0.8638ms 
+2025-01-28 10:28:39.0684 Info Request finished HTTP/1.1 GET http://localhost:5292/index.js - 200 - application/javascript;charset=utf-8 1.0495ms 
+2025-01-28 10:28:39.2334 Info Request starting HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - - - 
+2025-01-28 10:28:39.2579 Info Request finished HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - 200 - application/json;charset=utf-8 24.4405ms 
+2025-01-28 10:28:43.5136 Info Request starting HTTP/1.1 GET http://localhost:5292/index.html - - - 
+2025-01-28 10:28:43.5157 Info Request finished HTTP/1.1 GET http://localhost:5292/index.html - 200 - text/html;charset=utf-8 1.7389ms 
+2025-01-28 10:28:43.5157 Info Request starting HTTP/1.1 GET http://localhost:5292/_framework/aspnetcore-browser-refresh.js - - - 
+2025-01-28 10:28:43.5157 Info Request starting HTTP/1.1 GET http://localhost:5292/index.js - - - 
+2025-01-28 10:28:43.5157 Info Request finished HTTP/1.1 GET http://localhost:5292/_framework/aspnetcore-browser-refresh.js - 200 13748 application/javascript;+charset=utf-8 0.3766ms 
+2025-01-28 10:28:43.5157 Info Request finished HTTP/1.1 GET http://localhost:5292/index.js - 200 - application/javascript;charset=utf-8 0.8687ms 
+2025-01-28 10:28:43.6117 Info Request starting HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - - - 
+2025-01-28 10:28:43.6380 Info Request finished HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - 200 - application/json;charset=utf-8 26.2450ms 
+2025-01-28 10:28:53.1207 Info Request starting HTTP/1.1 GET http://localhost:5292/api/Project/5 - - - 
+2025-01-28 10:28:53.1207 Info Executing endpoint 'DotnetAPI.Controllers.ProjectController.GetProjectById (CompanyManagement)' 
+2025-01-28 10:28:53.1207 Info Route matched with {action = "GetProjectById", controller = "Project"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[DotnetAPI.DTOs.ProjectDto]] GetProjectById(Int32) on controller DotnetAPI.Controllers.ProjectController (CompanyManagement). 
+2025-01-28 10:28:53.1427 Info Executed DbCommand (2ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT p0."Id", p0."Duration", p0."Title", s."EmployeeId", s."ProjectId", s."Id", s."FullName", s."Position"
+FROM (
+    SELECT p."Id", p."Duration", p."Title"
+    FROM "Projects" AS p
+    WHERE p."Id" = @__id_0
+    LIMIT 1
+) AS p0
+LEFT JOIN (
+    SELECT e."EmployeeId", e."ProjectId", e0."Id", e0."FullName", e0."Position"
+    FROM "EmployeeProject" AS e
+    INNER JOIN "Employees" AS e0 ON e."EmployeeId" = e0."Id"
+) AS s ON p0."Id" = s."ProjectId"
+ORDER BY p0."Id", s."EmployeeId", s."ProjectId" 
+2025-01-28 10:28:53.1427 Info Executed action DotnetAPI.Controllers.ProjectController.GetProjectById (CompanyManagement) in 11.4224ms 
+2025-01-28 10:28:53.1427 Info Executed endpoint 'DotnetAPI.Controllers.ProjectController.GetProjectById (CompanyManagement)' 
+2025-01-28 10:28:53.1427 Info Request finished HTTP/1.1 GET http://localhost:5292/api/Project/5 - 404 - application/json 25.6317ms 
+2025-01-28 10:29:10.3282 Info Executed DbCommand (33ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-01-28 10:29:10.3982 Info Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-01-28 10:29:10.3982 Info Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-01-28 10:29:10.4556 Info User profile is available. Using 'C:\Users\hp\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest. 
+2025-01-28 10:29:10.5063 Info Now listening on: http://localhost:5292 
+2025-01-28 10:29:10.5063 Info Application started. Press Ctrl+C to shut down. 
+2025-01-28 10:29:10.5063 Info Hosting environment: Development 
+2025-01-28 10:29:10.5063 Info Content root path: C:\Users\hp\CompanyManagement\CompanyManagement 
+2025-01-28 10:29:11.3870 Info Request starting HTTP/1.1 GET http://localhost:5292/index.html - - - 
+2025-01-28 10:29:11.3946 Warn Failed to determine the https port for redirect. 
+2025-01-28 10:29:11.4732 Info Request finished HTTP/1.1 GET http://localhost:5292/index.html - 200 - text/html;charset=utf-8 83.6889ms 
+2025-01-28 10:29:11.4732 Info Request starting HTTP/1.1 GET http://localhost:5292/index.js - - - 
+2025-01-28 10:29:11.4732 Info Request starting HTTP/1.1 GET http://localhost:5292/_framework/aspnetcore-browser-refresh.js - - - 
+2025-01-28 10:29:11.4732 Info Request finished HTTP/1.1 GET http://localhost:5292/index.js - 200 - application/javascript;charset=utf-8 2.1553ms 
+2025-01-28 10:29:11.4732 Info Request finished HTTP/1.1 GET http://localhost:5292/_framework/aspnetcore-browser-refresh.js - 200 13748 application/javascript;+charset=utf-8 2.1078ms 
+2025-01-28 10:29:11.5426 Info Request starting HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - - - 
+2025-01-28 10:29:11.6328 Info Request finished HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - 200 - application/json;charset=utf-8 90.2252ms 
+2025-01-28 10:29:18.9161 Info Request starting HTTP/1.1 GET http://localhost:5292/api/Project/5 - - - 
+2025-01-28 10:29:18.9496 Info Executing endpoint 'DotnetAPI.Controllers.ProjectController.GetProjectById (CompanyManagement)' 
+2025-01-28 10:29:18.9652 Info Route matched with {action = "GetProjectById", controller = "Project"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[DotnetAPI.DTOs.ProjectDto]] GetProjectById(Int32) on controller DotnetAPI.Controllers.ProjectController (CompanyManagement). 
+2025-01-28 10:29:19.1727 Info Executed DbCommand (6ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT p0."Id", p0."Duration", p0."Title", s."EmployeeId", s."ProjectId", s."Id", s."FullName", s."Position"
+FROM (
+    SELECT p."Id", p."Duration", p."Title"
+    FROM "Projects" AS p
+    WHERE p."Id" = @__id_0
+    LIMIT 1
+) AS p0
+LEFT JOIN (
+    SELECT e."EmployeeId", e."ProjectId", e0."Id", e0."FullName", e0."Position"
+    FROM "EmployeeProject" AS e
+    INNER JOIN "Employees" AS e0 ON e."EmployeeId" = e0."Id"
+) AS s ON p0."Id" = s."ProjectId"
+ORDER BY p0."Id", s."EmployeeId", s."ProjectId" 
+2025-01-28 10:29:19.1816 Info Executed action DotnetAPI.Controllers.ProjectController.GetProjectById (CompanyManagement) in 212.2602ms 
+2025-01-28 10:29:19.1816 Info Executed endpoint 'DotnetAPI.Controllers.ProjectController.GetProjectById (CompanyManagement)' 
+2025-01-28 10:29:19.1984 Info Request finished HTTP/1.1 GET http://localhost:5292/api/Project/5 - 404 - application/json 282.2919ms 
+2025-01-28 10:29:38.9209 Info Request starting HTTP/1.1 GET http://localhost:5292/api/Project/4 - - - 
+2025-01-28 10:29:38.9271 Info Executing endpoint 'DotnetAPI.Controllers.ProjectController.GetProjectById (CompanyManagement)' 
+2025-01-28 10:29:38.9271 Info Route matched with {action = "GetProjectById", controller = "Project"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[DotnetAPI.DTOs.ProjectDto]] GetProjectById(Int32) on controller DotnetAPI.Controllers.ProjectController (CompanyManagement). 
+2025-01-28 10:29:38.9591 Info Executed DbCommand (4ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT p0."Id", p0."Duration", p0."Title", s."EmployeeId", s."ProjectId", s."Id", s."FullName", s."Position"
+FROM (
+    SELECT p."Id", p."Duration", p."Title"
+    FROM "Projects" AS p
+    WHERE p."Id" = @__id_0
+    LIMIT 1
+) AS p0
+LEFT JOIN (
+    SELECT e."EmployeeId", e."ProjectId", e0."Id", e0."FullName", e0."Position"
+    FROM "EmployeeProject" AS e
+    INNER JOIN "Employees" AS e0 ON e."EmployeeId" = e0."Id"
+) AS s ON p0."Id" = s."ProjectId"
+ORDER BY p0."Id", s."EmployeeId", s."ProjectId" 
+2025-01-28 10:29:39.0316 Info Executing OkObjectResult, writing value of type 'DotnetAPI.DTOs.ProjectDto'. 
+2025-01-28 10:29:39.0469 Info Executed action DotnetAPI.Controllers.ProjectController.GetProjectById (CompanyManagement) in 119.3874ms 
+2025-01-28 10:29:39.0469 Info Executed endpoint 'DotnetAPI.Controllers.ProjectController.GetProjectById (CompanyManagement)' 
+2025-01-28 10:29:39.0469 Info Request finished HTTP/1.1 GET http://localhost:5292/api/Project/4 - 200 - application/json;+charset=utf-8 126.4560ms 
+2025-01-28 10:32:44.5416 Info Request starting HTTP/1.1 PUT http://localhost:5292/api/Project/4 - application/json 44 
+2025-01-28 10:32:44.5416 Info CORS policy execution successful. 
+2025-01-28 10:32:44.5544 Info Executing endpoint 'DotnetAPI.Controllers.ProjectController.UpdateProject (CompanyManagement)' 
+2025-01-28 10:32:44.5720 Info Route matched with {action = "UpdateProject", controller = "Project"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] UpdateProject(Int32, DotnetAPI.InputModels.ProjectInputModel, System.Threading.CancellationToken) on controller DotnetAPI.Controllers.ProjectController (CompanyManagement). 
+2025-01-28 10:32:44.6214 Info Executed DbCommand (3ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT p."Id", p."Duration", p."Title"
+FROM "Projects" AS p
+WHERE p."Id" = @__p_0
+LIMIT 1 
+2025-01-28 10:32:44.7202 Info Executed DbCommand (13ms) [Parameters=[@p2='?' (DbType = Int32), @p0='?' (DbType = Object), @p1='?'], CommandType='Text', CommandTimeout='30']
+UPDATE "Projects" SET "Duration" = @p0, "Title" = @p1
+WHERE "Id" = @p2; 
+2025-01-28 10:32:44.7418 Info Executing StatusCodeResult, setting HTTP status code 204 
+2025-01-28 10:32:44.7418 Info Executed action DotnetAPI.Controllers.ProjectController.UpdateProject (CompanyManagement) in 169.8736ms 
+2025-01-28 10:32:44.7418 Info Executed endpoint 'DotnetAPI.Controllers.ProjectController.UpdateProject (CompanyManagement)' 
+2025-01-28 10:32:44.7418 Info Request finished HTTP/1.1 PUT http://localhost:5292/api/Project/4 - 204 - - 201.4671ms 
+2025-01-28 10:33:32.0860 Info Request starting HTTP/1.1 POST http://localhost:5292/api/Project - application/json 42 
+2025-01-28 10:33:32.0860 Info CORS policy execution successful. 
+2025-01-28 10:33:32.0860 Info Executing endpoint 'DotnetAPI.Controllers.ProjectController.AddProject (CompanyManagement)' 
+2025-01-28 10:33:32.0860 Info Route matched with {action = "AddProject", controller = "Project"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddProject(DotnetAPI.InputModels.ProjectInputModel, System.Threading.CancellationToken) on controller DotnetAPI.Controllers.ProjectController (CompanyManagement). 
+2025-01-28 10:33:32.1541 Info Executed DbCommand (9ms) [Parameters=[@p0='?' (DbType = Object), @p1='?'], CommandType='Text', CommandTimeout='30']
+INSERT INTO "Projects" ("Duration", "Title")
+VALUES (@p0, @p1)
+RETURNING "Id"; 
+2025-01-28 10:33:32.1775 Info Executing CreatedAtActionResult, writing value of type 'DotnetAPI.InputModels.ProjectInputModel'. 
+2025-01-28 10:33:32.2072 Info Executed action DotnetAPI.Controllers.ProjectController.AddProject (CompanyManagement) in 113.4488ms 
+2025-01-28 10:33:32.2072 Info Executed endpoint 'DotnetAPI.Controllers.ProjectController.AddProject (CompanyManagement)' 
+2025-01-28 10:33:32.2072 Info Request finished HTTP/1.1 POST http://localhost:5292/api/Project - 201 - application/json;+charset=utf-8 121.4785ms 
+2025-01-28 10:36:34.5201 Info Request starting HTTP/1.1 PUT http://localhost:5292/api/Project/6 - application/json 44 
+2025-01-28 10:36:34.5201 Info CORS policy execution successful. 
+2025-01-28 10:36:34.5201 Info Executing endpoint 'DotnetAPI.Controllers.ProjectController.UpdateProject (CompanyManagement)' 
+2025-01-28 10:36:34.5201 Info Route matched with {action = "UpdateProject", controller = "Project"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] UpdateProject(Int32, DotnetAPI.InputModels.ProjectInputModel, System.Threading.CancellationToken) on controller DotnetAPI.Controllers.ProjectController (CompanyManagement). 
+2025-01-28 10:36:34.5807 Info Executed DbCommand (4ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT p."Id", p."Duration", p."Title"
+FROM "Projects" AS p
+WHERE p."Id" = @__p_0
+LIMIT 1 
+2025-01-28 10:36:34.5864 Info Executed action DotnetAPI.Controllers.ProjectController.UpdateProject (CompanyManagement) in 64.7627ms 
+2025-01-28 10:36:34.5864 Info Executed endpoint 'DotnetAPI.Controllers.ProjectController.UpdateProject (CompanyManagement)' 
+2025-01-28 10:36:34.5864 Info Request finished HTTP/1.1 PUT http://localhost:5292/api/Project/6 - 404 - application/json 70.4103ms 
+2025-01-28 10:38:04.5802 Info Request starting HTTP/1.1 GET http://localhost:5292/index.html - - - 
+2025-01-28 10:38:04.5949 Info Request finished HTTP/1.1 GET http://localhost:5292/index.html - 200 - text/html;charset=utf-8 14.6485ms 
+2025-01-28 10:38:04.6209 Info Request starting HTTP/1.1 GET http://localhost:5292/index.js - - - 
+2025-01-28 10:38:04.6209 Info Request starting HTTP/1.1 GET http://localhost:5292/_framework/aspnetcore-browser-refresh.js - - - 
+2025-01-28 10:38:04.6209 Info Request finished HTTP/1.1 GET http://localhost:5292/index.js - 200 - application/javascript;charset=utf-8 1.2282ms 
+2025-01-28 10:38:04.6209 Info Request finished HTTP/1.1 GET http://localhost:5292/_framework/aspnetcore-browser-refresh.js - 200 13748 application/javascript;+charset=utf-8 1.3144ms 
+2025-01-28 10:38:04.8036 Info Request starting HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - - - 
+2025-01-28 10:38:04.9752 Info Request finished HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - 200 - application/json;charset=utf-8 171.6248ms 
+2025-01-28 10:38:06.2443 Info Request starting HTTP/1.1 GET http://localhost:5292/index.html - - - 
+2025-01-28 10:38:06.2443 Info Request finished HTTP/1.1 GET http://localhost:5292/index.html - 200 - text/html;charset=utf-8 1.5564ms 
+2025-01-28 10:38:06.2605 Info Request starting HTTP/1.1 GET http://localhost:5292/_framework/aspnetcore-browser-refresh.js - - - 
+2025-01-28 10:38:06.2605 Info Request starting HTTP/1.1 GET http://localhost:5292/index.js - - - 
+2025-01-28 10:38:06.2605 Info Request finished HTTP/1.1 GET http://localhost:5292/_framework/aspnetcore-browser-refresh.js - 200 13748 application/javascript;+charset=utf-8 0.5248ms 
+2025-01-28 10:38:06.2605 Info Request finished HTTP/1.1 GET http://localhost:5292/index.js - 200 - application/javascript;charset=utf-8 1.6326ms 
+2025-01-28 10:38:06.3388 Info Request starting HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - - - 
+2025-01-28 10:38:06.3599 Info Request finished HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - 200 - application/json;charset=utf-8 21.0584ms 
+2025-01-28 10:38:33.2901 Info Request starting HTTP/1.1 PUT http://localhost:5292/api/Project/5 - application/json 46 
+2025-01-28 10:38:33.2901 Info CORS policy execution successful. 
+2025-01-28 10:38:33.2901 Info Executing endpoint 'DotnetAPI.Controllers.ProjectController.UpdateProject (CompanyManagement)' 
+2025-01-28 10:38:33.2901 Info Route matched with {action = "UpdateProject", controller = "Project"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] UpdateProject(Int32, DotnetAPI.InputModels.ProjectInputModel, System.Threading.CancellationToken) on controller DotnetAPI.Controllers.ProjectController (CompanyManagement). 
+2025-01-28 10:38:33.2977 Info Executed DbCommand (2ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT p."Id", p."Duration", p."Title"
+FROM "Projects" AS p
+WHERE p."Id" = @__p_0
+LIMIT 1 
+2025-01-28 10:38:33.2977 Info Executed DbCommand (8ms) [Parameters=[@p1='?' (DbType = Int32), @p0='?'], CommandType='Text', CommandTimeout='30']
+UPDATE "Projects" SET "Title" = @p0
+WHERE "Id" = @p1; 
+2025-01-28 10:38:33.2977 Info Executing StatusCodeResult, setting HTTP status code 204 
+2025-01-28 10:38:33.2977 Info Executed action DotnetAPI.Controllers.ProjectController.UpdateProject (CompanyManagement) in 18.5286ms 
+2025-01-28 10:38:33.2977 Info Executed endpoint 'DotnetAPI.Controllers.ProjectController.UpdateProject (CompanyManagement)' 
+2025-01-28 10:38:33.2977 Info Request finished HTTP/1.1 PUT http://localhost:5292/api/Project/5 - 204 - - 20.1659ms 
+2025-01-28 10:41:15.7974 Info Request starting HTTP/1.1 GET http://localhost:5292/index.html - - - 
+2025-01-28 10:41:15.7974 Info Request finished HTTP/1.1 GET http://localhost:5292/index.html - 200 - text/html;charset=utf-8 3.8725ms 
+2025-01-28 10:41:15.8322 Info Request starting HTTP/1.1 GET http://localhost:5292/index.js - - - 
+2025-01-28 10:41:15.8322 Info Request starting HTTP/1.1 GET http://localhost:5292/_framework/aspnetcore-browser-refresh.js - - - 
+2025-01-28 10:41:15.8322 Info Request finished HTTP/1.1 GET http://localhost:5292/index.js - 200 - application/javascript;charset=utf-8 1.0557ms 
+2025-01-28 10:41:15.8322 Info Request finished HTTP/1.1 GET http://localhost:5292/_framework/aspnetcore-browser-refresh.js - 200 13748 application/javascript;+charset=utf-8 0.8001ms 
+2025-01-28 10:41:16.0380 Info Request starting HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - - - 
+2025-01-28 10:41:16.0593 Info Request finished HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - 200 - application/json;charset=utf-8 21.2970ms 
+2025-01-28 10:41:36.1480 Info Request starting HTTP/1.1 GET http://localhost:5292/index.html - - - 
+2025-01-28 10:41:36.5905 Info Request finished HTTP/1.1 GET http://localhost:5292/index.html - 200 - text/html;charset=utf-8 442.4842ms 
+2025-01-28 10:41:36.6021 Info Request starting HTTP/1.1 GET http://localhost:5292/index.js - - - 
+2025-01-28 10:41:36.6021 Info Request finished HTTP/1.1 GET http://localhost:5292/index.js - 200 - application/javascript;charset=utf-8 0.4482ms 
+2025-01-28 10:41:36.6021 Info Request starting HTTP/1.1 GET http://localhost:5292/_framework/aspnetcore-browser-refresh.js - - - 
+2025-01-28 10:41:36.6021 Info Request finished HTTP/1.1 GET http://localhost:5292/_framework/aspnetcore-browser-refresh.js - 200 13748 application/javascript;+charset=utf-8 0.1184ms 
+2025-01-28 10:41:36.7109 Info Request starting HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - - - 
+2025-01-28 10:41:36.7248 Info Request finished HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - 200 - application/json;charset=utf-8 13.9003ms 
+2025-01-28 10:41:51.0142 Info Executed DbCommand (47ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-01-28 10:41:51.0947 Info Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-01-28 10:41:51.0947 Info Executed DbCommand (0ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-01-28 10:41:51.1727 Info User profile is available. Using 'C:\Users\hp\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest. 
+2025-01-28 10:41:51.2388 Info Now listening on: http://localhost:5292 
+2025-01-28 10:41:51.2388 Info Application started. Press Ctrl+C to shut down. 
+2025-01-28 10:41:51.2388 Info Hosting environment: Development 
+2025-01-28 10:41:51.2388 Info Content root path: C:\Users\hp\CompanyManagement\CompanyManagement 
+2025-01-28 10:41:51.3928 Info Request starting HTTP/1.1 GET http://localhost:5292/index.html - - - 
+2025-01-28 10:41:51.3987 Warn Failed to determine the https port for redirect. 
+2025-01-28 10:41:51.4802 Info Request finished HTTP/1.1 GET http://localhost:5292/index.html - 200 - text/html;charset=utf-8 86.9324ms 
+2025-01-28 10:41:51.4852 Info Request starting HTTP/1.1 GET http://localhost:5292/_framework/aspnetcore-browser-refresh.js - - - 
+2025-01-28 10:41:51.4852 Info Request starting HTTP/1.1 GET http://localhost:5292/index.js - - - 
+2025-01-28 10:41:51.4852 Info Request finished HTTP/1.1 GET http://localhost:5292/_framework/aspnetcore-browser-refresh.js - 200 13748 application/javascript;+charset=utf-8 2.9342ms 
+2025-01-28 10:41:51.4852 Info Request finished HTTP/1.1 GET http://localhost:5292/index.js - 200 - application/javascript;charset=utf-8 3.4554ms 
+2025-01-28 10:41:51.6782 Info Request starting HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - - - 
+2025-01-28 10:41:51.7626 Info Request finished HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - 200 - application/json;charset=utf-8 84.3701ms 
+2025-01-28 10:42:17.7157 Info Request starting HTTP/1.1 PUT http://localhost:5292/api/Project/5 - application/json 50 
+2025-01-28 10:42:17.7157 Info CORS policy execution successful. 
+2025-01-28 10:42:17.7756 Info Executing endpoint 'DotnetAPI.Controllers.ProjectController.UpdateProject (CompanyManagement)' 
+2025-01-28 10:42:17.8067 Info Route matched with {action = "UpdateProject", controller = "Project"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] UpdateProject(Int32, DotnetAPI.InputModels.ProjectInputModel, System.Threading.CancellationToken) on controller DotnetAPI.Controllers.ProjectController (CompanyManagement). 
+2025-01-28 10:42:18.0841 Info Executed DbCommand (6ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT p."Id", p."Duration", p."Title"
+FROM "Projects" AS p
+WHERE p."Id" = @__p_0
+LIMIT 1 
+2025-01-28 10:42:18.2115 Info Executed DbCommand (4ms) [Parameters=[@p1='?' (DbType = Int32), @p0='?'], CommandType='Text', CommandTimeout='30']
+UPDATE "Projects" SET "Title" = @p0
+WHERE "Id" = @p1; 
+2025-01-28 10:42:18.2327 Info Executing OkObjectResult, writing value of type 'DotnetAPI.DTOs.ProjectDto'. 
+2025-01-28 10:42:18.2594 Info Executed action DotnetAPI.Controllers.ProjectController.UpdateProject (CompanyManagement) in 445.432ms 
+2025-01-28 10:42:18.2594 Info Executed endpoint 'DotnetAPI.Controllers.ProjectController.UpdateProject (CompanyManagement)' 
+2025-01-28 10:42:18.2594 Info Request finished HTTP/1.1 PUT http://localhost:5292/api/Project/5 - 200 - application/json;+charset=utf-8 548.4414ms 
+2025-01-28 10:42:45.9896 Info Request starting HTTP/1.1 PUT http://localhost:5292/api/Project/7 - application/json 50 
+2025-01-28 10:42:45.9896 Info CORS policy execution successful. 
+2025-01-28 10:42:45.9896 Info Executing endpoint 'DotnetAPI.Controllers.ProjectController.UpdateProject (CompanyManagement)' 
+2025-01-28 10:42:45.9896 Info Route matched with {action = "UpdateProject", controller = "Project"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] UpdateProject(Int32, DotnetAPI.InputModels.ProjectInputModel, System.Threading.CancellationToken) on controller DotnetAPI.Controllers.ProjectController (CompanyManagement). 
+2025-01-28 10:42:46.0255 Info Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT p."Id", p."Duration", p."Title"
+FROM "Projects" AS p
+WHERE p."Id" = @__p_0
+LIMIT 1 
+2025-01-28 10:42:46.0255 Info Executed action DotnetAPI.Controllers.ProjectController.UpdateProject (CompanyManagement) in 36.8127ms 
+2025-01-28 10:42:46.0255 Info Executed endpoint 'DotnetAPI.Controllers.ProjectController.UpdateProject (CompanyManagement)' 
+2025-01-28 10:42:46.0489 Info Request finished HTTP/1.1 PUT http://localhost:5292/api/Project/7 - 404 - application/json 59.3145ms 
+2025-01-28 10:45:20.1171 Info Request starting HTTP/1.1 GET http://localhost:5292/index.html - - - 
+2025-01-28 10:45:20.1171 Info Request finished HTTP/1.1 GET http://localhost:5292/index.html - 200 - text/html;charset=utf-8 4.0823ms 
+2025-01-28 10:45:20.1356 Info Request starting HTTP/1.1 GET http://localhost:5292/index.js - - - 
+2025-01-28 10:45:20.1356 Info Request starting HTTP/1.1 GET http://localhost:5292/_framework/aspnetcore-browser-refresh.js - - - 
+2025-01-28 10:45:20.1356 Info Request finished HTTP/1.1 GET http://localhost:5292/index.js - 200 - application/javascript;charset=utf-8 0.6596ms 
+2025-01-28 10:45:20.1356 Info Request finished HTTP/1.1 GET http://localhost:5292/_framework/aspnetcore-browser-refresh.js - 200 13748 application/javascript;+charset=utf-8 1.1404ms 
+2025-01-28 10:45:20.2895 Info Request starting HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - - - 
+2025-01-28 10:45:20.3249 Info Request finished HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - 200 - application/json;charset=utf-8 35.5072ms 
+2025-01-28 10:45:27.6784 Info Request starting HTTP/1.1 DELETE http://localhost:5292/api/Project/7 - - - 
+2025-01-28 10:45:27.6784 Info CORS policy execution successful. 
+2025-01-28 10:45:27.6784 Info Executing endpoint 'DotnetAPI.Controllers.ProjectController.DeleteProject (CompanyManagement)' 
+2025-01-28 10:45:27.6784 Info Route matched with {action = "DeleteProject", controller = "Project"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] DeleteProject(Int32, System.Threading.CancellationToken) on controller DotnetAPI.Controllers.ProjectController (CompanyManagement). 
+2025-01-28 10:45:27.7076 Info Executed DbCommand (2ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT p."Id", p."Duration", p."Title"
+FROM "Projects" AS p
+WHERE p."Id" = @__p_0
+LIMIT 1 
+2025-01-28 10:45:27.7076 Info Executed action DotnetAPI.Controllers.ProjectController.DeleteProject (CompanyManagement) in 14.6142ms 
+2025-01-28 10:45:27.7076 Info Executed endpoint 'DotnetAPI.Controllers.ProjectController.DeleteProject (CompanyManagement)' 
+2025-01-28 10:45:27.7076 Info Request finished HTTP/1.1 DELETE http://localhost:5292/api/Project/7 - 404 - application/json 32.9747ms 
+2025-01-28 10:45:32.5726 Info Request starting HTTP/1.1 DELETE http://localhost:5292/api/Project/5 - - - 
+2025-01-28 10:45:32.5726 Info CORS policy execution successful. 
+2025-01-28 10:45:32.5726 Info Executing endpoint 'DotnetAPI.Controllers.ProjectController.DeleteProject (CompanyManagement)' 
+2025-01-28 10:45:32.5726 Info Route matched with {action = "DeleteProject", controller = "Project"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] DeleteProject(Int32, System.Threading.CancellationToken) on controller DotnetAPI.Controllers.ProjectController (CompanyManagement). 
+2025-01-28 10:45:32.5726 Info Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT p."Id", p."Duration", p."Title"
+FROM "Projects" AS p
+WHERE p."Id" = @__p_0
+LIMIT 1 
+2025-01-28 10:45:32.6119 Info Executed DbCommand (7ms) [Parameters=[@p0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+DELETE FROM "Projects"
+WHERE "Id" = @p0; 
+2025-01-28 10:45:32.6119 Info Executing OkObjectResult, writing value of type 'System.String'. 
+2025-01-28 10:45:32.6119 Info Executed action DotnetAPI.Controllers.ProjectController.DeleteProject (CompanyManagement) in 45.8545ms 
+2025-01-28 10:45:32.6119 Info Executed endpoint 'DotnetAPI.Controllers.ProjectController.DeleteProject (CompanyManagement)' 
+2025-01-28 10:45:32.6119 Info Request finished HTTP/1.1 DELETE http://localhost:5292/api/Project/5 - 200 - text/plain;+charset=utf-8 48.4996ms 
+2025-01-28 10:45:48.7624 Info Request starting HTTP/1.1 GET http://localhost:5292/api/Project/4 - - - 
+2025-01-28 10:45:48.7624 Info Executing endpoint 'DotnetAPI.Controllers.ProjectController.GetProjectById (CompanyManagement)' 
+2025-01-28 10:45:48.7624 Info Route matched with {action = "GetProjectById", controller = "Project"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[DotnetAPI.DTOs.ProjectDto]] GetProjectById(Int32) on controller DotnetAPI.Controllers.ProjectController (CompanyManagement). 
+2025-01-28 10:45:48.9360 Info Executed DbCommand (4ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT p0."Id", p0."Duration", p0."Title", s."EmployeeId", s."ProjectId", s."Id", s."FullName", s."Position"
+FROM (
+    SELECT p."Id", p."Duration", p."Title"
+    FROM "Projects" AS p
+    WHERE p."Id" = @__id_0
+    LIMIT 1
+) AS p0
+LEFT JOIN (
+    SELECT e."EmployeeId", e."ProjectId", e0."Id", e0."FullName", e0."Position"
+    FROM "EmployeeProject" AS e
+    INNER JOIN "Employees" AS e0 ON e."EmployeeId" = e0."Id"
+) AS s ON p0."Id" = s."ProjectId"
+ORDER BY p0."Id", s."EmployeeId", s."ProjectId" 
+2025-01-28 10:45:48.9851 Info Executing OkObjectResult, writing value of type 'DotnetAPI.DTOs.ProjectDto'. 
+2025-01-28 10:45:48.9851 Info Executed action DotnetAPI.Controllers.ProjectController.GetProjectById (CompanyManagement) in 219.1862ms 
+2025-01-28 10:45:48.9851 Info Executed endpoint 'DotnetAPI.Controllers.ProjectController.GetProjectById (CompanyManagement)' 
+2025-01-28 10:45:48.9851 Info Request finished HTTP/1.1 GET http://localhost:5292/api/Project/4 - 200 - application/json;+charset=utf-8 226.2881ms 
+2025-01-28 10:46:06.8627 Info Request starting HTTP/1.1 POST http://localhost:5292/api/Project - application/json 46 
+2025-01-28 10:46:06.8627 Info CORS policy execution successful. 
+2025-01-28 10:46:06.8627 Info Executing endpoint 'DotnetAPI.Controllers.ProjectController.AddProject (CompanyManagement)' 
+2025-01-28 10:46:06.8627 Info Route matched with {action = "AddProject", controller = "Project"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddProject(DotnetAPI.InputModels.ProjectInputModel, System.Threading.CancellationToken) on controller DotnetAPI.Controllers.ProjectController (CompanyManagement). 
+2025-01-28 10:46:06.9004 Info Executed DbCommand (5ms) [Parameters=[@p0='?' (DbType = Object), @p1='?'], CommandType='Text', CommandTimeout='30']
+INSERT INTO "Projects" ("Duration", "Title")
+VALUES (@p0, @p1)
+RETURNING "Id"; 
+2025-01-28 10:46:06.9203 Info Executing CreatedAtActionResult, writing value of type 'DotnetAPI.InputModels.ProjectInputModel'. 
+2025-01-28 10:46:06.9432 Info Executed action DotnetAPI.Controllers.ProjectController.AddProject (CompanyManagement) in 74.0038ms 
+2025-01-28 10:46:06.9432 Info Executed endpoint 'DotnetAPI.Controllers.ProjectController.AddProject (CompanyManagement)' 
+2025-01-28 10:46:06.9432 Info Request finished HTTP/1.1 POST http://localhost:5292/api/Project - 201 - application/json;+charset=utf-8 80.9263ms 
+2025-01-28 10:56:35.0588 Info Request starting HTTP/1.1 GET http://localhost:5292/index.html - - - 
+2025-01-28 10:56:35.0928 Info Request finished HTTP/1.1 GET http://localhost:5292/index.html - 200 - text/html;charset=utf-8 35.4798ms 
+2025-01-28 10:56:35.1215 Info Request starting HTTP/1.1 GET http://localhost:5292/index.js - - - 
+2025-01-28 10:56:35.1215 Info Request starting HTTP/1.1 GET http://localhost:5292/_framework/aspnetcore-browser-refresh.js - - - 
+2025-01-28 10:56:35.1215 Info Request finished HTTP/1.1 GET http://localhost:5292/index.js - 200 - application/javascript;charset=utf-8 2.4723ms 
+2025-01-28 10:56:35.1215 Info Request finished HTTP/1.1 GET http://localhost:5292/_framework/aspnetcore-browser-refresh.js - 200 13748 application/javascript;+charset=utf-8 3.3630ms 
+2025-01-28 10:56:35.2993 Info Request starting HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - - - 
+2025-01-28 10:56:35.3670 Info Request finished HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - 200 - application/json;charset=utf-8 67.6784ms 
+2025-01-28 10:56:51.3756 Info Request starting HTTP/1.1 GET http://localhost:5292/api/Employee - - - 
+2025-01-28 10:56:51.3756 Info Executing endpoint 'DotnetAPI.Controllers.EmployeeController.GetAllEmployees (CompanyManagement)' 
+2025-01-28 10:56:51.3969 Info Route matched with {action = "GetAllEmployees", controller = "Employee"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[DotnetAPI.DTOs.EmployeeDto]]] GetAllEmployees() on controller DotnetAPI.Controllers.EmployeeController (CompanyManagement). 
+2025-01-28 10:56:51.4893 Warn Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'. 
+2025-01-28 10:56:51.6225 Info Executed DbCommand (29ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT e."Id", e."FullName", e."Position", s."CompanyId", s."EmployeeId", s."Id", s."Name", s0."EmployeeId", s0."ProjectId", s0."Id", s0."Duration", s0."Title"
+FROM "Employees" AS e
+LEFT JOIN (
+    SELECT c."CompanyId", c."EmployeeId", c0."Id", c0."Name"
+    FROM "CompanyEmployee" AS c
+    INNER JOIN "Companies" AS c0 ON c."CompanyId" = c0."Id"
+) AS s ON e."Id" = s."EmployeeId"
+LEFT JOIN (
+    SELECT e0."EmployeeId", e0."ProjectId", p."Id", p."Duration", p."Title"
+    FROM "EmployeeProject" AS e0
+    INNER JOIN "Projects" AS p ON e0."ProjectId" = p."Id"
+) AS s0 ON e."Id" = s0."EmployeeId"
+ORDER BY e."Id", s."CompanyId", s."EmployeeId", s."Id", s0."EmployeeId", s0."ProjectId" 
+2025-01-28 10:56:51.6940 Info Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[DotnetAPI.DTOs.EmployeeDto, CompanyManagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'. 
+2025-01-28 10:56:51.6940 Info Executed action DotnetAPI.Controllers.EmployeeController.GetAllEmployees (CompanyManagement) in 302.404ms 
+2025-01-28 10:56:51.6940 Info Executed endpoint 'DotnetAPI.Controllers.EmployeeController.GetAllEmployees (CompanyManagement)' 
+2025-01-28 10:56:51.6940 Info Request finished HTTP/1.1 GET http://localhost:5292/api/Employee - 200 - application/json;+charset=utf-8 325.1367ms 
+2025-01-28 10:56:59.8465 Info Request starting HTTP/1.1 GET http://localhost:5292/api/Employee/2 - - - 
+2025-01-28 10:56:59.8465 Info Executing endpoint 'DotnetAPI.Controllers.EmployeeController.GetEmployeeById (CompanyManagement)' 
+2025-01-28 10:56:59.8465 Info Route matched with {action = "GetEmployeeById", controller = "Employee"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[DotnetAPI.DTOs.EmployeeDto]] GetEmployeeById(Int32) on controller DotnetAPI.Controllers.EmployeeController (CompanyManagement). 
+2025-01-28 10:56:59.8777 Warn Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'. 
+2025-01-28 10:56:59.9051 Info Executed DbCommand (3ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT e1."Id", e1."FullName", e1."Position", s."CompanyId", s."EmployeeId", s."Id", s."Name", s0."EmployeeId", s0."ProjectId", s0."Id", s0."Duration", s0."Title"
+FROM (
+    SELECT e."Id", e."FullName", e."Position"
+    FROM "Employees" AS e
+    WHERE e."Id" = @__id_0
+    LIMIT 1
+) AS e1
+LEFT JOIN (
+    SELECT c."CompanyId", c."EmployeeId", c0."Id", c0."Name"
+    FROM "CompanyEmployee" AS c
+    INNER JOIN "Companies" AS c0 ON c."CompanyId" = c0."Id"
+) AS s ON e1."Id" = s."EmployeeId"
+LEFT JOIN (
+    SELECT e0."EmployeeId", e0."ProjectId", p."Id", p."Duration", p."Title"
+    FROM "EmployeeProject" AS e0
+    INNER JOIN "Projects" AS p ON e0."ProjectId" = p."Id"
+) AS s0 ON e1."Id" = s0."EmployeeId"
+ORDER BY e1."Id", s."CompanyId", s."EmployeeId", s."Id", s0."EmployeeId", s0."ProjectId" 
+2025-01-28 10:56:59.9161 Info Executing OkObjectResult, writing value of type 'DotnetAPI.DTOs.EmployeeDto'. 
+2025-01-28 10:56:59.9161 Info Executed action DotnetAPI.Controllers.EmployeeController.GetEmployeeById (CompanyManagement) in 63.6295ms 
+2025-01-28 10:56:59.9161 Info Executed endpoint 'DotnetAPI.Controllers.EmployeeController.GetEmployeeById (CompanyManagement)' 
+2025-01-28 10:56:59.9161 Info Request finished HTTP/1.1 GET http://localhost:5292/api/Employee/2 - 200 - application/json;+charset=utf-8 70.3038ms 
+2025-01-28 10:59:27.6609 Info Executed DbCommand (52ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-01-28 10:59:27.7364 Info Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-01-28 10:59:27.7364 Info Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-01-28 10:59:27.8453 Info User profile is available. Using 'C:\Users\hp\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest. 
+2025-01-28 10:59:27.9424 Info Now listening on: http://localhost:5292 
+2025-01-28 10:59:27.9424 Info Application started. Press Ctrl+C to shut down. 
+2025-01-28 10:59:27.9424 Info Hosting environment: Development 
+2025-01-28 10:59:27.9424 Info Content root path: C:\Users\hp\CompanyManagement\CompanyManagement 
+2025-01-28 10:59:30.3701 Info Request starting HTTP/1.1 GET http://localhost:5292/index.html - - - 
+2025-01-28 10:59:30.3771 Warn Failed to determine the https port for redirect. 
+2025-01-28 10:59:30.4497 Info Request finished HTTP/1.1 GET http://localhost:5292/index.html - 200 - text/html;charset=utf-8 78.1952ms 
+2025-01-28 10:59:30.4552 Info Request starting HTTP/1.1 GET http://localhost:5292/index.js - - - 
+2025-01-28 10:59:30.4552 Info Request starting HTTP/1.1 GET http://localhost:5292/_framework/aspnetcore-browser-refresh.js - - - 
+2025-01-28 10:59:30.4552 Info Request finished HTTP/1.1 GET http://localhost:5292/index.js - 200 - application/javascript;charset=utf-8 2.6044ms 
+2025-01-28 10:59:30.4552 Info Request finished HTTP/1.1 GET http://localhost:5292/_framework/aspnetcore-browser-refresh.js - 200 13748 application/javascript;+charset=utf-8 2.5116ms 
+2025-01-28 10:59:30.5839 Info Request starting HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - - - 
+2025-01-28 10:59:30.6705 Info Request finished HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - 200 - application/json;charset=utf-8 86.5059ms 
+2025-01-28 11:00:03.1775 Info Request starting HTTP/1.1 PUT http://localhost:5292/api/Company/4 - application/json 27 
+2025-01-28 11:00:03.1775 Info CORS policy execution successful. 
+2025-01-28 11:00:03.2308 Info Executing endpoint 'DotnetAPI.Controllers.CompanyController.UpdateCompany (CompanyManagement)' 
+2025-01-28 11:00:03.2605 Info Route matched with {action = "UpdateCompany", controller = "Company"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] UpdateCompany(Int32, DotnetAPI.InputModels.CompanyInputModel, System.Threading.CancellationToken) on controller DotnetAPI.Controllers.CompanyController (CompanyManagement). 
+2025-01-28 11:00:03.5388 Info Executed DbCommand (5ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT c."Id", c."Name"
+FROM "Companies" AS c
+WHERE c."Id" = @__p_0
+LIMIT 1 
+2025-01-28 11:00:03.6793 Info Executed DbCommand (8ms) [Parameters=[@p1='?' (DbType = Int32), @p0='?'], CommandType='Text', CommandTimeout='30']
+UPDATE "Companies" SET "Name" = @p0
+WHERE "Id" = @p1; 
+2025-01-28 11:00:03.7052 Info Executing OkObjectResult, writing value of type 'DotnetAPI.DTOs.CompanyDto'. 
+2025-01-28 11:00:03.7253 Info Executed action DotnetAPI.Controllers.CompanyController.UpdateCompany (CompanyManagement) in 456.607ms 
+2025-01-28 11:00:03.7253 Info Executed endpoint 'DotnetAPI.Controllers.CompanyController.UpdateCompany (CompanyManagement)' 
+2025-01-28 11:00:03.7353 Info Request finished HTTP/1.1 PUT http://localhost:5292/api/Company/4 - 200 - application/json;+charset=utf-8 557.6875ms 
+2025-01-28 11:00:09.1738 Info Request starting HTTP/1.1 GET http://localhost:5292/index.html - - - 
+2025-01-28 11:00:09.1738 Info Request finished HTTP/1.1 GET http://localhost:5292/index.html - 200 - text/html;charset=utf-8 2.5130ms 
+2025-01-28 11:00:09.1892 Info Request starting HTTP/1.1 GET http://localhost:5292/_framework/aspnetcore-browser-refresh.js - - - 
+2025-01-28 11:00:09.1892 Info Request starting HTTP/1.1 GET http://localhost:5292/index.js - - - 
+2025-01-28 11:00:09.1892 Info Request finished HTTP/1.1 GET http://localhost:5292/_framework/aspnetcore-browser-refresh.js - 200 13748 application/javascript;+charset=utf-8 0.4576ms 
+2025-01-28 11:00:09.1892 Info Request finished HTTP/1.1 GET http://localhost:5292/index.js - 200 - application/javascript;charset=utf-8 0.6404ms 
+2025-01-28 11:00:09.2640 Info Request starting HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - - - 
+2025-01-28 11:00:09.2761 Info Request finished HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - 200 - application/json;charset=utf-8 12.1365ms 
+2025-01-28 11:04:12.7208 Info Application is shutting down... 

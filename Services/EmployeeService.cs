@@ -136,7 +136,7 @@ namespace DotnetAPI.Services
             await _dbContext.SaveChangesAsync(cancellationToken);
         }
 
-        public async Task RemoveProjectFromEmployeeAsync(int employeeId, int projectId, CancellationToken cancellationToken)
+        public async Task<bool> RemoveProjectFromEmployeeAsync(int employeeId, int projectId, CancellationToken cancellationToken)
         {
             var employeeProject = await _dbContext.EmployeeProject
                 .FirstOrDefaultAsync(ep => ep.EmployeeId == employeeId && ep.ProjectId == projectId);
@@ -146,6 +146,7 @@ namespace DotnetAPI.Services
 
             _dbContext.EmployeeProject.Remove(employeeProject);
             await _dbContext.SaveChangesAsync(cancellationToken);
+            return true;
         }
     }
 }

@@ -28,14 +28,13 @@ namespace DotnetAPI.Controllers
 
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<CompanyDto>> GetCompanyById(int id,CancellationToken cancellationToken)
+        public async Task<ActionResult<CompanyDto>> GetCompanyById([FromRoute]int id,CancellationToken cancellationToken)
         {
             return Ok(await _companyService.GetCompanyByIdAsync(id,cancellationToken));
         }
 
-        [Authorize(Roles = "Admin")]
         [HttpPost]
-        public async Task<IActionResult> AddCompany(CompanyInputModel inputModel,CancellationToken cancellationToken)
+        public async Task<IActionResult> AddCompany([FromBody]CompanyInputModel inputModel,CancellationToken cancellationToken)
         {
             try
             {
@@ -52,17 +51,24 @@ namespace DotnetAPI.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateCompany(int id, CompanyInputModel inputModel,CancellationToken cancellationToken)
+        public async Task<IActionResult> UpdateCompany([FromRoute]int id, [FromBody]CompanyInputModel inputModel,CancellationToken cancellationToken)
         {
-            await _companyService.UpdateCompanyAsync(id, inputModel,cancellationToken);
-            return NoContent();
+            var updatedCompany = await _companyService.UpdateCompanyAsync(id, inputModel, cancellationToken);
+
+            return Ok(updatedCompany);
         }
 
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteCompany(int id,CancellationToken cancellationToken)
+        public async Task<IActionResult> DeleteCompany([FromRoute]int id,CancellationToken cancellationToken)
         {
-            await _companyService.DeleteCompanyAsync(id,cancellationToken);
-            return NoContent();
+            var success = await _companyService.DeleteCompanyAsync(id, cancellationToken);
+
+            if (!success)
+            {
+                return NotFound($"Company with ID {id} not found.");
+            }
+
+            return Ok($"Company with ID {id} successfully deleted.");
         }
     }
 }

@@ -1,5 +1,6 @@
 using DotnetAPI.DTOs;
 using DotnetAPI.InputModels;
+using DotnetAPI.Models;
 using DotnetAPI.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -23,37 +24,56 @@ namespace DotnetAPI.Controllers
 
             if (projects == null || !projects.Any())
             {
-                return NotFound("No projects found matching the criteria.");
+                  return Ok(new Project[] { });
             }
 
             return Ok(projects);
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<ProjectDto>> GetProjectById(int id)
+        public async Task<ActionResult<ProjectDto>> GetProjectById([FromRoute]int id)
         {
-            return Ok(await _projectService.GetProjectByIdAsync(id));
+            var project = await _projectService.GetProjectByIdAsync(id);
+
+            if (project == null)
+            {
+                return NotFound($"Project with ID {id} not found.");
+            }
+
+            return Ok(project);
         }
 
         [HttpPost]
         public async Task<IActionResult> AddProject(ProjectInputModel inputModel,CancellationToken cancellationToken)
         {
-            await _projectService.AddProjectAsync(inputModel,cancellationToken);
-            return CreatedAtAction(nameof(GetProjectById), new { id = inputModel }, inputModel);
+            var createdProject = await _projectService.AddProjectAsync(inputModel, cancellationToken);
+            return CreatedAtAction(nameof(GetProjectById), new { id = createdProject.Id }, createdProject);
         }
 
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateProject(int id, ProjectInputModel inputModel,CancellationToken cancellationToken)
         {
-            await _projectService.UpdateProjectAsync(id, inputModel,cancellationToken);
-            return NoContent();
+            var updatedProject = await _projectService.UpdateProjectAsync(id, inputModel, cancellationToken);
+
+            if (updatedProject == null)
+            {
+                return NotFound($"Project with ID {id} not found.");
+            }
+
+            return Ok(updatedProject); 
         }
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteProject(int id,CancellationToken cancellationToken)
         {
-            await _projectService.DeleteProjectAsync(id,cancellationToken);
-            return NoContent();
+            var success = await _projectService.DeleteProjectAsync(id, cancellationToken);
+
+            if (!success)
+            {
+                return NotFound($"Project with ID {id} not found.");
+            }
+
+            return Ok($"Project with ID {id} successfully deleted.");
         }
 
     }
