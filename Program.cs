@@ -31,10 +31,10 @@ builder.Services.AddSwaggerGen(c =>
     // Add security definition to Swagger
     c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
     {
-        Name = "Authorization",
-        Type = SecuritySchemeType.ApiKey,
         In = ParameterLocation.Header,
-        Description = "Enter JWT Bearer token in the format 'Bearer {your token}'"
+        Description = "Please enter JWT with Bearer into field",
+        Name = "Authorization",
+        Type = SecuritySchemeType.ApiKey
     });
 
     // Add the security requirement
@@ -83,7 +83,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             RoleClaimType = ClaimTypes.Role
         };
 #pragma warning restore CS8604 // Possible null reference argument.
-    });
+});
 
 
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));

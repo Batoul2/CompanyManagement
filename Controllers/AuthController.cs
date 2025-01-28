@@ -46,8 +46,8 @@ namespace DotnetAPI.Controllers
             return Ok(new { Token = token });
         }
 
-        [HttpPost("assign-role")]
         [Authorize(Roles = "Admin")]
+        [HttpPost("assign-role")]
         public async Task<IActionResult> AssignRoleToUser([FromBody] AssignRoleDto model,  CancellationToken cancellationToken)
         {
             var userClaims = HttpContext.User.Claims.ToList();

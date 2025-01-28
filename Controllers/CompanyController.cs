@@ -1,6 +1,7 @@
 using DotnetAPI.DTOs;
 using DotnetAPI.InputModels;
 using DotnetAPI.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DotnetAPI.Controllers
@@ -32,6 +33,7 @@ namespace DotnetAPI.Controllers
             return Ok(await _companyService.GetCompanyByIdAsync(id,cancellationToken));
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public async Task<IActionResult> AddCompany(CompanyInputModel inputModel,CancellationToken cancellationToken)
         {

@@ -62,13 +62,11 @@ namespace DotnetAPI.Services
             return null;
         }
 
-        return await GenerateJwtTokenAsync(user, cancellationToken);
+        return await GenerateJwtTokenAsync(user);
     }
 
-    private async Task<string> GenerateJwtTokenAsync(ApplicationUser user, CancellationToken cancellationToken)
+    private async Task<string> GenerateJwtTokenAsync(ApplicationUser user)
         {
-
-            cancellationToken.ThrowIfCancellationRequested(); 
             var claims = new List<Claim>
             {
                 new Claim(JwtRegisteredClaimNames.Sub, user.UserName ?? string.Empty),
@@ -77,13 +75,15 @@ namespace DotnetAPI.Services
             };
 
             var roles = await _userManager.GetRolesAsync(user);
-            cancellationToken.ThrowIfCancellationRequested(); 
             claims.AddRange(roles.Select(role => new Claim(ClaimTypes.Role, role)));
 
-            // Generate the signing key
-#pragma warning disable CS8604 // Possible null reference argument.
-            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:SecretKey"]));
-#pragma warning restore CS8604 // Possible null reference argument.
+            var secretKey = _configuration["Jwt:SecretKey"];
+            if (string.IsNullOrEmpty(secretKey))
+            {
+                throw new InvalidOperationException("JWT SecretKey is not configured.");
+            }
+            
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secretKey));
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 
             var token = new JwtSecurityToken(
