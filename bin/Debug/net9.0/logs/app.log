@@ -4815,3 +4815,612 @@ WHERE "Id" = @p1;
 2025-01-28 11:00:09.2640 Info Request starting HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - - - 
 2025-01-28 11:00:09.2761 Info Request finished HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - 200 - application/json;charset=utf-8 12.1365ms 
 2025-01-28 11:04:12.7208 Info Application is shutting down... 
+2025-01-28 12:21:35.7782 Info Executed DbCommand (44ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-01-28 12:21:35.8523 Info Executed DbCommand (2ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-01-28 12:21:35.8523 Info Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-01-28 12:21:35.9417 Info User profile is available. Using 'C:\Users\hp\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest. 
+2025-01-28 12:21:36.0181 Info Now listening on: http://localhost:5292 
+2025-01-28 12:21:36.0181 Info Application started. Press Ctrl+C to shut down. 
+2025-01-28 12:21:36.0181 Info Hosting environment: Development 
+2025-01-28 12:21:36.0181 Info Content root path: C:\Users\hp\CompanyManagement\CompanyManagement 
+2025-01-28 12:21:36.0852 Info Request starting HTTP/1.1 GET http://localhost:5292/index.html - - - 
+2025-01-28 12:21:36.0852 Warn Failed to determine the https port for redirect. 
+2025-01-28 12:21:36.1848 Info Request finished HTTP/1.1 GET http://localhost:5292/index.html - 200 - text/html;charset=utf-8 98.5593ms 
+2025-01-28 12:21:36.2372 Info Request starting HTTP/1.1 GET http://localhost:5292/_framework/aspnetcore-browser-refresh.js - - - 
+2025-01-28 12:21:36.2372 Info Request starting HTTP/1.1 GET http://localhost:5292/index.js - - - 
+2025-01-28 12:21:36.2372 Info Request finished HTTP/1.1 GET http://localhost:5292/_framework/aspnetcore-browser-refresh.js - 200 13748 application/javascript;+charset=utf-8 2.2037ms 
+2025-01-28 12:21:36.2372 Info Request finished HTTP/1.1 GET http://localhost:5292/index.js - 200 - application/javascript;charset=utf-8 2.3390ms 
+2025-01-28 12:21:36.4893 Info Request starting HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - - - 
+2025-01-28 12:21:36.5888 Info Request finished HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - 200 - application/json;charset=utf-8 99.4594ms 
+2025-01-28 12:21:58.2153 Info Request starting HTTP/1.1 POST http://localhost:5292/api/Auth/login - application/json 52 
+2025-01-28 12:21:58.2153 Info CORS policy execution successful. 
+2025-01-28 12:21:58.2545 Info Executing endpoint 'DotnetAPI.Controllers.AuthController.Login (CompanyManagement)' 
+2025-01-28 12:21:58.2829 Info Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(DotnetAPI.DTOs.LoginUserDto, System.Threading.CancellationToken) on controller DotnetAPI.Controllers.AuthController (CompanyManagement). 
+2025-01-28 12:21:58.3858 Info Executed DbCommand (5ms) [Parameters=[@__normalizedUserName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."Email", a."EmailConfirmed", a."LockoutEnabled", a."LockoutEnd", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."SecurityStamp", a."TwoFactorEnabled", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."NormalizedUserName" = @__normalizedUserName_0
+LIMIT 1 
+2025-01-28 12:21:58.5447 Info Executed DbCommand (6ms) [Parameters=[@__userId_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a0."Name"
+FROM "AspNetUserRoles" AS a
+INNER JOIN "AspNetRoles" AS a0 ON a."RoleId" = a0."Id"
+WHERE a."UserId" = @__userId_0 
+2025-01-28 12:21:58.5786 Info Executing OkObjectResult, writing value of type '<>f__AnonymousType1`1[[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'. 
+2025-01-28 12:21:58.5786 Info Executed action DotnetAPI.Controllers.AuthController.Login (CompanyManagement) in 304.0447ms 
+2025-01-28 12:21:58.5786 Info Executed endpoint 'DotnetAPI.Controllers.AuthController.Login (CompanyManagement)' 
+2025-01-28 12:21:58.5954 Info Request finished HTTP/1.1 POST http://localhost:5292/api/Auth/login - 200 - application/json;+charset=utf-8 380.0332ms 
+2025-01-28 12:22:34.6742 Info Request starting HTTP/1.1 POST http://localhost:5292/api/Auth/assign-role - application/json 45 
+2025-01-28 12:22:34.6742 Info CORS policy execution successful. 
+2025-01-28 12:22:34.6742 Info Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin) 
+2025-01-28 12:22:34.6967 Info AuthenticationScheme: Identity.Application was challenged. 
+2025-01-28 12:22:34.6967 Info Request finished HTTP/1.1 POST http://localhost:5292/api/Auth/assign-role - 302 0 - 22.9400ms 
+2025-01-28 12:22:34.6967 Info Request starting HTTP/1.1 GET http://localhost:5292/Account/Login?ReturnUrl=%2Fapi%2FAuth%2Fassign-role - - - 
+2025-01-28 12:22:34.6967 Info Request finished HTTP/1.1 GET http://localhost:5292/Account/Login?ReturnUrl=%2Fapi%2FAuth%2Fassign-role - 404 0 - 1.6008ms 
+2025-01-28 12:22:34.6967 Info Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5292/Account/Login, Response status code: 404 
+2025-01-28 12:22:49.7641 Info Request starting HTTP/1.1 GET http://localhost:5292/Account/Login?ReturnUrl=%2Fapi%2FAuth%2Fassign-role - - - 
+2025-01-28 12:22:49.7641 Info Request finished HTTP/1.1 GET http://localhost:5292/Account/Login?ReturnUrl=%2Fapi%2FAuth%2Fassign-role - 404 0 - 1.1423ms 
+2025-01-28 12:22:49.7655 Info Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5292/Account/Login, Response status code: 404 
+2025-01-28 12:23:00.5251 Info Request starting HTTP/1.1 GET http://localhost:5292/index.html - - - 
+2025-01-28 12:23:00.5251 Info Request finished HTTP/1.1 GET http://localhost:5292/index.html - 200 - text/html;charset=utf-8 1.9410ms 
+2025-01-28 12:23:00.5539 Info Request starting HTTP/1.1 GET http://localhost:5292/index.js - - - 
+2025-01-28 12:23:00.5539 Info Request starting HTTP/1.1 GET http://localhost:5292/_framework/aspnetcore-browser-refresh.js - - - 
+2025-01-28 12:23:00.5539 Info Request finished HTTP/1.1 GET http://localhost:5292/_framework/aspnetcore-browser-refresh.js - 200 13748 application/javascript;+charset=utf-8 0.7835ms 
+2025-01-28 12:23:00.5539 Info Request finished HTTP/1.1 GET http://localhost:5292/index.js - 200 - application/javascript;charset=utf-8 0.5144ms 
+2025-01-28 12:23:00.7963 Info Request starting HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - - - 
+2025-01-28 12:23:00.8136 Info Request finished HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - 200 - application/json;charset=utf-8 17.2669ms 
+2025-01-28 12:23:25.2963 Info Request starting HTTP/1.1 POST http://localhost:5292/api/Auth/assign-role - application/json 45 
+2025-01-28 12:23:25.2963 Info CORS policy execution successful. 
+2025-01-28 12:23:25.2993 Info Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin) 
+2025-01-28 12:23:25.2993 Info AuthenticationScheme: Identity.Application was challenged. 
+2025-01-28 12:23:25.2993 Info Request finished HTTP/1.1 POST http://localhost:5292/api/Auth/assign-role - 302 0 - 4.8532ms 
+2025-01-28 12:23:25.2993 Info Request starting HTTP/1.1 GET http://localhost:5292/Account/Login?ReturnUrl=%2Fapi%2FAuth%2Fassign-role - - - 
+2025-01-28 12:23:25.2993 Info Request finished HTTP/1.1 GET http://localhost:5292/Account/Login?ReturnUrl=%2Fapi%2FAuth%2Fassign-role - 404 0 - 0.4351ms 
+2025-01-28 12:23:25.2993 Info Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5292/Account/Login, Response status code: 404 
+2025-01-28 12:23:44.5738 Info Application is shutting down... 
+2025-01-28 13:08:39.2795 Info Executed DbCommand (50ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-01-28 13:08:39.3465 Info Executed DbCommand (2ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-01-28 13:08:39.3465 Info Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-01-28 13:08:39.4315 Info User profile is available. Using 'C:\Users\hp\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest. 
+2025-01-28 13:08:39.4942 Info Now listening on: http://localhost:5292 
+2025-01-28 13:08:39.4942 Info Application started. Press Ctrl+C to shut down. 
+2025-01-28 13:08:39.4942 Info Hosting environment: Development 
+2025-01-28 13:08:39.4942 Info Content root path: C:\Users\hp\CompanyManagement\CompanyManagement 
+2025-01-28 13:08:43.1296 Info Request starting HTTP/1.1 GET http://localhost:5292/index.html - - - 
+2025-01-28 13:08:43.1296 Warn Failed to determine the https port for redirect. 
+2025-01-28 13:08:43.2134 Info Request finished HTTP/1.1 GET http://localhost:5292/index.html - 200 - text/html;charset=utf-8 81.6321ms 
+2025-01-28 13:08:43.2335 Info Request starting HTTP/1.1 GET http://localhost:5292/index.js - - - 
+2025-01-28 13:08:43.2335 Info Request starting HTTP/1.1 GET http://localhost:5292/_framework/aspnetcore-browser-refresh.js - - - 
+2025-01-28 13:08:43.2335 Info Request finished HTTP/1.1 GET http://localhost:5292/index.js - 200 - application/javascript;charset=utf-8 2.5544ms 
+2025-01-28 13:08:43.2335 Info Request finished HTTP/1.1 GET http://localhost:5292/_framework/aspnetcore-browser-refresh.js - 200 13748 application/javascript;+charset=utf-8 1.6321ms 
+2025-01-28 13:08:43.3956 Info Request starting HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - - - 
+2025-01-28 13:08:43.4805 Info Request finished HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - 200 - application/json;charset=utf-8 84.9271ms 
+2025-01-28 13:09:07.4081 Info Request starting HTTP/1.1 POST http://localhost:5292/api/Auth/assign-role - application/json 45 
+2025-01-28 13:09:07.4081 Info CORS policy execution successful. 
+2025-01-28 13:09:07.4824 Info Failed to validate the token. System.ArgumentException: IDX14102: Unable to decode the header '[PII of type 'Microsoft.IdentityModel.Logging.SecurityArtifact' is hidden. For more details, see https://aka.ms/IdentityModel/PII.]' as Base64Url encoded string.
+ ---> System.MissingMethodException: Method not found: 'Void Microsoft.IdentityModel.Tokens.Base64UrlEncoder.Decode(System.ReadOnlySpan`1<Char>, System.Span`1<Byte>)'.
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.CreateClaimSet(ReadOnlySpan`1 strSpan, Int32 startIndex, Int32 length, Boolean createHeaderClaimSet)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.ReadToken(ReadOnlyMemory`1 encodedTokenMemory)
+   --- End of inner exception stack trace ---
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.ReadToken(ReadOnlyMemory`1 encodedTokenMemory)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken..ctor(String jwtEncodedString)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ReadToken(String token, TokenValidationParameters validationParameters)
+2025-01-28 13:09:07.4824 Info Bearer was not authenticated. Failure message: IDX14102: Unable to decode the header '[PII of type 'Microsoft.IdentityModel.Logging.SecurityArtifact' is hidden. For more details, see https://aka.ms/IdentityModel/PII.]' as Base64Url encoded string. 
+2025-01-28 13:09:07.5025 Info Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin) 
+2025-01-28 13:09:07.5025 Info AuthenticationScheme: Bearer was challenged. 
+2025-01-28 13:09:07.5025 Info Request finished HTTP/1.1 POST http://localhost:5292/api/Auth/assign-role - 401 0 - 98.5947ms 
+2025-01-28 13:09:24.1097 Info Request starting HTTP/1.1 GET http://localhost:5292/index.html - - - 
+2025-01-28 13:09:24.1118 Info Request finished HTTP/1.1 GET http://localhost:5292/index.html - 200 - text/html;charset=utf-8 2.1036ms 
+2025-01-28 13:09:24.1118 Info Request starting HTTP/1.1 GET http://localhost:5292/_framework/aspnetcore-browser-refresh.js - - - 
+2025-01-28 13:09:24.1118 Info Request finished HTTP/1.1 GET http://localhost:5292/_framework/aspnetcore-browser-refresh.js - 200 13748 application/javascript;+charset=utf-8 0.7331ms 
+2025-01-28 13:09:24.1256 Info Request starting HTTP/1.1 GET http://localhost:5292/index.js - - - 
+2025-01-28 13:09:24.1256 Info Request finished HTTP/1.1 GET http://localhost:5292/index.js - 200 - application/javascript;charset=utf-8 0.7779ms 
+2025-01-28 13:09:24.3588 Info Request starting HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - - - 
+2025-01-28 13:09:24.3879 Info Request finished HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - 200 - application/json;charset=utf-8 29.0911ms 
+2025-01-28 13:09:37.7812 Info Request starting HTTP/1.1 POST http://localhost:5292/api/Auth/assign-role - application/json 45 
+2025-01-28 13:09:37.7812 Info CORS policy execution successful. 
+2025-01-28 13:09:37.7812 Info Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin) 
+2025-01-28 13:09:37.7812 Info AuthenticationScheme: Bearer was challenged. 
+2025-01-28 13:09:37.7812 Info Request finished HTTP/1.1 POST http://localhost:5292/api/Auth/assign-role - 401 0 - 10.4852ms 
+2025-01-28 13:10:45.4331 Info Request starting HTTP/1.1 GET http://localhost:5292/index.html - - - 
+2025-01-28 13:10:45.4331 Info Request finished HTTP/1.1 GET http://localhost:5292/index.html - 200 - text/html;charset=utf-8 1.9218ms 
+2025-01-28 13:10:45.4595 Info Request starting HTTP/1.1 GET http://localhost:5292/_framework/aspnetcore-browser-refresh.js - - - 
+2025-01-28 13:10:45.4595 Info Request starting HTTP/1.1 GET http://localhost:5292/index.js - - - 
+2025-01-28 13:10:45.4595 Info Request finished HTTP/1.1 GET http://localhost:5292/_framework/aspnetcore-browser-refresh.js - 200 13748 application/javascript;+charset=utf-8 0.3815ms 
+2025-01-28 13:10:45.4595 Info Request finished HTTP/1.1 GET http://localhost:5292/index.js - 200 - application/javascript;charset=utf-8 0.4445ms 
+2025-01-28 13:10:45.5920 Info Request starting HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - - - 
+2025-01-28 13:10:45.6075 Info Request finished HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - 200 - application/json;charset=utf-8 15.4797ms 
+2025-01-28 13:11:36.4962 Info Request starting HTTP/1.1 POST http://localhost:5292/api/Auth/login - application/json 52 
+2025-01-28 13:11:36.4962 Info CORS policy execution successful. 
+2025-01-28 13:11:36.5067 Info Executing endpoint 'DotnetAPI.Controllers.AuthController.Login (CompanyManagement)' 
+2025-01-28 13:11:36.5606 Info Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(DotnetAPI.DTOs.LoginUserDto, System.Threading.CancellationToken) on controller DotnetAPI.Controllers.AuthController (CompanyManagement). 
+2025-01-28 13:11:36.8076 Info Executed DbCommand (10ms) [Parameters=[@__normalizedUserName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."Email", a."EmailConfirmed", a."LockoutEnabled", a."LockoutEnd", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."SecurityStamp", a."TwoFactorEnabled", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."NormalizedUserName" = @__normalizedUserName_0
+LIMIT 1 
+2025-01-28 13:11:37.1269 Info Executed DbCommand (4ms) [Parameters=[@__userId_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a0."Name"
+FROM "AspNetUserRoles" AS a
+INNER JOIN "AspNetRoles" AS a0 ON a."RoleId" = a0."Id"
+WHERE a."UserId" = @__userId_0 
+2025-01-28 13:11:37.1743 Info Executing OkObjectResult, writing value of type '<>f__AnonymousType1`1[[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'. 
+2025-01-28 13:11:37.1999 Info Executed action DotnetAPI.Controllers.AuthController.Login (CompanyManagement) in 630.8652ms 
+2025-01-28 13:11:37.1999 Info Executed endpoint 'DotnetAPI.Controllers.AuthController.Login (CompanyManagement)' 
+2025-01-28 13:11:37.2107 Info Request finished HTTP/1.1 POST http://localhost:5292/api/Auth/login - 200 - application/json;+charset=utf-8 714.5303ms 
+2025-01-28 13:12:10.4154 Info Request starting HTTP/1.1 POST http://localhost:5292/api/Auth/assign-role - application/json 45 
+2025-01-28 13:12:10.4154 Info CORS policy execution successful. 
+2025-01-28 13:12:10.4154 Info Failed to validate the token. System.ArgumentException: IDX14102: Unable to decode the header '[PII of type 'Microsoft.IdentityModel.Logging.SecurityArtifact' is hidden. For more details, see https://aka.ms/IdentityModel/PII.]' as Base64Url encoded string.
+ ---> System.MissingMethodException: Method not found: 'Void Microsoft.IdentityModel.Tokens.Base64UrlEncoder.Decode(System.ReadOnlySpan`1<Char>, System.Span`1<Byte>)'.
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.CreateClaimSet(ReadOnlySpan`1 strSpan, Int32 startIndex, Int32 length, Boolean createHeaderClaimSet)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.ReadToken(ReadOnlyMemory`1 encodedTokenMemory)
+   --- End of inner exception stack trace ---
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.ReadToken(ReadOnlyMemory`1 encodedTokenMemory)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken..ctor(String jwtEncodedString)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ReadToken(String token, TokenValidationParameters validationParameters)
+2025-01-28 13:12:10.4306 Info Bearer was not authenticated. Failure message: IDX14102: Unable to decode the header '[PII of type 'Microsoft.IdentityModel.Logging.SecurityArtifact' is hidden. For more details, see https://aka.ms/IdentityModel/PII.]' as Base64Url encoded string. 
+2025-01-28 13:12:10.4397 Info Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin) 
+2025-01-28 13:12:10.4397 Info AuthenticationScheme: Bearer was challenged. 
+2025-01-28 13:12:10.4397 Info Request finished HTTP/1.1 POST http://localhost:5292/api/Auth/assign-role - 401 0 - 25.2283ms 
+2025-01-28 13:15:42.7231 Info Executed DbCommand (76ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-01-28 13:15:42.8035 Info Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-01-28 13:15:42.8035 Info Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-01-28 13:15:42.8925 Info User profile is available. Using 'C:\Users\hp\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest. 
+2025-01-28 13:15:42.9648 Info Now listening on: http://localhost:5292 
+2025-01-28 13:15:42.9648 Info Application started. Press Ctrl+C to shut down. 
+2025-01-28 13:15:42.9648 Info Hosting environment: Development 
+2025-01-28 13:15:42.9648 Info Content root path: C:\Users\hp\CompanyManagement\CompanyManagement 
+2025-01-28 13:16:03.1158 Info Request starting HTTP/1.1 GET http://localhost:5292/index.html - - - 
+2025-01-28 13:16:03.1301 Warn Failed to determine the https port for redirect. 
+2025-01-28 13:16:03.3115 Info Request finished HTTP/1.1 GET http://localhost:5292/index.html - 200 - text/html;charset=utf-8 190.5559ms 
+2025-01-28 13:16:03.3311 Info Request starting HTTP/1.1 GET http://localhost:5292/_framework/aspnetcore-browser-refresh.js - - - 
+2025-01-28 13:16:03.3311 Info Request starting HTTP/1.1 GET http://localhost:5292/index.js - - - 
+2025-01-28 13:16:03.3311 Info Request finished HTTP/1.1 GET http://localhost:5292/_framework/aspnetcore-browser-refresh.js - 200 13748 application/javascript;+charset=utf-8 2.3961ms 
+2025-01-28 13:16:03.3311 Info Request finished HTTP/1.1 GET http://localhost:5292/index.js - 200 - application/javascript;charset=utf-8 2.5943ms 
+2025-01-28 13:16:03.5802 Info Request starting HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - - - 
+2025-01-28 13:16:03.7825 Info Request finished HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - 200 - application/json;charset=utf-8 202.3198ms 
+2025-01-28 13:16:42.4760 Info Request starting HTTP/1.1 POST http://localhost:5292/api/Auth/assign-role - application/json 46 
+2025-01-28 13:16:42.4760 Info CORS policy execution successful. 
+2025-01-28 13:16:42.5993 Info Failed to validate the token. System.ArgumentException: IDX14102: Unable to decode the header '[PII of type 'Microsoft.IdentityModel.Logging.SecurityArtifact' is hidden. For more details, see https://aka.ms/IdentityModel/PII.]' as Base64Url encoded string.
+ ---> System.MissingMethodException: Method not found: 'Void Microsoft.IdentityModel.Tokens.Base64UrlEncoder.Decode(System.ReadOnlySpan`1<Char>, System.Span`1<Byte>)'.
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.CreateClaimSet(ReadOnlySpan`1 strSpan, Int32 startIndex, Int32 length, Boolean createHeaderClaimSet)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.ReadToken(ReadOnlyMemory`1 encodedTokenMemory)
+   --- End of inner exception stack trace ---
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.ReadToken(ReadOnlyMemory`1 encodedTokenMemory)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken..ctor(String jwtEncodedString)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ReadToken(String token, TokenValidationParameters validationParameters)
+2025-01-28 13:16:42.6271 Info Bearer was not authenticated. Failure message: IDX14102: Unable to decode the header '[PII of type 'Microsoft.IdentityModel.Logging.SecurityArtifact' is hidden. For more details, see https://aka.ms/IdentityModel/PII.]' as Base64Url encoded string. 
+2025-01-28 13:16:42.6271 Info Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin) 
+2025-01-28 13:16:42.6457 Info AuthenticationScheme: Bearer was challenged. 
+2025-01-28 13:16:42.6457 Info Request finished HTTP/1.1 POST http://localhost:5292/api/Auth/assign-role - 401 0 - 171.0729ms 
+2025-01-28 13:18:39.9398 Info Request starting HTTP/1.1 GET http://localhost:5292/index.html - - - 
+2025-01-28 13:18:39.9398 Info Request finished HTTP/1.1 GET http://localhost:5292/index.html - 200 - text/html;charset=utf-8 4.4552ms 
+2025-01-28 13:18:39.9697 Info Request starting HTTP/1.1 GET http://localhost:5292/_framework/aspnetcore-browser-refresh.js - - - 
+2025-01-28 13:18:39.9697 Info Request starting HTTP/1.1 GET http://localhost:5292/index.js - - - 
+2025-01-28 13:18:39.9697 Info Request finished HTTP/1.1 GET http://localhost:5292/_framework/aspnetcore-browser-refresh.js - 200 13748 application/javascript;+charset=utf-8 0.8063ms 
+2025-01-28 13:18:39.9697 Info Request finished HTTP/1.1 GET http://localhost:5292/index.js - 200 - application/javascript;charset=utf-8 0.7672ms 
+2025-01-28 13:18:40.2413 Info Request starting HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - - - 
+2025-01-28 13:18:40.2803 Info Request finished HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - 200 - application/json;charset=utf-8 38.8450ms 
+2025-01-28 13:18:51.3176 Info Executed DbCommand (71ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-01-28 13:18:51.4051 Info Executed DbCommand (2ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-01-28 13:18:51.4072 Info Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-01-28 13:18:51.5535 Info User profile is available. Using 'C:\Users\hp\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest. 
+2025-01-28 13:18:51.7371 Info Now listening on: http://localhost:5292 
+2025-01-28 13:18:51.7371 Info Application started. Press Ctrl+C to shut down. 
+2025-01-28 13:18:51.7371 Info Hosting environment: Development 
+2025-01-28 13:18:51.7371 Info Content root path: C:\Users\hp\CompanyManagement\CompanyManagement 
+2025-01-28 13:18:57.4314 Info Request starting HTTP/1.1 GET http://localhost:5292/index.html - - - 
+2025-01-28 13:18:57.4463 Warn Failed to determine the https port for redirect. 
+2025-01-28 13:18:57.5716 Info Request finished HTTP/1.1 GET http://localhost:5292/index.html - 200 - text/html;charset=utf-8 133.9530ms 
+2025-01-28 13:18:57.5716 Info Request starting HTTP/1.1 GET http://localhost:5292/_framework/aspnetcore-browser-refresh.js - - - 
+2025-01-28 13:18:57.5716 Info Request starting HTTP/1.1 GET http://localhost:5292/index.js - - - 
+2025-01-28 13:18:57.5716 Info Request finished HTTP/1.1 GET http://localhost:5292/_framework/aspnetcore-browser-refresh.js - 200 13748 application/javascript;+charset=utf-8 3.4607ms 
+2025-01-28 13:18:57.5716 Info Request finished HTTP/1.1 GET http://localhost:5292/index.js - 200 - application/javascript;charset=utf-8 3.6374ms 
+2025-01-28 13:18:57.7334 Info Request starting HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - - - 
+2025-01-28 13:18:57.9255 Info Request finished HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - 200 - application/json;charset=utf-8 192.1922ms 
+2025-01-28 13:19:11.1674 Info Request starting HTTP/1.1 POST http://localhost:5292/api/Auth/assign-role - application/json 45 
+2025-01-28 13:19:11.1674 Info CORS policy execution successful. 
+2025-01-28 13:19:11.2391 Info Executing endpoint 'DotnetAPI.Controllers.AuthController.AssignRoleToUser (CompanyManagement)' 
+2025-01-28 13:19:11.2597 Info Route matched with {action = "AssignRoleToUser", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AssignRoleToUser(DotnetAPI.DTOs.AssignRoleDto, System.Threading.CancellationToken) on controller DotnetAPI.Controllers.AuthController (CompanyManagement). 
+2025-01-28 13:19:11.3510 Info Executed DbCommand (4ms) [Parameters=[@__normalizedUserName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."Email", a."EmailConfirmed", a."LockoutEnabled", a."LockoutEnd", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."SecurityStamp", a."TwoFactorEnabled", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."NormalizedUserName" = @__normalizedUserName_0
+LIMIT 1 
+2025-01-28 13:19:11.3759 Info Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-01-28 13:19:11.3864 Info Executed DbCommand (1ms) [Parameters=[@__normalizedRoleName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedRoleName_0
+LIMIT 2 
+2025-01-28 13:19:11.4105 Info Executed DbCommand (3ms) [Parameters=[@__p_0='?', @__p_1='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."UserId", a."RoleId"
+FROM "AspNetUserRoles" AS a
+WHERE a."UserId" = @__p_0 AND a."RoleId" = @__p_1
+LIMIT 1 
+2025-01-28 13:19:11.4105 Info Executed DbCommand (1ms) [Parameters=[@__normalizedRoleName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedRoleName_0
+LIMIT 2 
+2025-01-28 13:19:11.4434 Info Executed DbCommand (1ms) [Parameters=[@__normalizedUserName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."Email", a."EmailConfirmed", a."LockoutEnabled", a."LockoutEnd", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."SecurityStamp", a."TwoFactorEnabled", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."NormalizedUserName" = @__normalizedUserName_0
+LIMIT 1 
+2025-01-28 13:19:11.5425 Info Executed DbCommand (12ms) [Parameters=[@p0='?', @p1='?', @p16='?', @p2='?' (DbType = Int32), @p3='?', @p17='?', @p4='?', @p5='?' (DbType = Boolean), @p6='?' (DbType = Boolean), @p7='?' (DbType = DateTime), @p8='?', @p9='?', @p10='?', @p11='?', @p12='?' (DbType = Boolean), @p13='?', @p14='?' (DbType = Boolean), @p15='?'], CommandType='Text', CommandTimeout='30']
+INSERT INTO "AspNetUserRoles" ("RoleId", "UserId")
+VALUES (@p0, @p1);
+UPDATE "AspNetUsers" SET "AccessFailedCount" = @p2, "ConcurrencyStamp" = @p3, "Email" = @p4, "EmailConfirmed" = @p5, "LockoutEnabled" = @p6, "LockoutEnd" = @p7, "NormalizedEmail" = @p8, "NormalizedUserName" = @p9, "PasswordHash" = @p10, "PhoneNumber" = @p11, "PhoneNumberConfirmed" = @p12, "SecurityStamp" = @p13, "TwoFactorEnabled" = @p14, "UserName" = @p15
+WHERE "Id" = @p16 AND "ConcurrencyStamp" = @p17; 
+2025-01-28 13:19:11.5583 Info Executing OkObjectResult, writing value of type 'System.String'. 
+2025-01-28 13:19:11.5628 Info Executed action DotnetAPI.Controllers.AuthController.AssignRoleToUser (CompanyManagement) in 299.1137ms 
+2025-01-28 13:19:11.5628 Info Executed endpoint 'DotnetAPI.Controllers.AuthController.AssignRoleToUser (CompanyManagement)' 
+2025-01-28 13:19:11.5628 Info Request finished HTTP/1.1 POST http://localhost:5292/api/Auth/assign-role - 200 - text/plain;+charset=utf-8 401.4938ms 
+2025-01-28 13:25:17.8857 Info Request starting HTTP/1.1 GET http://localhost:5292/index.html - - - 
+2025-01-28 13:25:17.9270 Info Request finished HTTP/1.1 GET http://localhost:5292/index.html - 200 - text/html;charset=utf-8 42.2635ms 
+2025-01-28 13:25:18.0443 Info Request starting HTTP/1.1 GET http://localhost:5292/index.js - - - 
+2025-01-28 13:25:18.0479 Info Request finished HTTP/1.1 GET http://localhost:5292/index.js - 200 - application/javascript;charset=utf-8 3.5881ms 
+2025-01-28 13:25:18.0479 Info Request starting HTTP/1.1 GET http://localhost:5292/_framework/aspnetcore-browser-refresh.js - - - 
+2025-01-28 13:25:18.0479 Info Request finished HTTP/1.1 GET http://localhost:5292/_framework/aspnetcore-browser-refresh.js - 200 13748 application/javascript;+charset=utf-8 4.4108ms 
+2025-01-28 13:25:18.7076 Info Request starting HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - - - 
+2025-01-28 13:25:18.7542 Info Request finished HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - 200 - application/json;charset=utf-8 46.2783ms 
+2025-01-28 13:26:32.3125 Info Request starting HTTP/1.1 GET http://localhost:5292/index.html - - - 
+2025-01-28 13:26:32.3125 Info Request finished HTTP/1.1 GET http://localhost:5292/index.html - 200 - text/html;charset=utf-8 2.7825ms 
+2025-01-28 13:26:32.3480 Info Request starting HTTP/1.1 GET http://localhost:5292/_framework/aspnetcore-browser-refresh.js - - - 
+2025-01-28 13:26:32.3480 Info Request finished HTTP/1.1 GET http://localhost:5292/_framework/aspnetcore-browser-refresh.js - 200 13748 application/javascript;+charset=utf-8 0.5105ms 
+2025-01-28 13:26:32.3480 Info Request starting HTTP/1.1 GET http://localhost:5292/index.js - - - 
+2025-01-28 13:26:32.3480 Info Request finished HTTP/1.1 GET http://localhost:5292/index.js - 200 - application/javascript;charset=utf-8 1.2882ms 
+2025-01-28 13:26:32.9525 Info Request starting HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - - - 
+2025-01-28 13:26:32.9773 Info Request finished HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - 200 - application/json;charset=utf-8 24.7504ms 
+2025-01-28 13:26:38.3491 Info Request starting HTTP/1.1 GET http://localhost:5292/index.html - - - 
+2025-01-28 13:26:38.3491 Info Request finished HTTP/1.1 GET http://localhost:5292/index.html - 200 - text/html;charset=utf-8 1.0272ms 
+2025-01-28 13:26:38.3710 Info Request starting HTTP/1.1 GET http://localhost:5292/_framework/aspnetcore-browser-refresh.js - - - 
+2025-01-28 13:26:38.3710 Info Request starting HTTP/1.1 GET http://localhost:5292/index.js - - - 
+2025-01-28 13:26:38.3710 Info Request finished HTTP/1.1 GET http://localhost:5292/_framework/aspnetcore-browser-refresh.js - 200 13748 application/javascript;+charset=utf-8 0.2759ms 
+2025-01-28 13:26:38.3710 Info Request finished HTTP/1.1 GET http://localhost:5292/index.js - 200 - application/javascript;charset=utf-8 0.9116ms 
+2025-01-28 13:26:38.7734 Info Request starting HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - - - 
+2025-01-28 13:26:38.7902 Info Request finished HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - 200 - application/json;charset=utf-8 16.8688ms 
+2025-01-28 13:27:01.5276 Info Executed DbCommand (46ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-01-28 13:27:01.5959 Info Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-01-28 13:27:01.5959 Info Executed DbCommand (0ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-01-28 13:27:01.6690 Info User profile is available. Using 'C:\Users\hp\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest. 
+2025-01-28 13:27:01.7513 Info Now listening on: http://localhost:5292 
+2025-01-28 13:27:01.7513 Info Application started. Press Ctrl+C to shut down. 
+2025-01-28 13:27:01.7513 Info Hosting environment: Development 
+2025-01-28 13:27:01.7513 Info Content root path: C:\Users\hp\CompanyManagement\CompanyManagement 
+2025-01-28 13:27:24.3168 Info Request starting HTTP/1.1 GET http://localhost:5292/api/Company/1 - - - 
+2025-01-28 13:27:24.3168 Warn Failed to determine the https port for redirect. 
+2025-01-28 13:27:24.4119 Info Failed to validate the token. System.ArgumentException: IDX14102: Unable to decode the header '[PII of type 'Microsoft.IdentityModel.Logging.SecurityArtifact' is hidden. For more details, see https://aka.ms/IdentityModel/PII.]' as Base64Url encoded string.
+ ---> System.MissingMethodException: Method not found: 'Void Microsoft.IdentityModel.Tokens.Base64UrlEncoder.Decode(System.ReadOnlySpan`1<Char>, System.Span`1<Byte>)'.
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.CreateClaimSet(ReadOnlySpan`1 strSpan, Int32 startIndex, Int32 length, Boolean createHeaderClaimSet)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.ReadToken(ReadOnlyMemory`1 encodedTokenMemory)
+   --- End of inner exception stack trace ---
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.ReadToken(ReadOnlyMemory`1 encodedTokenMemory)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken..ctor(String jwtEncodedString)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ReadToken(String token, TokenValidationParameters validationParameters)
+2025-01-28 13:27:24.4269 Info Bearer was not authenticated. Failure message: IDX14102: Unable to decode the header '[PII of type 'Microsoft.IdentityModel.Logging.SecurityArtifact' is hidden. For more details, see https://aka.ms/IdentityModel/PII.]' as Base64Url encoded string. 
+2025-01-28 13:27:24.4269 Info Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user. 
+2025-01-28 13:27:24.4269 Info AuthenticationScheme: Bearer was challenged. 
+2025-01-28 13:27:24.4463 Info Request finished HTTP/1.1 GET http://localhost:5292/api/Company/1 - 401 0 - 125.6654ms 
+2025-01-28 13:27:40.9707 Info Application is shutting down... 
+2025-01-28 13:41:59.5831 Info Executed DbCommand (35ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-01-28 13:41:59.6489 Info Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-01-28 13:41:59.6489 Info Executed DbCommand (0ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-01-28 13:41:59.7288 Info User profile is available. Using 'C:\Users\hp\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest. 
+2025-01-28 13:41:59.7939 Info Now listening on: http://localhost:5292 
+2025-01-28 13:41:59.7939 Info Application started. Press Ctrl+C to shut down. 
+2025-01-28 13:41:59.7939 Info Hosting environment: Development 
+2025-01-28 13:41:59.7939 Info Content root path: C:\Users\hp\CompanyManagement\CompanyManagement 
+2025-01-28 13:42:17.8968 Info Request starting HTTP/1.1 GET http://localhost:5292/index.html - - - 
+2025-01-28 13:42:17.9117 Warn Failed to determine the https port for redirect. 
+2025-01-28 13:42:18.1244 Info Request finished HTTP/1.1 GET http://localhost:5292/index.html - 200 - text/html;charset=utf-8 224.2659ms 
+2025-01-28 13:42:18.1613 Info Request starting HTTP/1.1 GET http://localhost:5292/_framework/aspnetcore-browser-refresh.js - - - 
+2025-01-28 13:42:18.1613 Info Request starting HTTP/1.1 GET http://localhost:5292/index.js - - - 
+2025-01-28 13:42:18.1613 Info Request finished HTTP/1.1 GET http://localhost:5292/_framework/aspnetcore-browser-refresh.js - 200 13748 application/javascript;+charset=utf-8 2.4539ms 
+2025-01-28 13:42:18.1613 Info Request finished HTTP/1.1 GET http://localhost:5292/index.js - 200 - application/javascript;charset=utf-8 2.9106ms 
+2025-01-28 13:42:18.5072 Info Request starting HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - - - 
+2025-01-28 13:42:18.7305 Info Request finished HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - 200 - application/json;charset=utf-8 223.3481ms 
+2025-01-28 13:42:33.2324 Info Request starting HTTP/1.1 POST http://localhost:5292/api/Auth/assign-role - application/json 46 
+2025-01-28 13:42:33.2324 Info CORS policy execution successful. 
+2025-01-28 13:42:33.3555 Info Failed to validate the token. System.ArgumentException: IDX14102: Unable to decode the header '[PII of type 'Microsoft.IdentityModel.Logging.SecurityArtifact' is hidden. For more details, see https://aka.ms/IdentityModel/PII.]' as Base64Url encoded string.
+ ---> System.MissingMethodException: Method not found: 'Void Microsoft.IdentityModel.Tokens.Base64UrlEncoder.Decode(System.ReadOnlySpan`1<Char>, System.Span`1<Byte>)'.
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.CreateClaimSet(ReadOnlySpan`1 strSpan, Int32 startIndex, Int32 length, Boolean createHeaderClaimSet)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.ReadToken(ReadOnlyMemory`1 encodedTokenMemory)
+   --- End of inner exception stack trace ---
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.ReadToken(ReadOnlyMemory`1 encodedTokenMemory)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken..ctor(String jwtEncodedString)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ReadToken(String token, TokenValidationParameters validationParameters)
+2025-01-28 13:42:33.3790 Info Bearer was not authenticated. Failure message: IDX14102: Unable to decode the header '[PII of type 'Microsoft.IdentityModel.Logging.SecurityArtifact' is hidden. For more details, see https://aka.ms/IdentityModel/PII.]' as Base64Url encoded string. 
+2025-01-28 13:42:33.3959 Info Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin) 
+2025-01-28 13:42:33.3959 Info AuthenticationScheme: Bearer was challenged. 
+2025-01-28 13:42:33.3959 Info Request finished HTTP/1.1 POST http://localhost:5292/api/Auth/assign-role - 401 0 - 169.9358ms 
+2025-01-28 13:42:55.1260 Info Request starting HTTP/1.1 GET http://localhost:5292/index.html - - - 
+2025-01-28 13:42:55.1260 Info Request finished HTTP/1.1 GET http://localhost:5292/index.html - 200 - text/html;charset=utf-8 3.7422ms 
+2025-01-28 13:42:55.1636 Info Request starting HTTP/1.1 GET http://localhost:5292/_framework/aspnetcore-browser-refresh.js - - - 
+2025-01-28 13:42:55.1636 Info Request starting HTTP/1.1 GET http://localhost:5292/index.js - - - 
+2025-01-28 13:42:55.1636 Info Request finished HTTP/1.1 GET http://localhost:5292/_framework/aspnetcore-browser-refresh.js - 200 13748 application/javascript;+charset=utf-8 0.6303ms 
+2025-01-28 13:42:55.1636 Info Request finished HTTP/1.1 GET http://localhost:5292/index.js - 200 - application/javascript;charset=utf-8 3.1828ms 
+2025-01-28 13:42:55.4606 Info Request starting HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - - - 
+2025-01-28 13:42:55.4879 Info Request finished HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - 200 - application/json;charset=utf-8 27.3083ms 
+2025-01-28 13:43:13.8364 Info Application is shutting down... 
+2025-01-28 13:50:59.5882 Info Executed DbCommand (39ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-01-28 13:50:59.6546 Info Executed DbCommand (2ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-01-28 13:50:59.6561 Info Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-01-28 13:50:59.7303 Info User profile is available. Using 'C:\Users\hp\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest. 
+2025-01-28 13:50:59.7921 Info Now listening on: http://localhost:5292 
+2025-01-28 13:50:59.7921 Info Application started. Press Ctrl+C to shut down. 
+2025-01-28 13:50:59.7921 Info Hosting environment: Development 
+2025-01-28 13:50:59.7921 Info Content root path: C:\Users\hp\CompanyManagement\CompanyManagement 
+2025-01-28 13:50:59.8428 Info Request starting HTTP/1.1 GET http://localhost:5292/index.html - - - 
+2025-01-28 13:50:59.8502 Warn Failed to determine the https port for redirect. 
+2025-01-28 13:50:59.9547 Info Request finished HTTP/1.1 GET http://localhost:5292/index.html - 200 - text/html;charset=utf-8 110.7708ms 
+2025-01-28 13:50:59.9547 Info Request starting HTTP/1.1 GET http://localhost:5292/index.js - - - 
+2025-01-28 13:50:59.9547 Info Request starting HTTP/1.1 GET http://localhost:5292/_framework/aspnetcore-browser-refresh.js - - - 
+2025-01-28 13:50:59.9547 Info Request finished HTTP/1.1 GET http://localhost:5292/index.js - 200 - application/javascript;charset=utf-8 2.0259ms 
+2025-01-28 13:50:59.9547 Info Request finished HTTP/1.1 GET http://localhost:5292/_framework/aspnetcore-browser-refresh.js - 200 13748 application/javascript;+charset=utf-8 2.2605ms 
+2025-01-28 13:51:00.1775 Info Request starting HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - - - 
+2025-01-28 13:51:00.2982 Info Request finished HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - 200 - application/json;charset=utf-8 120.6280ms 
+2025-01-28 13:51:16.6220 Info Request starting HTTP/1.1 POST http://localhost:5292/api/Auth/assign-role - application/json 46 
+2025-01-28 13:51:16.6220 Info CORS policy execution successful. 
+2025-01-28 13:51:16.6949 Info Failed to validate the token. System.ArgumentException: IDX14102: Unable to decode the header '[PII of type 'Microsoft.IdentityModel.Logging.SecurityArtifact' is hidden. For more details, see https://aka.ms/IdentityModel/PII.]' as Base64Url encoded string.
+ ---> System.MissingMethodException: Method not found: 'Void Microsoft.IdentityModel.Tokens.Base64UrlEncoder.Decode(System.ReadOnlySpan`1<Char>, System.Span`1<Byte>)'.
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.CreateClaimSet(ReadOnlySpan`1 strSpan, Int32 startIndex, Int32 length, Boolean createHeaderClaimSet)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.ReadToken(ReadOnlyMemory`1 encodedTokenMemory)
+   --- End of inner exception stack trace ---
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.ReadToken(ReadOnlyMemory`1 encodedTokenMemory)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken..ctor(String jwtEncodedString)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ReadToken(String token, TokenValidationParameters validationParameters)
+2025-01-28 13:51:16.6949 Info Bearer was not authenticated. Failure message: IDX14102: Unable to decode the header '[PII of type 'Microsoft.IdentityModel.Logging.SecurityArtifact' is hidden. For more details, see https://aka.ms/IdentityModel/PII.]' as Base64Url encoded string. 
+2025-01-28 13:51:16.7199 Info Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin) 
+2025-01-28 13:51:16.7199 Info AuthenticationScheme: Bearer was challenged. 
+2025-01-28 13:51:16.7199 Info Request finished HTTP/1.1 POST http://localhost:5292/api/Auth/assign-role - 401 0 - 102.4928ms 
+2025-01-28 13:51:36.3781 Info Request starting HTTP/1.1 GET http://localhost:5292/index.html - - - 
+2025-01-28 13:51:36.3781 Info Request finished HTTP/1.1 GET http://localhost:5292/index.html - 200 - text/html;charset=utf-8 2.4818ms 
+2025-01-28 13:51:36.4155 Info Request starting HTTP/1.1 GET http://localhost:5292/_framework/aspnetcore-browser-refresh.js - - - 
+2025-01-28 13:51:36.4155 Info Request starting HTTP/1.1 GET http://localhost:5292/index.js - - - 
+2025-01-28 13:51:36.4155 Info Request finished HTTP/1.1 GET http://localhost:5292/_framework/aspnetcore-browser-refresh.js - 200 13748 application/javascript;+charset=utf-8 0.8768ms 
+2025-01-28 13:51:36.4155 Info Request finished HTTP/1.1 GET http://localhost:5292/index.js - 200 - application/javascript;charset=utf-8 0.7953ms 
+2025-01-28 13:51:36.7452 Info Request starting HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - - - 
+2025-01-28 13:51:36.7697 Info Request finished HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - 200 - application/json;charset=utf-8 24.4515ms 
+2025-01-28 13:55:42.4518 Info Request starting HTTP/1.1 GET http://localhost:5292/index.html - - - 
+2025-01-28 13:55:42.4548 Info Request finished HTTP/1.1 GET http://localhost:5292/index.html - 200 - text/html;charset=utf-8 2.9722ms 
+2025-01-28 13:55:42.4796 Info Request starting HTTP/1.1 GET http://localhost:5292/_framework/aspnetcore-browser-refresh.js - - - 
+2025-01-28 13:55:42.4796 Info Request finished HTTP/1.1 GET http://localhost:5292/_framework/aspnetcore-browser-refresh.js - 200 13748 application/javascript;+charset=utf-8 0.5918ms 
+2025-01-28 13:55:42.4796 Info Request starting HTTP/1.1 GET http://localhost:5292/index.js - - - 
+2025-01-28 13:55:42.4796 Info Request finished HTTP/1.1 GET http://localhost:5292/index.js - 200 - application/javascript;charset=utf-8 1.2460ms 
+2025-01-28 13:55:42.6576 Info Request starting HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - - - 
+2025-01-28 13:55:42.6808 Info Request finished HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - 200 - application/json;charset=utf-8 23.2919ms 
+2025-01-28 13:55:51.6595 Info Executed DbCommand (39ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-01-28 13:55:51.7379 Info Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-01-28 13:55:51.7379 Info Executed DbCommand (0ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-01-28 13:55:51.8435 Info User profile is available. Using 'C:\Users\hp\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest. 
+2025-01-28 13:55:51.9544 Info Now listening on: http://localhost:5292 
+2025-01-28 13:55:51.9544 Info Application started. Press Ctrl+C to shut down. 
+2025-01-28 13:55:51.9544 Info Hosting environment: Development 
+2025-01-28 13:55:51.9544 Info Content root path: C:\Users\hp\CompanyManagement\CompanyManagement 
+2025-01-28 13:55:52.2032 Info Request starting HTTP/1.1 GET http://localhost:5292/index.html - - - 
+2025-01-28 13:55:52.2032 Warn Failed to determine the https port for redirect. 
+2025-01-28 13:55:52.3679 Info Request finished HTTP/1.1 GET http://localhost:5292/index.html - 200 - text/html;charset=utf-8 162.0267ms 
+2025-01-28 13:55:52.3679 Info Request starting HTTP/1.1 GET http://localhost:5292/_framework/aspnetcore-browser-refresh.js - - - 
+2025-01-28 13:55:52.3679 Info Request starting HTTP/1.1 GET http://localhost:5292/index.js - - - 
+2025-01-28 13:55:52.3679 Info Request finished HTTP/1.1 GET http://localhost:5292/_framework/aspnetcore-browser-refresh.js - 200 13748 application/javascript;+charset=utf-8 2.3897ms 
+2025-01-28 13:55:52.3679 Info Request finished HTTP/1.1 GET http://localhost:5292/index.js - 200 - application/javascript;charset=utf-8 2.6700ms 
+2025-01-28 13:55:52.4649 Info Request starting HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - - - 
+2025-01-28 13:55:52.5957 Info Request finished HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - 200 - application/json;charset=utf-8 130.7622ms 
+2025-01-28 13:56:10.8013 Info Request starting HTTP/1.1 POST http://localhost:5292/api/Auth/login - application/json 52 
+2025-01-28 13:56:10.8013 Info CORS policy execution successful. 
+2025-01-28 13:56:10.8505 Info Executing endpoint 'DotnetAPI.Controllers.AuthController.Login (CompanyManagement)' 
+2025-01-28 13:56:10.8716 Info Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(DotnetAPI.DTOs.LoginUserDto, System.Threading.CancellationToken) on controller DotnetAPI.Controllers.AuthController (CompanyManagement). 
+2025-01-28 13:56:11.0200 Info Executed DbCommand (7ms) [Parameters=[@__normalizedUserName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."Email", a."EmailConfirmed", a."LockoutEnabled", a."LockoutEnd", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."SecurityStamp", a."TwoFactorEnabled", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."NormalizedUserName" = @__normalizedUserName_0
+LIMIT 1 
+2025-01-28 13:56:11.2040 Info Executed DbCommand (9ms) [Parameters=[@__userId_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a0."Name"
+FROM "AspNetUserRoles" AS a
+INNER JOIN "AspNetRoles" AS a0 ON a."RoleId" = a0."Id"
+WHERE a."UserId" = @__userId_0 
+2025-01-28 13:56:11.2283 Info Executing OkObjectResult, writing value of type '<>f__AnonymousType1`1[[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'. 
+2025-01-28 13:56:11.2458 Info Executed action DotnetAPI.Controllers.AuthController.Login (CompanyManagement) in 368.9767ms 
+2025-01-28 13:56:11.2458 Info Executed endpoint 'DotnetAPI.Controllers.AuthController.Login (CompanyManagement)' 
+2025-01-28 13:56:11.2530 Info Request finished HTTP/1.1 POST http://localhost:5292/api/Auth/login - 200 - application/json;+charset=utf-8 451.7258ms 
+2025-01-28 13:56:51.8271 Info Request starting HTTP/1.1 GET http://localhost:5292/api/Company/1 - - - 
+2025-01-28 13:56:51.8395 Info Failed to validate the token. System.ArgumentException: IDX14102: Unable to decode the header '[PII of type 'Microsoft.IdentityModel.Logging.SecurityArtifact' is hidden. For more details, see https://aka.ms/IdentityModel/PII.]' as Base64Url encoded string.
+ ---> System.MissingMethodException: Method not found: 'Void Microsoft.IdentityModel.Tokens.Base64UrlEncoder.Decode(System.ReadOnlySpan`1<Char>, System.Span`1<Byte>)'.
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.CreateClaimSet(ReadOnlySpan`1 strSpan, Int32 startIndex, Int32 length, Boolean createHeaderClaimSet)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.ReadToken(ReadOnlyMemory`1 encodedTokenMemory)
+   --- End of inner exception stack trace ---
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.ReadToken(ReadOnlyMemory`1 encodedTokenMemory)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken..ctor(String jwtEncodedString)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ReadToken(String token, TokenValidationParameters validationParameters)
+2025-01-28 13:56:51.8507 Info Bearer was not authenticated. Failure message: IDX14102: Unable to decode the header '[PII of type 'Microsoft.IdentityModel.Logging.SecurityArtifact' is hidden. For more details, see https://aka.ms/IdentityModel/PII.]' as Base64Url encoded string. 
+2025-01-28 13:56:51.8507 Info Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user. 
+2025-01-28 13:56:51.8507 Info AuthenticationScheme: Bearer was challenged. 
+2025-01-28 13:56:51.8507 Info Request finished HTTP/1.1 GET http://localhost:5292/api/Company/1 - 401 0 - 32.3792ms 
+2025-01-28 13:58:07.4891 Info Request starting HTTP/1.1 GET http://localhost:5292/index.html - - - 
+2025-01-28 13:58:07.4891 Info Request finished HTTP/1.1 GET http://localhost:5292/index.html - 200 - text/html;charset=utf-8 2.9391ms 
+2025-01-28 13:58:07.5074 Info Request starting HTTP/1.1 GET http://localhost:5292/_framework/aspnetcore-browser-refresh.js - - - 
+2025-01-28 13:58:07.5074 Info Request starting HTTP/1.1 GET http://localhost:5292/index.js - - - 
+2025-01-28 13:58:07.5074 Info Request finished HTTP/1.1 GET http://localhost:5292/_framework/aspnetcore-browser-refresh.js - 200 13748 application/javascript;+charset=utf-8 0.5850ms 
+2025-01-28 13:58:07.5074 Info Request finished HTTP/1.1 GET http://localhost:5292/index.js - 200 - application/javascript;charset=utf-8 1.0088ms 
+2025-01-28 13:58:07.6177 Info Request starting HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - - - 
+2025-01-28 13:58:07.6390 Info Request finished HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - 200 - application/json;charset=utf-8 21.2958ms 
+2025-01-28 14:11:01.7402 Info Request starting HTTP/1.1 GET http://localhost:5292/index.html - - - 
+2025-01-28 14:11:01.7874 Info Request finished HTTP/1.1 GET http://localhost:5292/index.html - 200 - text/html;charset=utf-8 50.4027ms 
+2025-01-28 14:11:01.7977 Info Request starting HTTP/1.1 GET http://localhost:5292/index.js - - - 
+2025-01-28 14:11:01.7977 Info Request starting HTTP/1.1 GET http://localhost:5292/_framework/aspnetcore-browser-refresh.js - - - 
+2025-01-28 14:11:01.7977 Info Request finished HTTP/1.1 GET http://localhost:5292/index.js - 200 - application/javascript;charset=utf-8 3.1983ms 
+2025-01-28 14:11:01.7977 Info Request finished HTTP/1.1 GET http://localhost:5292/_framework/aspnetcore-browser-refresh.js - 200 13748 application/javascript;+charset=utf-8 5.5257ms 
+2025-01-28 14:11:02.0702 Info Request starting HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - - - 
+2025-01-28 14:11:02.1844 Info Request finished HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - 200 - application/json;charset=utf-8 114.1854ms 
+2025-01-28 14:11:19.9096 Info Request starting HTTP/1.1 GET http://localhost:5292/api/Company/1 - - - 
+2025-01-28 14:11:19.9685 Info Failed to validate the token. System.ArgumentException: IDX14102: Unable to decode the header '[PII of type 'Microsoft.IdentityModel.Logging.SecurityArtifact' is hidden. For more details, see https://aka.ms/IdentityModel/PII.]' as Base64Url encoded string.
+ ---> System.MissingMethodException: Method not found: 'Void Microsoft.IdentityModel.Tokens.Base64UrlEncoder.Decode(System.ReadOnlySpan`1<Char>, System.Span`1<Byte>)'.
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.CreateClaimSet(ReadOnlySpan`1 strSpan, Int32 startIndex, Int32 length, Boolean createHeaderClaimSet)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.ReadToken(ReadOnlyMemory`1 encodedTokenMemory)
+   --- End of inner exception stack trace ---
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken.ReadToken(ReadOnlyMemory`1 encodedTokenMemory)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebToken..ctor(String jwtEncodedString)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ReadToken(String token, TokenValidationParameters validationParameters)
+2025-01-28 14:11:19.9685 Info Bearer was not authenticated. Failure message: IDX14102: Unable to decode the header '[PII of type 'Microsoft.IdentityModel.Logging.SecurityArtifact' is hidden. For more details, see https://aka.ms/IdentityModel/PII.]' as Base64Url encoded string. 
+2025-01-28 14:11:19.9892 Info Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user. 
+2025-01-28 14:11:19.9892 Info AuthenticationScheme: Bearer was challenged. 
+2025-01-28 14:11:19.9892 Info Request finished HTTP/1.1 GET http://localhost:5292/api/Company/1 - 401 0 - 85.6699ms 
+2025-01-28 14:13:25.4423 Info Request starting HTTP/1.1 GET http://localhost:5292/index.html - - - 
+2025-01-28 14:13:25.4423 Info Request finished HTTP/1.1 GET http://localhost:5292/index.html - 200 - text/html;charset=utf-8 6.4206ms 
+2025-01-28 14:13:25.4898 Info Request starting HTTP/1.1 GET http://localhost:5292/index.js - - - 
+2025-01-28 14:13:25.4898 Info Request starting HTTP/1.1 GET http://localhost:5292/_framework/aspnetcore-browser-refresh.js - - - 
+2025-01-28 14:13:25.4898 Info Request finished HTTP/1.1 GET http://localhost:5292/index.js - 200 - application/javascript;charset=utf-8 1.1103ms 
+2025-01-28 14:13:25.4898 Info Request finished HTTP/1.1 GET http://localhost:5292/_framework/aspnetcore-browser-refresh.js - 200 13748 application/javascript;+charset=utf-8 0.5708ms 
+2025-01-28 14:13:26.0251 Info Request starting HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - - - 
+2025-01-28 14:13:26.0626 Info Request finished HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - 200 - application/json;charset=utf-8 37.4249ms 
+2025-01-28 14:17:59.2108 Info Request starting HTTP/1.1 GET http://localhost:5292/index.html - - - 
+2025-01-28 14:17:59.2200 Info Request finished HTTP/1.1 GET http://localhost:5292/index.html - 200 - text/html;charset=utf-8 8.7804ms 
+2025-01-28 14:17:59.2644 Info Request starting HTTP/1.1 GET http://localhost:5292/_framework/aspnetcore-browser-refresh.js - - - 
+2025-01-28 14:17:59.2646 Info Request starting HTTP/1.1 GET http://localhost:5292/index.js - - - 
+2025-01-28 14:17:59.2672 Info Request finished HTTP/1.1 GET http://localhost:5292/_framework/aspnetcore-browser-refresh.js - 200 13748 application/javascript;+charset=utf-8 2.6009ms 
+2025-01-28 14:17:59.2672 Info Request finished HTTP/1.1 GET http://localhost:5292/index.js - 200 - application/javascript;charset=utf-8 5.9103ms 
+2025-01-28 14:17:59.8947 Info Request starting HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - - - 
+2025-01-28 14:17:59.9147 Info Request finished HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - 200 - application/json;charset=utf-8 20.0235ms 
+2025-01-28 14:24:25.5493 Info Request starting HTTP/1.1 GET http://localhost:5292/index.html - - - 
+2025-01-28 14:24:25.5493 Info Request finished HTTP/1.1 GET http://localhost:5292/index.html - 200 - text/html;charset=utf-8 7.5380ms 
+2025-01-28 14:24:25.5796 Info Request starting HTTP/1.1 GET http://localhost:5292/index.js - - - 
+2025-01-28 14:24:25.5796 Info Request starting HTTP/1.1 GET http://localhost:5292/_framework/aspnetcore-browser-refresh.js - - - 
+2025-01-28 14:24:25.5796 Info Request finished HTTP/1.1 GET http://localhost:5292/_framework/aspnetcore-browser-refresh.js - 200 13748 application/javascript;+charset=utf-8 0.3424ms 
+2025-01-28 14:24:25.5796 Info Request finished HTTP/1.1 GET http://localhost:5292/index.js - 200 - application/javascript;charset=utf-8 0.9988ms 
+2025-01-28 14:24:26.2389 Info Request starting HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - - - 
+2025-01-28 14:24:26.2854 Info Request finished HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - 200 - application/json;charset=utf-8 46.4513ms 
+2025-01-28 14:24:45.0636 Info Executed DbCommand (42ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-01-28 14:24:45.1434 Info Executed DbCommand (2ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-01-28 14:24:45.1434 Info Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-01-28 14:24:45.2166 Info User profile is available. Using 'C:\Users\hp\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest. 
+2025-01-28 14:24:45.2755 Info Now listening on: http://localhost:5292 
+2025-01-28 14:24:45.2755 Info Application started. Press Ctrl+C to shut down. 
+2025-01-28 14:24:45.2755 Info Hosting environment: Development 
+2025-01-28 14:24:45.2755 Info Content root path: C:\Users\hp\CompanyManagement\CompanyManagement 
+2025-01-28 14:42:55.2733 Info Application is shutting down... 

@@ -7,7 +7,6 @@ using DotnetAPI.Seeders;
 using DotnetAPI.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
-
 //using DotnetAPI.Middleware;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -58,6 +57,7 @@ builder.Services.AddSwaggerGen(c =>
 builder.Services.AddDbContext<CompanyDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+
 builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options =>
     {
         options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(15); // lockout duration
@@ -68,19 +68,26 @@ builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options =>
     .AddDefaultTokenProviders();
 
 
-builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-    .AddJwtBearer(options =>
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+}).AddJwtBearer(options =>
     {
+#pragma warning disable CS8604 // Possible null reference argument.
         options.TokenValidationParameters = new TokenValidationParameters
         {
             ValidateIssuer = true,
             ValidateAudience = true,
             ValidateLifetime = true,
             ValidateIssuerSigningKey = true,
-            ValidIssuer = "CompanyManagement",
-            ValidAudience = "YourAudienceName",
-            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("iJg8kQIYL/QP1uRpT1lBukwi3mltJroPNGJVQ4XqYEdtqDxcKj/0egZU+gLBe9jd"))
+            ValidIssuer = builder.Configuration["Jwt:Issuer"],
+            ValidAudience = builder.Configuration["Jwt:Audience"],
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:SecretKey"])),
+            RoleClaimType = ClaimTypes.Role
         };
+#pragma warning restore CS8604 // Possible null reference argument.
     });
 
 builder.Services.AddAuthorization();
@@ -128,7 +135,6 @@ using (var scope = app.Services.CreateScope())
     await RoleSeeder.SeedRolesAsync(roleManager);
 }
 
-// Middleware for Error Handling
 app.UseMiddleware<GlobalExceptionHandlerMiddleware>();
 app.UseRouting();
 app.UseAuthentication();
