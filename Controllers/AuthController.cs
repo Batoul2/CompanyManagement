@@ -63,7 +63,7 @@ namespace DotnetAPI.Controllers
                 return BadRequest("Username and Role are required.");
             }
 
-            var result = await _authService.AssignRoleToUserAsync(model.Username, model.Role, cancellationToken);
+            var result = await _authService.AssignRoleToUserAsync(model.Username, model.Role);
 
             return Ok(result); 
         }
@@ -91,30 +91,6 @@ namespace DotnetAPI.Controllers
             }
 
             return Ok("Password has been reset successfully.");
-        }
-
-        //......................
-        [HttpPost("decode-token")]
-        public IActionResult DecodeToken([FromBody] string token)
-        {
-            if (string.IsNullOrEmpty(token))
-                return BadRequest("Token is required.");
-
-            var handler = new JwtSecurityTokenHandler();
-
-            try
-            {
-                var decodedToken = handler.ReadJwtToken(token);
-                return Ok(new 
-                { 
-                    Header = decodedToken.Header, 
-                    Payload = decodedToken.Payload 
-                });
-            }
-            catch (Exception ex)
-            {
-                return BadRequest($"Token decoding failed: {ex.Message}");
-            }
         }
 
 

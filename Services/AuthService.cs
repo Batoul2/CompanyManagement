@@ -25,7 +25,6 @@ namespace DotnetAPI.Services
         _configuration = configuration;
         _roleManager = roleManager;
     }
-    //performed the cancellation token here
     public async Task<IdentityResult> RegisterUserAsync(RegisterUserDto model, CancellationToken cancellationToken)
     {
         if (model.Password != model.ConfirmPassword)
@@ -54,71 +53,107 @@ namespace DotnetAPI.Services
 
     public async Task<string?> LoginAsync(LoginUserDto model, CancellationToken cancellationToken)
     {
-        cancellationToken.ThrowIfCancellationRequested();
         var user = await _userManager.FindByNameAsync(model.Username);
         cancellationToken.ThrowIfCancellationRequested();
         if (user == null || !await _userManager.CheckPasswordAsync(user, model.Password))
         {
             return null;
         }
+        var userRoles = await _userManager.GetRolesAsync(user);
+        if (userRoles.Contains("Admin"))
+            {
+                return await GenerateJwtTokenAsync(user);
+            }
 
-        return await GenerateJwtTokenAsync(user);
+        return null;
     }
 
-    private async Task<string> GenerateJwtTokenAsync(ApplicationUser user)
-    {
-        var claims = new List<Claim>
-        {
-            new Claim(ClaimTypes.Name, user.UserName ?? string.Empty),
-            new Claim(ClaimTypes.NameIdentifier, user.Id)
-        };
+    // private async Task<string> GenerateJwtTokenAsync(ApplicationUser user)
+    // {
+    //     var claims = new List<Claim>
+    //     {
+    //         new Claim(ClaimTypes.Name, user.UserName ?? string.Empty),
+    //         new Claim(ClaimTypes.NameIdentifier, user.Id)
+    //     };
 
-        var roles = await _userManager.GetRolesAsync(user);
-        claims.AddRange(roles.Select(role => new Claim(ClaimTypes.Role, role)));
+    //     var roles = await _userManager.GetRolesAsync(user);
+    //     claims.AddRange(roles.Select(role => new Claim(ClaimTypes.Role, role)));
 
-        var secretKey = _configuration["Jwt:SecretKey"];
-        if (string.IsNullOrEmpty(secretKey))
+    //     var secretKey = _configuration["Jwt:SecretKey"];
+    //     if (string.IsNullOrEmpty(secretKey))
+    //     {
+    //         throw new InvalidOperationException("JWT SecretKey is not configured.");
+    //     }
+
+    //     var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secretKey));
+    //     //var key = new SymmetricSecurityKey(Convert.FromBase64String(secretKey));
+    //     var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+
+    //     var token = new JwtSecurityToken(
+    //         issuer: _configuration["Jwt:Issuer"],
+    //         audience: _configuration["Jwt:Audience"],
+    //         claims: claims,
+    //         expires: DateTime.UtcNow.AddDays(2),
+    //         signingCredentials: creds
+    //     );
+
+    //     var tokenString = new JwtSecurityTokenHandler().WriteToken(token);
+    //     Console.WriteLine($"Generated Token: {tokenString}");  
+
+    //     return tokenString;
+    // }
+
+        public async Task<string> GenerateJwtTokenAsync(ApplicationUser user)
         {
-            throw new InvalidOperationException("JWT SecretKey is not configured.");
+            var userRoles = await _userManager.GetRolesAsync(user);
+            var authClaims = new List<Claim>
+            {
+                new Claim(ClaimTypes.Name, user.UserName?? string.Empty),
+                new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
+            };
+
+            foreach (var userRole in userRoles)
+            {
+                authClaims.Add(new Claim(ClaimTypes.Role, userRole));
+            }
+
+            var jwtKey = _configuration["Jwt:Key"];
+
+            if (string.IsNullOrEmpty(jwtKey))
+            {
+                throw new InvalidOperationException("JWT Secret Key is missing in configuration.");
+            }
+
+            var authSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtKey));
+
+            var token = new JwtSecurityToken(
+                issuer: _configuration["Jwt:Issuer"],
+                audience: _configuration["Jwt:Audience"],
+                expires: DateTime.Now.AddDays(3),
+                claims: authClaims,
+                signingCredentials: new SigningCredentials(authSigningKey, SecurityAlgorithms.HmacSha256)
+            );
+
+            return new JwtSecurityTokenHandler().WriteToken(token);
         }
 
-        var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secretKey));
-        //var key = new SymmetricSecurityKey(Convert.FromBase64String(secretKey));
-        var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
-
-        var token = new JwtSecurityToken(
-            issuer: _configuration["Jwt:Issuer"],
-            audience: _configuration["Jwt:Audience"],
-            claims: claims,
-            expires: DateTime.UtcNow.AddDays(2),
-            signingCredentials: creds
-        );
-
-        var tokenString = new JwtSecurityTokenHandler().WriteToken(token);
-        Console.WriteLine($"Generated Token: {tokenString}");  
-
-        return tokenString;
-    }
 
 
-        public async Task<string> AssignRoleToUserAsync(string username, string role, CancellationToken cancellationToken)
+        public async Task<string> AssignRoleToUserAsync(string username, string role)
         {
             var user = await _userManager.FindByNameAsync(username);
-            cancellationToken.ThrowIfCancellationRequested();
             if (user == null)
             {
                 return "User not found.";
             }
 
             var roleExists = await _roleManager.RoleExistsAsync(role);
-            cancellationToken.ThrowIfCancellationRequested();
             if (!roleExists)
             {
                 return "Role not found.";
             }
 
             var result = await _userManager.AddToRoleAsync(user, role);
-            cancellationToken.ThrowIfCancellationRequested();
             if (result.Succeeded)
             {
                 return $"Role {role} assigned to {username}.";
