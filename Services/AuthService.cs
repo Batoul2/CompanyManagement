@@ -69,8 +69,7 @@ namespace DotnetAPI.Services
     {
         var claims = new List<Claim>
         {
-            new Claim(JwtRegisteredClaimNames.Sub, user.UserName ?? string.Empty),
-            new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
+            new Claim(ClaimTypes.Name, user.UserName ?? string.Empty),
             new Claim(ClaimTypes.NameIdentifier, user.Id)
         };
 
@@ -83,15 +82,15 @@ namespace DotnetAPI.Services
             throw new InvalidOperationException("JWT SecretKey is not configured.");
         }
 
-        //var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secretKey));
-        var key = new SymmetricSecurityKey(Convert.FromBase64String(secretKey));
+        var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secretKey));
+        //var key = new SymmetricSecurityKey(Convert.FromBase64String(secretKey));
         var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 
         var token = new JwtSecurityToken(
             issuer: _configuration["Jwt:Issuer"],
             audience: _configuration["Jwt:Audience"],
             claims: claims,
-            expires: DateTime.UtcNow.AddHours(1),
+            expires: DateTime.UtcNow.AddDays(2),
             signingCredentials: creds
         );
 

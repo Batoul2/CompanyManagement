@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using DotnetAPI.Services;
 using DotnetAPI.DTOs;
 using Microsoft.AspNetCore.Authorization;
+using System.IdentityModel.Tokens.Jwt;
 
 namespace DotnetAPI.Controllers
 {
@@ -91,6 +92,31 @@ namespace DotnetAPI.Controllers
 
             return Ok("Password has been reset successfully.");
         }
+
+        //......................
+        [HttpPost("decode-token")]
+        public IActionResult DecodeToken([FromBody] string token)
+        {
+            if (string.IsNullOrEmpty(token))
+                return BadRequest("Token is required.");
+
+            var handler = new JwtSecurityTokenHandler();
+
+            try
+            {
+                var decodedToken = handler.ReadJwtToken(token);
+                return Ok(new 
+                { 
+                    Header = decodedToken.Header, 
+                    Payload = decodedToken.Payload 
+                });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest($"Token decoding failed: {ex.Message}");
+            }
+        }
+
 
   }
   

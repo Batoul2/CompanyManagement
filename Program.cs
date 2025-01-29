@@ -75,43 +75,21 @@ builder.Services.AddAuthentication(options =>
     options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
 }).AddJwtBearer(options =>
     {
-        options.RequireHttpsMetadata = false; 
-        options.SaveToken = true;
-#pragma warning disable CS8604 // Possible null reference argument.
+        options.RequireHttpsMetadata = false;
         options.TokenValidationParameters = new TokenValidationParameters
         {
             ValidateIssuer = true,
             ValidateAudience = true,
-            ValidateLifetime = true,
             ValidateIssuerSigningKey = true,
             ValidIssuer = builder.Configuration["Jwt:Issuer"],
             ValidAudience = builder.Configuration["Jwt:Audience"],
-            //IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:SecretKey"])),
-            IssuerSigningKey = new SymmetricSecurityKey(Convert.FromBase64String(builder.Configuration["Jwt:SecretKey"])),
-            RoleClaimType = ClaimTypes.Role
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:SecretKey"])),
+            //IssuerSigningKey = new SymmetricSecurityKey(Convert.FromBase64String(builder.Configuration["Jwt:SecretKey"])),
+            //RoleClaimType = ClaimTypes.Role
         };
-#pragma warning restore CS8604 // Possible null reference argument.
-        options.Events = new JwtBearerEvents
-            {
-                OnAuthenticationFailed = context =>
-                {
-                    Console.WriteLine($"JWT Authentication failed: {context.Exception.Message}");
-                    return Task.CompletedTask;
-                },
-                OnChallenge = context =>
-                {
-                    Console.WriteLine("JWT Challenge triggered.");
-                    return Task.CompletedTask;
-                },
-                OnTokenValidated = context =>
-                {
-                    Console.WriteLine("Token validated successfully!");
-                    return Task.CompletedTask;
-                }
-            };
     });
 
-builder.Services.AddAuthorization();
+// builder.Services.AddAuthorization();
 
 
 
@@ -139,7 +117,7 @@ var app = builder.Build();
 
 // Middleware
 app.UseHttpsRedirection();
-app.UseCors("AllowAllOrigins");
+
 
 if (app.Environment.IsDevelopment())
 {
@@ -151,18 +129,17 @@ if (app.Environment.IsDevelopment())
     });
 }
 
+
+
+//Microsoft.IdentityModel.Logging.IdentityModelEventSource.ShowPII = true;
+app.UseAuthentication();
+app.UseAuthorization();
+app.UseCors("AllowAllOrigins");
+app.UseMiddleware<GlobalExceptionHandlerMiddleware>();
+app.MapControllers();
 using (var scope = app.Services.CreateScope())
 {
     var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
     await RoleSeeder.SeedRolesAsync(roleManager);
 }
-
-Microsoft.IdentityModel.Logging.IdentityModelEventSource.ShowPII = true;
-
-app.UseMiddleware<GlobalExceptionHandlerMiddleware>();
-app.UseRouting();
-app.UseAuthentication();
-app.UseAuthorization();
-app.MapControllers();
-
 app.Run();
