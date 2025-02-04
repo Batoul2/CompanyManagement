@@ -1,4 +1,4 @@
-namespace DotnetAPI.DTOs
+namespace CompanyManagement.DTOs
 {
     public class CompanyDto
     {

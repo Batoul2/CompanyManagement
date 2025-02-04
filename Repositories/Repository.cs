@@ -1,7 +1,7 @@
-using DotnetAPI.Data;
+using CompanyManagement.Data;
 using Microsoft.EntityFrameworkCore;
 
-namespace DotnetAPI.Repositories
+namespace CompanyManagement.Repositories
 {
   public class Repository<T> : IRepository<T> where T : class
 {

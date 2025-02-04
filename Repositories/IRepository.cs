@@ -1,4 +1,4 @@
-namespace DotnetAPI.Repositories
+namespace CompanyManagement.Repositories
 {
   public interface IRepository<T> where T : class
 {

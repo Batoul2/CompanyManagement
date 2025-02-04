@@ -1,10 +1,10 @@
 using Microsoft.AspNetCore.Mvc;
-using DotnetAPI.Services;
-using DotnetAPI.DTOs;
+using CompanyManagement.DTOs;
 using Microsoft.AspNetCore.Authorization;
 using System.IdentityModel.Tokens.Jwt;
+using CompanyManagement.Services;
 
-namespace DotnetAPI.Controllers
+namespace CompanyManagement.Controllers
 {
   [ApiController]
   [Route("api/[controller]")]
@@ -52,18 +52,17 @@ namespace DotnetAPI.Controllers
         [HttpPost("assign-role"), Authorize(Roles = "Admin")]
         public async Task<IActionResult> AssignRoleToUser([FromBody] AssignRoleDto model)
         {
-            // var userClaims = HttpContext.User.Claims.ToList();
-            // Console.WriteLine("User Claims:");
-            // foreach (var claim in userClaims)
-            // {
-            //     Console.WriteLine($"Type: {claim.Type}, Value: {claim.Value}");
-            // }
+            var userClaims = HttpContext.User.Claims.ToList();
+            Console.WriteLine("User Claims:");
+            foreach (var claim in userClaims)
+            {
+                Console.WriteLine($"Type: {claim.Type}, Value: {claim.Value}");
+            }
 
-            // if (model == null || string.IsNullOrEmpty(model.Username) || string.IsNullOrEmpty(model.Role))
-            // {
-            //     return BadRequest("Username and Role are required.");
-            // }
-
+            if (model == null || string.IsNullOrEmpty(model.Username) || string.IsNullOrEmpty(model.Role))
+            {
+                return BadRequest("Username and Role are required.");
+            }
             // var result = await _authService.AssignRoleToUserAsync(model);
 
             // return Ok(result); 

@@ -1,11 +1,11 @@
 using AutoMapper;
-using DotnetAPI.Data;
-using DotnetAPI.DTOs;
-using DotnetAPI.InputModels;
-using DotnetAPI.Models;
+using CompanyManagement.Data;
+using CompanyManagement.DTOs;
+using CompanyManagement.InputModels;
+using CompanyManagement.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace DotnetAPI.Services
+namespace CompanyManagement.Services
 {
     public class CompanyService : ICompanyService
     {

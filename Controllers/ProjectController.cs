@@ -1,10 +1,10 @@
-using DotnetAPI.DTOs;
-using DotnetAPI.InputModels;
-using DotnetAPI.Models;
-using DotnetAPI.Services;
+using CompanyManagement.DTOs;
+using CompanyManagement.InputModels;
+using CompanyManagement.Models;
+using CompanyManagement.Services;
 using Microsoft.AspNetCore.Mvc;
 
-namespace DotnetAPI.Controllers
+namespace CompanyManagement.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]

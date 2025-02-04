@@ -1,9 +1,9 @@
-using DotnetAPI.Models;
+using CompanyManagement.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 
-namespace DotnetAPI.Data
+namespace CompanyManagement.Data
 {
   public class CompanyDbContext : IdentityDbContext<ApplicationUser>
 {

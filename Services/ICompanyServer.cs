@@ -1,7 +1,7 @@
-using DotnetAPI.DTOs;
-using DotnetAPI.InputModels;
+using CompanyManagement.DTOs;
+using CompanyManagement.InputModels;
 
-namespace DotnetAPI.Services
+namespace CompanyManagement.Services
 {
     public interface ICompanyService
     {

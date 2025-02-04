@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Identity;
 using System.Threading.Tasks;
 
-namespace DotnetAPI.Seeders
+namespace CompanyManagement.Seeders
 {
     public static class RoleSeeder
     {

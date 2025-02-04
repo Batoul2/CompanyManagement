@@ -1,10 +1,11 @@
 using System.Security.Claims;
 using System.Text;
-using DotnetAPI.Data;
-using DotnetAPI.Models;
-using DotnetAPI.Repositories;
-using DotnetAPI.Seeders;
-using DotnetAPI.Services;
+using CompanyManagement.Services;
+using CompanyManagement.Data;
+using CompanyManagement.Models;
+using CompanyManagement.Repositories;
+using CompanyManagement.Seeders;
+//using CompanyManagement.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 //using DotnetAPI.Middleware;
@@ -36,43 +37,32 @@ builder.Services.AddScoped<IEmployeeService, EmployeeService>();
 builder.Services.AddScoped<IProjectService, ProjectService>();
 builder.Services.AddScoped<AuthService>();
 
-builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options =>
-    {
-        options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(15); // lockout duration
-        options.Lockout.MaxFailedAccessAttempts = 5; // max failed attempts before lockout
-        options.Lockout.AllowedForNewUsers = true; // lockout applies to new users
-    })
+builder.Services.AddIdentity<ApplicationUser, IdentityRole>(//options =>
+    // {
+    //     options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(15); // lockout duration
+    //     options.Lockout.MaxFailedAccessAttempts = 5; // max failed attempts before lockout
+    //     options.Lockout.AllowedForNewUsers = true; // lockout applies to new users }
+    )
     .AddEntityFrameworkStores<CompanyDbContext>()
     .AddRoleManager<RoleManager<IdentityRole>>()
     .AddDefaultTokenProviders();
 
+
+// var jwtSettings = builder.Configuration.GetSection("Jwt");
+
+// string? secretKey = jwtSettings["SecretKey"];
+// if (string.IsNullOrEmpty(secretKey))
+// {
+//     throw new InvalidOperationException("JWT SecretKey is missing in appsettings.json");
+// }
+
+// var key = Encoding.UTF8.GetBytes(secretKey);
 
 // builder.Services.AddAuthentication(options =>
 // {
 //     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
 //     options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
 //     options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
-// }).AddJwtBearer(options =>
-//     {
-//         options.RequireHttpsMetadata = false;
-//         options.TokenValidationParameters = new TokenValidationParameters
-//         {
-//             ValidateIssuer = true,
-//             ValidateAudience = true,
-//             ValidateIssuerSigningKey = true,
-//             ValidIssuer = builder.Configuration["Jwt:Issuer"],
-//             ValidAudience = builder.Configuration["Jwt:Audience"],
-//             IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:SecretKey"])),
-//             //IssuerSigningKey = new SymmetricSecurityKey(Convert.FromBase64String(builder.Configuration["Jwt:SecretKey"])),
-//             //RoleClaimType = ClaimTypes.Role
-//         };
-//     });
-
-// var key = Encoding.UTF8.GetBytes(builder.Configuration["Jwt:SecretKey"]);
-// builder.Services.AddAuthentication(options =>
-// {
-//     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-//     options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
 // })
 // .AddJwtBearer(options =>
 // {
@@ -84,19 +74,15 @@ builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options =>
 //         IssuerSigningKey = new SymmetricSecurityKey(key),
 //         ValidateIssuer = true,
 //         ValidateAudience = true,
-//         ValidIssuer = builder.Configuration["Jwt:Issuer"],
-//         ValidAudience = builder.Configuration["Jwt:Audience"]
+//         ValidIssuer = jwtSettings["Issuer"],
+//         ValidAudience = jwtSettings["Audience"],
+//         ValidateLifetime = true,
+//         RoleClaimType = "role" // ✅ Ensure role claims work correctly
 //     };
 // });
 
-// //Add Authorization
-// builder.Services.AddAuthorization(options =>
-// {
-//     options.AddPolicy("AdminOnly", policy => policy.RequireRole("Admin"));
-// });
-
-var jwtSettings = builder.Configuration.GetSection("JwtSettings");
-var key = Encoding.UTF8.GetBytes(jwtSettings["Secret"]);
+var jwtSettings = builder.Configuration.GetSection("Jwt");
+var key = Encoding.UTF8.GetBytes(jwtSettings["SecretKey"]);
 
 builder.Services.AddAuthentication(options =>
 {
@@ -119,14 +105,44 @@ builder.Services.AddAuthentication(options =>
     };
 });
 
+
+// builder.Services.AddSwaggerGen(c =>
+// {
+//     c.SwaggerDoc("v1", new OpenApiInfo { Title = "Company Management API", Version = "v1" });
+
+//     c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+//     {
+//         In = ParameterLocation.Header,
+//         Description = "Enter 'Bearer <your-token>'",
+//         Name = "Authorization",
+//         Type = SecuritySchemeType.ApiKey
+//     });
+
+//     c.AddSecurityRequirement(new OpenApiSecurityRequirement
+//     {
+//         {
+//             new OpenApiSecurityScheme
+//             {
+//                 Reference = new OpenApiReference
+//                 {
+//                     Type = ReferenceType.SecurityScheme,
+//                     Id = "Bearer"
+//                 }
+//             },
+//             new string[] {}
+//         }
+//     });
+// });
 builder.Services.AddSwaggerGen(c =>
 {
+    c.SwaggerDoc("v1", new OpenApiInfo { Title = "Company Management API", Version = "v1" });
     c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
     {
-        In = ParameterLocation.Header,
-        Description = "Please enter JWT with Bearer into field",
+        Description = "JWT Authorization header using the Bearer scheme",
         Name = "Authorization",
-        Type = SecuritySchemeType.ApiKey
+        In = ParameterLocation.Header,
+        Type = SecuritySchemeType.Http,
+        Scheme = "Bearer"
     });
     c.AddSecurityRequirement(new OpenApiSecurityRequirement
     {
@@ -139,10 +155,11 @@ builder.Services.AddSwaggerGen(c =>
                     Id = "Bearer"
                 }
             },
-            new string[] {}
+            new string[] { }
         }
     });
 });
+
 
 
 // CORS Policy
@@ -178,9 +195,9 @@ if (app.Environment.IsDevelopment())
     });
 }
 
+app.UseCors("AllowAllOrigins");
 app.UseAuthentication();
 app.UseAuthorization();
-app.UseCors("AllowAllOrigins");
 app.UseMiddleware<GlobalExceptionHandlerMiddleware>();
 app.MapControllers();
 app.Run();

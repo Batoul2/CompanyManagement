@@ -1,4 +1,4 @@
-namespace DotnetAPI.Models
+namespace CompanyManagement.Models
 {
     public class Project
     {

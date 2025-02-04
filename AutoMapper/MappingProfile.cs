@@ -1,9 +1,9 @@
 using AutoMapper;
-using DotnetAPI.Models;
-using DotnetAPI.DTOs;
-using DotnetAPI.InputModels;
+using CompanyManagement.Models;
+using CompanyManagement.DTOs;
+using CompanyManagement.InputModels;
 
-namespace DotnetAPI.AutoMapperProfiles
+namespace CompanyManagement.AutoMapper
 {
     public class MappingProfile : Profile
     {

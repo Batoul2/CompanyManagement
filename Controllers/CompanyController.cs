@@ -1,10 +1,10 @@
-using DotnetAPI.DTOs;
-using DotnetAPI.InputModels;
-using DotnetAPI.Services;
+using CompanyManagement.DTOs;
+using CompanyManagement.InputModels;
+using CompanyManagement.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace DotnetAPI.Controllers
+namespace CompanyManagement.Controllers
 {
     //[Authorize]
     [ApiController]

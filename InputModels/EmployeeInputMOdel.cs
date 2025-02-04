@@ -1,4 +1,4 @@
-namespace DotnetAPI.InputModels
+namespace CompanyManagement.InputModels
 {
   public class EmployeeInputModel
   {

@@ -1,8 +1,8 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
-using DotnetAPI.Models;
-using DotnetAPI.DTOs;
+using CompanyManagement.Models;
+using CompanyManagement.DTOs;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 using System.Collections.Generic;
 using System;
 
-namespace DotnetAPI.Services
+namespace CompanyManagement.Services
 {
   public class AuthService
 {
@@ -45,7 +45,14 @@ namespace DotnetAPI.Services
             PhoneNumber = model.PhoneNumber
         };
 
-        return await _userManager.CreateAsync(user, model.Password);
+        //return await _userManager.CreateAsync(user, model.Password);
+        var result = await _userManager.CreateAsync(user, model.Password);
+            if (result.Succeeded)
+            {
+                await _userManager.AddToRoleAsync(user, "User");
+            }
+
+        return result;
     }
 
     public async Task<string?> LoginAsync(LoginUserDto model,  CancellationToken cancellationToken)
@@ -98,7 +105,7 @@ namespace DotnetAPI.Services
 
         var roles = await _userManager.GetRolesAsync(user);
         claims.AddRange(roles.Select(role => new Claim(ClaimTypes.Role, role)));
-
+        
         var secretKey = _configuration["Jwt:SecretKey"];
         if (string.IsNullOrEmpty(secretKey))
         {
@@ -106,7 +113,6 @@ namespace DotnetAPI.Services
         }
 
         var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secretKey));
-        //var key = new SymmetricSecurityKey(Convert.FromBase64String(secretKey));
         var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 
         var token = new JwtSecurityToken(
@@ -117,10 +123,11 @@ namespace DotnetAPI.Services
             signingCredentials: creds
         );
 
-        var tokenString = new JwtSecurityTokenHandler().WriteToken(token);
-        Console.WriteLine($"Generated Token: {tokenString}");  
+        // var tokenString = new JwtSecurityTokenHandler().WriteToken(token);
+        // Console.WriteLine($"Generated Token: {tokenString}");  
 
-        return tokenString;
+        // return tokenString;
+        return new JwtSecurityTokenHandler().WriteToken(token);
     }
 
         // public async Task<string> GenerateJwtTokenAsync(ApplicationUser user)
