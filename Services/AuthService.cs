@@ -22,24 +22,21 @@ namespace DotnetAPI.Services
     public AuthService(UserManager<ApplicationUser> userManager, IConfiguration configuration,RoleManager<IdentityRole> roleManager)
     {
         _userManager = userManager;
-        _configuration = configuration;
         _roleManager = roleManager;
+        _configuration = configuration;
     }
-    public async Task<IdentityResult> RegisterUserAsync(RegisterUserDto model, CancellationToken cancellationToken)
+    public async Task<IdentityResult> RegisterUserAsync(RegisterUserDto model,  CancellationToken cancellationToken)
     {
         if (model.Password != model.ConfirmPassword)
         {
             return IdentityResult.Failed(new IdentityError { Description = "Passwords do not match." });
         }
 
-        cancellationToken.ThrowIfCancellationRequested();
-
         var existingUser = await _userManager.FindByEmailAsync(model.Email);
         if (existingUser != null)
         {
             return IdentityResult.Failed(new IdentityError { Description = "Email is already taken." });
         }
-        cancellationToken.ThrowIfCancellationRequested();
 
         var user = new ApplicationUser
         {
@@ -51,22 +48,45 @@ namespace DotnetAPI.Services
         return await _userManager.CreateAsync(user, model.Password);
     }
 
-    public async Task<string?> LoginAsync(LoginUserDto model, CancellationToken cancellationToken)
+    public async Task<string?> LoginAsync(LoginUserDto model,  CancellationToken cancellationToken)
     {
         var user = await _userManager.FindByNameAsync(model.Username);
-        cancellationToken.ThrowIfCancellationRequested();
         if (user == null || !await _userManager.CheckPasswordAsync(user, model.Password))
         {
-            return null;
+            return "Invalid Credentials";
         }
-        var userRoles = await _userManager.GetRolesAsync(user);
-        if (userRoles.Contains("Admin"))
+        // var userRoles = await _userManager.GetRolesAsync(user);
+        // if (userRoles.Contains("Admin"))
+        // {
+        //     return await GenerateJwtTokenAsync(user);
+        // }
+
+        // return null;
+        return await GenerateJwtTokenAsync(user);
+    }
+
+    public async Task<string> AssignRoleToUserAsync(AssignRoleDto model)
+        {
+            var user = await _userManager.FindByNameAsync(model.Username);
+            if (user == null)
             {
-                return await GenerateJwtTokenAsync(user);
+                return "User not found.";
             }
 
-        return null;
-    }
+            var roleExists = await _roleManager.RoleExistsAsync(model.Role);
+            if (!roleExists)
+            {
+                return "Role not found.";
+            }
+
+            var result = await _userManager.AddToRoleAsync(user, model.Role);
+            if (result.Succeeded)
+            {
+                return $"Role {model.Role} assigned to {model.Username}.";
+            }
+
+            return "Error assigning role.";
+        }
 
     private async Task<string> GenerateJwtTokenAsync(ApplicationUser user)
     {
@@ -93,7 +113,7 @@ namespace DotnetAPI.Services
             issuer: _configuration["Jwt:Issuer"],
             audience: _configuration["Jwt:Audience"],
             claims: claims,
-            expires: DateTime.UtcNow.AddDays(2),
+            expires: DateTime.Now.AddMinutes(60),
             signingCredentials: creds
         );
 
@@ -138,29 +158,6 @@ namespace DotnetAPI.Services
         // }
 
 
-
-        public async Task<string> AssignRoleToUserAsync(string username, string role)
-        {
-            var user = await _userManager.FindByNameAsync(username);
-            if (user == null)
-            {
-                return "User not found.";
-            }
-
-            var roleExists = await _roleManager.RoleExistsAsync(role);
-            if (!roleExists)
-            {
-                return "Role not found.";
-            }
-
-            var result = await _userManager.AddToRoleAsync(user, role);
-            if (result.Succeeded)
-            {
-                return $"Role {role} assigned to {username}.";
-            }
-
-            return "Error assigning role.";
-        }
 
         public async Task<string?> GeneratePasswordResetTokenAsync(string email, CancellationToken cancellationToken)
         {

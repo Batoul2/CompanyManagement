@@ -16,47 +16,25 @@ using NLog.Extensions.Logging;
 using NLog.Web;
 
 var builder = WebApplication.CreateBuilder(args);
-LogManager.Setup().LoadConfigurationFromAppSettings();
 
+//Nlog configuration
+LogManager.Setup().LoadConfigurationFromAppSettings();
 builder.Logging.ClearProviders();
 builder.Logging.SetMinimumLevel(Microsoft.Extensions.Logging.LogLevel.Trace);
 builder.Logging.AddNLog();
-
-builder.Services.AddAutoMapper(typeof(Program).Assembly);
-builder.Services.AddControllers();
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen(c =>
-{
-    // Add security definition to Swagger
-    c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
-    {
-        In = ParameterLocation.Header,
-        Description = "Please enter JWT with Bearer into field",
-        Name = "Authorization",
-        Type = SecuritySchemeType.ApiKey
-    });
-
-    // Add the security requirement
-    c.AddSecurityRequirement(new OpenApiSecurityRequirement
-    {
-        {
-            new OpenApiSecurityScheme
-            {
-                Reference = new OpenApiReference
-                {
-                    Type = ReferenceType.SecurityScheme,
-                    Id = "Bearer"
-                }
-            },
-            new string[] {}
-        }
-    });
-});
 
 
 builder.Services.AddDbContext<CompanyDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+builder.Services.AddAutoMapper(typeof(Program).Assembly);
+builder.Services.AddControllers();
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+builder.Services.AddScoped<ICompanyService, CompanyService>();
+builder.Services.AddScoped<IEmployeeService, EmployeeService>();
+builder.Services.AddScoped<IProjectService, ProjectService>();
+builder.Services.AddScoped<AuthService>();
 
 builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options =>
     {
@@ -65,29 +43,30 @@ builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options =>
         options.Lockout.AllowedForNewUsers = true; // lockout applies to new users
     })
     .AddEntityFrameworkStores<CompanyDbContext>()
+    .AddRoleManager<RoleManager<IdentityRole>>()
     .AddDefaultTokenProviders();
 
 
-builder.Services.AddAuthentication(options =>
-{
-    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-    options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
-}).AddJwtBearer(options =>
-    {
-        options.RequireHttpsMetadata = false;
-        options.TokenValidationParameters = new TokenValidationParameters
-        {
-            ValidateIssuer = true,
-            ValidateAudience = true,
-            ValidateIssuerSigningKey = true,
-            ValidIssuer = builder.Configuration["Jwt:Issuer"],
-            ValidAudience = builder.Configuration["Jwt:Audience"],
-            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:SecretKey"])),
-            //IssuerSigningKey = new SymmetricSecurityKey(Convert.FromBase64String(builder.Configuration["Jwt:SecretKey"])),
-            //RoleClaimType = ClaimTypes.Role
-        };
-    });
+// builder.Services.AddAuthentication(options =>
+// {
+//     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+//     options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+//     options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+// }).AddJwtBearer(options =>
+//     {
+//         options.RequireHttpsMetadata = false;
+//         options.TokenValidationParameters = new TokenValidationParameters
+//         {
+//             ValidateIssuer = true,
+//             ValidateAudience = true,
+//             ValidateIssuerSigningKey = true,
+//             ValidIssuer = builder.Configuration["Jwt:Issuer"],
+//             ValidAudience = builder.Configuration["Jwt:Audience"],
+//             IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:SecretKey"])),
+//             //IssuerSigningKey = new SymmetricSecurityKey(Convert.FromBase64String(builder.Configuration["Jwt:SecretKey"])),
+//             //RoleClaimType = ClaimTypes.Role
+//         };
+//     });
 
 // var key = Encoding.UTF8.GetBytes(builder.Configuration["Jwt:SecretKey"]);
 // builder.Services.AddAuthentication(options =>
@@ -110,21 +89,60 @@ builder.Services.AddAuthentication(options =>
 //     };
 // });
 
-// Add Authorization
-builder.Services.AddAuthorization(options =>
+// //Add Authorization
+// builder.Services.AddAuthorization(options =>
+// {
+//     options.AddPolicy("AdminOnly", policy => policy.RequireRole("Admin"));
+// });
+
+var jwtSettings = builder.Configuration.GetSection("JwtSettings");
+var key = Encoding.UTF8.GetBytes(jwtSettings["Secret"]);
+
+builder.Services.AddAuthentication(options =>
 {
-    options.AddPolicy("AdminOnly", policy => policy.RequireRole("Admin"));
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+})
+.AddJwtBearer(options =>
+{
+    options.RequireHttpsMetadata = false;
+    options.SaveToken = true;
+    options.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateIssuerSigningKey = true,
+        IssuerSigningKey = new SymmetricSecurityKey(key),
+        ValidateIssuer = true,
+        ValidateAudience = true,
+        ValidIssuer = jwtSettings["Issuer"],
+        ValidAudience = jwtSettings["Audience"],
+        ValidateLifetime = true
+    };
 });
 
-
-
-
-builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
-builder.Services.AddScoped<ICompanyService, CompanyService>();
-builder.Services.AddScoped<IEmployeeService, EmployeeService>();
-builder.Services.AddScoped<IProjectService, ProjectService>();
-builder.Services.AddScoped<AuthService>();
-
+builder.Services.AddSwaggerGen(c =>
+{
+    c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+    {
+        In = ParameterLocation.Header,
+        Description = "Please enter JWT with Bearer into field",
+        Name = "Authorization",
+        Type = SecuritySchemeType.ApiKey
+    });
+    c.AddSecurityRequirement(new OpenApiSecurityRequirement
+    {
+        {
+            new OpenApiSecurityScheme
+            {
+                Reference = new OpenApiReference
+                {
+                    Type = ReferenceType.SecurityScheme,
+                    Id = "Bearer"
+                }
+            },
+            new string[] {}
+        }
+    });
+});
 
 
 // CORS Policy
@@ -141,9 +159,14 @@ builder.Services.AddCors(options =>
 
 var app = builder.Build();
 
+using (var scope = app.Services.CreateScope())
+{
+    var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+    await RoleSeeder.SeedRolesAsync(roleManager);
+}
+
 // Middleware
 app.UseHttpsRedirection();
-
 
 if (app.Environment.IsDevelopment())
 {
@@ -155,17 +178,9 @@ if (app.Environment.IsDevelopment())
     });
 }
 
-
-
-//Microsoft.IdentityModel.Logging.IdentityModelEventSource.ShowPII = true;
 app.UseAuthentication();
 app.UseAuthorization();
 app.UseCors("AllowAllOrigins");
 app.UseMiddleware<GlobalExceptionHandlerMiddleware>();
 app.MapControllers();
-using (var scope = app.Services.CreateScope())
-{
-    var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
-    await RoleSeeder.SeedRolesAsync(roleManager);
-}
 app.Run();

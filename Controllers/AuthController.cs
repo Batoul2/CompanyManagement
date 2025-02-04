@@ -47,25 +47,37 @@ namespace DotnetAPI.Controllers
             return Ok(new { Token = token });
         }
 
-        [Authorize(Roles = "Admin")]
-        [HttpPost("assign-role")]
-        public async Task<IActionResult> AssignRoleToUser([FromBody] AssignRoleDto model,  CancellationToken cancellationToken)
+        // [Authorize(Roles = "Admin")]
+        // [HttpPost("assign-role")]
+        [HttpPost("assign-role"), Authorize(Roles = "Admin")]
+        public async Task<IActionResult> AssignRoleToUser([FromBody] AssignRoleDto model)
         {
-            var userClaims = HttpContext.User.Claims.ToList();
-            Console.WriteLine("User Claims:");
-            foreach (var claim in userClaims)
-            {
-                Console.WriteLine($"Type: {claim.Type}, Value: {claim.Value}");
-            }
+            // var userClaims = HttpContext.User.Claims.ToList();
+            // Console.WriteLine("User Claims:");
+            // foreach (var claim in userClaims)
+            // {
+            //     Console.WriteLine($"Type: {claim.Type}, Value: {claim.Value}");
+            // }
 
-            if (model == null || string.IsNullOrEmpty(model.Username) || string.IsNullOrEmpty(model.Role))
-            {
-                return BadRequest("Username and Role are required.");
-            }
+            // if (model == null || string.IsNullOrEmpty(model.Username) || string.IsNullOrEmpty(model.Role))
+            // {
+            //     return BadRequest("Username and Role are required.");
+            // }
 
-            var result = await _authService.AssignRoleToUserAsync(model.Username, model.Role);
+            // var result = await _authService.AssignRoleToUserAsync(model);
 
-            return Ok(result); 
+            // return Ok(result); 
+            var result = await _authService.AssignRoleToUserAsync(model);
+            if (result.Contains("User not found") || result.Contains("Role does not exist"))
+                return BadRequest(new { message = result });
+
+            return Ok(new { message = result });
+        }
+        //added it to test authorization (new)
+        [HttpGet("admin-only"), Authorize(Roles = "Admin")]
+        public IActionResult AdminOnlyEndpoint()
+        {
+            return Ok(new { message = "Only admins can access this!" });
         }
 
         [HttpPost("RequestPasswordReset")]
