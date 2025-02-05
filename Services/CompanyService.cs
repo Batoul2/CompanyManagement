@@ -3,6 +3,8 @@ using CompanyManagement.Data;
 using CompanyManagement.DTOs;
 using CompanyManagement.InputModels;
 using CompanyManagement.Models;
+using CompanyManagement.QueryParameters;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.EntityFrameworkCore;
 
 namespace CompanyManagement.Services
@@ -18,36 +20,42 @@ namespace CompanyManagement.Services
             _mapper = mapper;
         }
 
-        public async Task<IEnumerable<CompanyDto>> GetAllCompaniesAsync(CancellationToken cancellationToken, string sortBy = "Name", string sortDirection = "asc")
+        public async Task<IEnumerable<CompanyDto>> GetAllCompaniesAsync(CompanyQueryParameters parameters, CancellationToken cancellationToken)
         {
-            // Start with a queryable of Companies
-            var query = _context.Companies
-                .Include(c => c.CompanyEmployee)
-                .ThenInclude(ce => ce.Employee)
-                .AsQueryable();
+            var query = _context.Companies.AsQueryable();
 
-            // Apply sorting based on the sortBy and sortDirection parameters
-            query = sortBy.ToLower() switch
+            if (!string.IsNullOrEmpty(parameters.SearchTerm))
             {
-                "name" => sortDirection.ToLower() == "desc" ? query.OrderByDescending(c => c.Name) : query.OrderBy(c => c.Name),
-                "id" => sortDirection.ToLower() == "desc" ? query.OrderByDescending(c => c.Id) : query.OrderBy(c => c.Id),
-                _ => query.OrderBy(c => c.Name) // Default to sorting by Name in ascending order
+                query = query.Where(c => c.Name.Contains(parameters.SearchTerm));
+            }
+
+            query = parameters.SortBy.ToLower() switch
+            {
+                "name" => parameters.SortDir.ToLower() == "desc" ? query.OrderByDescending(c => c.Name) : query.OrderBy(c => c.Name),
+                "id" => parameters.SortDir.ToLower() == "desc" ? query.OrderByDescending(c => c.Id) : query.OrderBy(c => c.Id),
+                _ => query.OrderBy(c => c.Name)
             };
 
-            // Execute the query and map the results to DTOs
-            var companies = await query.ToListAsync(cancellationToken);
+            var companies = await query
+                .Skip(parameters.GetSkipAmount())
+                .Take(parameters.PageSize)
+                .ToListAsync(cancellationToken);
+
             return _mapper.Map<IEnumerable<CompanyDto>>(companies);
         }
 
 
-        public async Task<CompanyDto> GetCompanyByIdAsync(int id, CancellationToken cancellationToken)
+        public async Task<CompanyDto?> GetCompanyByIdAsync(int id, CancellationToken cancellationToken)
         {
             var company = await _context.Companies
                 .Include(c => c.CompanyEmployee)
                 .ThenInclude(ce => ce.Employee)
                 .FirstOrDefaultAsync(c => c.Id == id);
 
-            if (company == null) throw new KeyNotFoundException("Company not found");
+            if (company == null)
+            {
+                return null;
+            }
 
             return _mapper.Map<CompanyDto>(company);
         }
@@ -61,10 +69,13 @@ namespace CompanyManagement.Services
             return companyDto;
         }
 
-        public async Task<CompanyDto> UpdateCompanyAsync(int id, CompanyInputModel inputModel, CancellationToken cancellationToken)
+        public async Task<CompanyDto?> UpdateCompanyAsync(int id, CompanyInputModel inputModel, CancellationToken cancellationToken)
         {
             var company = await _context.Companies.FindAsync(id, cancellationToken);
-            if (company == null) throw new KeyNotFoundException("Company not found");
+            if (company == null)
+            {
+                return null;
+            }
 
             _mapper.Map(inputModel, company);
             await _context.SaveChangesAsync(cancellationToken);
@@ -75,7 +86,10 @@ namespace CompanyManagement.Services
         public async Task<bool> DeleteCompanyAsync(int id, CancellationToken cancellationToken)
         {
             var company = await _context.Companies.FindAsync(id, cancellationToken);
-            if (company == null) throw new KeyNotFoundException("Company not found");
+            if (company == null)
+            {
+                return false;
+            }
 
             _context.Companies.Remove(company);
             await _context.SaveChangesAsync(cancellationToken);

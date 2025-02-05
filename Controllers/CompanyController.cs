@@ -1,5 +1,6 @@
 using CompanyManagement.DTOs;
 using CompanyManagement.InputModels;
+using CompanyManagement.QueryParameters;
 using CompanyManagement.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -21,9 +22,9 @@ namespace CompanyManagement.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAllCompanies(CancellationToken cancellationToken,[FromQuery] string sortBy = "Name", [FromQuery] string sortDirection = "asc")
+        public async Task<IActionResult> GetAllCompanies([FromQuery] CompanyQueryParameters parameters, CancellationToken cancellationToken)
         {
-            var companies = await _companyService.GetAllCompaniesAsync(cancellationToken,sortBy, sortDirection);
+            var companies = await _companyService.GetAllCompaniesAsync(parameters, cancellationToken);
             return Ok(companies);
         }
 
@@ -31,7 +32,18 @@ namespace CompanyManagement.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<CompanyDto>> GetCompanyById([FromRoute]int id,CancellationToken cancellationToken)
         {
-            return Ok(await _companyService.GetCompanyByIdAsync(id,cancellationToken));
+            var company = await _companyService.GetCompanyByIdAsync(id, cancellationToken);
+
+            if (company == null)
+            {
+                return NotFound(new
+                {
+                    StatusCode = StatusCodes.Status404NotFound,
+                    Message = $"Company with ID {id} not found."
+                });
+            }
+
+            return Ok(company);
         }
 
         [HttpPost]
@@ -56,6 +68,15 @@ namespace CompanyManagement.Controllers
         {
             var updatedCompany = await _companyService.UpdateCompanyAsync(id, inputModel, cancellationToken);
 
+            if (updatedCompany==null)
+            {
+                return NotFound(new
+                {
+                    StatusCode = StatusCodes.Status404NotFound,
+                    Message = $"Company with ID {id} not found."
+                });
+            }
+
             return Ok(updatedCompany);
         }
 
@@ -64,12 +85,16 @@ namespace CompanyManagement.Controllers
         {
             var success = await _companyService.DeleteCompanyAsync(id, cancellationToken);
 
-            if (!success)
+             if (!success)
             {
-                return NotFound($"Company with ID {id} not found.");
+                return NotFound(new
+                {
+                    StatusCode = StatusCodes.Status404NotFound,
+                    Message = $"Company with ID {id} not found."
+                });
             }
 
-            return Ok($"Company with ID {id} successfully deleted.");
+            return NoContent();
         }
     }
 }

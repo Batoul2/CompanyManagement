@@ -3,6 +3,7 @@ using CompanyManagement.Data;
 using CompanyManagement.DTOs;
 using CompanyManagement.InputModels;
 using CompanyManagement.Models;
+using CompanyManagement.QueryParameters;
 using Microsoft.EntityFrameworkCore;
 
 namespace CompanyManagement.Services
@@ -18,27 +19,45 @@ namespace CompanyManagement.Services
             _mapper = mapper;
         }
 
-        public async Task<IEnumerable<ProjectDto>> GetFilteredProjectsAsync(string? title, CancellationToken cancellationToken)
+        public async Task<IEnumerable<ProjectDto>> GetFilteredProjectsAsync(ProjectQueryParameters parameters, CancellationToken cancellationToken)
         {
             var query = _context.Projects.AsQueryable();
 
-            if (!string.IsNullOrEmpty(title))
+            //Searching
+            if (!string.IsNullOrEmpty(parameters.SearchTerm))
             {
-                query = query.Where(p => p.Title.Contains(title));
+                query = query.Where(p => p.Title.Contains(parameters.SearchTerm));
             }
-            var projects = await query.ToListAsync(cancellationToken);
+
+            //Sorting
+            query = parameters.SortBy.ToLower() switch
+            {
+                "title" => parameters.SortDir.ToLower() == "desc" ? query.OrderByDescending(p => p.Title) : query.OrderBy(p => p.Title),
+                "id" => parameters.SortDir.ToLower() == "desc" ? query.OrderByDescending(p => p.Id) : query.OrderBy(p => p.Id),
+                _ => query.OrderBy(p => p.Title) 
+            };
+
+            //Pagination
+            var projects = await query
+                .Skip(parameters.GetSkipAmount())
+                .Take(parameters.PageSize)
+                .ToListAsync(cancellationToken);
+
             return _mapper.Map<IEnumerable<ProjectDto>>(projects);
         }
 
 
-        public async Task<ProjectDto> GetProjectByIdAsync(int id)
+        public async Task<ProjectDto?> GetProjectByIdAsync(int id)
         {
             var project = await _context.Projects
                 .Include(p => p.EmployeeProject)
                 .ThenInclude(ep => ep.Employee)
                 .FirstOrDefaultAsync(p => p.Id == id);
 
-            if (project == null) throw new KeyNotFoundException("Project not found");
+            if (project == null)
+            {
+                return null;
+            }
 
             return _mapper.Map<ProjectDto>(project);
         }
@@ -52,10 +71,13 @@ namespace CompanyManagement.Services
             return projectDto;
         }
 
-        public async Task<ProjectDto> UpdateProjectAsync(int id, ProjectInputModel inputModel,CancellationToken cancellationToken)
+        public async Task<ProjectDto?> UpdateProjectAsync(int id, ProjectInputModel inputModel,CancellationToken cancellationToken)
         {
             var project = await _context.Projects.FindAsync(id,cancellationToken);
-            if (project == null) throw new KeyNotFoundException("Project not found");
+            if (project == null)
+            {
+                return null;
+            }
 
             _mapper.Map(inputModel, project);
             await _context.SaveChangesAsync(cancellationToken);
@@ -66,7 +88,10 @@ namespace CompanyManagement.Services
         public async Task<bool> DeleteProjectAsync(int id,CancellationToken cancellationToken)
         {
             var project = await _context.Projects.FindAsync(id,cancellationToken);
-            if (project == null) throw new KeyNotFoundException("Project not found");
+            if (project == null) 
+            {
+                return false;
+            }
 
             _context.Projects.Remove(project);
             await _context.SaveChangesAsync(cancellationToken);

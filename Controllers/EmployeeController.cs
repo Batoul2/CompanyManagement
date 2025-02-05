@@ -1,5 +1,6 @@
 using CompanyManagement.DTOs;
 using CompanyManagement.InputModels;
+using CompanyManagement.QueryParameters;
 using CompanyManagement.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -17,15 +18,26 @@ namespace CompanyManagement.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<EmployeeDto>>> GetAllEmployees()
+        public async Task<ActionResult<IEnumerable<EmployeeDto>>> GetAllEmployees([FromQuery] EmployeeQueryParameters parameters, CancellationToken cancellationToken)
         {
-            return Ok(await _employeeService.GetAllEmployeesAsync());
+            return Ok(await _employeeService.GetAllEmployeesAsync(parameters, cancellationToken));
         }
 
         [HttpGet("{id}")]
         public async Task<ActionResult<EmployeeDto>> GetEmployeeById([FromRoute]int id)
         {
-            return Ok(await _employeeService.GetEmployeeByIdAsync(id));
+            var employee = await _employeeService.GetEmployeeByIdAsync(id);
+
+            if (employee == null)
+            {
+                return NotFound(new
+                {
+                    StatusCode = StatusCodes.Status404NotFound,
+                    Message = $"Employee with ID {id} not found."
+                });
+            }
+
+            return Ok(employee);
         }
 
         [HttpPost]
@@ -40,6 +52,15 @@ namespace CompanyManagement.Controllers
         {
             var updatedEmployee = await _employeeService.UpdateEmployeeAsync(id, inputModel, cancellationToken);
 
+            if (updatedEmployee==null)
+            {
+                return NotFound(new
+                {
+                    StatusCode = StatusCodes.Status404NotFound,
+                    Message = $"Employee with ID {id} not found."
+                });
+            }
+
             return Ok(updatedEmployee);
         }
 
@@ -50,10 +71,14 @@ namespace CompanyManagement.Controllers
 
             if (!success)
             {
-                return NotFound($"Employee with ID {id} not found.");
+                return NotFound(new
+                {
+                    StatusCode = StatusCodes.Status404NotFound,
+                    Message = $"Employee with ID {id} not found."
+                });
             }
 
-            return Ok($"Employee with ID {id} successfully deleted.");
+            return NoContent();
         }
 
         [HttpPost("{employeeId}/projects/{projectId}")]

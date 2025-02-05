@@ -3,6 +3,7 @@ using CompanyManagement.Data;
 using CompanyManagement.DTOs;
 using CompanyManagement.InputModels;
 using CompanyManagement.Models;
+using CompanyManagement.QueryParameters;
 using Microsoft.EntityFrameworkCore;
 
 namespace CompanyManagement.Services
@@ -18,18 +19,31 @@ namespace CompanyManagement.Services
             _mapper = mapper;
         }
 
-        public async Task<IEnumerable<EmployeeDto>> GetAllEmployeesAsync()
+        public async Task<IEnumerable<EmployeeDto>> GetAllEmployeesAsync(EmployeeQueryParameters parameters, CancellationToken cancellationToken)
         {
-            var employees = await _dbContext.Employees
-                .Include(e => e.CompanyEmployee)
-                    .ThenInclude(ce => ce.Company)
-                .Include(e => e.EmployeeProject)
-                    .ThenInclude(ep => ep.Project)
-                .ToListAsync();
+            var query = _dbContext.Employees.AsQueryable();
+
+            if (!string.IsNullOrEmpty(parameters.SearchTerm))
+            {
+                query = query.Where(e => e.FullName.Contains(parameters.SearchTerm));
+            }
+
+            query = parameters.SortBy.ToLower() switch
+            {
+                "fullname" => parameters.SortDir.ToLower() == "desc" ? query.OrderByDescending(e => e.FullName) : query.OrderBy(e => e.FullName),
+                "id" => parameters.SortDir.ToLower() == "desc" ? query.OrderByDescending(e => e.Id) : query.OrderBy(e => e.Id),
+                _ => query.OrderBy(e => e.FullName)
+            };
+
+            var employees = await query
+                .Skip(parameters.GetSkipAmount())
+                .Take(parameters.PageSize)
+                .ToListAsync(cancellationToken);
+
             return _mapper.Map<IEnumerable<EmployeeDto>>(employees);
         }
 
-        public async Task<EmployeeDto> GetEmployeeByIdAsync(int id)
+        public async Task<EmployeeDto?> GetEmployeeByIdAsync(int id)
         {
             var employee = await _dbContext.Employees
                 .Include(e => e.CompanyEmployee)
@@ -39,7 +53,7 @@ namespace CompanyManagement.Services
                 .FirstOrDefaultAsync(e => e.Id == id);
 
             if (employee == null)
-                throw new KeyNotFoundException("Employee not found");
+                return null;
 
             return _mapper.Map<EmployeeDto>(employee);
         }
@@ -72,7 +86,7 @@ namespace CompanyManagement.Services
             return employeeDto;
         }
 
-        public async Task<EmployeeDto> UpdateEmployeeAsync(int id, EmployeeInputModel inputModel,CancellationToken cancellationToken)
+        public async Task<EmployeeDto?> UpdateEmployeeAsync(int id, EmployeeInputModel inputModel,CancellationToken cancellationToken)
         {
             var employee = await _dbContext.Employees
                 .Include(e => e.CompanyEmployee)
@@ -80,7 +94,7 @@ namespace CompanyManagement.Services
                 .FirstOrDefaultAsync(e => e.Id == id);
 
             if (employee == null)
-                throw new KeyNotFoundException("Employee not found");
+                return null;
 
             employee.FullName = inputModel.FullName;
             employee.Position = inputModel.Position;
@@ -111,7 +125,7 @@ namespace CompanyManagement.Services
             var employee = await _dbContext.Employees.FindAsync(id,cancellationToken);
 
             if (employee == null)
-                throw new KeyNotFoundException("Employee not found");
+                return false;
 
             _dbContext.Employees.Remove(employee);
             await _dbContext.SaveChangesAsync(cancellationToken);

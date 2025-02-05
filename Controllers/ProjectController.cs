@@ -1,6 +1,7 @@
 using CompanyManagement.DTOs;
 using CompanyManagement.InputModels;
 using CompanyManagement.Models;
+using CompanyManagement.QueryParameters;
 using CompanyManagement.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -18,9 +19,9 @@ namespace CompanyManagement.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetFilteredProjects([FromQuery] string? title,CancellationToken cancellationToken)
+        public async Task<IActionResult> GetFilteredProjects([FromQuery] ProjectQueryParameters parameters,CancellationToken cancellationToken)
         {
-            var projects = await _projectService.GetFilteredProjectsAsync(title,cancellationToken);
+            var projects = await _projectService.GetFilteredProjectsAsync(parameters,cancellationToken);
 
             if (projects == null || !projects.Any())
             {
@@ -37,7 +38,11 @@ namespace CompanyManagement.Controllers
 
             if (project == null)
             {
-                return NotFound($"Project with ID {id} not found.");
+                return NotFound(new
+                {
+                    StatusCode = StatusCodes.Status404NotFound,
+                    Message = $"Project with ID {id} not found."
+                });
             }
 
             return Ok(project);
@@ -57,7 +62,11 @@ namespace CompanyManagement.Controllers
 
             if (updatedProject == null)
             {
-                return NotFound($"Project with ID {id} not found.");
+                return NotFound(new
+                {
+                    StatusCode = StatusCodes.Status404NotFound,
+                    Message = $"Project with ID {id} not found."
+                });
             }
 
             return Ok(updatedProject); 
@@ -70,10 +79,14 @@ namespace CompanyManagement.Controllers
 
             if (!success)
             {
-                return NotFound($"Project with ID {id} not found.");
+                return NotFound(new
+                {
+                    StatusCode = StatusCodes.Status404NotFound,
+                    Message = $"Project with ID {id} not found."
+                });
             }
 
-            return Ok($"Project with ID {id} successfully deleted.");
+            return NoContent();
         }
 
     }
