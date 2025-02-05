@@ -100,11 +100,16 @@ namespace CompanyManagement.Services
         var claims = new List<Claim>
         {
             new Claim(ClaimTypes.Name, user.UserName ?? string.Empty),
-            new Claim(ClaimTypes.NameIdentifier, user.Id)
+            new Claim(ClaimTypes.NameIdentifier, user.Id) 
         };
 
         var roles = await _userManager.GetRolesAsync(user);
-        claims.AddRange(roles.Select(role => new Claim(ClaimTypes.Role, role)));
+        //claims.AddRange(roles.Select(role => new Claim(ClaimTypes.Role, role)));
+
+        foreach (var role in roles)
+        {
+            claims.Add(new Claim(ClaimTypes.Role, role)); 
+        }
         
         var secretKey = _configuration["Jwt:SecretKey"];
         if (string.IsNullOrEmpty(secretKey))

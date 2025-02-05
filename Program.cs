@@ -103,7 +103,8 @@ builder.Services.AddAuthentication(options =>
         ValidateAudience = true,
         ValidIssuer = jwtSettings["Issuer"],
         ValidAudience = jwtSettings["Audience"],
-        ValidateLifetime = true
+        ValidateLifetime = true,
+        RoleClaimType = ClaimTypes.Role
     };
 });
 

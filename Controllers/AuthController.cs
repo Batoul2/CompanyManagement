@@ -72,12 +72,7 @@ namespace CompanyManagement.Controllers
 
             return Ok(new { message = result });
         }
-        //added it to test authorization (new)
-        [HttpGet("admin-only"), Authorize(Roles = "Admin")]
-        public IActionResult AdminOnlyEndpoint()
-        {
-            return Ok(new { message = "Only admins can access this!" });
-        }
+        
 
         [HttpPost("RequestPasswordReset")]
         public async Task<IActionResult> RequestPasswordReset([FromBody] PasswordResetRequestDto model,  CancellationToken cancellationToken)
@@ -104,6 +99,21 @@ namespace CompanyManagement.Controllers
             return Ok("Password has been reset successfully.");
         }
 
+
+        // //added it to test authorization (new)
+        // [HttpGet("admin-only"), Authorize(Roles = "Admin")]
+        // public IActionResult AdminOnlyEndpoint()
+        // {
+        //     return Ok(new { message = "Only admins can access this!" });
+        // }
+
+        // //check ll role
+        // [HttpGet("debug-token"), Authorize]
+        // public IActionResult DebugToken()
+        // {
+        //     var userClaims = HttpContext.User.Claims.Select(c => new { c.Type, c.Value }).ToList();
+        //     return Ok(userClaims);
+        // }
 
   }
   
