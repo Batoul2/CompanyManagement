@@ -43,6 +43,7 @@ namespace CompanyManagement.Controllers
             {
                 return Unauthorized("Invalid credentials.");
             }
+            
 
             return Ok(new { Token = token });
         }
@@ -52,17 +53,17 @@ namespace CompanyManagement.Controllers
         [HttpPost("assign-role"), Authorize(Roles = "Admin")]
         public async Task<IActionResult> AssignRoleToUser([FromBody] AssignRoleDto model)
         {
-            var userClaims = HttpContext.User.Claims.ToList();
-            Console.WriteLine("User Claims:");
-            foreach (var claim in userClaims)
-            {
-                Console.WriteLine($"Type: {claim.Type}, Value: {claim.Value}");
-            }
+            // var userClaims = HttpContext.User.Claims.ToList();
+            // Console.WriteLine("User Claims:");
+            // foreach (var claim in userClaims)
+            // {
+            //     Console.WriteLine($"Type: {claim.Type}, Value: {claim.Value}");
+            // }
 
-            if (model == null || string.IsNullOrEmpty(model.Username) || string.IsNullOrEmpty(model.Role))
-            {
-                return BadRequest("Username and Role are required.");
-            }
+            // if (model == null || string.IsNullOrEmpty(model.Username) || string.IsNullOrEmpty(model.Role))
+            // {
+            //     return BadRequest("Username and Role are required.");
+            // }
             // var result = await _authService.AssignRoleToUserAsync(model);
 
             // return Ok(result); 
@@ -71,6 +72,12 @@ namespace CompanyManagement.Controllers
                 return BadRequest(new { message = result });
 
             return Ok(new { message = result });
+        }
+
+        [HttpGet("admin-only"), Authorize(Roles = "Admin")]
+        public IActionResult AdminOnlyEndpoint()
+        {
+            return Ok(new { message = "Only admins can access this!" });
         }
         
 
@@ -100,12 +107,7 @@ namespace CompanyManagement.Controllers
         }
 
 
-        // //added it to test authorization (new)
-        // [HttpGet("admin-only"), Authorize(Roles = "Admin")]
-        // public IActionResult AdminOnlyEndpoint()
-        // {
-        //     return Ok(new { message = "Only admins can access this!" });
-        // }
+    
 
         // //check ll role
         // [HttpGet("debug-token"), Authorize]

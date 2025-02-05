@@ -15,10 +15,9 @@ namespace CompanyManagement.Services
   public class AuthService
 {
     private readonly UserManager<ApplicationUser> _userManager;
-    private readonly IConfiguration _configuration;
     private readonly RoleManager<IdentityRole> _roleManager;
+    private readonly IConfiguration _configuration;
     
-
     public AuthService(UserManager<ApplicationUser> userManager, IConfiguration configuration,RoleManager<IdentityRole> roleManager)
     {
         _userManager = userManager;
@@ -55,9 +54,9 @@ namespace CompanyManagement.Services
         return result;
     }
 
-    public async Task<string?> LoginAsync(LoginUserDto model,  CancellationToken cancellationToken)
+    public async Task<string> LoginAsync(LoginUserDto model,  CancellationToken cancellationToken)
     {
-        var user = await _userManager.FindByNameAsync(model.Username);
+        var user = await _userManager.FindByEmailAsync(model.Email);
         if (user == null || !await _userManager.CheckPasswordAsync(user, model.Password))
         {
             return "Invalid Credentials";
@@ -69,7 +68,7 @@ namespace CompanyManagement.Services
         // }
 
         // return null;
-        return await GenerateJwtTokenAsync(user);
+        return GenerateJwtToken(user);
     }
 
     public async Task<string> AssignRoleToUserAsync(AssignRoleDto model)
@@ -95,45 +94,71 @@ namespace CompanyManagement.Services
             return "Error assigning role.";
         }
 
-    private async Task<string> GenerateJwtTokenAsync(ApplicationUser user)
-    {
-        var claims = new List<Claim>
+        private string GenerateJwtToken(ApplicationUser user)
         {
-            new Claim(ClaimTypes.Name, user.UserName ?? string.Empty),
-            new Claim(ClaimTypes.NameIdentifier, user.Id) 
-        };
+            var claims = new List<Claim>
+            {
+                new Claim(ClaimTypes.NameIdentifier, user.Id),
+                new Claim(ClaimTypes.Email, user.Email ?? string.Empty)
+            };
 
-        var roles = await _userManager.GetRolesAsync(user);
-        //claims.AddRange(roles.Select(role => new Claim(ClaimTypes.Role, role)));
+            var userRoles = _userManager.GetRolesAsync(user).Result;
+            claims.AddRange(userRoles.Select(role => new Claim(ClaimTypes.Role, role)));
 
-        foreach (var role in roles)
-        {
-            claims.Add(new Claim(ClaimTypes.Role, role)); 
+#pragma warning disable CS8604 // Possible null reference argument.
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:SecretKey"]));
+#pragma warning restore CS8604 // Possible null reference argument.
+            var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+
+            var token = new JwtSecurityToken(
+                issuer: _configuration["Jwt:Issuer"],
+                audience: _configuration["Jwt:Audience"],
+                claims: claims,
+                expires: DateTime.Now.AddMinutes(60),
+                signingCredentials: creds);
+
+            return new JwtSecurityTokenHandler().WriteToken(token);
         }
+
+    // private async Task<string> GenerateJwtTokenAsync(ApplicationUser user)
+    // {
+    //     var claims = new List<Claim>
+    //     {
+    //         new Claim(ClaimTypes.Name, user.UserName ?? string.Empty),
+    //         new Claim(ClaimTypes.NameIdentifier, user.Id) 
+    //     };
+
+    //     var roles = await _userManager.GetRolesAsync(user);
+    //     //claims.AddRange(roles.Select(role => new Claim(ClaimTypes.Role, role)));
+
+    //     foreach (var role in roles)
+    //     {
+    //         claims.Add(new Claim(ClaimTypes.Role, role)); 
+    //     }
         
-        var secretKey = _configuration["Jwt:SecretKey"];
-        if (string.IsNullOrEmpty(secretKey))
-        {
-            throw new InvalidOperationException("JWT SecretKey is not configured.");
-        }
+    //     var secretKey = _configuration["Jwt:SecretKey"];
+    //     if (string.IsNullOrEmpty(secretKey))
+    //     {
+    //         throw new InvalidOperationException("JWT SecretKey is not configured.");
+    //     }
 
-        var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secretKey));
-        var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+    //     var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secretKey));
+    //     var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 
-        var token = new JwtSecurityToken(
-            issuer: _configuration["Jwt:Issuer"],
-            audience: _configuration["Jwt:Audience"],
-            claims: claims,
-            expires: DateTime.Now.AddMinutes(60),
-            signingCredentials: creds
-        );
+    //     var token = new JwtSecurityToken(
+    //         issuer: _configuration["Jwt:Issuer"],
+    //         audience: _configuration["Jwt:Audience"],
+    //         claims: claims,
+    //         expires: DateTime.Now.AddMinutes(60),
+    //         signingCredentials: creds
+    //     );
 
-        // var tokenString = new JwtSecurityTokenHandler().WriteToken(token);
-        // Console.WriteLine($"Generated Token: {tokenString}");  
+    //     // var tokenString = new JwtSecurityTokenHandler().WriteToken(token);
+    //     // Console.WriteLine($"Generated Token: {tokenString}");  
 
-        // return tokenString;
-        return new JwtSecurityTokenHandler().WriteToken(token);
-    }
+    //     // return tokenString;
+    //     return new JwtSecurityTokenHandler().WriteToken(token);
+    // }
 
         // public async Task<string> GenerateJwtTokenAsync(ApplicationUser user)
         // {

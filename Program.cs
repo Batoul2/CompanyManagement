@@ -50,39 +50,6 @@ builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options =>
     .AddDefaultTokenProviders();
 
 
-// var jwtSettings = builder.Configuration.GetSection("Jwt");
-
-// string? secretKey = jwtSettings["SecretKey"];
-// if (string.IsNullOrEmpty(secretKey))
-// {
-//     throw new InvalidOperationException("JWT SecretKey is missing in appsettings.json");
-// }
-
-// var key = Encoding.UTF8.GetBytes(secretKey);
-
-// builder.Services.AddAuthentication(options =>
-// {
-//     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-//     options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-//     options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
-// })
-// .AddJwtBearer(options =>
-// {
-//     options.RequireHttpsMetadata = false;
-//     options.SaveToken = true;
-//     options.TokenValidationParameters = new TokenValidationParameters
-//     {
-//         ValidateIssuerSigningKey = true,
-//         IssuerSigningKey = new SymmetricSecurityKey(key),
-//         ValidateIssuer = true,
-//         ValidateAudience = true,
-//         ValidIssuer = jwtSettings["Issuer"],
-//         ValidAudience = jwtSettings["Audience"],
-//         ValidateLifetime = true,
-//         RoleClaimType = "role" 
-//     };
-// });
-
 var jwtSettings = builder.Configuration.GetSection("Jwt");
 var key = Encoding.UTF8.GetBytes(jwtSettings["SecretKey"]);
 
@@ -104,38 +71,11 @@ builder.Services.AddAuthentication(options =>
         ValidIssuer = jwtSettings["Issuer"],
         ValidAudience = jwtSettings["Audience"],
         ValidateLifetime = true,
-        RoleClaimType = ClaimTypes.Role
+        //RoleClaimType = ClaimTypes.Role
     };
 });
 
 
-// builder.Services.AddSwaggerGen(c =>
-// {
-//     c.SwaggerDoc("v1", new OpenApiInfo { Title = "Company Management API", Version = "v1" });
-
-//     c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
-//     {
-//         In = ParameterLocation.Header,
-//         Description = "Enter 'Bearer <your-token>'",
-//         Name = "Authorization",
-//         Type = SecuritySchemeType.ApiKey
-//     });
-
-//     c.AddSecurityRequirement(new OpenApiSecurityRequirement
-//     {
-//         {
-//             new OpenApiSecurityScheme
-//             {
-//                 Reference = new OpenApiReference
-//                 {
-//                     Type = ReferenceType.SecurityScheme,
-//                     Id = "Bearer"
-//                 }
-//             },
-//             new string[] {}
-//         }
-//     });
-// });
 builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new OpenApiInfo { Title = "Company Management API", Version = "v1" });
@@ -162,8 +102,6 @@ builder.Services.AddSwaggerGen(c =>
         }
     });
 });
-
-
 
 // CORS Policy
 builder.Services.AddCors(options =>
@@ -204,3 +142,66 @@ app.UseAuthorization();
 app.UseMiddleware<GlobalExceptionHandlerMiddleware>();
 app.MapControllers();
 app.Run();
+
+
+
+// builder.Services.AddSwaggerGen(c =>
+// {
+//     c.SwaggerDoc("v1", new OpenApiInfo { Title = "Company Management API", Version = "v1" });
+
+//     c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+//     {
+//         In = ParameterLocation.Header,
+//         Description = "Enter 'Bearer <your-token>'",
+//         Name = "Authorization",
+//         Type = SecuritySchemeType.ApiKey
+//     });
+
+//     c.AddSecurityRequirement(new OpenApiSecurityRequirement
+//     {
+//         {
+//             new OpenApiSecurityScheme
+//             {
+//                 Reference = new OpenApiReference
+//                 {
+//                     Type = ReferenceType.SecurityScheme,
+//                     Id = "Bearer"
+//                 }
+//             },
+//             new string[] {}
+//         }
+//     });
+// });
+
+// var jwtSettings = builder.Configuration.GetSection("Jwt");
+
+// string? secretKey = jwtSettings["SecretKey"];
+// if (string.IsNullOrEmpty(secretKey))
+// {
+//     throw new InvalidOperationException("JWT SecretKey is missing in appsettings.json");
+// }
+
+// var key = Encoding.UTF8.GetBytes(secretKey);
+
+// builder.Services.AddAuthentication(options =>
+// {
+//     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+//     options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+//     options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+// })
+// .AddJwtBearer(options =>
+// {
+//     options.RequireHttpsMetadata = false;
+//     options.SaveToken = true;
+//     options.TokenValidationParameters = new TokenValidationParameters
+//     {
+//         ValidateIssuerSigningKey = true,
+//         IssuerSigningKey = new SymmetricSecurityKey(key),
+//         ValidateIssuer = true,
+//         ValidateAudience = true,
+//         ValidIssuer = jwtSettings["Issuer"],
+//         ValidAudience = jwtSettings["Audience"],
+//         ValidateLifetime = true,
+//         RoleClaimType = "role" 
+//     };
+// });
