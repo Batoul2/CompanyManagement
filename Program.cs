@@ -37,11 +37,12 @@ builder.Services.AddScoped<IEmployeeService, EmployeeService>();
 builder.Services.AddScoped<IProjectService, ProjectService>();
 builder.Services.AddScoped<AuthService>();
 
-builder.Services.AddIdentity<ApplicationUser, IdentityRole>(//options =>
-    // {
-    //     options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(15); // lockout duration
-    //     options.Lockout.MaxFailedAccessAttempts = 5; // max failed attempts before lockout
-    //     options.Lockout.AllowedForNewUsers = true; // lockout applies to new users }
+builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options =>
+    {
+         options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(15); // lockout duration
+         options.Lockout.MaxFailedAccessAttempts = 5; // max failed attempts before lockout
+         options.Lockout.AllowedForNewUsers = true; // lockout applies to new users 
+    }
     )
     .AddEntityFrameworkStores<CompanyDbContext>()
     .AddRoleManager<RoleManager<IdentityRole>>()
@@ -77,7 +78,7 @@ builder.Services.AddIdentity<ApplicationUser, IdentityRole>(//options =>
 //         ValidIssuer = jwtSettings["Issuer"],
 //         ValidAudience = jwtSettings["Audience"],
 //         ValidateLifetime = true,
-//         RoleClaimType = "role" // ✅ Ensure role claims work correctly
+//         RoleClaimType = "role" 
 //     };
 // });
 
