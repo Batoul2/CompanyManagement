@@ -1,0 +1,13 @@
+# Ignore local app settings
+appsettings.Development.json
+
+# Ignore environment-specific settings
+secrets.json
+
+# Ignore Visual Studio files (if applicable)
+.vscode/
+bin/
+obj/
+*.user
+*.suo
+*.vs
