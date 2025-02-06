@@ -82,40 +82,50 @@ namespace CompanyManagement.Controllers
         
 
         [HttpPost("RequestPasswordReset")]
-        public async Task<IActionResult> RequestPasswordReset([FromBody] PasswordResetRequestDto model,  CancellationToken cancellationToken)
+        public async Task<IActionResult> RequestPasswordReset([FromBody] PasswordResetRequestDto model, CancellationToken cancellationToken)
         {
-            var token = await _authService.GeneratePasswordResetTokenAsync(model.Email, cancellationToken);
-            if (token == null)
+            var result = await _authService.RequestPasswordResetAsync(model.Email, cancellationToken);
+            if (!result)
             {
                 return BadRequest("If the email exists, a reset link will be sent.");
             }
 
-            return Ok(new { Token = token });
+            return Ok("Password reset email sent.");
         }
 
         [HttpPost("ResetPassword")]
-        public async Task<IActionResult> ResetPassword([FromBody] ResetPasswordDto model,  CancellationToken cancellationToken)
+        public async Task<IActionResult> ResetPassword([FromBody] ResetPasswordDto model, CancellationToken cancellationToken)
         {
-            var result = await _authService.ResetPasswordAsync(model, cancellationToken);
-
+            var result = await _authService.ResetPasswordAsync(model.Email, model.Token, model.NewPassword, cancellationToken);
             if (!result.Succeeded)
             {
                 return BadRequest(result.Errors.Select(e => e.Description));
             }
 
-            return Ok("Password has been reset successfully.");
+            return Ok("Password reset successful.");
         }
 
+        [HttpGet("ResetPasswordPage")]
+        public IActionResult ResetPasswordPage([FromQuery] string email, [FromQuery] string token)
+        {
+            if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(token))
+            {
+                return BadRequest("Invalid password reset request.");
+            }
+            var htmlResponse = $@"
+                <html>
+                <head><title>Reset Password Token</title></head>
+                <body>
+                    <h2>Copy Your Password Reset Token</h2>
+                    <p><strong>Email:</strong> {email}</p>
+                    <p><strong>Token:</strong> <code>{token}</code></p>
+                    <p>Use this token in Swagger to reset your password.</p>
+                </body>
+                </html>";
 
-    
+            return Content(htmlResponse, "text/html");
+        }
 
-        // //check ll role
-        // [HttpGet("debug-token"), Authorize]
-        // public IActionResult DebugToken()
-        // {
-        //     var userClaims = HttpContext.User.Claims.Select(c => new { c.Type, c.Value }).ToList();
-        //     return Ok(userClaims);
-        // }
 
   }
   

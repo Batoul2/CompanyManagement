@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 using System;
+using MailKit;
 
 namespace CompanyManagement.Services
 {
@@ -17,12 +18,14 @@ namespace CompanyManagement.Services
     private readonly UserManager<ApplicationUser> _userManager;
     private readonly RoleManager<IdentityRole> _roleManager;
     private readonly IConfiguration _configuration;
+    private readonly IEmailService _emailService;
     
-    public AuthService(UserManager<ApplicationUser> userManager, IConfiguration configuration,RoleManager<IdentityRole> roleManager)
+    public AuthService(UserManager<ApplicationUser> userManager, IConfiguration configuration,RoleManager<IdentityRole> roleManager, IEmailService emailService)
     {
         _userManager = userManager;
         _roleManager = roleManager;
         _configuration = configuration;
+        _emailService = emailService;
     }
     public async Task<IdentityResult> RegisterUserAsync(RegisterUserDto model,  CancellationToken cancellationToken)
     {
@@ -196,28 +199,30 @@ namespace CompanyManagement.Services
 
 
 
-        public async Task<string?> GeneratePasswordResetTokenAsync(string email, CancellationToken cancellationToken)
+        public async Task<bool> RequestPasswordResetAsync(string email, CancellationToken cancellationToken)
         {
             var user = await _userManager.FindByEmailAsync(email);
-            cancellationToken.ThrowIfCancellationRequested();
-            if (user == null)
-            {
-                return null;
-            }
+            if (user == null) return false;
 
-            return await _userManager.GeneratePasswordResetTokenAsync(user);
+            var token = await _userManager.GeneratePasswordResetTokenAsync(user);
+
+            var resetLink = $"http://localhost:5292/api/auth/ResetPasswordPage?email={email}&token={Uri.EscapeDataString(token)}";
+
+            var subject = "Password Reset Request";
+            var body = $"Click <a href='{resetLink}'>here</a> to reset your password.";
+
+            await _emailService.SendEmailAsync(email, subject, body);
+
+            return true;
         }
 
-        public async Task<IdentityResult> ResetPasswordAsync(ResetPasswordDto model, CancellationToken cancellationToken)
-        {
-            var user = await _userManager.FindByEmailAsync(model.Email);
-            cancellationToken.ThrowIfCancellationRequested();
-            if (user == null)
-            {
-                return IdentityResult.Failed(new IdentityError { Description = "Invalid email." });
-            }
 
-            return await _userManager.ResetPasswordAsync(user, model.Token, model.NewPassword);
+        public async Task<IdentityResult> ResetPasswordAsync(string email, string token, string newPassword, CancellationToken cancellationToken)
+        {
+            var user = await _userManager.FindByEmailAsync(email);
+            if (user == null) return IdentityResult.Failed(new IdentityError { Description = "Invalid email" });
+
+            return await _userManager.ResetPasswordAsync(user, token, newPassword);
         }
 
     }

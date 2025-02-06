@@ -172,3 +172,6 @@ C:\Users\hp\CompanyManagement\CompanyManagement\obj\Debug\net9.0\refint\CompanyM
 C:\Users\hp\CompanyManagement\CompanyManagement\obj\Debug\net9.0\CompanyManagement.pdb
 C:\Users\hp\CompanyManagement\CompanyManagement\obj\Debug\net9.0\CompanyManagement.genruntimeconfig.cache
 C:\Users\hp\CompanyManagement\CompanyManagement\obj\Debug\net9.0\ref\CompanyManagement.dll
+C:\Users\hp\CompanyManagement\CompanyManagement\bin\Debug\net9.0\BouncyCastle.Cryptography.dll
+C:\Users\hp\CompanyManagement\CompanyManagement\bin\Debug\net9.0\MailKit.dll
+C:\Users\hp\CompanyManagement\CompanyManagement\bin\Debug\net9.0\MimeKit.dll
