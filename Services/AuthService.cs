@@ -205,6 +205,10 @@ namespace CompanyManagement.Services
             if (user == null) return false;
 
             var token = await _userManager.GeneratePasswordResetTokenAsync(user);
+            var expirationTime = DateTime.UtcNow.AddHours(2);
+
+            await _userManager.SetAuthenticationTokenAsync(user, "PasswordReset", "ResetToken", token);
+            await _userManager.SetAuthenticationTokenAsync(user, "PasswordReset", "ResetTokenExpiry", expirationTime.ToString("o"));
 
             var resetLink = $"http://localhost:5292/api/auth/ResetPasswordPage?email={email}&token={Uri.EscapeDataString(token)}";
 
@@ -221,8 +225,32 @@ namespace CompanyManagement.Services
         {
             var user = await _userManager.FindByEmailAsync(email);
             if (user == null) return IdentityResult.Failed(new IdentityError { Description = "Invalid email" });
+            var storedToken = await _userManager.GetAuthenticationTokenAsync(user, "PasswordReset", "ResetToken");
+            var storedExpiration = await _userManager.GetAuthenticationTokenAsync(user, "PasswordReset", "ResetTokenExpiry");
 
-            return await _userManager.ResetPasswordAsync(user, token, newPassword);
+            if (string.IsNullOrEmpty(storedToken) || string.IsNullOrEmpty(storedExpiration))
+            {
+                return IdentityResult.Failed(new IdentityError { Description = "Invalid or expired reset token." });
+            }
+
+            if (token != storedToken)
+            {
+                return IdentityResult.Failed(new IdentityError { Description = "Invalid reset token." });
+            }
+
+            if (DateTime.TryParse(storedExpiration, out var expirationTime) && expirationTime < DateTime.UtcNow)
+            {
+                return IdentityResult.Failed(new IdentityError { Description = "Password reset token has expired." });
+            }
+
+            var result = await _userManager.ResetPasswordAsync(user, token, newPassword);
+            if (result.Succeeded)
+            {
+                await _userManager.RemoveAuthenticationTokenAsync(user, "PasswordReset", "ResetToken");
+                await _userManager.RemoveAuthenticationTokenAsync(user, "PasswordReset", "ResetTokenExpiry");
+            }
+
+            return result;
         }
 
     }

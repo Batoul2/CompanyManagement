@@ -9897,3 +9897,292 @@ WHERE "Id" = @p14 AND "ConcurrencyStamp" = @p15;
 2025-02-06 11:10:54.6549 Info Executed endpoint 'CompanyManagement.Controllers.AuthController.ResetPassword (CompanyManagement)' 
 2025-02-06 11:10:54.6549 Info Request finished HTTP/1.1 POST http://localhost:5292/api/Auth/ResetPassword - 200 - text/plain;+charset=utf-8 209.8691ms 
 2025-02-06 11:11:26.4286 Info Application is shutting down... 
+2025-02-06 12:42:53.5349 Info Executed DbCommand (65ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-02-06 12:42:53.6591 Info Executed DbCommand (4ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-02-06 12:42:53.6591 Info Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-02-06 12:42:53.7789 Info User profile is available. Using 'C:\Users\hp\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest. 
+2025-02-06 12:42:53.8710 Info Now listening on: http://localhost:5292 
+2025-02-06 12:42:53.8739 Info Application started. Press Ctrl+C to shut down. 
+2025-02-06 12:42:53.8739 Info Hosting environment: Development 
+2025-02-06 12:42:53.8739 Info Content root path: C:\Users\hp\CompanyManagement\CompanyManagement 
+2025-02-06 12:42:53.9660 Info Request starting HTTP/1.1 GET http://localhost:5292/api/auth/ResetPasswordPage?email=batoulsaayed2@gmail.com&token=CfDJ8Pt%2FZs%2B2s59PtJM15B7Y3rnFbEK52hIc%2FOlgli34Q0ZDP7KuS0Jdz8%2Bz1SrIwMfmGKatzDDocvlszxduXmT6o2GuTsHAmsqkc9cpziQHNuMpHnRZR6r8nSJ2Vp7KaoIXzatXUTMtxkWkWzjZKflh%2BMNGJWpvI4MVAuVMDFRFZzlbaQ%2FnvGwr7Pocyu1%2Bh5gYbYFp0VSsKuC0HMkH%2BS6%2F%2BqoC8wvN3NVN4N4jzYCw7je0 - - - 
+2025-02-06 12:42:53.9867 Warn Failed to determine the https port for redirect. 
+2025-02-06 12:42:54.0334 Info Executing endpoint 'CompanyManagement.Controllers.AuthController.ResetPasswordPage (CompanyManagement)' 
+2025-02-06 12:42:54.0489 Info Route matched with {action = "ResetPasswordPage", controller = "Auth"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult ResetPasswordPage(System.String, System.String) on controller CompanyManagement.Controllers.AuthController (CompanyManagement). 
+2025-02-06 12:42:54.0812 Info Executing ContentResult with HTTP Response ContentType of text/html 
+2025-02-06 12:42:54.0968 Info Executed action CompanyManagement.Controllers.AuthController.ResetPasswordPage (CompanyManagement) in 34.9177ms 
+2025-02-06 12:42:54.0968 Info Executed endpoint 'CompanyManagement.Controllers.AuthController.ResetPasswordPage (CompanyManagement)' 
+2025-02-06 12:42:54.0968 Info Request finished HTTP/1.1 GET http://localhost:5292/api/auth/ResetPasswordPage?email=batoulsaayed2@gmail.com&token=CfDJ8Pt%2FZs%2B2s59PtJM15B7Y3rnFbEK52hIc%2FOlgli34Q0ZDP7KuS0Jdz8%2Bz1SrIwMfmGKatzDDocvlszxduXmT6o2GuTsHAmsqkc9cpziQHNuMpHnRZR6r8nSJ2Vp7KaoIXzatXUTMtxkWkWzjZKflh%2BMNGJWpvI4MVAuVMDFRFZzlbaQ%2FnvGwr7Pocyu1%2Bh5gYbYFp0VSsKuC0HMkH%2BS6%2F%2BqoC8wvN3NVN4N4jzYCw7je0 - 200 685 text/html 138.6546ms 
+2025-02-06 12:44:28.2679 Info Request starting HTTP/1.1 GET http://localhost:5292/index.html - - - 
+2025-02-06 12:44:28.4055 Info Request finished HTTP/1.1 GET http://localhost:5292/index.html - 200 - text/html;charset=utf-8 137.5592ms 
+2025-02-06 12:44:28.4635 Info Request starting HTTP/1.1 GET http://localhost:5292/index.js - - - 
+2025-02-06 12:44:28.4635 Info Request finished HTTP/1.1 GET http://localhost:5292/index.js - 200 - application/javascript;charset=utf-8 2.9001ms 
+2025-02-06 12:44:28.7000 Info Request starting HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - - - 
+2025-02-06 12:44:28.9137 Info Request finished HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - 200 - application/json;charset=utf-8 213.6350ms 
+2025-02-06 12:45:05.4534 Info Request starting HTTP/1.1 GET http://localhost:5292/api/Auth/ResetPasswordPage?email=batoulsaayed2%40gmail.com&token=CfDJ8Pt%2FZs%2B2s59PtJM15B7Y3rnFbEK52hIc%2FOlgli34Q0ZDP7KuS0Jdz8%2Bz1SrIwMfmGKatzDDocvlszxduXmT6o2GuTsHAmsqkc9cpziQHNuMpHnRZR6r8nSJ2Vp7KaoIXzatXUTMtxkWkWzjZKflh%2BMNGJWpvI4MVAuVMDFRFZzlbaQ%2FnvGwr7Pocyu1%2Bh5gYbYFp0VSsKuC0HMkH%2BS6%2F%2BqoC8wvN3NVN4N4jzYCw7je0 - - - 
+2025-02-06 12:45:05.4534 Info Executing endpoint 'CompanyManagement.Controllers.AuthController.ResetPasswordPage (CompanyManagement)' 
+2025-02-06 12:45:05.4534 Info Route matched with {action = "ResetPasswordPage", controller = "Auth"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult ResetPasswordPage(System.String, System.String) on controller CompanyManagement.Controllers.AuthController (CompanyManagement). 
+2025-02-06 12:45:05.4534 Info Executing ContentResult with HTTP Response ContentType of text/html 
+2025-02-06 12:45:05.4534 Info Executed action CompanyManagement.Controllers.AuthController.ResetPasswordPage (CompanyManagement) in 10.1249ms 
+2025-02-06 12:45:05.4534 Info Executed endpoint 'CompanyManagement.Controllers.AuthController.ResetPasswordPage (CompanyManagement)' 
+2025-02-06 12:45:05.4534 Info Request finished HTTP/1.1 GET http://localhost:5292/api/Auth/ResetPasswordPage?email=batoulsaayed2%40gmail.com&token=CfDJ8Pt%2FZs%2B2s59PtJM15B7Y3rnFbEK52hIc%2FOlgli34Q0ZDP7KuS0Jdz8%2Bz1SrIwMfmGKatzDDocvlszxduXmT6o2GuTsHAmsqkc9cpziQHNuMpHnRZR6r8nSJ2Vp7KaoIXzatXUTMtxkWkWzjZKflh%2BMNGJWpvI4MVAuVMDFRFZzlbaQ%2FnvGwr7Pocyu1%2Bh5gYbYFp0VSsKuC0HMkH%2BS6%2F%2BqoC8wvN3NVN4N4jzYCw7je0 - 200 685 text/html 15.6415ms 
+2025-02-06 12:46:37.5463 Info Application is shutting down... 
+2025-02-06 12:46:47.1252 Info Executed DbCommand (42ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-02-06 12:46:47.1981 Info Executed DbCommand (2ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-02-06 12:46:47.1981 Info Executed DbCommand (0ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-02-06 12:46:47.2611 Info User profile is available. Using 'C:\Users\hp\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest. 
+2025-02-06 12:46:47.3098 Info Now listening on: http://localhost:5292 
+2025-02-06 12:46:47.3098 Info Application started. Press Ctrl+C to shut down. 
+2025-02-06 12:46:47.3114 Info Hosting environment: Development 
+2025-02-06 12:46:47.3114 Info Content root path: C:\Users\hp\CompanyManagement\CompanyManagement 
+2025-02-06 12:46:47.5439 Info Request starting HTTP/1.1 GET http://localhost:5292/index.html - - - 
+2025-02-06 12:46:47.5611 Warn Failed to determine the https port for redirect. 
+2025-02-06 12:46:47.6418 Info Request finished HTTP/1.1 GET http://localhost:5292/index.html - 200 - text/html;charset=utf-8 94.9878ms 
+2025-02-06 12:46:47.6418 Info Request starting HTTP/1.1 GET http://localhost:5292/index.js - - - 
+2025-02-06 12:46:47.6418 Info Request finished HTTP/1.1 GET http://localhost:5292/index.js - 200 - application/javascript;charset=utf-8 2.1420ms 
+2025-02-06 12:46:47.8231 Info Request starting HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - - - 
+2025-02-06 12:46:47.8893 Error An unhandled exception has occurred while executing the request. Swashbuckle.AspNetCore.SwaggerGen.SwaggerGeneratorException: Ambiguous HTTP method for action - CompanyManagement.Controllers.AuthController.ResetPasswordPage (CompanyManagement). Actions require an explicit HttpMethod binding for Swagger/OpenAPI 3.0
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.PrepareGenerateOperation(IGrouping`2 group)
+   at System.Linq.Enumerable.IteratorSelectIterator`2.MoveNext()
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateOperationsAsync(IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GeneratePathsAsync(IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository, Func`3 operationsGenerator)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GeneratePathsAsync(IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GetSwaggerAsync(String documentName, String host, String basePath)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2025-02-06 12:46:47.9022 Info Request finished HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - 500 - text/plain;+charset=utf-8 79.1076ms 
+2025-02-06 12:46:51.7944 Info Application is shutting down... 
+2025-02-06 12:47:04.6719 Info Executed DbCommand (46ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-02-06 12:47:04.7727 Info Executed DbCommand (4ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-02-06 12:47:04.7727 Info Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-02-06 12:47:04.8626 Info User profile is available. Using 'C:\Users\hp\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest. 
+2025-02-06 12:47:04.9173 Info Now listening on: http://localhost:5292 
+2025-02-06 12:47:04.9173 Info Application started. Press Ctrl+C to shut down. 
+2025-02-06 12:47:04.9173 Info Hosting environment: Development 
+2025-02-06 12:47:04.9173 Info Content root path: C:\Users\hp\CompanyManagement\CompanyManagement 
+2025-02-06 12:47:05.0792 Info Request starting HTTP/1.1 GET http://localhost:5292/index.html - - - 
+2025-02-06 12:47:05.1014 Warn Failed to determine the https port for redirect. 
+2025-02-06 12:47:05.1946 Info Request finished HTTP/1.1 GET http://localhost:5292/index.html - 200 - text/html;charset=utf-8 114.9445ms 
+2025-02-06 12:47:05.1946 Info Request starting HTTP/1.1 GET http://localhost:5292/index.js - - - 
+2025-02-06 12:47:05.2032 Info Request finished HTTP/1.1 GET http://localhost:5292/index.js - 200 - application/javascript;charset=utf-8 1.5907ms 
+2025-02-06 12:47:05.2445 Info Request starting HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - - - 
+2025-02-06 12:47:05.3356 Info Request finished HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - 200 - application/json;charset=utf-8 90.9823ms 
+2025-02-06 12:47:09.1813 Info Application is shutting down... 
+2025-02-06 13:36:44.7671 Info Executed DbCommand (38ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-02-06 13:36:44.8206 Info Executed DbCommand (2ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-02-06 13:36:44.8206 Info Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-02-06 13:36:44.9006 Info User profile is available. Using 'C:\Users\hp\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest. 
+2025-02-06 13:36:45.0019 Info Now listening on: http://localhost:5292 
+2025-02-06 13:36:45.0019 Info Application started. Press Ctrl+C to shut down. 
+2025-02-06 13:36:45.0019 Info Hosting environment: Development 
+2025-02-06 13:36:45.0019 Info Content root path: C:\Users\hp\CompanyManagement\CompanyManagement 
+2025-02-06 13:36:46.6681 Info Request starting HTTP/1.1 GET http://localhost:5292/index.html - - - 
+2025-02-06 13:36:46.6811 Warn Failed to determine the https port for redirect. 
+2025-02-06 13:36:46.7608 Info Request finished HTTP/1.1 GET http://localhost:5292/index.html - 200 - text/html;charset=utf-8 92.5952ms 
+2025-02-06 13:36:46.7971 Info Request starting HTTP/1.1 GET http://localhost:5292/index.js - - - 
+2025-02-06 13:36:46.7971 Info Request finished HTTP/1.1 GET http://localhost:5292/index.js - 200 - application/javascript;charset=utf-8 1.7612ms 
+2025-02-06 13:36:46.9214 Info Request starting HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - - - 
+2025-02-06 13:36:47.0019 Info Request finished HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - 200 - application/json;charset=utf-8 80.4473ms 
+2025-02-06 13:37:14.2009 Info Request starting HTTP/1.1 GET http://localhost:5292/api/auth/ResetPasswordPage?email=batoulsaayed2@gmail.com&token=CfDJ8Pt%2FZs%2B2s59PtJM15B7Y3rnFbEK52hIc%2FOlgli34Q0ZDP7KuS0Jdz8%2Bz1SrIwMfmGKatzDDocvlszxduXmT6o2GuTsHAmsqkc9cpziQHNuMpHnRZR6r8nSJ2Vp7KaoIXzatXUTMtxkWkWzjZKflh%2BMNGJWpvI4MVAuVMDFRFZzlbaQ%2FnvGwr7Pocyu1%2Bh5gYbYFp0VSsKuC0HMkH%2BS6%2F%2BqoC8wvN3NVN4N4jzYCw7je0 - - - 
+2025-02-06 13:37:14.2555 Info Executing endpoint 'CompanyManagement.Controllers.AuthController.ResetPasswordPage (CompanyManagement)' 
+2025-02-06 13:37:14.2742 Info Route matched with {action = "ResetPasswordPage", controller = "Auth"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult ResetPasswordPage(System.String, System.String) on controller CompanyManagement.Controllers.AuthController (CompanyManagement). 
+2025-02-06 13:37:14.3066 Info Executing ContentResult with HTTP Response ContentType of text/html 
+2025-02-06 13:37:14.3066 Info Executed action CompanyManagement.Controllers.AuthController.ResetPasswordPage (CompanyManagement) in 34.346ms 
+2025-02-06 13:37:14.3066 Info Executed endpoint 'CompanyManagement.Controllers.AuthController.ResetPasswordPage (CompanyManagement)' 
+2025-02-06 13:37:14.3207 Info Request finished HTTP/1.1 GET http://localhost:5292/api/auth/ResetPasswordPage?email=batoulsaayed2@gmail.com&token=CfDJ8Pt%2FZs%2B2s59PtJM15B7Y3rnFbEK52hIc%2FOlgli34Q0ZDP7KuS0Jdz8%2Bz1SrIwMfmGKatzDDocvlszxduXmT6o2GuTsHAmsqkc9cpziQHNuMpHnRZR6r8nSJ2Vp7KaoIXzatXUTMtxkWkWzjZKflh%2BMNGJWpvI4MVAuVMDFRFZzlbaQ%2FnvGwr7Pocyu1%2Bh5gYbYFp0VSsKuC0HMkH%2BS6%2F%2BqoC8wvN3NVN4N4jzYCw7je0 - 200 685 text/html 120.0028ms 
+2025-02-06 13:37:42.2932 Info Request starting HTTP/1.1 POST http://localhost:5292/api/Auth/ResetPassword - application/json 326 
+2025-02-06 13:37:42.2932 Info CORS policy execution successful. 
+2025-02-06 13:37:42.2932 Info Executing endpoint 'CompanyManagement.Controllers.AuthController.ResetPassword (CompanyManagement)' 
+2025-02-06 13:37:42.3166 Info Route matched with {action = "ResetPassword", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] ResetPassword(CompanyManagement.DTOs.ResetPasswordDto, System.Threading.CancellationToken) on controller CompanyManagement.Controllers.AuthController (CompanyManagement). 
+2025-02-06 13:37:42.5272 Info Executed DbCommand (8ms) [Parameters=[@__normalizedEmail_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."Email", a."EmailConfirmed", a."LockoutEnabled", a."LockoutEnd", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."SecurityStamp", a."TwoFactorEnabled", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."NormalizedEmail" = @__normalizedEmail_0
+LIMIT 2 
+2025-02-06 13:37:42.6306 Info Executed DbCommand (4ms) [Parameters=[@__p_0='?', @__p_1='?', @__p_2='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."UserId", a."LoginProvider", a."Name", a."Value"
+FROM "AspNetUserTokens" AS a
+WHERE a."UserId" = @__p_0 AND a."LoginProvider" = @__p_1 AND a."Name" = @__p_2
+LIMIT 1 
+2025-02-06 13:37:42.6306 Info Executed DbCommand (1ms) [Parameters=[@__p_0='?', @__p_1='?', @__p_2='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."UserId", a."LoginProvider", a."Name", a."Value"
+FROM "AspNetUserTokens" AS a
+WHERE a."UserId" = @__p_0 AND a."LoginProvider" = @__p_1 AND a."Name" = @__p_2
+LIMIT 1 
+2025-02-06 13:37:42.6470 Info Executing BadRequestObjectResult, writing value of type 'System.Linq.Enumerable+ListSelectIterator`2[[Microsoft.AspNetCore.Identity.IdentityError, Microsoft.Extensions.Identity.Core, Version=9.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60],[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'. 
+2025-02-06 13:37:42.6687 Info Executed action CompanyManagement.Controllers.AuthController.ResetPassword (CompanyManagement) in 351.8819ms 
+2025-02-06 13:37:42.6687 Info Executed endpoint 'CompanyManagement.Controllers.AuthController.ResetPassword (CompanyManagement)' 
+2025-02-06 13:37:42.6687 Info Request finished HTTP/1.1 POST http://localhost:5292/api/Auth/ResetPassword - 400 - application/json;+charset=utf-8 385.2971ms 
+2025-02-06 13:45:52.5537 Info Request starting HTTP/1.1 POST http://localhost:5292/api/Auth/RequestPasswordReset - application/json 40 
+2025-02-06 13:45:52.5537 Info CORS policy execution successful. 
+2025-02-06 13:45:52.5578 Info Executing endpoint 'CompanyManagement.Controllers.AuthController.RequestPasswordReset (CompanyManagement)' 
+2025-02-06 13:45:52.5578 Info Route matched with {action = "RequestPasswordReset", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] RequestPasswordReset(CompanyManagement.DTOs.PasswordResetRequestDto, System.Threading.CancellationToken) on controller CompanyManagement.Controllers.AuthController (CompanyManagement). 
+2025-02-06 13:45:52.6490 Info Executed DbCommand (4ms) [Parameters=[@__normalizedEmail_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."Email", a."EmailConfirmed", a."LockoutEnabled", a."LockoutEnd", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."SecurityStamp", a."TwoFactorEnabled", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."NormalizedEmail" = @__normalizedEmail_0
+LIMIT 2 
+2025-02-06 13:45:52.6653 Info Executed DbCommand (2ms) [Parameters=[@__p_0='?', @__p_1='?', @__p_2='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."UserId", a."LoginProvider", a."Name", a."Value"
+FROM "AspNetUserTokens" AS a
+WHERE a."UserId" = @__p_0 AND a."LoginProvider" = @__p_1 AND a."Name" = @__p_2
+LIMIT 1 
+2025-02-06 13:45:52.7319 Info Executed DbCommand (1ms) [Parameters=[@__normalizedUserName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."Email", a."EmailConfirmed", a."LockoutEnabled", a."LockoutEnd", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."SecurityStamp", a."TwoFactorEnabled", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."NormalizedUserName" = @__normalizedUserName_0
+LIMIT 1 
+2025-02-06 13:45:52.9083 Info Executed DbCommand (21ms) [Parameters=[@p0='?', @p1='?', @p2='?', @p3='?', @p18='?', @p4='?' (DbType = Int32), @p5='?', @p19='?', @p6='?', @p7='?' (DbType = Boolean), @p8='?' (DbType = Boolean), @p9='?' (DbType = DateTime), @p10='?', @p11='?', @p12='?', @p13='?', @p14='?' (DbType = Boolean), @p15='?', @p16='?' (DbType = Boolean), @p17='?'], CommandType='Text', CommandTimeout='30']
+INSERT INTO "AspNetUserTokens" ("LoginProvider", "Name", "UserId", "Value")
+VALUES (@p0, @p1, @p2, @p3);
+UPDATE "AspNetUsers" SET "AccessFailedCount" = @p4, "ConcurrencyStamp" = @p5, "Email" = @p6, "EmailConfirmed" = @p7, "LockoutEnabled" = @p8, "LockoutEnd" = @p9, "NormalizedEmail" = @p10, "NormalizedUserName" = @p11, "PasswordHash" = @p12, "PhoneNumber" = @p13, "PhoneNumberConfirmed" = @p14, "SecurityStamp" = @p15, "TwoFactorEnabled" = @p16, "UserName" = @p17
+WHERE "Id" = @p18 AND "ConcurrencyStamp" = @p19; 
+2025-02-06 13:45:52.9357 Info Executed DbCommand (1ms) [Parameters=[@__p_0='?', @__p_1='?', @__p_2='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."UserId", a."LoginProvider", a."Name", a."Value"
+FROM "AspNetUserTokens" AS a
+WHERE a."UserId" = @__p_0 AND a."LoginProvider" = @__p_1 AND a."Name" = @__p_2
+LIMIT 1 
+2025-02-06 13:45:52.9357 Info Executed DbCommand (1ms) [Parameters=[@__normalizedUserName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."Email", a."EmailConfirmed", a."LockoutEnabled", a."LockoutEnd", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."SecurityStamp", a."TwoFactorEnabled", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."NormalizedUserName" = @__normalizedUserName_0
+LIMIT 1 
+2025-02-06 13:45:52.9398 Info Executed DbCommand (1ms) [Parameters=[@p0='?', @p1='?', @p2='?', @p3='?', @p18='?', @p4='?' (DbType = Int32), @p5='?', @p19='?', @p6='?', @p7='?' (DbType = Boolean), @p8='?' (DbType = Boolean), @p9='?' (DbType = DateTime), @p10='?', @p11='?', @p12='?', @p13='?', @p14='?' (DbType = Boolean), @p15='?', @p16='?' (DbType = Boolean), @p17='?'], CommandType='Text', CommandTimeout='30']
+INSERT INTO "AspNetUserTokens" ("LoginProvider", "Name", "UserId", "Value")
+VALUES (@p0, @p1, @p2, @p3);
+UPDATE "AspNetUsers" SET "AccessFailedCount" = @p4, "ConcurrencyStamp" = @p5, "Email" = @p6, "EmailConfirmed" = @p7, "LockoutEnabled" = @p8, "LockoutEnd" = @p9, "NormalizedEmail" = @p10, "NormalizedUserName" = @p11, "PasswordHash" = @p12, "PhoneNumber" = @p13, "PhoneNumberConfirmed" = @p14, "SecurityStamp" = @p15, "TwoFactorEnabled" = @p16, "UserName" = @p17
+WHERE "Id" = @p18 AND "ConcurrencyStamp" = @p19; 
+2025-02-06 13:45:56.5688 Info Executing OkObjectResult, writing value of type 'System.String'. 
+2025-02-06 13:45:56.5688 Info Executed action CompanyManagement.Controllers.AuthController.RequestPasswordReset (CompanyManagement) in 4004.2865ms 
+2025-02-06 13:45:56.5688 Info Executed endpoint 'CompanyManagement.Controllers.AuthController.RequestPasswordReset (CompanyManagement)' 
+2025-02-06 13:45:56.5688 Info Request finished HTTP/1.1 POST http://localhost:5292/api/Auth/RequestPasswordReset - 200 - text/plain;+charset=utf-8 4016.5324ms 
+2025-02-06 13:46:08.8615 Info Request starting HTTP/1.1 GET http://localhost:5292/api/auth/ResetPasswordPage?email=batoulsaayed2@gmail.com&token=CfDJ8Pt%2FZs%2B2s59PtJM15B7Y3rljQDyQ%2F3GTE8ELkWmLOfQhOiQbFv0eTn9P%2FdyNqc266PGUfVyIV1opsvr8uXyzQwo2NArG1%2BX447Z%2BJF3ToCNVNXEq6xIn%2FtIaTaHs411oVpQOiTakz8W00oyCgxZY1Sh5jz6WBhd15dVKi18Ct7MubNlMz0opUb5MPHtnNLo93tAginfCj6%2FfX2%2BJGnhDnaCyNEim4hYmGRln19oIrybd - - - 
+2025-02-06 13:46:08.8615 Info Executing endpoint 'CompanyManagement.Controllers.AuthController.ResetPasswordPage (CompanyManagement)' 
+2025-02-06 13:46:08.8615 Info Route matched with {action = "ResetPasswordPage", controller = "Auth"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult ResetPasswordPage(System.String, System.String) on controller CompanyManagement.Controllers.AuthController (CompanyManagement). 
+2025-02-06 13:46:08.8615 Info Executing ContentResult with HTTP Response ContentType of text/html 
+2025-02-06 13:46:08.8615 Info Executed action CompanyManagement.Controllers.AuthController.ResetPasswordPage (CompanyManagement) in 4.0262ms 
+2025-02-06 13:46:08.8615 Info Executed endpoint 'CompanyManagement.Controllers.AuthController.ResetPasswordPage (CompanyManagement)' 
+2025-02-06 13:46:08.8615 Info Request finished HTTP/1.1 GET http://localhost:5292/api/auth/ResetPasswordPage?email=batoulsaayed2@gmail.com&token=CfDJ8Pt%2FZs%2B2s59PtJM15B7Y3rljQDyQ%2F3GTE8ELkWmLOfQhOiQbFv0eTn9P%2FdyNqc266PGUfVyIV1opsvr8uXyzQwo2NArG1%2BX447Z%2BJF3ToCNVNXEq6xIn%2FtIaTaHs411oVpQOiTakz8W00oyCgxZY1Sh5jz6WBhd15dVKi18Ct7MubNlMz0opUb5MPHtnNLo93tAginfCj6%2FfX2%2BJGnhDnaCyNEim4hYmGRln19oIrybd - 200 685 text/html 6.2420ms 
+2025-02-06 13:46:33.4615 Info Request starting HTTP/1.1 POST http://localhost:5292/api/Auth/ResetPassword - application/json 326 
+2025-02-06 13:46:33.4615 Info CORS policy execution successful. 
+2025-02-06 13:46:33.4615 Info Executing endpoint 'CompanyManagement.Controllers.AuthController.ResetPassword (CompanyManagement)' 
+2025-02-06 13:46:33.4615 Info Route matched with {action = "ResetPassword", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] ResetPassword(CompanyManagement.DTOs.ResetPasswordDto, System.Threading.CancellationToken) on controller CompanyManagement.Controllers.AuthController (CompanyManagement). 
+2025-02-06 13:46:33.4676 Info Executed DbCommand (1ms) [Parameters=[@__normalizedEmail_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."Email", a."EmailConfirmed", a."LockoutEnabled", a."LockoutEnd", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."SecurityStamp", a."TwoFactorEnabled", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."NormalizedEmail" = @__normalizedEmail_0
+LIMIT 2 
+2025-02-06 13:46:33.4676 Info Executed DbCommand (1ms) [Parameters=[@__p_0='?', @__p_1='?', @__p_2='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."UserId", a."LoginProvider", a."Name", a."Value"
+FROM "AspNetUserTokens" AS a
+WHERE a."UserId" = @__p_0 AND a."LoginProvider" = @__p_1 AND a."Name" = @__p_2
+LIMIT 1 
+2025-02-06 13:46:33.4676 Info Executed DbCommand (2ms) [Parameters=[@__p_0='?', @__p_1='?', @__p_2='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."UserId", a."LoginProvider", a."Name", a."Value"
+FROM "AspNetUserTokens" AS a
+WHERE a."UserId" = @__p_0 AND a."LoginProvider" = @__p_1 AND a."Name" = @__p_2
+LIMIT 1 
+2025-02-06 13:46:33.6152 Info Executed DbCommand (1ms) [Parameters=[@__normalizedUserName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."Email", a."EmailConfirmed", a."LockoutEnabled", a."LockoutEnd", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."SecurityStamp", a."TwoFactorEnabled", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."NormalizedUserName" = @__normalizedUserName_0
+LIMIT 1 
+2025-02-06 13:46:33.6190 Info Executed DbCommand (2ms) [Parameters=[@p14='?', @p0='?' (DbType = Int32), @p1='?', @p15='?', @p2='?', @p3='?' (DbType = Boolean), @p4='?' (DbType = Boolean), @p5='?' (DbType = DateTime), @p6='?', @p7='?', @p8='?', @p9='?', @p10='?' (DbType = Boolean), @p11='?', @p12='?' (DbType = Boolean), @p13='?'], CommandType='Text', CommandTimeout='30']
+UPDATE "AspNetUsers" SET "AccessFailedCount" = @p0, "ConcurrencyStamp" = @p1, "Email" = @p2, "EmailConfirmed" = @p3, "LockoutEnabled" = @p4, "LockoutEnd" = @p5, "NormalizedEmail" = @p6, "NormalizedUserName" = @p7, "PasswordHash" = @p8, "PhoneNumber" = @p9, "PhoneNumberConfirmed" = @p10, "SecurityStamp" = @p11, "TwoFactorEnabled" = @p12, "UserName" = @p13
+WHERE "Id" = @p14 AND "ConcurrencyStamp" = @p15; 
+2025-02-06 13:46:33.6190 Info Executed DbCommand (1ms) [Parameters=[@__normalizedUserName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."Email", a."EmailConfirmed", a."LockoutEnabled", a."LockoutEnd", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."SecurityStamp", a."TwoFactorEnabled", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."NormalizedUserName" = @__normalizedUserName_0
+LIMIT 1 
+2025-02-06 13:46:33.6190 Info Executed DbCommand (2ms) [Parameters=[@p0='?', @p1='?', @p2='?', @p17='?', @p3='?' (DbType = Int32), @p4='?', @p18='?', @p5='?', @p6='?' (DbType = Boolean), @p7='?' (DbType = Boolean), @p8='?' (DbType = DateTime), @p9='?', @p10='?', @p11='?', @p12='?', @p13='?' (DbType = Boolean), @p14='?', @p15='?' (DbType = Boolean), @p16='?'], CommandType='Text', CommandTimeout='30']
+DELETE FROM "AspNetUserTokens"
+WHERE "LoginProvider" = @p0 AND "Name" = @p1 AND "UserId" = @p2;
+UPDATE "AspNetUsers" SET "AccessFailedCount" = @p3, "ConcurrencyStamp" = @p4, "Email" = @p5, "EmailConfirmed" = @p6, "LockoutEnabled" = @p7, "LockoutEnd" = @p8, "NormalizedEmail" = @p9, "NormalizedUserName" = @p10, "PasswordHash" = @p11, "PhoneNumber" = @p12, "PhoneNumberConfirmed" = @p13, "SecurityStamp" = @p14, "TwoFactorEnabled" = @p15, "UserName" = @p16
+WHERE "Id" = @p17 AND "ConcurrencyStamp" = @p18; 
+2025-02-06 13:46:33.6443 Info Executed DbCommand (1ms) [Parameters=[@__normalizedUserName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."Email", a."EmailConfirmed", a."LockoutEnabled", a."LockoutEnd", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."SecurityStamp", a."TwoFactorEnabled", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."NormalizedUserName" = @__normalizedUserName_0
+LIMIT 1 
+2025-02-06 13:46:33.6443 Info Executed DbCommand (1ms) [Parameters=[@p0='?', @p1='?', @p2='?', @p17='?', @p3='?' (DbType = Int32), @p4='?', @p18='?', @p5='?', @p6='?' (DbType = Boolean), @p7='?' (DbType = Boolean), @p8='?' (DbType = DateTime), @p9='?', @p10='?', @p11='?', @p12='?', @p13='?' (DbType = Boolean), @p14='?', @p15='?' (DbType = Boolean), @p16='?'], CommandType='Text', CommandTimeout='30']
+DELETE FROM "AspNetUserTokens"
+WHERE "LoginProvider" = @p0 AND "Name" = @p1 AND "UserId" = @p2;
+UPDATE "AspNetUsers" SET "AccessFailedCount" = @p3, "ConcurrencyStamp" = @p4, "Email" = @p5, "EmailConfirmed" = @p6, "LockoutEnabled" = @p7, "LockoutEnd" = @p8, "NormalizedEmail" = @p9, "NormalizedUserName" = @p10, "PasswordHash" = @p11, "PhoneNumber" = @p12, "PhoneNumberConfirmed" = @p13, "SecurityStamp" = @p14, "TwoFactorEnabled" = @p15, "UserName" = @p16
+WHERE "Id" = @p17 AND "ConcurrencyStamp" = @p18; 
+2025-02-06 13:46:33.6443 Info Executing OkObjectResult, writing value of type 'System.String'. 
+2025-02-06 13:46:33.6443 Info Executed action CompanyManagement.Controllers.AuthController.ResetPassword (CompanyManagement) in 184.3171ms 
+2025-02-06 13:46:33.6443 Info Executed endpoint 'CompanyManagement.Controllers.AuthController.ResetPassword (CompanyManagement)' 
+2025-02-06 13:46:33.6443 Info Request finished HTTP/1.1 POST http://localhost:5292/api/Auth/ResetPassword - 200 - text/plain;+charset=utf-8 185.8297ms 
+2025-02-06 13:46:46.1178 Info Request starting HTTP/1.1 POST http://localhost:5292/api/Auth/ResetPassword - application/json 324 
+2025-02-06 13:46:46.1178 Info CORS policy execution successful. 
+2025-02-06 13:46:46.1178 Info Executing endpoint 'CompanyManagement.Controllers.AuthController.ResetPassword (CompanyManagement)' 
+2025-02-06 13:46:46.1178 Info Route matched with {action = "ResetPassword", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] ResetPassword(CompanyManagement.DTOs.ResetPasswordDto, System.Threading.CancellationToken) on controller CompanyManagement.Controllers.AuthController (CompanyManagement). 
+2025-02-06 13:46:46.1220 Info Executed DbCommand (1ms) [Parameters=[@__normalizedEmail_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."Email", a."EmailConfirmed", a."LockoutEnabled", a."LockoutEnd", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."SecurityStamp", a."TwoFactorEnabled", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."NormalizedEmail" = @__normalizedEmail_0
+LIMIT 2 
+2025-02-06 13:46:46.1220 Info Executed DbCommand (1ms) [Parameters=[@__p_0='?', @__p_1='?', @__p_2='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."UserId", a."LoginProvider", a."Name", a."Value"
+FROM "AspNetUserTokens" AS a
+WHERE a."UserId" = @__p_0 AND a."LoginProvider" = @__p_1 AND a."Name" = @__p_2
+LIMIT 1 
+2025-02-06 13:46:46.1220 Info Executed DbCommand (1ms) [Parameters=[@__p_0='?', @__p_1='?', @__p_2='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."UserId", a."LoginProvider", a."Name", a."Value"
+FROM "AspNetUserTokens" AS a
+WHERE a."UserId" = @__p_0 AND a."LoginProvider" = @__p_1 AND a."Name" = @__p_2
+LIMIT 1 
+2025-02-06 13:46:46.1220 Info Executing BadRequestObjectResult, writing value of type 'System.Linq.Enumerable+ListSelectIterator`2[[Microsoft.AspNetCore.Identity.IdentityError, Microsoft.Extensions.Identity.Core, Version=9.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60],[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'. 
+2025-02-06 13:46:46.1220 Info Executed action CompanyManagement.Controllers.AuthController.ResetPassword (CompanyManagement) in 10.0667ms 
+2025-02-06 13:46:46.1220 Info Executed endpoint 'CompanyManagement.Controllers.AuthController.ResetPassword (CompanyManagement)' 
+2025-02-06 13:46:46.1220 Info Request finished HTTP/1.1 POST http://localhost:5292/api/Auth/ResetPassword - 400 - application/json;+charset=utf-8 11.3471ms 
+2025-02-06 13:47:20.4143 Info Application is shutting down... 

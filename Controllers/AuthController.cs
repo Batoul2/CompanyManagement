@@ -106,6 +106,7 @@ namespace CompanyManagement.Controllers
         }
 
         [HttpGet("ResetPasswordPage")]
+        [ApiExplorerSettings(IgnoreApi = true)]
         public IActionResult ResetPasswordPage([FromQuery] string email, [FromQuery] string token)
         {
             if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(token))
