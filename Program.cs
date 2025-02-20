@@ -16,6 +16,10 @@ using NLog;
 using NLog.Extensions.Logging;
 using NLog.Web;
 using CompanyManagement.AutoMapper;
+using FluentValidation.AspNetCore;
+using CompanyManagement.InputModels;
+using FluentValidation;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -39,6 +43,15 @@ var connectionString = builder.Configuration.GetConnectionString("DefaultConnect
 
 builder.Services.AddDbContext<CompanyDbContext>(options =>
     options.UseNpgsql(connectionString));
+
+builder.Services.AddControllers();
+builder.Services.AddFluentValidationAutoValidation()
+                .AddFluentValidationClientsideAdapters();
+                
+// Register validators explicitly
+builder.Services.AddScoped<IValidator<EmployeeInputModel>, EmployeeValidator>();
+builder.Services.AddScoped<IValidator<ProjectInputModel>, ProjectValidator>();
+builder.Services.AddScoped<IValidator<CompanyInputModel>, CompanyValidator>();
 
 
 builder.Services.AddAutoMapper(typeof(MappingProfile));
@@ -116,6 +129,9 @@ builder.Services.AddSwaggerGen(c =>
         }
     });
 });
+
+
+
 
 // CORS Policy
 builder.Services.AddCors(options =>
