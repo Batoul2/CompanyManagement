@@ -15,6 +15,7 @@ using Microsoft.OpenApi.Models;
 using NLog;
 using NLog.Extensions.Logging;
 using NLog.Web;
+using CompanyManagement.AutoMapper;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -24,11 +25,23 @@ builder.Logging.ClearProviders();
 builder.Logging.SetMinimumLevel(Microsoft.Extensions.Logging.LogLevel.Trace);
 builder.Logging.AddNLog();
 
+var environment = builder.Environment.EnvironmentName;
+var config = new ConfigurationBuilder()
+    .AddJsonFile("appsettings.json", optional: false)
+    .AddJsonFile($"appsettings.{environment}.json", optional: true) // Load appsettings.Test.json for tests
+    .AddEnvironmentVariables()
+    .Build();
+builder.Configuration.AddConfiguration(config);
+// builder.Services.AddDbContext<CompanyDbContext>(options =>
+//     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 
 builder.Services.AddDbContext<CompanyDbContext>(options =>
-    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
+    options.UseNpgsql(connectionString));
 
-builder.Services.AddAutoMapper(typeof(Program).Assembly);
+
+builder.Services.AddAutoMapper(typeof(MappingProfile));
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -144,7 +157,7 @@ app.UseMiddleware<GlobalExceptionHandlerMiddleware>();
 app.MapControllers();
 app.Run();
 
-
+public partial class Program { }
 
 // builder.Services.AddSwaggerGen(c =>
 // {

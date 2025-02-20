@@ -2,6 +2,8 @@ using CompanyManagement.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore.InMemory;
+
 
 namespace CompanyManagement.Data
 {
@@ -20,7 +22,15 @@ namespace CompanyManagement.Data
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        optionsBuilder.UseNpgsql("Host=localhost;Database=CompanyDB;Username=postgres;Password=rootroot");
+        if (!optionsBuilder.IsConfigured)
+        {
+            var configuration = new ConfigurationBuilder()
+                .AddJsonFile("appsettings.json", optional: false)
+                .Build();
+
+            string? connectionString = configuration.GetConnectionString("DefaultConnection");
+            optionsBuilder.UseNpgsql(connectionString);
+        }
     }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)

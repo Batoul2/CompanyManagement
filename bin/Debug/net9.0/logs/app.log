@@ -10186,3 +10186,91 @@ LIMIT 1
 2025-02-06 13:46:46.1220 Info Executed endpoint 'CompanyManagement.Controllers.AuthController.ResetPassword (CompanyManagement)' 
 2025-02-06 13:46:46.1220 Info Request finished HTTP/1.1 POST http://localhost:5292/api/Auth/ResetPassword - 400 - application/json;+charset=utf-8 11.3471ms 
 2025-02-06 13:47:20.4143 Info Application is shutting down... 
+2025-02-10 09:24:20.7695 Info Executed DbCommand (34ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-02-10 09:24:20.8310 Info Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-02-10 09:24:20.8310 Info Executed DbCommand (0ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-02-10 09:24:20.9080 Info User profile is available. Using 'C:\Users\hp\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest. 
+2025-02-10 09:24:21.0107 Info Now listening on: http://localhost:5292 
+2025-02-10 09:24:21.0122 Info Application started. Press Ctrl+C to shut down. 
+2025-02-10 09:24:21.0122 Info Hosting environment: Development 
+2025-02-10 09:24:21.0122 Info Content root path: C:\Users\hp\CompanyManagement\CompanyManagement 
+2025-02-10 09:24:21.0790 Info Request starting HTTP/1.1 GET http://localhost:5292/index.html - - - 
+2025-02-10 09:24:21.0979 Warn Failed to determine the https port for redirect. 
+2025-02-10 09:24:21.1707 Info Request finished HTTP/1.1 GET http://localhost:5292/index.html - 200 - text/html;charset=utf-8 91.3756ms 
+2025-02-10 09:24:21.1849 Info Request starting HTTP/1.1 GET http://localhost:5292/swagger-ui.css - - - 
+2025-02-10 09:24:21.1849 Info Request starting HTTP/1.1 GET http://localhost:5292/index.css - - - 
+2025-02-10 09:24:21.1849 Info Request starting HTTP/1.1 GET http://localhost:5292/swagger-ui-bundle.js - - - 
+2025-02-10 09:24:21.1849 Info Request starting HTTP/1.1 GET http://localhost:5292/swagger-ui-standalone-preset.js - - - 
+2025-02-10 09:24:21.1849 Info Request starting HTTP/1.1 GET http://localhost:5292/index.js - - - 
+2025-02-10 09:24:21.1849 Info Request finished HTTP/1.1 GET http://localhost:5292/index.js - 200 - application/javascript;charset=utf-8 1.2717ms 
+2025-02-10 09:24:21.1963 Info The file /swagger-ui-bundle.js was not modified 
+2025-02-10 09:24:21.1963 Info The file /swagger-ui-standalone-preset.js was not modified 
+2025-02-10 09:24:21.1963 Info The file /index.css was not modified 
+2025-02-10 09:24:21.1963 Info The file /swagger-ui.css was not modified 
+2025-02-10 09:24:21.1963 Info Request finished HTTP/1.1 GET http://localhost:5292/index.css - 304 - text/css 11.0474ms 
+2025-02-10 09:24:21.1963 Info Request finished HTTP/1.1 GET http://localhost:5292/swagger-ui-standalone-preset.js - 304 - text/javascript 9.9372ms 
+2025-02-10 09:24:21.1963 Info Request finished HTTP/1.1 GET http://localhost:5292/swagger-ui.css - 304 - text/css 12.4204ms 
+2025-02-10 09:24:21.1963 Info Request finished HTTP/1.1 GET http://localhost:5292/swagger-ui-bundle.js - 304 - text/javascript 10.6791ms 
+2025-02-10 09:24:21.3496 Info Request starting HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - - - 
+2025-02-10 09:24:21.3692 Info Request starting HTTP/1.1 GET http://localhost:5292/favicon-32x32.png - - - 
+2025-02-10 09:24:21.3692 Info The file /favicon-32x32.png was not modified 
+2025-02-10 09:24:21.3692 Info Request finished HTTP/1.1 GET http://localhost:5292/favicon-32x32.png - 304 - image/png 0.2567ms 
+2025-02-10 09:24:21.4235 Info Request finished HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - 200 - application/json;charset=utf-8 73.9373ms 
+2025-02-10 09:24:36.9159 Info Request starting HTTP/1.1 GET http://localhost:5292/api/Company?Page=1&PageSize=10&SortBy=id&SortDir=desc - - - 
+2025-02-10 09:24:36.9836 Info Executing endpoint 'CompanyManagement.Controllers.CompanyController.GetAllCompanies (CompanyManagement)' 
+2025-02-10 09:24:37.0071 Info Route matched with {action = "GetAllCompanies", controller = "Company"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllCompanies(CompanyManagement.QueryParameters.CompanyQueryParameters, System.Threading.CancellationToken) on controller CompanyManagement.Controllers.CompanyController (CompanyManagement). 
+2025-02-10 09:24:37.1434 Info Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT c."Id", c."Name"
+FROM "Companies" AS c
+ORDER BY c."Id" DESC 
+2025-02-10 09:24:37.1711 Info Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[CompanyManagement.DTOs.CompanyDto, CompanyManagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'. 
+2025-02-10 09:24:37.1977 Info Executed action CompanyManagement.Controllers.CompanyController.GetAllCompanies (CompanyManagement) in 186.3836ms 
+2025-02-10 09:24:37.1977 Info Executed endpoint 'CompanyManagement.Controllers.CompanyController.GetAllCompanies (CompanyManagement)' 
+2025-02-10 09:24:37.1977 Info Request finished HTTP/1.1 GET http://localhost:5292/api/Company?Page=1&PageSize=10&SortBy=id&SortDir=desc - 200 - application/json;+charset=utf-8 285.2223ms 
+2025-02-10 09:24:48.9385 Info Application is shutting down... 
+2025-02-10 10:41:59.1891 Info Executed DbCommand (38ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-02-10 10:41:59.2559 Info Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-02-10 10:41:59.2559 Info Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-02-10 10:41:59.3343 Info User profile is available. Using 'C:\Users\hp\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest. 
+2025-02-10 10:41:59.3913 Info Now listening on: http://localhost:5292 
+2025-02-10 10:41:59.3913 Info Application started. Press Ctrl+C to shut down. 
+2025-02-10 10:41:59.3913 Info Hosting environment: Development 
+2025-02-10 10:41:59.3913 Info Content root path: C:\Users\hp\CompanyManagement\CompanyManagement 
+2025-02-10 10:42:12.2253 Info Request starting HTTP/1.1 GET http://localhost:5292/api/Company?Page=1&PageSize=10&SortBy=id&SortDir=desc - - - 
+2025-02-10 10:42:12.2561 Warn Failed to determine the https port for redirect. 
+2025-02-10 10:42:12.3084 Info Executing endpoint 'CompanyManagement.Controllers.CompanyController.GetAllCompanies (CompanyManagement)' 
+2025-02-10 10:42:12.3311 Info Route matched with {action = "GetAllCompanies", controller = "Company"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllCompanies(CompanyManagement.QueryParameters.CompanyQueryParameters, System.Threading.CancellationToken) on controller CompanyManagement.Controllers.CompanyController (CompanyManagement). 
+2025-02-10 10:42:12.5076 Info Executed DbCommand (4ms) [Parameters=[@__p_1='?' (DbType = Int32), @__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT c."Id", c."Name"
+FROM "Companies" AS c
+ORDER BY c."Id" DESC
+LIMIT @__p_1 OFFSET @__p_0 
+2025-02-10 10:42:12.5432 Info Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[CompanyManagement.DTOs.CompanyDto, CompanyManagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'. 
+2025-02-10 10:42:12.6152 Info Executed action CompanyManagement.Controllers.CompanyController.GetAllCompanies (CompanyManagement) in 275.9426ms 
+2025-02-10 10:42:12.6152 Info Executed endpoint 'CompanyManagement.Controllers.CompanyController.GetAllCompanies (CompanyManagement)' 
+2025-02-10 10:42:12.6243 Info Request finished HTTP/1.1 GET http://localhost:5292/api/Company?Page=1&PageSize=10&SortBy=id&SortDir=desc - 200 - application/json;+charset=utf-8 398.1302ms 
+2025-02-10 10:42:30.7089 Info Application is shutting down... 
