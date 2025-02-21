@@ -7,6 +7,7 @@ namespace CompanyManagement.DTOs
         public string Position { get; set; } = string.Empty;
         public IEnumerable<CompanyDto> Companies { get; set; } = new List<CompanyDto>();
         public IEnumerable<ProjectDto> Projects { get; set; } = new List<ProjectDto>();
+        public string? ProfilePicturePath { get; set; }
     }
 
 }

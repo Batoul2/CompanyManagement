@@ -10274,3 +10274,26 @@ LIMIT @__p_1 OFFSET @__p_0
 2025-02-10 10:42:12.6152 Info Executed endpoint 'CompanyManagement.Controllers.CompanyController.GetAllCompanies (CompanyManagement)' 
 2025-02-10 10:42:12.6243 Info Request finished HTTP/1.1 GET http://localhost:5292/api/Company?Page=1&PageSize=10&SortBy=id&SortDir=desc - 200 - application/json;+charset=utf-8 398.1302ms 
 2025-02-10 10:42:30.7089 Info Application is shutting down... 
+2025-02-21 16:14:47.6389 Info Executed DbCommand (17ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId"; 
+2025-02-21 16:14:47.8154 Info Executed DbCommand (5ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+CREATE TABLE IF NOT EXISTS "__EFMigrationsHistory" (
+    "MigrationId" character varying(150) NOT NULL,
+    "ProductVersion" character varying(32) NOT NULL,
+    CONSTRAINT "PK___EFMigrationsHistory" PRIMARY KEY ("MigrationId")
+); 
+2025-02-21 16:14:47.8213 Info Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long. 
+2025-02-21 16:14:47.8213 Info Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+LOCK TABLE "__EFMigrationsHistory" IN ACCESS EXCLUSIVE MODE 
+2025-02-21 16:14:47.8213 Info Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId"; 
+2025-02-21 16:14:47.8332 Info Applying migration '20250221141437_AddProfilePictureToEmployee'. 
+2025-02-21 16:14:47.8485 Info Executed DbCommand (7ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+ALTER TABLE "Employees" ADD "ProfilePicturePath" text; 
+2025-02-21 16:14:47.8485 Info Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+INSERT INTO "__EFMigrationsHistory" ("MigrationId", "ProductVersion")
+VALUES ('20250221141437_AddProfilePictureToEmployee', '9.0.1'); 

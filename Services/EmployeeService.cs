@@ -12,11 +12,13 @@ namespace CompanyManagement.Services
     {
         private readonly CompanyDbContext _dbContext;
         private readonly IMapper _mapper;
+        private readonly IFileService _fileService;
 
-        public EmployeeService(CompanyDbContext dbContext, IMapper mapper)
+        public EmployeeService(CompanyDbContext dbContext, IMapper mapper, IFileService fileService)
         {
             _dbContext = dbContext;
             _mapper = mapper;
+            _fileService = fileService;
         }
 
         public async Task<IEnumerable<EmployeeDto>> GetAllEmployeesAsync(EmployeeQueryParameters parameters, CancellationToken cancellationToken)
@@ -79,6 +81,13 @@ namespace CompanyManagement.Services
             }).ToList();
 
             employee.EmployeeProject = employeeProjects;
+
+            // Handle Profile Picture Upload
+            if (inputModel.ProfilePicture != null)
+            {
+                string imagePath = await _fileService.SaveFileAsync(inputModel.ProfilePicture, "employees");
+                employee.ProfilePicturePath = imagePath;
+            }
 
             await _dbContext.Employees.AddAsync(employee);
             await _dbContext.SaveChangesAsync(cancellationToken);
