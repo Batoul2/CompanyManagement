@@ -82,13 +82,6 @@ namespace CompanyManagement.Services
 
             employee.EmployeeProject = employeeProjects;
 
-            // Handle Profile Picture Upload
-            if (inputModel.ProfilePicture != null)
-            {
-                string imagePath = await _fileService.SaveFileAsync(inputModel.ProfilePicture, "employees");
-                employee.ProfilePicturePath = imagePath;
-            }
-
             await _dbContext.Employees.AddAsync(employee);
             await _dbContext.SaveChangesAsync(cancellationToken);
             var employeeDto = _mapper.Map<EmployeeDto>(employee);
@@ -171,5 +164,24 @@ namespace CompanyManagement.Services
             await _dbContext.SaveChangesAsync(cancellationToken);
             return true;
         }
+
+        public async Task<string> UploadProfilePictureAsync(int employeeId, IFormFile profilePicture, CancellationToken cancellationToken)
+        {
+            var employee = await _dbContext.Employees.FindAsync(new object[] { employeeId }, cancellationToken);
+            if (employee == null)
+            {
+                throw new KeyNotFoundException($"Employee with ID {employeeId} not found.");
+            }
+
+            // Save the uploaded file
+            string imagePath = await _fileService.SaveFileAsync(profilePicture, "employees");
+
+            // Update employee profile picture path
+            employee.ProfilePicturePath = imagePath;
+            await _dbContext.SaveChangesAsync(cancellationToken);
+
+            return imagePath;
+        }
+
     }
 }

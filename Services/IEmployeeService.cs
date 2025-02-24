@@ -1,6 +1,7 @@
 using CompanyManagement.DTOs;
 using CompanyManagement.InputModels;
 using CompanyManagement.QueryParameters;
+using Microsoft.AspNetCore.Http.Metadata;
 
 namespace CompanyManagement.Services
 {
@@ -14,6 +15,7 @@ namespace CompanyManagement.Services
 
         Task AssignProjectToEmployeeAsync(int employeeId, int projectId, CancellationToken cancellationToken);
         Task<bool> RemoveProjectFromEmployeeAsync(int employeeId, int projectId, CancellationToken cancellationToken); 
+        Task<string> UploadProfilePictureAsync(int employeeId, IFormFile profilePicture, CancellationToken cancellationToken);
     }
 
 }
