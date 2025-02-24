@@ -173,10 +173,10 @@ namespace CompanyManagement.Services
                 throw new KeyNotFoundException($"Employee with ID {employeeId} not found.");
             }
 
-            // Save the uploaded file
+            // Save the file to the "employees" folder
             string imagePath = await _fileService.SaveFileAsync(profilePicture, "employees");
 
-            // Update employee profile picture path
+            // Update the employee record with the new image path
             employee.ProfilePicturePath = imagePath;
             await _dbContext.SaveChangesAsync(cancellationToken);
 

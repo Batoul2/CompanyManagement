@@ -107,6 +107,7 @@ builder.Services.AddAuthentication(options =>
 builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new OpenApiInfo { Title = "Company Management API", Version = "v1" });
+    c.MapType<IFormFile>(() => new OpenApiSchema { Type = "file", Format = "binary" });
     c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
     {
         Description = "JWT Authorization header using the Bearer scheme",
@@ -167,6 +168,7 @@ if (app.Environment.IsDevelopment() || app.Environment.IsProduction())
     });
 }
 
+app.UseStaticFiles();
 app.UseCors("AllowAllOrigins");
 app.UseAuthentication();
 app.UseAuthorization();

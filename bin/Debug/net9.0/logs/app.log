@@ -10848,3 +10848,757 @@ LIMIT 1
 2025-02-24 09:17:49.1618 Info Request starting HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - - - 
 2025-02-24 09:17:49.1895 Info Request finished HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - 200 - application/json;charset=utf-8 27.7619ms 
 2025-02-24 09:17:52.7557 Info Application is shutting down... 
+2025-02-24 09:38:40.5560 Info Executed DbCommand (40ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-02-24 09:38:40.6279 Info Executed DbCommand (2ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-02-24 09:38:40.6292 Info Executed DbCommand (0ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-02-24 09:38:40.7356 Info User profile is available. Using 'C:\Users\hp\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest. 
+2025-02-24 09:38:40.8117 Info Now listening on: http://localhost:5292 
+2025-02-24 09:38:40.8117 Info Application started. Press Ctrl+C to shut down. 
+2025-02-24 09:38:40.8117 Info Hosting environment: Development 
+2025-02-24 09:38:40.8117 Info Content root path: C:\Users\hp\CompanyManagement\CompanyManagement 
+2025-02-24 09:38:53.5707 Info Request starting HTTP/1.1 GET http://localhost:5292/index.html - - - 
+2025-02-24 09:38:53.6209 Warn Failed to determine the https port for redirect. 
+2025-02-24 09:38:53.8134 Info Request finished HTTP/1.1 GET http://localhost:5292/index.html - 200 - text/html;charset=utf-8 243.5465ms 
+2025-02-24 09:38:53.8191 Info Request starting HTTP/1.1 GET http://localhost:5292/index.js - - - 
+2025-02-24 09:38:53.8191 Info Request finished HTTP/1.1 GET http://localhost:5292/index.js - 200 - application/javascript;charset=utf-8 2.2661ms 
+2025-02-24 09:38:53.8894 Info Request starting HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - - - 
+2025-02-24 09:38:54.0524 Error An unhandled exception has occurred while executing the request. Swashbuckle.AspNetCore.SwaggerGen.SwaggerGeneratorException: Failed to generate Operation for action - CompanyManagement.Controllers.EmployeeController.UploadProfilePicture (CompanyManagement). See inner exception
+ ---> Swashbuckle.AspNetCore.SwaggerGen.SwaggerGeneratorException: Error reading parameter(s) for action CompanyManagement.Controllers.EmployeeController.UploadProfilePicture (CompanyManagement) as [FromForm] attribute used with IFormFile. Please refer to https://github.com/domaindrivendev/Swashbuckle.AspNetCore#handle-forms-and-file-uploads for more information
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateParametersAsync(ApiDescription apiDescription, SchemaRepository schemaRespository, Func`3 parameterGenerator)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateParametersAsync(ApiDescription apiDescription, SchemaRepository schemaRespository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateOperationAsync(ApiDescription apiDescription, SchemaRepository schemaRepository, Func`3 parametersGenerator, Func`3 bodyGenerator, Func`3 applyFilters)
+   --- End of inner exception stack trace ---
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateOperationAsync(ApiDescription apiDescription, SchemaRepository schemaRepository, Func`3 parametersGenerator, Func`3 bodyGenerator, Func`3 applyFilters)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateOperationAsync(ApiDescription apiDescription, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateOperationsAsync(IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GeneratePathsAsync(IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository, Func`3 operationsGenerator)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GeneratePathsAsync(IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GetSwaggerAsync(String documentName, String host, String basePath)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2025-02-24 09:38:54.0902 Info Request finished HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - 500 - text/plain;+charset=utf-8 200.7243ms 
+2025-02-24 09:39:03.9608 Info Application is shutting down... 
+2025-02-24 09:40:55.0903 Info Executed DbCommand (30ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-02-24 09:40:55.1379 Info Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-02-24 09:40:55.1379 Info Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-02-24 09:40:55.2035 Info User profile is available. Using 'C:\Users\hp\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest. 
+2025-02-24 09:40:55.2462 Info Now listening on: http://localhost:5292 
+2025-02-24 09:40:55.2462 Info Application started. Press Ctrl+C to shut down. 
+2025-02-24 09:40:55.2462 Info Hosting environment: Development 
+2025-02-24 09:40:55.2462 Info Content root path: C:\Users\hp\CompanyManagement\CompanyManagement 
+2025-02-24 09:41:03.6685 Info Request starting HTTP/1.1 GET http://localhost:5292/index.html - - - 
+2025-02-24 09:41:03.7150 Warn Failed to determine the https port for redirect. 
+2025-02-24 09:41:03.9252 Info Request finished HTTP/1.1 GET http://localhost:5292/index.html - 200 - text/html;charset=utf-8 252.7034ms 
+2025-02-24 09:41:03.9252 Info Request starting HTTP/1.1 GET http://localhost:5292/index.js - - - 
+2025-02-24 09:41:03.9289 Info Request finished HTTP/1.1 GET http://localhost:5292/index.js - 200 - application/javascript;charset=utf-8 2.2704ms 
+2025-02-24 09:41:04.0197 Info Request starting HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - - - 
+2025-02-24 09:41:04.2055 Error An unhandled exception has occurred while executing the request. Swashbuckle.AspNetCore.SwaggerGen.SwaggerGeneratorException: Failed to generate Operation for action - CompanyManagement.Controllers.EmployeeController.UploadProfilePicture (CompanyManagement). See inner exception
+ ---> Swashbuckle.AspNetCore.SwaggerGen.SwaggerGeneratorException: Error reading parameter(s) for action CompanyManagement.Controllers.EmployeeController.UploadProfilePicture (CompanyManagement) as [FromForm] attribute used with IFormFile. Please refer to https://github.com/domaindrivendev/Swashbuckle.AspNetCore#handle-forms-and-file-uploads for more information
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateParametersAsync(ApiDescription apiDescription, SchemaRepository schemaRespository, Func`3 parameterGenerator)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateParametersAsync(ApiDescription apiDescription, SchemaRepository schemaRespository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateOperationAsync(ApiDescription apiDescription, SchemaRepository schemaRepository, Func`3 parametersGenerator, Func`3 bodyGenerator, Func`3 applyFilters)
+   --- End of inner exception stack trace ---
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateOperationAsync(ApiDescription apiDescription, SchemaRepository schemaRepository, Func`3 parametersGenerator, Func`3 bodyGenerator, Func`3 applyFilters)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateOperationAsync(ApiDescription apiDescription, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateOperationsAsync(IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GeneratePathsAsync(IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository, Func`3 operationsGenerator)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GeneratePathsAsync(IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GetSwaggerAsync(String documentName, String host, String basePath)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2025-02-24 09:41:04.2332 Info Request finished HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - 500 - text/plain;+charset=utf-8 213.4815ms 
+2025-02-24 09:41:08.5709 Info Request starting HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - - - 
+2025-02-24 09:41:08.6000 Error An unhandled exception has occurred while executing the request. Swashbuckle.AspNetCore.SwaggerGen.SwaggerGeneratorException: Failed to generate Operation for action - CompanyManagement.Controllers.EmployeeController.UploadProfilePicture (CompanyManagement). See inner exception
+ ---> Swashbuckle.AspNetCore.SwaggerGen.SwaggerGeneratorException: Error reading parameter(s) for action CompanyManagement.Controllers.EmployeeController.UploadProfilePicture (CompanyManagement) as [FromForm] attribute used with IFormFile. Please refer to https://github.com/domaindrivendev/Swashbuckle.AspNetCore#handle-forms-and-file-uploads for more information
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateParametersAsync(ApiDescription apiDescription, SchemaRepository schemaRespository, Func`3 parameterGenerator)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateParametersAsync(ApiDescription apiDescription, SchemaRepository schemaRespository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateOperationAsync(ApiDescription apiDescription, SchemaRepository schemaRepository, Func`3 parametersGenerator, Func`3 bodyGenerator, Func`3 applyFilters)
+   --- End of inner exception stack trace ---
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateOperationAsync(ApiDescription apiDescription, SchemaRepository schemaRepository, Func`3 parametersGenerator, Func`3 bodyGenerator, Func`3 applyFilters)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateOperationAsync(ApiDescription apiDescription, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateOperationsAsync(IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GeneratePathsAsync(IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository, Func`3 operationsGenerator)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GeneratePathsAsync(IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GetSwaggerAsync(String documentName, String host, String basePath)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2025-02-24 09:41:08.6359 Info Request finished HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - 500 - text/html;+charset=utf-8 65.0974ms 
+2025-02-24 09:41:08.7609 Info Request starting HTTP/1.1 GET http://localhost:5292/favicon.ico - - - 
+2025-02-24 09:41:08.8263 Info Request finished HTTP/1.1 GET http://localhost:5292/favicon.ico - 404 0 - 65.2827ms 
+2025-02-24 09:41:08.8263 Info Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5292/favicon.ico, Response status code: 404 
+2025-02-24 09:41:28.6742 Info Application is shutting down... 
+2025-02-24 10:06:15.8602 Info Executed DbCommand (38ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-02-24 10:06:15.9211 Info Executed DbCommand (2ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-02-24 10:06:15.9211 Info Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-02-24 10:06:16.0040 Info User profile is available. Using 'C:\Users\hp\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest. 
+2025-02-24 10:06:16.0664 Info Now listening on: http://localhost:5292 
+2025-02-24 10:06:16.0664 Info Application started. Press Ctrl+C to shut down. 
+2025-02-24 10:06:16.0664 Info Hosting environment: Development 
+2025-02-24 10:06:16.0664 Info Content root path: C:\Users\hp\CompanyManagement\CompanyManagement 
+2025-02-24 10:06:20.8757 Info Request starting HTTP/1.1 GET http://localhost:5292/index.html - - - 
+2025-02-24 10:06:20.8926 Warn Failed to determine the https port for redirect. 
+2025-02-24 10:06:20.9736 Info Request finished HTTP/1.1 GET http://localhost:5292/index.html - 200 - text/html;charset=utf-8 96.3660ms 
+2025-02-24 10:06:20.9736 Info Request starting HTTP/1.1 GET http://localhost:5292/index.js - - - 
+2025-02-24 10:06:20.9736 Info Request finished HTTP/1.1 GET http://localhost:5292/index.js - 200 - application/javascript;charset=utf-8 2.1560ms 
+2025-02-24 10:06:21.0682 Info Request starting HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - - - 
+2025-02-24 10:06:21.1639 Info Request finished HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - 200 - application/json;charset=utf-8 95.7641ms 
+2025-02-24 10:06:35.6470 Info Request starting HTTP/1.1 POST http://localhost:5292/api/Company - application/json 16 
+2025-02-24 10:06:35.6571 Info CORS policy execution successful. 
+2025-02-24 10:06:35.7382 Info Executing endpoint 'CompanyManagement.Controllers.CompanyController.AddCompany (CompanyManagement)' 
+2025-02-24 10:06:35.7782 Info Route matched with {action = "AddCompany", controller = "Company"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddCompany(CompanyManagement.InputModels.CompanyInputModel, System.Threading.CancellationToken) on controller CompanyManagement.Controllers.CompanyController (CompanyManagement). 
+2025-02-24 10:06:36.0966 Info Executing BadRequestObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ValidationProblemDetails'. 
+2025-02-24 10:06:36.1618 Info Executed action CompanyManagement.Controllers.CompanyController.AddCompany (CompanyManagement) in 371.9074ms 
+2025-02-24 10:06:36.1618 Info Executed endpoint 'CompanyManagement.Controllers.CompanyController.AddCompany (CompanyManagement)' 
+2025-02-24 10:06:36.1618 Info Request finished HTTP/1.1 POST http://localhost:5292/api/Company - 400 - application/problem+json;+charset=utf-8 517.2763ms 
+2025-02-24 10:06:50.2546 Info Application is shutting down... 
+2025-02-24 11:30:34.2989 Info Executed DbCommand (25ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-02-24 11:30:34.3448 Info Executed DbCommand (2ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-02-24 11:30:34.3448 Info Executed DbCommand (0ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-02-24 11:30:34.4079 Info User profile is available. Using 'C:\Users\hp\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest. 
+2025-02-24 11:30:34.4367 Warn The WebRootPath was not found: C:\Users\hp\CompanyManagement\CompanyManagement\wwwroot. Static files may be unavailable. 
+2025-02-24 11:30:34.4367 Info Now listening on: http://localhost:5292 
+2025-02-24 11:30:34.4367 Info Application started. Press Ctrl+C to shut down. 
+2025-02-24 11:30:34.4544 Info Hosting environment: Development 
+2025-02-24 11:30:34.4544 Info Content root path: C:\Users\hp\CompanyManagement\CompanyManagement 
+2025-02-24 11:30:41.0700 Info Request starting HTTP/1.1 GET http://localhost:5292/index.html - - - 
+2025-02-24 11:30:41.0854 Warn Failed to determine the https port for redirect. 
+2025-02-24 11:30:41.1517 Info Request finished HTTP/1.1 GET http://localhost:5292/index.html - 200 - text/html;charset=utf-8 80.3714ms 
+2025-02-24 11:30:41.1957 Info Request starting HTTP/1.1 GET http://localhost:5292/index.js - - - 
+2025-02-24 11:30:41.1957 Info Request finished HTTP/1.1 GET http://localhost:5292/index.js - 200 - application/javascript;charset=utf-8 1.9016ms 
+2025-02-24 11:30:41.3805 Info Request starting HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - - - 
+2025-02-24 11:30:41.4858 Error An unhandled exception has occurred while executing the request. Swashbuckle.AspNetCore.SwaggerGen.SwaggerGeneratorException: Failed to generate Operation for action - CompanyManagement.Controllers.EmployeeController.UploadProfilePicture (CompanyManagement). See inner exception
+ ---> Swashbuckle.AspNetCore.SwaggerGen.SwaggerGeneratorException: Error reading parameter(s) for action CompanyManagement.Controllers.EmployeeController.UploadProfilePicture (CompanyManagement) as [FromForm] attribute used with IFormFile. Please refer to https://github.com/domaindrivendev/Swashbuckle.AspNetCore#handle-forms-and-file-uploads for more information
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateParametersAsync(ApiDescription apiDescription, SchemaRepository schemaRespository, Func`3 parameterGenerator)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateParametersAsync(ApiDescription apiDescription, SchemaRepository schemaRespository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateOperationAsync(ApiDescription apiDescription, SchemaRepository schemaRepository, Func`3 parametersGenerator, Func`3 bodyGenerator, Func`3 applyFilters)
+   --- End of inner exception stack trace ---
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateOperationAsync(ApiDescription apiDescription, SchemaRepository schemaRepository, Func`3 parametersGenerator, Func`3 bodyGenerator, Func`3 applyFilters)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateOperationAsync(ApiDescription apiDescription, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateOperationsAsync(IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GeneratePathsAsync(IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository, Func`3 operationsGenerator)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GeneratePathsAsync(IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GetSwaggerAsync(String documentName, String host, String basePath)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2025-02-24 11:30:41.5049 Info Request finished HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - 500 - text/plain;+charset=utf-8 124.3299ms 
+2025-02-24 11:31:06.2052 Info Application is shutting down... 
+2025-02-24 11:33:21.2252 Info Executed DbCommand (30ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-02-24 11:33:21.2881 Info Executed DbCommand (5ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-02-24 11:33:21.2881 Info Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-02-24 11:33:21.3530 Info User profile is available. Using 'C:\Users\hp\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest. 
+2025-02-24 11:33:21.3808 Warn The WebRootPath was not found: C:\Users\hp\CompanyManagement\CompanyManagement\wwwroot. Static files may be unavailable. 
+2025-02-24 11:33:21.3808 Info Now listening on: http://localhost:5292 
+2025-02-24 11:33:21.3808 Info Application started. Press Ctrl+C to shut down. 
+2025-02-24 11:33:21.3808 Info Hosting environment: Development 
+2025-02-24 11:33:21.3808 Info Content root path: C:\Users\hp\CompanyManagement\CompanyManagement 
+2025-02-24 11:33:21.4238 Info Request starting HTTP/1.1 GET http://localhost:5292/index.html - - - 
+2025-02-24 11:33:21.4378 Warn Failed to determine the https port for redirect. 
+2025-02-24 11:33:21.4967 Info Request finished HTTP/1.1 GET http://localhost:5292/index.html - 200 - text/html;charset=utf-8 70.7840ms 
+2025-02-24 11:33:21.5094 Info Request starting HTTP/1.1 GET http://localhost:5292/index.js - - - 
+2025-02-24 11:33:21.5094 Info Request finished HTTP/1.1 GET http://localhost:5292/index.js - 200 - application/javascript;charset=utf-8 2.4560ms 
+2025-02-24 11:33:21.7526 Info Request starting HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - - - 
+2025-02-24 11:33:21.8790 Error An unhandled exception has occurred while executing the request. Swashbuckle.AspNetCore.SwaggerGen.SwaggerGeneratorException: Failed to generate Operation for action - CompanyManagement.Controllers.EmployeeController.UploadProfilePicture (CompanyManagement). See inner exception
+ ---> Swashbuckle.AspNetCore.SwaggerGen.SwaggerGeneratorException: Error reading parameter(s) for action CompanyManagement.Controllers.EmployeeController.UploadProfilePicture (CompanyManagement) as [FromForm] attribute used with IFormFile. Please refer to https://github.com/domaindrivendev/Swashbuckle.AspNetCore#handle-forms-and-file-uploads for more information
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateParametersAsync(ApiDescription apiDescription, SchemaRepository schemaRespository, Func`3 parameterGenerator)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateParametersAsync(ApiDescription apiDescription, SchemaRepository schemaRespository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateOperationAsync(ApiDescription apiDescription, SchemaRepository schemaRepository, Func`3 parametersGenerator, Func`3 bodyGenerator, Func`3 applyFilters)
+   --- End of inner exception stack trace ---
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateOperationAsync(ApiDescription apiDescription, SchemaRepository schemaRepository, Func`3 parametersGenerator, Func`3 bodyGenerator, Func`3 applyFilters)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateOperationAsync(ApiDescription apiDescription, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateOperationsAsync(IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GeneratePathsAsync(IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository, Func`3 operationsGenerator)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GeneratePathsAsync(IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GetSwaggerAsync(String documentName, String host, String basePath)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2025-02-24 11:33:21.8922 Info Request finished HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - 500 - text/plain;+charset=utf-8 139.6205ms 
+2025-02-24 11:33:39.1993 Info Application is shutting down... 
+2025-02-24 11:42:42.0134 Info Executed DbCommand (34ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-02-24 11:42:42.0695 Info Executed DbCommand (2ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-02-24 11:42:42.0695 Info Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-02-24 11:42:42.1442 Info User profile is available. Using 'C:\Users\hp\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest. 
+2025-02-24 11:42:42.1774 Warn The WebRootPath was not found: C:\Users\hp\CompanyManagement\CompanyManagement\wwwroot. Static files may be unavailable. 
+2025-02-24 11:42:42.1973 Info Now listening on: http://localhost:5292 
+2025-02-24 11:42:42.1973 Info Application started. Press Ctrl+C to shut down. 
+2025-02-24 11:42:42.1973 Info Hosting environment: Development 
+2025-02-24 11:42:42.1973 Info Content root path: C:\Users\hp\CompanyManagement\CompanyManagement 
+2025-02-24 11:42:48.6278 Info Request starting HTTP/1.1 GET http://localhost:5292/index.html - - - 
+2025-02-24 11:42:48.6445 Warn Failed to determine the https port for redirect. 
+2025-02-24 11:42:48.7192 Info Request finished HTTP/1.1 GET http://localhost:5292/index.html - 200 - text/html;charset=utf-8 90.8498ms 
+2025-02-24 11:42:48.7456 Info Request starting HTTP/1.1 GET http://localhost:5292/index.js - - - 
+2025-02-24 11:42:48.7456 Info Request finished HTTP/1.1 GET http://localhost:5292/index.js - 200 - application/javascript;charset=utf-8 2.2425ms 
+2025-02-24 11:42:48.9870 Info Request starting HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - - - 
+2025-02-24 11:42:49.1605 Error An unhandled exception has occurred while executing the request. Swashbuckle.AspNetCore.SwaggerGen.SwaggerGeneratorException: Failed to generate Operation for action - CompanyManagement.Controllers.EmployeeController.UploadProfilePicture (CompanyManagement). See inner exception
+ ---> Swashbuckle.AspNetCore.SwaggerGen.SwaggerGeneratorException: Error reading parameter(s) for action CompanyManagement.Controllers.EmployeeController.UploadProfilePicture (CompanyManagement) as [FromForm] attribute used with IFormFile. Please refer to https://github.com/domaindrivendev/Swashbuckle.AspNetCore#handle-forms-and-file-uploads for more information
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateParametersAsync(ApiDescription apiDescription, SchemaRepository schemaRespository, Func`3 parameterGenerator)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateParametersAsync(ApiDescription apiDescription, SchemaRepository schemaRespository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateOperationAsync(ApiDescription apiDescription, SchemaRepository schemaRepository, Func`3 parametersGenerator, Func`3 bodyGenerator, Func`3 applyFilters)
+   --- End of inner exception stack trace ---
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateOperationAsync(ApiDescription apiDescription, SchemaRepository schemaRepository, Func`3 parametersGenerator, Func`3 bodyGenerator, Func`3 applyFilters)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateOperationAsync(ApiDescription apiDescription, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateOperationsAsync(IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GeneratePathsAsync(IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository, Func`3 operationsGenerator)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GeneratePathsAsync(IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GetSwaggerAsync(String documentName, String host, String basePath)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2025-02-24 11:42:49.1915 Info Request finished HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - 500 - text/plain;+charset=utf-8 204.3991ms 
+2025-02-24 11:42:57.2961 Info Request starting HTTP/1.1 GET http://localhost:5292/index.html - - - 
+2025-02-24 11:42:57.2961 Info Request finished HTTP/1.1 GET http://localhost:5292/index.html - 200 - text/html;charset=utf-8 0.9942ms 
+2025-02-24 11:42:57.3153 Info Request starting HTTP/1.1 GET http://localhost:5292/index.js - - - 
+2025-02-24 11:42:57.3153 Info Request finished HTTP/1.1 GET http://localhost:5292/index.js - 200 - application/javascript;charset=utf-8 0.5645ms 
+2025-02-24 11:42:57.5034 Info Request starting HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - - - 
+2025-02-24 11:42:57.5242 Error An unhandled exception has occurred while executing the request. Swashbuckle.AspNetCore.SwaggerGen.SwaggerGeneratorException: Failed to generate Operation for action - CompanyManagement.Controllers.EmployeeController.UploadProfilePicture (CompanyManagement). See inner exception
+ ---> Swashbuckle.AspNetCore.SwaggerGen.SwaggerGeneratorException: Error reading parameter(s) for action CompanyManagement.Controllers.EmployeeController.UploadProfilePicture (CompanyManagement) as [FromForm] attribute used with IFormFile. Please refer to https://github.com/domaindrivendev/Swashbuckle.AspNetCore#handle-forms-and-file-uploads for more information
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateParametersAsync(ApiDescription apiDescription, SchemaRepository schemaRespository, Func`3 parameterGenerator)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateParametersAsync(ApiDescription apiDescription, SchemaRepository schemaRespository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateOperationAsync(ApiDescription apiDescription, SchemaRepository schemaRepository, Func`3 parametersGenerator, Func`3 bodyGenerator, Func`3 applyFilters)
+   --- End of inner exception stack trace ---
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateOperationAsync(ApiDescription apiDescription, SchemaRepository schemaRepository, Func`3 parametersGenerator, Func`3 bodyGenerator, Func`3 applyFilters)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateOperationAsync(ApiDescription apiDescription, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateOperationsAsync(IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GeneratePathsAsync(IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository, Func`3 operationsGenerator)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GeneratePathsAsync(IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GetSwaggerAsync(String documentName, String host, String basePath)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2025-02-24 11:42:57.5242 Info Request finished HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - 500 - text/plain;+charset=utf-8 25.5227ms 
+2025-02-24 11:43:11.2405 Info Application is shutting down... 
+2025-02-24 11:51:41.5910 Info Executed DbCommand (25ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-02-24 11:51:41.6409 Info Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-02-24 11:51:41.6409 Info Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-02-24 11:51:41.6974 Info User profile is available. Using 'C:\Users\hp\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest. 
+2025-02-24 11:51:41.7220 Warn The WebRootPath was not found: C:\Users\hp\CompanyManagement\CompanyManagement\wwwroot. Static files may be unavailable. 
+2025-02-24 11:51:41.7328 Info Now listening on: http://localhost:5292 
+2025-02-24 11:51:41.7328 Info Application started. Press Ctrl+C to shut down. 
+2025-02-24 11:51:41.7328 Info Hosting environment: Development 
+2025-02-24 11:51:41.7328 Info Content root path: C:\Users\hp\CompanyManagement\CompanyManagement 
+2025-02-24 11:51:50.4713 Info Request starting HTTP/1.1 GET http://localhost:5292/index.html - - - 
+2025-02-24 11:51:50.5025 Warn Failed to determine the https port for redirect. 
+2025-02-24 11:51:50.6757 Info Request finished HTTP/1.1 GET http://localhost:5292/index.html - 200 - text/html;charset=utf-8 198.2829ms 
+2025-02-24 11:51:50.6757 Info Request starting HTTP/1.1 GET http://localhost:5292/index.js - - - 
+2025-02-24 11:51:50.6757 Info Request finished HTTP/1.1 GET http://localhost:5292/index.js - 200 - application/javascript;charset=utf-8 2.3939ms 
+2025-02-24 11:51:50.8985 Info Request starting HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - - - 
+2025-02-24 11:51:51.0682 Error An unhandled exception has occurred while executing the request. Swashbuckle.AspNetCore.SwaggerGen.SwaggerGeneratorException: Failed to generate Operation for action - CompanyManagement.Controllers.EmployeeController.UploadProfilePicture (CompanyManagement). See inner exception
+ ---> Swashbuckle.AspNetCore.SwaggerGen.SwaggerGeneratorException: Error reading parameter(s) for action CompanyManagement.Controllers.EmployeeController.UploadProfilePicture (CompanyManagement) as [FromForm] attribute used with IFormFile. Please refer to https://github.com/domaindrivendev/Swashbuckle.AspNetCore#handle-forms-and-file-uploads for more information
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateParametersAsync(ApiDescription apiDescription, SchemaRepository schemaRespository, Func`3 parameterGenerator)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateParametersAsync(ApiDescription apiDescription, SchemaRepository schemaRespository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateOperationAsync(ApiDescription apiDescription, SchemaRepository schemaRepository, Func`3 parametersGenerator, Func`3 bodyGenerator, Func`3 applyFilters)
+   --- End of inner exception stack trace ---
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateOperationAsync(ApiDescription apiDescription, SchemaRepository schemaRepository, Func`3 parametersGenerator, Func`3 bodyGenerator, Func`3 applyFilters)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateOperationAsync(ApiDescription apiDescription, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateOperationsAsync(IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GeneratePathsAsync(IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository, Func`3 operationsGenerator)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GeneratePathsAsync(IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GetSwaggerAsync(String documentName, String host, String basePath)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2025-02-24 11:51:51.0966 Info Request finished HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - 500 - text/plain;+charset=utf-8 198.0537ms 
+2025-02-24 11:52:58.8715 Info Application is shutting down... 
+2025-02-24 12:42:27.4767 Info Executed DbCommand (27ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-02-24 12:42:27.5206 Info Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-02-24 12:42:27.5206 Info Executed DbCommand (0ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-02-24 12:42:27.5874 Info User profile is available. Using 'C:\Users\hp\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest. 
+2025-02-24 12:42:27.6165 Warn The WebRootPath was not found: C:\Users\hp\CompanyManagement\CompanyManagement\wwwroot. Static files may be unavailable. 
+2025-02-24 12:42:27.6357 Info Now listening on: http://localhost:5292 
+2025-02-24 12:42:27.6357 Info Application started. Press Ctrl+C to shut down. 
+2025-02-24 12:42:27.6357 Info Hosting environment: Development 
+2025-02-24 12:42:27.6357 Info Content root path: C:\Users\hp\CompanyManagement\CompanyManagement 
+2025-02-24 12:42:34.5201 Info Request starting HTTP/1.1 GET http://localhost:5292/index.html - - - 
+2025-02-24 12:42:34.5680 Warn Failed to determine the https port for redirect. 
+2025-02-24 12:42:34.7792 Info Request finished HTTP/1.1 GET http://localhost:5292/index.html - 200 - text/html;charset=utf-8 257.4919ms 
+2025-02-24 12:42:34.8024 Info Request starting HTTP/1.1 GET http://localhost:5292/index.js - - - 
+2025-02-24 12:42:34.8024 Info Request finished HTTP/1.1 GET http://localhost:5292/index.js - 200 - application/javascript;charset=utf-8 3.3797ms 
+2025-02-24 12:42:34.9885 Info Request starting HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - - - 
+2025-02-24 12:42:35.2475 Info Request finished HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - 200 - application/json;charset=utf-8 258.9257ms 
+2025-02-24 12:42:46.3336 Info Request starting HTTP/1.1 GET http://localhost:5292/index.html - - - 
+2025-02-24 12:42:46.3336 Info Request finished HTTP/1.1 GET http://localhost:5292/index.html - 200 - text/html;charset=utf-8 0.6582ms 
+2025-02-24 12:42:46.3453 Info Request starting HTTP/1.1 GET http://localhost:5292/index.js - - - 
+2025-02-24 12:42:46.3453 Info Request finished HTTP/1.1 GET http://localhost:5292/index.js - 200 - application/javascript;charset=utf-8 0.4818ms 
+2025-02-24 12:42:46.4056 Info Request starting HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - - - 
+2025-02-24 12:42:46.4414 Info Request finished HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - 200 - application/json;charset=utf-8 35.8076ms 
+2025-02-24 12:42:57.2904 Info Application is shutting down... 
+2025-02-24 12:43:33.4067 Info Executed DbCommand (31ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-02-24 12:43:33.4583 Info Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-02-24 12:43:33.4583 Info Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-02-24 12:43:33.5102 Info User profile is available. Using 'C:\Users\hp\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest. 
+2025-02-24 12:43:33.5372 Warn The WebRootPath was not found: C:\Users\hp\CompanyManagement\CompanyManagement\wwwroot. Static files may be unavailable. 
+2025-02-24 12:43:33.5372 Info Now listening on: http://localhost:5292 
+2025-02-24 12:43:33.5372 Info Application started. Press Ctrl+C to shut down. 
+2025-02-24 12:43:33.5372 Info Hosting environment: Development 
+2025-02-24 12:43:33.5372 Info Content root path: C:\Users\hp\CompanyManagement\CompanyManagement 
+2025-02-24 12:43:36.8348 Info Request starting HTTP/1.1 GET http://localhost:5292/index.html - - - 
+2025-02-24 12:43:36.8524 Warn Failed to determine the https port for redirect. 
+2025-02-24 12:43:36.9193 Info Request finished HTTP/1.1 GET http://localhost:5292/index.html - 200 - text/html;charset=utf-8 82.3219ms 
+2025-02-24 12:43:36.9264 Info Request starting HTTP/1.1 GET http://localhost:5292/index.js - - - 
+2025-02-24 12:43:36.9264 Info Request finished HTTP/1.1 GET http://localhost:5292/index.js - 200 - application/javascript;charset=utf-8 1.9065ms 
+2025-02-24 12:43:36.9744 Info Request starting HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - - - 
+2025-02-24 12:43:37.0407 Info Request finished HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - 200 - application/json;charset=utf-8 66.3219ms 
+2025-02-24 12:43:37.8756 Info Request starting HTTP/1.1 GET http://localhost:5292/index.html - - - 
+2025-02-24 12:43:37.8756 Info Request finished HTTP/1.1 GET http://localhost:5292/index.html - 200 - text/html;charset=utf-8 0.7651ms 
+2025-02-24 12:43:37.8858 Info Request starting HTTP/1.1 GET http://localhost:5292/index.js - - - 
+2025-02-24 12:43:37.8858 Info Request finished HTTP/1.1 GET http://localhost:5292/index.js - 200 - application/javascript;charset=utf-8 0.8408ms 
+2025-02-24 12:43:37.9262 Info Request starting HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - - - 
+2025-02-24 12:43:37.9469 Info Request finished HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - 200 - application/json;charset=utf-8 20.4419ms 
+2025-02-24 12:43:41.8232 Info Application is shutting down... 
+2025-02-24 12:44:12.4157 Info Executed DbCommand (31ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-02-24 12:44:12.4652 Info Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-02-24 12:44:12.4652 Info Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-02-24 12:44:12.5184 Info User profile is available. Using 'C:\Users\hp\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest. 
+2025-02-24 12:44:12.5451 Warn The WebRootPath was not found: C:\Users\hp\CompanyManagement\CompanyManagement\wwwroot. Static files may be unavailable. 
+2025-02-24 12:44:12.5563 Info Now listening on: http://localhost:5292 
+2025-02-24 12:44:12.5563 Info Application started. Press Ctrl+C to shut down. 
+2025-02-24 12:44:12.5563 Info Hosting environment: Development 
+2025-02-24 12:44:12.5563 Info Content root path: C:\Users\hp\CompanyManagement\CompanyManagement 
+2025-02-24 12:44:17.7801 Info Request starting HTTP/1.1 GET http://localhost:5292/index.html - - - 
+2025-02-24 12:44:17.7940 Warn Failed to determine the https port for redirect. 
+2025-02-24 12:44:17.8579 Info Request finished HTTP/1.1 GET http://localhost:5292/index.html - 200 - text/html;charset=utf-8 75.3656ms 
+2025-02-24 12:44:17.8579 Info Request starting HTTP/1.1 GET http://localhost:5292/index.js - - - 
+2025-02-24 12:44:17.8579 Info Request finished HTTP/1.1 GET http://localhost:5292/index.js - 200 - application/javascript;charset=utf-8 2.0944ms 
+2025-02-24 12:44:17.9138 Info Request starting HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - - - 
+2025-02-24 12:44:17.9921 Error An unhandled exception has occurred while executing the request. Swashbuckle.AspNetCore.SwaggerGen.SwaggerGeneratorException: Failed to generate Operation for action - CompanyManagement.Controllers.EmployeeController.UploadProfilePicture (CompanyManagement). See inner exception
+ ---> Swashbuckle.AspNetCore.SwaggerGen.SwaggerGeneratorException: Error reading parameter(s) for action CompanyManagement.Controllers.EmployeeController.UploadProfilePicture (CompanyManagement) as [FromForm] attribute used with IFormFile. Please refer to https://github.com/domaindrivendev/Swashbuckle.AspNetCore#handle-forms-and-file-uploads for more information
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateParametersAsync(ApiDescription apiDescription, SchemaRepository schemaRespository, Func`3 parameterGenerator)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateParametersAsync(ApiDescription apiDescription, SchemaRepository schemaRespository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateOperationAsync(ApiDescription apiDescription, SchemaRepository schemaRepository, Func`3 parametersGenerator, Func`3 bodyGenerator, Func`3 applyFilters)
+   --- End of inner exception stack trace ---
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateOperationAsync(ApiDescription apiDescription, SchemaRepository schemaRepository, Func`3 parametersGenerator, Func`3 bodyGenerator, Func`3 applyFilters)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateOperationAsync(ApiDescription apiDescription, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateOperationsAsync(IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GeneratePathsAsync(IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository, Func`3 operationsGenerator)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GeneratePathsAsync(IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GetSwaggerAsync(String documentName, String host, String basePath)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2025-02-24 12:44:18.0115 Info Request finished HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - 500 - text/plain;+charset=utf-8 97.7455ms 
+2025-02-24 12:44:21.6321 Info Application is shutting down... 
+2025-02-24 12:50:13.8359 Info Executed DbCommand (32ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-02-24 12:50:13.8897 Info Executed DbCommand (2ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-02-24 12:50:13.8897 Info Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-02-24 12:50:13.9768 Info User profile is available. Using 'C:\Users\hp\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest. 
+2025-02-24 12:50:14.0107 Warn The WebRootPath was not found: C:\Users\hp\CompanyManagement\CompanyManagement\wwwroot. Static files may be unavailable. 
+2025-02-24 12:50:14.0278 Info Now listening on: http://localhost:5292 
+2025-02-24 12:50:14.0278 Info Application started. Press Ctrl+C to shut down. 
+2025-02-24 12:50:14.0278 Info Hosting environment: Development 
+2025-02-24 12:50:14.0278 Info Content root path: C:\Users\hp\CompanyManagement\CompanyManagement 
+2025-02-24 12:50:22.0207 Info Application is shutting down... 
+2025-02-24 12:52:24.9907 Info Executed DbCommand (34ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-02-24 12:52:25.0442 Info Executed DbCommand (2ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-02-24 12:52:25.0442 Info Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-02-24 12:52:25.1007 Info User profile is available. Using 'C:\Users\hp\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest. 
+2025-02-24 12:52:25.1271 Warn The WebRootPath was not found: C:\Users\hp\CompanyManagement\CompanyManagement\wwwroot. Static files may be unavailable. 
+2025-02-24 12:52:25.1381 Info Now listening on: http://localhost:5292 
+2025-02-24 12:52:25.1381 Info Application started. Press Ctrl+C to shut down. 
+2025-02-24 12:52:25.1381 Info Hosting environment: Development 
+2025-02-24 12:52:25.1381 Info Content root path: C:\Users\hp\CompanyManagement\CompanyManagement 
+2025-02-24 12:52:34.1841 Info Request starting HTTP/1.1 GET http://localhost:5292/index.html - - - 
+2025-02-24 12:52:34.2040 Warn Failed to determine the https port for redirect. 
+2025-02-24 12:52:34.3193 Info Request finished HTTP/1.1 GET http://localhost:5292/index.html - 200 - text/html;charset=utf-8 131.9531ms 
+2025-02-24 12:52:34.3254 Info Request starting HTTP/1.1 GET http://localhost:5292/index.js - - - 
+2025-02-24 12:52:34.3254 Info Request finished HTTP/1.1 GET http://localhost:5292/index.js - 200 - application/javascript;charset=utf-8 3.2091ms 
+2025-02-24 12:52:34.3745 Info Request starting HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - - - 
+2025-02-24 12:52:34.4653 Error An unhandled exception has occurred while executing the request. Swashbuckle.AspNetCore.SwaggerGen.SwaggerGeneratorException: Failed to generate Operation for action - CompanyManagement.Controllers.EmployeeController.UploadProfilePicture (CompanyManagement). See inner exception
+ ---> Swashbuckle.AspNetCore.SwaggerGen.SwaggerGeneratorException: Error reading parameter(s) for action CompanyManagement.Controllers.EmployeeController.UploadProfilePicture (CompanyManagement) as [FromForm] attribute used with IFormFile. Please refer to https://github.com/domaindrivendev/Swashbuckle.AspNetCore#handle-forms-and-file-uploads for more information
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateParametersAsync(ApiDescription apiDescription, SchemaRepository schemaRespository, Func`3 parameterGenerator)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateParametersAsync(ApiDescription apiDescription, SchemaRepository schemaRespository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateOperationAsync(ApiDescription apiDescription, SchemaRepository schemaRepository, Func`3 parametersGenerator, Func`3 bodyGenerator, Func`3 applyFilters)
+   --- End of inner exception stack trace ---
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateOperationAsync(ApiDescription apiDescription, SchemaRepository schemaRepository, Func`3 parametersGenerator, Func`3 bodyGenerator, Func`3 applyFilters)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateOperationAsync(ApiDescription apiDescription, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateOperationsAsync(IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GeneratePathsAsync(IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository, Func`3 operationsGenerator)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GeneratePathsAsync(IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GetSwaggerAsync(String documentName, String host, String basePath)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2025-02-24 12:52:34.4845 Info Request finished HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - 500 - text/plain;+charset=utf-8 109.8393ms 
+2025-02-24 12:52:37.8031 Info Application is shutting down... 
+2025-02-24 13:03:29.0985 Info Executed DbCommand (30ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-02-24 13:03:29.1600 Info Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-02-24 13:03:29.1600 Info Executed DbCommand (0ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-02-24 13:03:29.2163 Info User profile is available. Using 'C:\Users\hp\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest. 
+2025-02-24 13:03:29.2411 Warn The WebRootPath was not found: C:\Users\hp\CompanyManagement\CompanyManagement\wwwroot. Static files may be unavailable. 
+2025-02-24 13:03:29.2411 Info Now listening on: http://localhost:5292 
+2025-02-24 13:03:29.2539 Info Application started. Press Ctrl+C to shut down. 
+2025-02-24 13:03:29.2539 Info Hosting environment: Development 
+2025-02-24 13:03:29.2539 Info Content root path: C:\Users\hp\CompanyManagement\CompanyManagement 
+2025-02-24 13:03:38.7793 Info Application is shutting down... 
+2025-02-24 13:15:44.8105 Info Executed DbCommand (34ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-02-24 13:15:44.8584 Info Executed DbCommand (2ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-02-24 13:15:44.8584 Info Executed DbCommand (0ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-02-24 13:15:44.9403 Info User profile is available. Using 'C:\Users\hp\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest. 
+2025-02-24 13:15:44.9827 Warn The WebRootPath was not found: C:\Users\hp\CompanyManagement\CompanyManagement\wwwroot. Static files may be unavailable. 
+2025-02-24 13:15:45.0046 Info Now listening on: http://localhost:5292 
+2025-02-24 13:15:45.0046 Info Application started. Press Ctrl+C to shut down. 
+2025-02-24 13:15:45.0046 Info Hosting environment: Development 
+2025-02-24 13:15:45.0046 Info Content root path: C:\Users\hp\CompanyManagement\CompanyManagement 
+2025-02-24 13:15:50.9334 Info Request starting HTTP/1.1 GET http://localhost:5292/index.html - - - 
+2025-02-24 13:15:50.9497 Warn Failed to determine the https port for redirect. 
+2025-02-24 13:15:51.0598 Info Request finished HTTP/1.1 GET http://localhost:5292/index.html - 200 - text/html;charset=utf-8 123.0817ms 
+2025-02-24 13:15:51.0670 Info Request starting HTTP/1.1 GET http://localhost:5292/index.js - - - 
+2025-02-24 13:15:51.0670 Info Request finished HTTP/1.1 GET http://localhost:5292/index.js - 200 - application/javascript;charset=utf-8 2.9671ms 
+2025-02-24 13:15:51.2856 Info Request starting HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - - - 
+2025-02-24 13:15:51.4698 Error An unhandled exception has occurred while executing the request. Swashbuckle.AspNetCore.SwaggerGen.SwaggerGeneratorException: Failed to generate Operation for action - CompanyManagement.Controllers.EmployeeController.UploadProfilePicture (CompanyManagement). See inner exception
+ ---> Swashbuckle.AspNetCore.SwaggerGen.SwaggerGeneratorException: Error reading parameter(s) for action CompanyManagement.Controllers.EmployeeController.UploadProfilePicture (CompanyManagement) as [FromForm] attribute used with IFormFile. Please refer to https://github.com/domaindrivendev/Swashbuckle.AspNetCore#handle-forms-and-file-uploads for more information
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateParametersAsync(ApiDescription apiDescription, SchemaRepository schemaRespository, Func`3 parameterGenerator)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateParametersAsync(ApiDescription apiDescription, SchemaRepository schemaRespository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateOperationAsync(ApiDescription apiDescription, SchemaRepository schemaRepository, Func`3 parametersGenerator, Func`3 bodyGenerator, Func`3 applyFilters)
+   --- End of inner exception stack trace ---
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateOperationAsync(ApiDescription apiDescription, SchemaRepository schemaRepository, Func`3 parametersGenerator, Func`3 bodyGenerator, Func`3 applyFilters)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateOperationAsync(ApiDescription apiDescription, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateOperationsAsync(IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GeneratePathsAsync(IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository, Func`3 operationsGenerator)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GeneratePathsAsync(IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GetSwaggerAsync(String documentName, String host, String basePath)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2025-02-24 13:15:51.4971 Info Request finished HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - 500 - text/plain;+charset=utf-8 211.4967ms 
+2025-02-24 13:16:12.1262 Info Application is shutting down... 
+2025-02-24 13:20:11.7898 Info Executed DbCommand (31ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-02-24 13:20:11.8445 Info Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-02-24 13:20:11.8445 Info Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-02-24 13:20:11.9672 Info User profile is available. Using 'C:\Users\hp\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest. 
+2025-02-24 13:20:11.9997 Warn The WebRootPath was not found: C:\Users\hp\CompanyManagement\CompanyManagement\wwwroot. Static files may be unavailable. 
+2025-02-24 13:20:12.0143 Info Now listening on: http://localhost:5292 
+2025-02-24 13:20:12.0143 Info Application started. Press Ctrl+C to shut down. 
+2025-02-24 13:20:12.0143 Info Hosting environment: Development 
+2025-02-24 13:20:12.0143 Info Content root path: C:\Users\hp\CompanyManagement\CompanyManagement 
+2025-02-24 13:20:28.8441 Info Application is shutting down... 
+2025-02-24 13:35:36.2139 Info Executed DbCommand (28ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-02-24 13:35:36.2601 Info Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-02-24 13:35:36.2601 Info Executed DbCommand (0ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-02-24 13:35:36.3772 Info User profile is available. Using 'C:\Users\hp\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest. 
+2025-02-24 13:35:36.4045 Warn The WebRootPath was not found: C:\Users\hp\CompanyManagement\CompanyManagement\wwwroot. Static files may be unavailable. 
+2025-02-24 13:35:36.4177 Info Now listening on: http://localhost:5292 
+2025-02-24 13:35:36.4177 Info Application started. Press Ctrl+C to shut down. 
+2025-02-24 13:35:36.4177 Info Hosting environment: Development 
+2025-02-24 13:35:36.4177 Info Content root path: C:\Users\hp\CompanyManagement\CompanyManagement 
+2025-02-24 13:35:48.0790 Info Application is shutting down... 
+2025-02-24 13:36:15.2382 Info Executed DbCommand (30ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-02-24 13:36:15.2931 Info Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-02-24 13:36:15.2931 Info Executed DbCommand (0ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-02-24 13:36:15.4103 Info User profile is available. Using 'C:\Users\hp\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest. 
+2025-02-24 13:36:15.4412 Warn The WebRootPath was not found: C:\Users\hp\CompanyManagement\CompanyManagement\wwwroot. Static files may be unavailable. 
+2025-02-24 13:36:15.4542 Info Now listening on: http://localhost:5292 
+2025-02-24 13:36:15.4542 Info Application started. Press Ctrl+C to shut down. 
+2025-02-24 13:36:15.4542 Info Hosting environment: Development 
+2025-02-24 13:36:15.4542 Info Content root path: C:\Users\hp\CompanyManagement\CompanyManagement 
+2025-02-24 13:36:22.4034 Info Request starting HTTP/1.1 GET http://localhost:5292/index.html - - - 
+2025-02-24 13:36:22.4338 Warn Failed to determine the https port for redirect. 
+2025-02-24 13:36:22.6158 Info Request finished HTTP/1.1 GET http://localhost:5292/index.html - 200 - text/html;charset=utf-8 207.2946ms 
+2025-02-24 13:36:22.6274 Info Request starting HTTP/1.1 GET http://localhost:5292/index.js - - - 
+2025-02-24 13:36:22.6274 Info Request finished HTTP/1.1 GET http://localhost:5292/index.js - 200 - application/javascript;charset=utf-8 3.3564ms 
+2025-02-24 13:36:22.8672 Info Request starting HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - - - 
+2025-02-24 13:36:23.0742 Error An unhandled exception has occurred while executing the request. Swashbuckle.AspNetCore.SwaggerGen.SwaggerGeneratorException: Failed to generate Operation for action - CompanyManagement.Controllers.EmployeeController.UploadProfilePicture (CompanyManagement). See inner exception
+ ---> Swashbuckle.AspNetCore.SwaggerGen.SwaggerGeneratorException: Error reading parameter(s) for action CompanyManagement.Controllers.EmployeeController.UploadProfilePicture (CompanyManagement) as [FromForm] attribute used with IFormFile. Please refer to https://github.com/domaindrivendev/Swashbuckle.AspNetCore#handle-forms-and-file-uploads for more information
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateParametersAsync(ApiDescription apiDescription, SchemaRepository schemaRespository, Func`3 parameterGenerator)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateParametersAsync(ApiDescription apiDescription, SchemaRepository schemaRespository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateOperationAsync(ApiDescription apiDescription, SchemaRepository schemaRepository, Func`3 parametersGenerator, Func`3 bodyGenerator, Func`3 applyFilters)
+   --- End of inner exception stack trace ---
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateOperationAsync(ApiDescription apiDescription, SchemaRepository schemaRepository, Func`3 parametersGenerator, Func`3 bodyGenerator, Func`3 applyFilters)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateOperationAsync(ApiDescription apiDescription, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateOperationsAsync(IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GeneratePathsAsync(IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository, Func`3 operationsGenerator)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GeneratePathsAsync(IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GetSwaggerAsync(String documentName, String host, String basePath)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2025-02-24 13:36:23.0900 Info Request finished HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - 500 - text/plain;+charset=utf-8 222.7497ms 
+2025-02-24 13:36:39.2382 Info Request starting HTTP/1.1 GET http://localhost:5292/index.html - - - 
+2025-02-24 13:36:39.2382 Info Request finished HTTP/1.1 GET http://localhost:5292/index.html - 200 - text/html;charset=utf-8 2.1721ms 
+2025-02-24 13:36:39.2563 Info Request starting HTTP/1.1 GET http://localhost:5292/index.js - - - 
+2025-02-24 13:36:39.2563 Info Request finished HTTP/1.1 GET http://localhost:5292/index.js - 200 - application/javascript;charset=utf-8 0.6176ms 
+2025-02-24 13:36:39.4522 Info Request starting HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - - - 
+2025-02-24 13:36:39.4748 Error An unhandled exception has occurred while executing the request. Swashbuckle.AspNetCore.SwaggerGen.SwaggerGeneratorException: Failed to generate Operation for action - CompanyManagement.Controllers.EmployeeController.UploadProfilePicture (CompanyManagement). See inner exception
+ ---> Swashbuckle.AspNetCore.SwaggerGen.SwaggerGeneratorException: Error reading parameter(s) for action CompanyManagement.Controllers.EmployeeController.UploadProfilePicture (CompanyManagement) as [FromForm] attribute used with IFormFile. Please refer to https://github.com/domaindrivendev/Swashbuckle.AspNetCore#handle-forms-and-file-uploads for more information
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateParametersAsync(ApiDescription apiDescription, SchemaRepository schemaRespository, Func`3 parameterGenerator)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateParametersAsync(ApiDescription apiDescription, SchemaRepository schemaRespository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateOperationAsync(ApiDescription apiDescription, SchemaRepository schemaRepository, Func`3 parametersGenerator, Func`3 bodyGenerator, Func`3 applyFilters)
+   --- End of inner exception stack trace ---
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateOperationAsync(ApiDescription apiDescription, SchemaRepository schemaRepository, Func`3 parametersGenerator, Func`3 bodyGenerator, Func`3 applyFilters)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateOperationAsync(ApiDescription apiDescription, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateOperationsAsync(IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GeneratePathsAsync(IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository, Func`3 operationsGenerator)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GeneratePathsAsync(IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GetSwaggerAsync(String documentName, String host, String basePath)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2025-02-24 13:36:39.4748 Info Request finished HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - 500 - text/plain;+charset=utf-8 26.5515ms 
+2025-02-24 13:36:43.6405 Info Application is shutting down... 
+2025-02-24 13:39:43.0269 Info Executed DbCommand (34ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-02-24 13:39:43.0847 Info Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-02-24 13:39:43.0847 Info Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-02-24 13:39:43.1833 Info User profile is available. Using 'C:\Users\hp\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest. 
+2025-02-24 13:39:43.2132 Warn The WebRootPath was not found: C:\Users\hp\CompanyManagement\CompanyManagement\wwwroot. Static files may be unavailable. 
+2025-02-24 13:39:43.2249 Info Now listening on: http://localhost:5292 
+2025-02-24 13:39:43.2249 Info Application started. Press Ctrl+C to shut down. 
+2025-02-24 13:39:43.2249 Info Hosting environment: Development 
+2025-02-24 13:39:43.2249 Info Content root path: C:\Users\hp\CompanyManagement\CompanyManagement 
+2025-02-24 13:40:29.8157 Info Application is shutting down... 
+2025-02-24 13:40:35.7763 Info Executed DbCommand (28ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-02-24 13:40:35.8363 Info Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-02-24 13:40:35.8363 Info Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-02-24 13:40:35.9448 Info User profile is available. Using 'C:\Users\hp\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest. 
+2025-02-24 13:40:35.9733 Warn The WebRootPath was not found: C:\Users\hp\CompanyManagement\CompanyManagement\wwwroot. Static files may be unavailable. 
+2025-02-24 13:40:35.9870 Info Now listening on: http://localhost:5292 
+2025-02-24 13:40:35.9870 Info Application started. Press Ctrl+C to shut down. 
+2025-02-24 13:40:35.9870 Info Hosting environment: Development 
+2025-02-24 13:40:35.9870 Info Content root path: C:\Users\hp\CompanyManagement\CompanyManagement 
+2025-02-24 13:40:37.4035 Info Application is shutting down... 
+2025-02-24 13:48:05.1073 Info Executed DbCommand (37ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-02-24 13:48:05.1822 Info Executed DbCommand (2ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-02-24 13:48:05.1822 Info Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-02-24 13:48:05.2844 Info User profile is available. Using 'C:\Users\hp\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest. 
+2025-02-24 13:48:05.3307 Warn The WebRootPath was not found: C:\Users\hp\CompanyManagement\CompanyManagement\wwwroot. Static files may be unavailable. 
+2025-02-24 13:48:05.3545 Info Now listening on: http://localhost:5292 
+2025-02-24 13:48:05.3545 Info Application started. Press Ctrl+C to shut down. 
+2025-02-24 13:48:05.3545 Info Hosting environment: Development 
+2025-02-24 13:48:05.3545 Info Content root path: C:\Users\hp\CompanyManagement\CompanyManagement 
+2025-02-24 13:48:10.4190 Info Request starting HTTP/1.1 GET http://localhost:5292/index.html - - - 
+2025-02-24 13:48:10.4468 Warn Failed to determine the https port for redirect. 
+2025-02-24 13:48:10.5531 Info Request finished HTTP/1.1 GET http://localhost:5292/index.html - 200 - text/html;charset=utf-8 131.9004ms 
+2025-02-24 13:48:10.5767 Info Request starting HTTP/1.1 GET http://localhost:5292/index.js - - - 
+2025-02-24 13:48:10.5767 Info Request finished HTTP/1.1 GET http://localhost:5292/index.js - 200 - application/javascript;charset=utf-8 2.6557ms 
+2025-02-24 13:48:10.8902 Info Request starting HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - - - 
+2025-02-24 13:48:11.0740 Info Request finished HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - 200 - application/json;charset=utf-8 183.7873ms 
+2025-02-24 13:48:24.2342 Info Application is shutting down... 

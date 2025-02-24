@@ -11,22 +11,30 @@ namespace CompanyManagement.Services
 
         public async Task<string> SaveFileAsync(IFormFile file, string folderName)
         {
-            if (file == null || file.Length == 0)
-                throw new ArgumentException("Invalid file.");
-
-            string uploadPath = Path.Combine(_basePath, folderName);
-            if (!Directory.Exists(uploadPath))
-                Directory.CreateDirectory(uploadPath);
-
-            string uniqueFileName = $"{Guid.NewGuid()}{Path.GetExtension(file.FileName)}";
-            string filePath = Path.Combine(uploadPath, uniqueFileName);
-
-            using (var fileStream = new FileStream(filePath, FileMode.Create))
+            try
             {
-                await file.CopyToAsync(fileStream);
-            }
+                if (file == null || file.Length == 0)
+                    throw new ArgumentException("Invalid file.");
 
-            return Path.Combine("uploads", folderName, uniqueFileName).Replace("\\", "/");
+                string uploadPath = Path.Combine(_basePath, folderName);
+                if (!Directory.Exists(uploadPath))
+                    Directory.CreateDirectory(uploadPath);
+
+                string uniqueFileName = $"{Guid.NewGuid()}{Path.GetExtension(file.FileName)}";
+                string filePath = Path.Combine(uploadPath, uniqueFileName);
+
+                using (var fileStream = new FileStream(filePath, FileMode.Create))
+                {
+                    await file.CopyToAsync(fileStream);
+                }
+
+                return Path.Combine("uploads", folderName, uniqueFileName).Replace("\\", "/");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"FileService Error: {ex.Message}");
+                throw new Exception("Error saving file. Check logs for details.");
+            }
         }
     }
 }
