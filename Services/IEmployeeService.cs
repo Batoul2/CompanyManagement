@@ -15,7 +15,7 @@ namespace CompanyManagement.Services
 
         Task AssignProjectToEmployeeAsync(int employeeId, int projectId, CancellationToken cancellationToken);
         Task<bool> RemoveProjectFromEmployeeAsync(int employeeId, int projectId, CancellationToken cancellationToken); 
-        Task<string> UploadProfilePictureAsync(int employeeId, IFormFile profilePicture, CancellationToken cancellationToken);
+        Task<List<string>> UploadProfilePicturesAsync(int employeeId, List<IFormFile> profilePictures, CancellationToken cancellationToken);
     }
 
 }

@@ -81,6 +81,11 @@ namespace CompanyManagement.Services
             }).ToList();
 
             employee.EmployeeProject = employeeProjects;
+            if (employee.ProfilePicturePaths == null)
+            {
+                employee.ProfilePicturePaths = new List<string>();
+                await _dbContext.SaveChangesAsync();
+            }
 
             await _dbContext.Employees.AddAsync(employee);
             await _dbContext.SaveChangesAsync(cancellationToken);
@@ -165,23 +170,34 @@ namespace CompanyManagement.Services
             return true;
         }
 
-        public async Task<string> UploadProfilePictureAsync(int employeeId, IFormFile profilePicture, CancellationToken cancellationToken)
+        public async Task<List<string>> UploadProfilePicturesAsync(int employeeId, List<IFormFile> profilePictures, CancellationToken cancellationToken)
         {
             var employee = await _dbContext.Employees.FindAsync(new object[] { employeeId }, cancellationToken);
             if (employee == null)
             {
                 throw new KeyNotFoundException($"Employee with ID {employeeId} not found.");
             }
+            if (employee.ProfilePicturePaths == null)
+            {
+                employee.ProfilePicturePaths = new List<string>();
+            }
 
-            // Save the file to the "employees" folder
-            string imagePath = await _fileService.SaveFileAsync(profilePicture, "employees");
+            List<string> uploadedImagePaths = new();
 
-            // Update the employee record with the new image path
-            employee.ProfilePicturePath = imagePath;
+            foreach (var file in profilePictures)
+            {
+                var filePath = await _fileService.SaveFileAsync(file);
+                uploadedImagePaths.Add(filePath);
+            }
+
+            // Append the new images to existing images
+            employee.ProfilePicturePaths.AddRange(uploadedImagePaths);
+
             await _dbContext.SaveChangesAsync(cancellationToken);
 
-            return imagePath;
+            return uploadedImagePaths;
         }
+
 
     }
 }

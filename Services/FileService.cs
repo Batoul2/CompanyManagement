@@ -7,34 +7,38 @@ namespace CompanyManagement.Services
 {
     public class FileService : IFileService
     {
-        private readonly string _basePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "uploads");
+        private readonly string _uploadFolderPath = Path.Combine(Directory.GetCurrentDirectory(), "UploadedImages");
 
-        public async Task<string> SaveFileAsync(IFormFile file, string folderName)
+        public FileService()
         {
-            try
+            if (!Directory.Exists(_uploadFolderPath))
             {
-                if (file == null || file.Length == 0)
-                    throw new ArgumentException("Invalid file.");
-
-                string uploadPath = Path.Combine(_basePath, folderName);
-                if (!Directory.Exists(uploadPath))
-                    Directory.CreateDirectory(uploadPath);
-
-                string uniqueFileName = $"{Guid.NewGuid()}{Path.GetExtension(file.FileName)}";
-                string filePath = Path.Combine(uploadPath, uniqueFileName);
-
-                using (var fileStream = new FileStream(filePath, FileMode.Create))
-                {
-                    await file.CopyToAsync(fileStream);
-                }
-
-                return Path.Combine("uploads", folderName, uniqueFileName).Replace("\\", "/");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"FileService Error: {ex.Message}");
-                throw new Exception("Error saving file. Check logs for details.");
+                Directory.CreateDirectory(_uploadFolderPath);
             }
         }
+
+        public async Task<string> SaveFileAsync(IFormFile file)
+        {
+            if (file == null || file.Length == 0)
+                throw new ArgumentException("File is empty.");
+
+            if (Path.GetExtension(file.FileName).ToLower() != ".jpg")
+                throw new ArgumentException("Only .jpg files are allowed.");
+
+            var fileName = $"{Guid.NewGuid()}.jpg";
+            var filePath = Path.Combine(_uploadFolderPath, fileName);
+
+            using (var stream = new FileStream(filePath, FileMode.Create))
+            {
+                await file.CopyToAsync(stream);
+            }
+
+            return fileName;
+        }
+    }
+
+    public interface IFileService
+    {
+        Task<string> SaveFileAsync(IFormFile file);
     }
 }

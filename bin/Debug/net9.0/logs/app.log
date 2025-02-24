@@ -11602,3 +11602,305 @@ LIMIT 1
 2025-02-24 13:48:10.8902 Info Request starting HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - - - 
 2025-02-24 13:48:11.0740 Info Request finished HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - 200 - application/json;charset=utf-8 183.7873ms 
 2025-02-24 13:48:24.2342 Info Application is shutting down... 
+2025-02-24 16:16:38.6826 Info Executed DbCommand (45ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-02-24 16:16:38.7409 Info Executed DbCommand (2ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-02-24 16:16:38.7409 Info Executed DbCommand (0ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-02-24 16:16:38.8641 Info User profile is available. Using 'C:\Users\hp\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest. 
+2025-02-24 16:16:38.9449 Warn The WebRootPath was not found: C:\Users\hp\CompanyManagement\CompanyManagement\wwwroot. Static files may be unavailable. 
+2025-02-24 16:16:38.9785 Info Now listening on: http://localhost:5292 
+2025-02-24 16:16:38.9785 Info Application started. Press Ctrl+C to shut down. 
+2025-02-24 16:16:38.9785 Info Hosting environment: Development 
+2025-02-24 16:16:38.9785 Info Content root path: C:\Users\hp\CompanyManagement\CompanyManagement 
+2025-02-24 16:16:40.5423 Info Request starting HTTP/1.1 GET http://localhost:5292/index.html - - - 
+2025-02-24 16:16:40.5591 Warn Failed to determine the https port for redirect. 
+2025-02-24 16:16:40.6423 Info Request finished HTTP/1.1 GET http://localhost:5292/index.html - 200 - text/html;charset=utf-8 99.6220ms 
+2025-02-24 16:16:40.6929 Info Request starting HTTP/1.1 GET http://localhost:5292/index.js - - - 
+2025-02-24 16:16:40.6929 Info Request finished HTTP/1.1 GET http://localhost:5292/index.js - 200 - application/javascript;charset=utf-8 1.4285ms 
+2025-02-24 16:16:40.9127 Info Request starting HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - - - 
+2025-02-24 16:16:40.9914 Info Request finished HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - 200 - application/json;charset=utf-8 78.6738ms 
+2025-02-24 16:17:21.6735 Info Request starting HTTP/1.1 POST http://localhost:5292/api/Employee/1/upload-profile-pictures - multipart/form-data;+boundary=----WebKitFormBoundaryJWCwn8pVVVC5TVVu 142685 
+2025-02-24 16:17:21.6735 Info CORS policy execution successful. 
+2025-02-24 16:17:21.7917 Info Executing endpoint 'CompanyManagement.Controllers.EmployeeController.UploadProfilePictures (CompanyManagement)' 
+2025-02-24 16:17:21.8150 Info Route matched with {action = "UploadProfilePictures", controller = "Employee"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] UploadProfilePictures(Int32, System.Collections.Generic.List`1[Microsoft.AspNetCore.Http.IFormFile], System.Threading.CancellationToken) on controller CompanyManagement.Controllers.EmployeeController (CompanyManagement). 
+2025-02-24 16:17:22.0110 Error Failed executing DbCommand (13ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT e."Id", e."FullName", e."Position", e."ProfilePicturePaths"
+FROM "Employees" AS e
+WHERE e."Id" = @__p_0
+LIMIT 1 
+2025-02-24 16:17:22.0316 Error An exception occurred while iterating over the results of a query for context type 'CompanyManagement.Data.CompanyDbContext'.
+Npgsql.PostgresException (0x80004005): 42703: column e.ProfilePicturePaths does not exist
+
+POSITION: 44
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+  Exception data:
+    Severity: ERROR
+    SqlState: 42703
+    MessageText: column e.ProfilePicturePaths does not exist
+    Hint: Perhaps you meant to reference the column "e.ProfilePicturePath".
+    Position: 44
+    File: parse_relation.c
+    Line: 3732
+    Routine: errorMissingColumn Npgsql.PostgresException (0x80004005): 42703: column e.ProfilePicturePaths does not exist
+
+POSITION: 44
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+  Exception data:
+    Severity: ERROR
+    SqlState: 42703
+    MessageText: column e.ProfilePicturePaths does not exist
+    Hint: Perhaps you meant to reference the column "e.ProfilePicturePath".
+    Position: 44
+    File: parse_relation.c
+    Line: 3732
+    Routine: errorMissingColumn Severity: ERROR;InvariantSeverity: ERROR;SqlState: 42703;MessageText: column e.ProfilePicturePaths does not exist;Hint: Perhaps you meant to reference the column "e.ProfilePicturePath".;Position: 44;File: parse_relation.c;Line: 3732;Routine: errorMissingColumn
+2025-02-24 16:17:22.0316 Info Executed action CompanyManagement.Controllers.EmployeeController.UploadProfilePictures (CompanyManagement) in 222.7132ms 
+2025-02-24 16:17:22.0316 Info Executed endpoint 'CompanyManagement.Controllers.EmployeeController.UploadProfilePictures (CompanyManagement)' 
+2025-02-24 16:17:22.0854 Info Request finished HTTP/1.1 POST http://localhost:5292/api/Employee/1/upload-profile-pictures - 500 - application/json 411.8274ms 
+2025-02-24 16:18:08.5094 Info Application is shutting down... 
+2025-02-24 16:18:37.8771 Info Executed DbCommand (14ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId"; 
+2025-02-24 16:18:38.0702 Info Executed DbCommand (6ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+CREATE TABLE IF NOT EXISTS "__EFMigrationsHistory" (
+    "MigrationId" character varying(150) NOT NULL,
+    "ProductVersion" character varying(32) NOT NULL,
+    CONSTRAINT "PK___EFMigrationsHistory" PRIMARY KEY ("MigrationId")
+); 
+2025-02-24 16:18:38.0773 Info Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long. 
+2025-02-24 16:18:38.0773 Info Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+LOCK TABLE "__EFMigrationsHistory" IN ACCESS EXCLUSIVE MODE 
+2025-02-24 16:18:38.0773 Info Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId"; 
+2025-02-24 16:18:38.0921 Info Applying migration '20250224141824_AddProfilePicturePathsToEmployee'. 
+2025-02-24 16:18:38.1144 Info Executed DbCommand (13ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+ALTER TABLE "Employees" DROP COLUMN "ProfilePicturePath"; 
+2025-02-24 16:18:38.1215 Error Failed executing DbCommand (6ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+ALTER TABLE "Employees" ADD "ProfilePicturePaths" text[] NOT NULL; 
+2025-02-24 16:21:29.4605 Info Executed DbCommand (10ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId"; 
+2025-02-24 16:21:39.6162 Info Executed DbCommand (11ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId"; 
+2025-02-24 16:21:51.6801 Info Executed DbCommand (13ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId"; 
+2025-02-24 16:22:39.4221 Info Executed DbCommand (10ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId"; 
+2025-02-24 16:29:19.5527 Info Executed DbCommand (12ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId"; 
+2025-02-24 16:30:58.6690 Info Executed DbCommand (11ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId"; 
+2025-02-24 16:32:11.6747 Info Executed DbCommand (9ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId"; 
+2025-02-24 16:32:51.6458 Info Executed DbCommand (9ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId"; 
+2025-02-24 16:34:26.3154 Info Executed DbCommand (11ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId"; 
+2025-02-24 16:34:56.3065 Info Executed DbCommand (11ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId"; 
+2025-02-24 16:34:56.4953 Info Executed DbCommand (5ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+CREATE TABLE IF NOT EXISTS "__EFMigrationsHistory" (
+    "MigrationId" character varying(150) NOT NULL,
+    "ProductVersion" character varying(32) NOT NULL,
+    CONSTRAINT "PK___EFMigrationsHistory" PRIMARY KEY ("MigrationId")
+); 
+2025-02-24 16:34:56.4953 Info Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long. 
+2025-02-24 16:34:56.5062 Info Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+LOCK TABLE "__EFMigrationsHistory" IN ACCESS EXCLUSIVE MODE 
+2025-02-24 16:34:56.5062 Info Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId"; 
+2025-02-24 16:34:56.5062 Info Applying migration '20250224143443_AddProfilePicturePathsToEmployee'. 
+2025-02-24 16:34:56.5245 Error Failed executing DbCommand (5ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+ALTER TABLE "Employees" DROP COLUMN "ProfilePicturePath"; 
+2025-02-24 16:37:05.8170 Info Executed DbCommand (11ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId"; 
+2025-02-24 16:37:05.9671 Info Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+CREATE TABLE IF NOT EXISTS "__EFMigrationsHistory" (
+    "MigrationId" character varying(150) NOT NULL,
+    "ProductVersion" character varying(32) NOT NULL,
+    CONSTRAINT "PK___EFMigrationsHistory" PRIMARY KEY ("MigrationId")
+); 
+2025-02-24 16:37:05.9671 Info Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long. 
+2025-02-24 16:37:05.9770 Info Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+LOCK TABLE "__EFMigrationsHistory" IN ACCESS EXCLUSIVE MODE 
+2025-02-24 16:37:05.9770 Info Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId"; 
+2025-02-24 16:37:05.9814 Info Applying migration '20250224143443_AddProfilePicturePathsToEmployee'. 
+2025-02-24 16:37:05.9814 Error Failed executing DbCommand (8ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+ALTER TABLE "Employees" ADD "ProfilePicturePaths" text[] NOT NULL; 
+2025-02-24 16:39:18.0302 Info Executed DbCommand (11ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId"; 
+2025-02-24 16:41:24.8624 Info Executed DbCommand (10ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId"; 
+2025-02-24 16:41:25.0209 Info Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+CREATE TABLE IF NOT EXISTS "__EFMigrationsHistory" (
+    "MigrationId" character varying(150) NOT NULL,
+    "ProductVersion" character varying(32) NOT NULL,
+    CONSTRAINT "PK___EFMigrationsHistory" PRIMARY KEY ("MigrationId")
+); 
+2025-02-24 16:41:25.0258 Info Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long. 
+2025-02-24 16:41:25.0258 Info Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+LOCK TABLE "__EFMigrationsHistory" IN ACCESS EXCLUSIVE MODE 
+2025-02-24 16:41:25.0258 Info Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId"; 
+2025-02-24 16:41:25.0258 Info Applying migration '20250224143443_AddProfilePicturePathsToEmployee'. 
+2025-02-24 16:41:25.0435 Info Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+ALTER TABLE "Employees" ADD "ProfilePicturePaths" text[]; 
+2025-02-24 16:41:25.0435 Info Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+INSERT INTO "__EFMigrationsHistory" ("MigrationId", "ProductVersion")
+VALUES ('20250224143443_AddProfilePicturePathsToEmployee', '9.0.1'); 
+2025-02-24 16:41:41.4595 Info Executed DbCommand (34ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-02-24 16:41:41.5160 Info Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-02-24 16:41:41.5160 Info Executed DbCommand (0ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-02-24 16:41:41.5797 Info User profile is available. Using 'C:\Users\hp\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest. 
+2025-02-24 16:41:41.6116 Warn The WebRootPath was not found: C:\Users\hp\CompanyManagement\CompanyManagement\wwwroot. Static files may be unavailable. 
+2025-02-24 16:41:41.6333 Info Now listening on: http://localhost:5292 
+2025-02-24 16:41:41.6333 Info Application started. Press Ctrl+C to shut down. 
+2025-02-24 16:41:41.6333 Info Hosting environment: Development 
+2025-02-24 16:41:41.6333 Info Content root path: C:\Users\hp\CompanyManagement\CompanyManagement 
+2025-02-24 16:41:52.0397 Info Request starting HTTP/1.1 POST http://localhost:5292/api/Employee/1/upload-profile-pictures - multipart/form-data;+boundary=----WebKitFormBoundaryHFwQO4kSH55onXUo 142685 
+2025-02-24 16:41:52.0644 Warn Failed to determine the https port for redirect. 
+2025-02-24 16:41:52.0644 Info CORS policy execution successful. 
+2025-02-24 16:41:52.1088 Info Executing endpoint 'CompanyManagement.Controllers.EmployeeController.UploadProfilePictures (CompanyManagement)' 
+2025-02-24 16:41:52.1333 Info Route matched with {action = "UploadProfilePictures", controller = "Employee"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] UploadProfilePictures(Int32, System.Collections.Generic.List`1[Microsoft.AspNetCore.Http.IFormFile], System.Threading.CancellationToken) on controller CompanyManagement.Controllers.EmployeeController (CompanyManagement). 
+2025-02-24 16:41:52.3270 Info Executed DbCommand (5ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT e."Id", e."FullName", e."Position", e."ProfilePicturePaths"
+FROM "Employees" AS e
+WHERE e."Id" = @__p_0
+LIMIT 1 
+2025-02-24 16:41:52.3782 Error An exception occurred while iterating over the results of a query for context type 'CompanyManagement.Data.CompanyDbContext'.
+System.InvalidCastException: Column 'ProfilePicturePaths' is null.
+   at Npgsql.ThrowHelper.ThrowInvalidCastException_NoValue(FieldDescription field)
+   at Npgsql.NpgsqlDataReader.DbNullValueOrThrow[T](Int32 ordinal)
+   at Npgsql.NpgsqlDataReader.GetFieldValueCore[T](Int32 ordinal)
+   at Npgsql.NpgsqlDataReader.GetFieldValue[T](Int32 ordinal)
+   at lambda_method77(Closure, QueryContext, DbDataReader, ResultContext, SingleQueryResultCoordinator)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync() System.InvalidCastException: Column 'ProfilePicturePaths' is null.
+   at Npgsql.ThrowHelper.ThrowInvalidCastException_NoValue(FieldDescription field)
+   at Npgsql.NpgsqlDataReader.DbNullValueOrThrow[T](Int32 ordinal)
+   at Npgsql.NpgsqlDataReader.GetFieldValueCore[T](Int32 ordinal)
+   at Npgsql.NpgsqlDataReader.GetFieldValue[T](Int32 ordinal)
+   at lambda_method77(Closure, QueryContext, DbDataReader, ResultContext, SingleQueryResultCoordinator)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+2025-02-24 16:41:52.3905 Info Executed action CompanyManagement.Controllers.EmployeeController.UploadProfilePictures (CompanyManagement) in 250.8377ms 
+2025-02-24 16:41:52.3905 Info Executed endpoint 'CompanyManagement.Controllers.EmployeeController.UploadProfilePictures (CompanyManagement)' 
+2025-02-24 16:41:52.4672 Info Request finished HTTP/1.1 POST http://localhost:5292/api/Employee/1/upload-profile-pictures - 500 - application/json 426.2287ms 
+2025-02-24 16:42:18.4027 Info Application is shutting down... 
+2025-02-24 16:47:02.6925 Info Executed DbCommand (34ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-02-24 16:47:02.7518 Info Executed DbCommand (2ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-02-24 16:47:02.7518 Info Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-02-24 16:47:02.8275 Info User profile is available. Using 'C:\Users\hp\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest. 
+2025-02-24 16:47:02.8593 Warn The WebRootPath was not found: C:\Users\hp\CompanyManagement\CompanyManagement\wwwroot. Static files may be unavailable. 
+2025-02-24 16:47:02.8781 Info Now listening on: http://localhost:5292 
+2025-02-24 16:47:02.8781 Info Application started. Press Ctrl+C to shut down. 
+2025-02-24 16:47:02.8781 Info Hosting environment: Development 
+2025-02-24 16:47:02.8781 Info Content root path: C:\Users\hp\CompanyManagement\CompanyManagement 
+2025-02-24 16:47:12.0644 Info Request starting HTTP/1.1 POST http://localhost:5292/api/Employee/1/upload-profile-pictures - multipart/form-data;+boundary=----WebKitFormBoundaryA3n0PdvXzhcX5zAp 142685 
+2025-02-24 16:47:12.0825 Warn Failed to determine the https port for redirect. 
+2025-02-24 16:47:12.0928 Info CORS policy execution successful. 
+2025-02-24 16:47:12.1131 Info Executing endpoint 'CompanyManagement.Controllers.EmployeeController.UploadProfilePictures (CompanyManagement)' 
+2025-02-24 16:47:12.1273 Info Route matched with {action = "UploadProfilePictures", controller = "Employee"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] UploadProfilePictures(Int32, System.Collections.Generic.List`1[Microsoft.AspNetCore.Http.IFormFile], System.Threading.CancellationToken) on controller CompanyManagement.Controllers.EmployeeController (CompanyManagement). 
+2025-02-24 16:47:12.2597 Info Executed DbCommand (3ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT e."Id", e."FullName", e."Position", e."ProfilePicturePaths"
+FROM "Employees" AS e
+WHERE e."Id" = @__p_0
+LIMIT 1 
+2025-02-24 16:47:12.3555 Info Executed DbCommand (8ms) [Parameters=[@p1='?' (DbType = Int32), @p0='?' (DbType = Object)], CommandType='Text', CommandTimeout='30']
+UPDATE "Employees" SET "ProfilePicturePaths" = @p0
+WHERE "Id" = @p1; 
+2025-02-24 16:47:12.3647 Info Executing OkObjectResult, writing value of type '<>f__AnonymousType4`2[[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.List`1[[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'. 
+2025-02-24 16:47:12.4097 Info Executed action CompanyManagement.Controllers.EmployeeController.UploadProfilePictures (CompanyManagement) in 278.6143ms 
+2025-02-24 16:47:12.4097 Info Executed endpoint 'CompanyManagement.Controllers.EmployeeController.UploadProfilePictures (CompanyManagement)' 
+2025-02-24 16:47:12.4097 Info Request finished HTTP/1.1 POST http://localhost:5292/api/Employee/1/upload-profile-pictures - 200 - application/json;+charset=utf-8 352.0071ms 
+2025-02-24 16:47:22.4312 Info Application is shutting down... 

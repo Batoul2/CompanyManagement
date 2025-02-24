@@ -101,25 +101,19 @@ namespace CompanyManagement.Controllers
             return Ok("Project removed successfully from employee.");
         }
 
-        // [HttpPost("{id}/upload-profile-picture")]
-        // public async Task<IActionResult> UploadProfilePicture([FromRoute] int id, [FromForm] IFormFile profilePicture, CancellationToken cancellationToken)
-        // {
-        //     if (profilePicture == null || profilePicture.Length == 0)
-        //     {
-        //         return BadRequest("Profile picture is required.");
-        //     }
+        [HttpPost("{id}/upload-profile-pictures")]
+        public async Task<IActionResult> UploadProfilePictures([FromRoute] int id, [FromForm] List<IFormFile> profilePictures, CancellationToken cancellationToken)
+        {
+            if (profilePictures == null || profilePictures.Count == 0)
+            {
+                return BadRequest("At least one profile picture is required.");
+            }
 
-        //     var employee = await _employeeService.GetEmployeeByIdAsync(id);
-        //     if (employee == null)
-        //     {
-        //         return NotFound(new { Message = $"Employee with ID {id} not found." });
-        //     }
+            var imagePaths = await _employeeService.UploadProfilePicturesAsync(id, profilePictures, cancellationToken);
 
-        //     // Upload and update the profile picture
-        //     var imagePath = await _employeeService.UploadProfilePictureAsync(id, profilePicture, cancellationToken);
+            return Ok(new { Message = "Profile pictures uploaded successfully", ImagePaths = imagePaths });
+        }
 
-        //     return Ok(new { Message = "Profile picture uploaded successfully", ImagePath = imagePath });
-        // }
 
     }
 }
