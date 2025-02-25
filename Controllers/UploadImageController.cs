@@ -4,6 +4,8 @@ using System.Threading.Tasks;
 using System.Collections.Generic;
 using System.Threading;
 using CompanyManagement.Services;
+using CompanyManagement.InputModels;
+using CompanyManagement.DTOs;
 
 namespace CompanyManagement.Controllers
 {
@@ -18,34 +20,27 @@ namespace CompanyManagement.Controllers
             _uploadImageService = uploadImageService;
         }
 
-        [HttpPost("{id}/upload-profile-pictures")]
-        public async Task<IActionResult> UploadProfilePictures([FromRoute] int id, [FromForm] List<IFormFile> profilePictures, CancellationToken cancellationToken)
+        [HttpPost]
+        public async Task<IActionResult> UploadImage([FromRoute] int employeeId, [FromForm] ImageInputModel inputModel, CancellationToken cancellationToken)
         {
-            if (profilePictures == null || profilePictures.Count == 0)
-            {
-                return BadRequest("At least one profile picture is required.");
-            }
-
-            var imagePaths = await _uploadImageService.UploadProfilePicturesAsync(id, profilePictures, cancellationToken);
-
-            return Ok(new { Message = "Profile pictures uploaded successfully", ImagePaths = imagePaths });
+            var image = await _uploadImageService.UploadImageAsync(employeeId, inputModel.ImageFile, cancellationToken);
+            return Ok(image);
         }
 
-        [HttpGet("{employeeId}")]
+        [HttpGet("{id}")]
         public async Task<IActionResult> GetEmployeeImages([FromRoute] int employeeId)
         {
             var images = await _uploadImageService.GetEmployeeImagesAsync(employeeId);
-            return Ok(new { EmployeeId = employeeId, Images = images });
+            return Ok(images);
         }
 
-        [HttpDelete("{employeeId}/delete")]
-        public async Task<IActionResult> DeleteEmployeeImages([FromRoute] int employeeId, CancellationToken cancellationToken)
+        [HttpDelete("delete/{imageId}")]
+        public async Task<IActionResult> DeleteImage([FromRoute] int imageId, CancellationToken cancellationToken)
         {
-            var success = await _uploadImageService.DeleteEmployeeImagesAsync(employeeId, cancellationToken);
-            if (!success)
-                return NotFound(new { Message = "No images found for this employee." });
-
-            return Ok(new { Message = "All images deleted successfully." });
+            await _uploadImageService.DeleteImageAsync(imageId, cancellationToken);
+            return Ok(new { Message = $"Image with ID {imageId} deleted successfully." });
         }
+
+
     }
 }

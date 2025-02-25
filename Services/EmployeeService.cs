@@ -79,11 +79,6 @@ namespace CompanyManagement.Services
             }).ToList();
 
             employee.EmployeeProject = employeeProjects;
-            if (employee.ProfilePicturePaths == null)
-            {
-                employee.ProfilePicturePaths = new List<string>();
-                await _dbContext.SaveChangesAsync();
-            }
 
             await _dbContext.Employees.AddAsync(employee);
             await _dbContext.SaveChangesAsync(cancellationToken);

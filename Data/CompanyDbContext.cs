@@ -16,6 +16,7 @@ namespace CompanyManagement.Data
     public DbSet<Company> Companies { get; set; }
     public DbSet<Employee> Employees { get; set; }
     public DbSet<Project> Projects { get; set; }
+    public DbSet<Image> Images { get; set; } = null!;
     public DbSet<CompanyEmployee> CompanyEmployee { get; set; }
     public DbSet<EmployeeProject> EmployeeProject { get; set; }
 
@@ -64,6 +65,12 @@ namespace CompanyManagement.Data
         .HasOne(ep => ep.Project)
         .WithMany(p => p.EmployeeProject)
         .HasForeignKey(ep => ep.ProjectId);
+
+    modelBuilder.Entity<Image>()
+        .HasOne(i => i.Employee)
+        .WithMany(e => e.Images)
+        .HasForeignKey(i => i.EmployeeId)
+        .OnDelete(DeleteBehavior.Cascade);
 }
 
 }

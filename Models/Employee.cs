@@ -7,6 +7,6 @@ namespace CompanyManagement.Models
         public string Position { get; set; } = string.Empty;
         public ICollection<CompanyEmployee> CompanyEmployee { get; set; } = new List<CompanyEmployee>(); // Link to CompanyEmployee
         public ICollection<EmployeeProject> EmployeeProject { get; set; } = new List<EmployeeProject>(); // Link to EmployeeProject
-        public List<string> ProfilePicturePaths { get; set; } = new List<string>();
+        public List<Image> Images { get; set; } = new List<Image>();
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
 using CompanyManagement.Data;
+using CompanyManagement.DTOs;
 using CompanyManagement.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Threading;
@@ -19,63 +20,45 @@ namespace CompanyManagement.Services
             _dbContext = dbContext;
             _fileService = fileService;
         }
-
-        public async Task<List<string>> UploadProfilePicturesAsync(int employeeId, List<IFormFile> profilePictures, CancellationToken cancellationToken)
+        public async Task<ImageDto> UploadImageAsync(int employeeId, IFormFile imageFile, CancellationToken cancellationToken)
         {
             var employee = await _dbContext.Employees.FindAsync(new object[] { employeeId }, cancellationToken);
             if (employee == null)
-            {
                 throw new KeyNotFoundException($"Employee with ID {employeeId} not found.");
-            }
-            if (employee.ProfilePicturePaths == null)
-            {
-                employee.ProfilePicturePaths = new List<string>();
-            }
 
-            List<string> uploadedImagePaths = new();
+            var filePath = await _fileService.SaveFileAsync(imageFile);
+            var image = new Image { ImagePath = filePath, EmployeeId = employeeId };
 
-            foreach (var file in profilePictures)
-            {
-                var filePath = await _fileService.SaveFileAsync(file);
-                uploadedImagePaths.Add(filePath);
-            }
-
-            // Append the new images to existing images
-            employee.ProfilePicturePaths.AddRange(uploadedImagePaths);
-
+            _dbContext.Images.Add(image);
             await _dbContext.SaveChangesAsync(cancellationToken);
 
-            return uploadedImagePaths;
+            return new ImageDto { Id = image.Id, ImagePath = filePath };
         }
 
-        public async Task<List<string>> GetEmployeeImagesAsync(int employeeId)
+        public async Task<List<ImageDto>> GetEmployeeImagesAsync(int employeeId)
         {
-            var employee = await _dbContext.Employees.FindAsync(employeeId);
-            if (employee == null)
-                throw new KeyNotFoundException($"Employee with ID {employeeId} not found.");
+            var images = await _dbContext.Images
+                .Where(img => img.EmployeeId == employeeId)
+                .Select(img => new ImageDto { Id = img.Id, ImagePath = img.ImagePath })
+                .ToListAsync();
 
-            return employee.ProfilePicturePaths ?? new List<string>();
+            return images;
         }
-
-        public async Task<bool> DeleteEmployeeImagesAsync(int employeeId, CancellationToken cancellationToken)
+        public async Task<bool> DeleteImageAsync(int imageId, CancellationToken cancellationToken)
         {
-            var employee = await _dbContext.Employees.FindAsync(new object[] { employeeId }, cancellationToken);
-            if (employee == null)
-                throw new KeyNotFoundException($"Employee with ID {employeeId} not found.");
+            var image = await _dbContext.Images
+                .FirstOrDefaultAsync(img => img.Id == imageId, cancellationToken);
 
-            if (employee.ProfilePicturePaths == null || employee.ProfilePicturePaths.Count == 0)
-                return false;
+            if (image == null)
+                throw new KeyNotFoundException($"Image with ID {imageId} not found.");
 
-            foreach (var imagePath in employee.ProfilePicturePaths)
-            {
-                await _fileService.DeleteFileAsync(imagePath);
-            }
+            await _fileService.DeleteFileAsync(image.ImagePath);
 
-            employee.ProfilePicturePaths.Clear();
+            _dbContext.Images.Remove(image);
             await _dbContext.SaveChangesAsync(cancellationToken);
 
             return true;
         }
-    }
 
+    }
 }
