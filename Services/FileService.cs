@@ -8,6 +8,7 @@ namespace CompanyManagement.Services
     public class FileService : IFileService
     {
         private readonly string _uploadFolderPath = Path.Combine(Directory.GetCurrentDirectory(), "UploadedImages");
+        private const long MaxFileSize = 3 * 1024 * 1024;
 
         public FileService()
         {
@@ -22,6 +23,9 @@ namespace CompanyManagement.Services
             if (file == null || file.Length == 0)
                 throw new ArgumentException("File is empty.");
 
+            if (file.Length > MaxFileSize)
+                throw new ArgumentException("File size exceeds the maximum limit of 3MB.");
+
             if (Path.GetExtension(file.FileName).ToLower() != ".jpg")
                 throw new ArgumentException("Only .jpg files are allowed.");
 
@@ -35,10 +39,20 @@ namespace CompanyManagement.Services
 
             return fileName;
         }
+        public Task DeleteFileAsync(string fileName)
+        {
+            var filePath = Path.Combine(_uploadFolderPath, fileName);
+            if (File.Exists(filePath))
+            {
+                File.Delete(filePath);
+            }
+            return Task.CompletedTask;
+        }
     }
 
     public interface IFileService
     {
         Task<string> SaveFileAsync(IFormFile file);
+        Task DeleteFileAsync(string fileName);
     }
 }

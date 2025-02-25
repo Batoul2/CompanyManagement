@@ -101,19 +101,5 @@ namespace CompanyManagement.Controllers
             return Ok("Project removed successfully from employee.");
         }
 
-        [HttpPost("{id}/upload-profile-pictures")]
-        public async Task<IActionResult> UploadProfilePictures([FromRoute] int id, [FromForm] List<IFormFile> profilePictures, CancellationToken cancellationToken)
-        {
-            if (profilePictures == null || profilePictures.Count == 0)
-            {
-                return BadRequest("At least one profile picture is required.");
-            }
-
-            var imagePaths = await _employeeService.UploadProfilePicturesAsync(id, profilePictures, cancellationToken);
-
-            return Ok(new { Message = "Profile pictures uploaded successfully", ImagePaths = imagePaths });
-        }
-
-
     }
 }

@@ -12,13 +12,11 @@ namespace CompanyManagement.Services
     {
         private readonly CompanyDbContext _dbContext;
         private readonly IMapper _mapper;
-        private readonly IFileService _fileService;
 
-        public EmployeeService(CompanyDbContext dbContext, IMapper mapper, IFileService fileService)
+        public EmployeeService(CompanyDbContext dbContext, IMapper mapper)
         {
             _dbContext = dbContext;
             _mapper = mapper;
-            _fileService = fileService;
         }
 
         public async Task<IEnumerable<EmployeeDto>> GetAllEmployeesAsync(EmployeeQueryParameters parameters, CancellationToken cancellationToken)
@@ -168,34 +166,6 @@ namespace CompanyManagement.Services
             _dbContext.EmployeeProject.Remove(employeeProject);
             await _dbContext.SaveChangesAsync(cancellationToken);
             return true;
-        }
-
-        public async Task<List<string>> UploadProfilePicturesAsync(int employeeId, List<IFormFile> profilePictures, CancellationToken cancellationToken)
-        {
-            var employee = await _dbContext.Employees.FindAsync(new object[] { employeeId }, cancellationToken);
-            if (employee == null)
-            {
-                throw new KeyNotFoundException($"Employee with ID {employeeId} not found.");
-            }
-            if (employee.ProfilePicturePaths == null)
-            {
-                employee.ProfilePicturePaths = new List<string>();
-            }
-
-            List<string> uploadedImagePaths = new();
-
-            foreach (var file in profilePictures)
-            {
-                var filePath = await _fileService.SaveFileAsync(file);
-                uploadedImagePaths.Add(filePath);
-            }
-
-            // Append the new images to existing images
-            employee.ProfilePicturePaths.AddRange(uploadedImagePaths);
-
-            await _dbContext.SaveChangesAsync(cancellationToken);
-
-            return uploadedImagePaths;
         }
 
 
