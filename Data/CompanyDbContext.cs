@@ -16,7 +16,7 @@ namespace CompanyManagement.Data
     public DbSet<Company> Companies { get; set; }
     public DbSet<Employee> Employees { get; set; }
     public DbSet<Project> Projects { get; set; }
-    public DbSet<Image> Images { get; set; } = null!;
+    public DbSet<Image> Images { get; set; } 
     public DbSet<CompanyEmployee> CompanyEmployee { get; set; }
     public DbSet<EmployeeProject> EmployeeProject { get; set; }
 
