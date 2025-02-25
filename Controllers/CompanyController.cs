@@ -47,38 +47,53 @@ namespace CompanyManagement.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddCompany([FromBody]CompanyInputModel inputModel,CancellationToken cancellationToken)
+        public async Task<IActionResult> AddCompany([FromBody] CompanyInputModel inputModel, CancellationToken cancellationToken)
         {
-            try
+            var errors = new List<string>();
+
+            var nameExists = await _companyService.CompanyNameExistsAsync(inputModel.Name, 0, cancellationToken);
+            if (nameExists)
             {
-                _logger.LogInformation("Attempting to add a new company: {CompanyName}", inputModel.Name);
-                await _companyService.AddCompanyAsync(inputModel,cancellationToken);
-                _logger.LogInformation("Successfully added company: {CompanyName}", inputModel.Name);
-                return CreatedAtAction(nameof(GetCompanyById), new { id = inputModel }, inputModel);
+                errors.Add("A company with this name already exists.");
             }
-            catch (Exception ex)
+
+            if (errors.Any())
             {
-                _logger.LogError(ex, "An error occurred while adding company: {CompanyName}", inputModel.Name);
-                return StatusCode(500, "Internal server error");
+                return BadRequest(new { Errors = errors });
             }
+
+            var createdCompany = await _companyService.AddCompanyAsync(inputModel, cancellationToken);
+            
+            return CreatedAtAction(nameof(GetCompanyById), new { id = createdCompany.Id }, createdCompany);
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateCompany([FromRoute]int id, [FromBody]CompanyInputModel inputModel,CancellationToken cancellationToken)
+        public async Task<IActionResult> UpdateCompany([FromRoute] int id, [FromBody] CompanyInputModel inputModel, CancellationToken cancellationToken)
         {
-            var updatedCompany = await _companyService.UpdateCompanyAsync(id, inputModel, cancellationToken);
+            var errors = new List<string>();
 
-            if (updatedCompany==null)
+            var existingCompany = await _companyService.GetCompanyByIdAsync(id, cancellationToken);
+            if (existingCompany == null)
             {
-                return NotFound(new
-                {
-                    StatusCode = StatusCodes.Status404NotFound,
-                    Message = $"Company with ID {id} not found."
-                });
+                errors.Add($"Company with ID {id} not found.");
             }
 
+            var nameExists = await _companyService.CompanyNameExistsAsync(inputModel.Name, id, cancellationToken);
+            if (nameExists)
+            {
+                errors.Add("A company with this name already exists.");
+            }
+
+            if (errors.Any())
+            {
+                return BadRequest(new { Errors = errors });
+            }
+
+            var updatedCompany = await _companyService.UpdateCompanyAsync(id, inputModel, cancellationToken);
+            
             return Ok(updatedCompany);
         }
+
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteCompany([FromRoute]int id,CancellationToken cancellationToken)

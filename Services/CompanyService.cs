@@ -95,5 +95,10 @@ namespace CompanyManagement.Services
             await _context.SaveChangesAsync(cancellationToken);
             return true;
         }
+
+        public async Task<bool> CompanyNameExistsAsync(string name, int excludeId, CancellationToken cancellationToken)
+        {
+            return await _context.Companies.AnyAsync(c => c.Name == name && c.Id != excludeId, cancellationToken);
+        }
     }
 }

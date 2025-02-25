@@ -11,5 +11,6 @@ namespace CompanyManagement.Services
         Task<IEnumerable<CompanyDto>> GetAllCompaniesAsync(CompanyQueryParameters parameters, CancellationToken cancellationToken);
         Task<CompanyDto?> UpdateCompanyAsync(int id, CompanyInputModel inputModel, CancellationToken cancellationToken);
         Task<bool> DeleteCompanyAsync(int id, CancellationToken cancellationToken);
+        Task<bool> CompanyNameExistsAsync(string name, int excludeId, CancellationToken cancellationToken);
     }
 }

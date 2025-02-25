@@ -12011,3 +12011,199 @@ LIMIT 1
 2025-02-25 09:34:03.9976 Info Executed endpoint 'CompanyManagement.Controllers.UploadImageController.GetEmployeeImages (CompanyManagement)' 
 2025-02-25 09:34:04.0084 Info Request finished HTTP/1.1 GET http://localhost:5292/api/UploadImage/1 - 200 - application/json;+charset=utf-8 627.4649ms 
 2025-02-25 09:34:36.5458 Info Application is shutting down... 
+2025-02-25 12:12:33.5069 Info Executed DbCommand (32ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-02-25 12:12:33.5662 Info Executed DbCommand (2ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-02-25 12:12:33.5662 Info Executed DbCommand (0ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-02-25 12:12:33.6546 Info User profile is available. Using 'C:\Users\hp\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest. 
+2025-02-25 12:12:33.7191 Warn The WebRootPath was not found: C:\Users\hp\CompanyManagement\CompanyManagement\wwwroot. Static files may be unavailable. 
+2025-02-25 12:12:33.7418 Info Now listening on: http://localhost:5292 
+2025-02-25 12:12:33.7418 Info Application started. Press Ctrl+C to shut down. 
+2025-02-25 12:12:33.7418 Info Hosting environment: Development 
+2025-02-25 12:12:33.7418 Info Content root path: C:\Users\hp\CompanyManagement\CompanyManagement 
+2025-02-25 12:12:57.0213 Info Request starting HTTP/1.1 POST http://localhost:5292/api/Company - application/json 28 
+2025-02-25 12:12:57.0591 Warn Failed to determine the https port for redirect. 
+2025-02-25 12:12:57.0891 Info CORS policy execution successful. 
+2025-02-25 12:12:57.1523 Info Executing endpoint 'CompanyManagement.Controllers.CompanyController.AddCompany (CompanyManagement)' 
+2025-02-25 12:12:57.1870 Info Route matched with {action = "AddCompany", controller = "Company"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddCompany(CompanyManagement.InputModels.CompanyInputModel, System.Threading.CancellationToken) on controller CompanyManagement.Controllers.CompanyController (CompanyManagement). 
+2025-02-25 12:12:57.5093 Info Executed action CompanyManagement.Controllers.CompanyController.AddCompany (CompanyManagement) in 314.3564ms 
+2025-02-25 12:12:57.5093 Info Executed endpoint 'CompanyManagement.Controllers.CompanyController.AddCompany (CompanyManagement)' 
+2025-02-25 12:12:57.5560 Info Request finished HTTP/1.1 POST http://localhost:5292/api/Company - 500 - application/json 535.8562ms 
+2025-02-25 12:13:28.4855 Info Application is shutting down... 
+2025-02-25 12:14:30.3505 Info Executed DbCommand (33ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-02-25 12:14:30.4121 Info Executed DbCommand (4ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-02-25 12:14:30.4121 Info Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-02-25 12:14:30.4831 Info User profile is available. Using 'C:\Users\hp\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest. 
+2025-02-25 12:14:30.5262 Warn The WebRootPath was not found: C:\Users\hp\CompanyManagement\CompanyManagement\wwwroot. Static files may be unavailable. 
+2025-02-25 12:14:30.5498 Info Now listening on: http://localhost:5292 
+2025-02-25 12:14:30.5498 Info Application started. Press Ctrl+C to shut down. 
+2025-02-25 12:14:30.5498 Info Hosting environment: Development 
+2025-02-25 12:14:30.5498 Info Content root path: C:\Users\hp\CompanyManagement\CompanyManagement 
+2025-02-25 12:14:31.5412 Info Request starting HTTP/1.1 POST http://localhost:5292/api/Company - application/json 28 
+2025-02-25 12:14:31.5581 Warn Failed to determine the https port for redirect. 
+2025-02-25 12:14:31.5673 Info CORS policy execution successful. 
+2025-02-25 12:14:31.5818 Info Executing endpoint 'CompanyManagement.Controllers.CompanyController.AddCompany (CompanyManagement)' 
+2025-02-25 12:14:31.5937 Info Route matched with {action = "AddCompany", controller = "Company"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddCompany(CompanyManagement.InputModels.CompanyInputModel, System.Threading.CancellationToken) on controller CompanyManagement.Controllers.CompanyController (CompanyManagement). 
+2025-02-25 12:14:31.7210 Info Executed action CompanyManagement.Controllers.CompanyController.AddCompany (CompanyManagement) in 123.0606ms 
+2025-02-25 12:14:31.7210 Info Executed endpoint 'CompanyManagement.Controllers.CompanyController.AddCompany (CompanyManagement)' 
+2025-02-25 12:14:31.7408 Info Request finished HTTP/1.1 POST http://localhost:5292/api/Company - 500 - application/json 197.9570ms 
+2025-02-25 12:14:48.4659 Info Request starting HTTP/1.1 POST http://localhost:5292/api/Company - application/json 16 
+2025-02-25 12:14:48.4699 Info CORS policy execution successful. 
+2025-02-25 12:14:48.4699 Info Executing endpoint 'CompanyManagement.Controllers.CompanyController.AddCompany (CompanyManagement)' 
+2025-02-25 12:14:48.4699 Info Route matched with {action = "AddCompany", controller = "Company"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddCompany(CompanyManagement.InputModels.CompanyInputModel, System.Threading.CancellationToken) on controller CompanyManagement.Controllers.CompanyController (CompanyManagement). 
+2025-02-25 12:14:48.4699 Info Executed action CompanyManagement.Controllers.CompanyController.AddCompany (CompanyManagement) in 10.5606ms 
+2025-02-25 12:14:48.4699 Info Executed endpoint 'CompanyManagement.Controllers.CompanyController.AddCompany (CompanyManagement)' 
+2025-02-25 12:14:48.4699 Info Request finished HTTP/1.1 POST http://localhost:5292/api/Company - 500 - application/json 18.0129ms 
+2025-02-25 12:15:14.7128 Info Application is shutting down... 
+2025-02-25 12:22:05.3564 Info Executed DbCommand (35ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-02-25 12:22:05.4203 Info Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-02-25 12:22:05.4203 Info Executed DbCommand (0ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-02-25 12:22:05.4970 Info User profile is available. Using 'C:\Users\hp\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest. 
+2025-02-25 12:22:05.5383 Warn The WebRootPath was not found: C:\Users\hp\CompanyManagement\CompanyManagement\wwwroot. Static files may be unavailable. 
+2025-02-25 12:22:05.5597 Info Now listening on: http://localhost:5292 
+2025-02-25 12:22:05.5597 Info Application started. Press Ctrl+C to shut down. 
+2025-02-25 12:22:05.5597 Info Hosting environment: Development 
+2025-02-25 12:22:05.5597 Info Content root path: C:\Users\hp\CompanyManagement\CompanyManagement 
+2025-02-25 12:22:23.3031 Info Request starting HTTP/1.1 POST http://localhost:5292/api/Company - application/json 16 
+2025-02-25 12:22:23.3349 Warn Failed to determine the https port for redirect. 
+2025-02-25 12:22:23.3572 Info CORS policy execution successful. 
+2025-02-25 12:22:23.4081 Info Executing endpoint 'CompanyManagement.Controllers.CompanyController.AddCompany (CompanyManagement)' 
+2025-02-25 12:22:23.4362 Info Route matched with {action = "AddCompany", controller = "Company"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddCompany(CompanyManagement.InputModels.CompanyInputModel, System.Threading.CancellationToken) on controller CompanyManagement.Controllers.CompanyController (CompanyManagement). 
+2025-02-25 12:22:23.7118 Info Executing BadRequestObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ValidationProblemDetails'. 
+2025-02-25 12:22:23.7924 Info Executed action CompanyManagement.Controllers.CompanyController.AddCompany (CompanyManagement) in 344.4129ms 
+2025-02-25 12:22:23.7924 Info Executed endpoint 'CompanyManagement.Controllers.CompanyController.AddCompany (CompanyManagement)' 
+2025-02-25 12:22:23.7924 Info Request finished HTTP/1.1 POST http://localhost:5292/api/Company - 400 - application/problem+json;+charset=utf-8 494.1034ms 
+2025-02-25 12:23:24.0371 Info Request starting HTTP/1.1 PUT http://localhost:5292/api/Company/2 - application/json 27 
+2025-02-25 12:23:24.0371 Info CORS policy execution successful. 
+2025-02-25 12:23:24.0371 Info Executing endpoint 'CompanyManagement.Controllers.CompanyController.UpdateCompany (CompanyManagement)' 
+2025-02-25 12:23:24.0567 Info Route matched with {action = "UpdateCompany", controller = "Company"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] UpdateCompany(Int32, CompanyManagement.InputModels.CompanyInputModel, System.Threading.CancellationToken) on controller CompanyManagement.Controllers.CompanyController (CompanyManagement). 
+2025-02-25 12:23:24.2690 Info Executed DbCommand (13ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT c1."Id", c1."Name", s."CompanyId", s."EmployeeId", s."Id", s."FullName", s."Position", s."ProfilePicturePaths"
+FROM (
+    SELECT c."Id", c."Name"
+    FROM "Companies" AS c
+    WHERE c."Id" = @__id_0
+    LIMIT 1
+) AS c1
+LEFT JOIN (
+    SELECT c0."CompanyId", c0."EmployeeId", e."Id", e."FullName", e."Position", e."ProfilePicturePaths"
+    FROM "CompanyEmployee" AS c0
+    INNER JOIN "Employees" AS e ON c0."EmployeeId" = e."Id"
+) AS s ON c1."Id" = s."CompanyId"
+ORDER BY c1."Id", s."CompanyId", s."EmployeeId" 
+2025-02-25 12:23:24.2944 Info Executed DbCommand (3ms) [Parameters=[@__name_0='?', @__excludeId_1='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "Companies" AS c
+    WHERE c."Name" = @__name_0 AND c."Id" <> @__excludeId_1) 
+2025-02-25 12:23:24.3015 Info Executing BadRequestObjectResult, writing value of type '<>f__AnonymousType4`1[[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'. 
+2025-02-25 12:23:24.3015 Info Executed action CompanyManagement.Controllers.CompanyController.UpdateCompany (CompanyManagement) in 258.0995ms 
+2025-02-25 12:23:24.3015 Info Executed endpoint 'CompanyManagement.Controllers.CompanyController.UpdateCompany (CompanyManagement)' 
+2025-02-25 12:23:24.3213 Info Request finished HTTP/1.1 PUT http://localhost:5292/api/Company/2 - 400 - application/json;+charset=utf-8 284.3141ms 
+2025-02-25 12:23:45.6878 Info Application is shutting down... 
+2025-02-25 12:31:50.3867 Info Executed DbCommand (44ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-02-25 12:31:50.4518 Info Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-02-25 12:31:50.4532 Info Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-02-25 12:31:50.5240 Info User profile is available. Using 'C:\Users\hp\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest. 
+2025-02-25 12:31:50.5602 Warn The WebRootPath was not found: C:\Users\hp\CompanyManagement\CompanyManagement\wwwroot. Static files may be unavailable. 
+2025-02-25 12:31:50.5813 Info Now listening on: http://localhost:5292 
+2025-02-25 12:31:50.5813 Info Application started. Press Ctrl+C to shut down. 
+2025-02-25 12:31:50.5813 Info Hosting environment: Development 
+2025-02-25 12:31:50.5813 Info Content root path: C:\Users\hp\CompanyManagement\CompanyManagement 
+2025-02-25 12:31:58.4382 Info Request starting HTTP/1.1 PUT http://localhost:5292/api/Company/2 - application/json 27 
+2025-02-25 12:31:58.4704 Warn Failed to determine the https port for redirect. 
+2025-02-25 12:31:58.4917 Info CORS policy execution successful. 
+2025-02-25 12:31:58.5483 Info Executing endpoint 'CompanyManagement.Controllers.CompanyController.UpdateCompany (CompanyManagement)' 
+2025-02-25 12:31:58.5813 Info Route matched with {action = "UpdateCompany", controller = "Company"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] UpdateCompany(Int32, CompanyManagement.InputModels.CompanyInputModel, System.Threading.CancellationToken) on controller CompanyManagement.Controllers.CompanyController (CompanyManagement). 
+2025-02-25 12:31:59.1357 Info Executed DbCommand (12ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT c1."Id", c1."Name", s."CompanyId", s."EmployeeId", s."Id", s."FullName", s."Position", s."ProfilePicturePaths"
+FROM (
+    SELECT c."Id", c."Name"
+    FROM "Companies" AS c
+    WHERE c."Id" = @__id_0
+    LIMIT 1
+) AS c1
+LEFT JOIN (
+    SELECT c0."CompanyId", c0."EmployeeId", e."Id", e."FullName", e."Position", e."ProfilePicturePaths"
+    FROM "CompanyEmployee" AS c0
+    INNER JOIN "Employees" AS e ON c0."EmployeeId" = e."Id"
+) AS s ON c1."Id" = s."CompanyId"
+ORDER BY c1."Id", s."CompanyId", s."EmployeeId" 
+2025-02-25 12:31:59.1666 Info Executed DbCommand (2ms) [Parameters=[@__name_0='?', @__excludeId_1='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "Companies" AS c
+    WHERE c."Name" = @__name_0 AND c."Id" <> @__excludeId_1) 
+2025-02-25 12:31:59.1823 Info Executing BadRequestObjectResult, writing value of type '<>f__AnonymousType3`1[[System.Collections.Generic.List`1[[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'. 
+2025-02-25 12:31:59.2336 Info Executed action CompanyManagement.Controllers.CompanyController.UpdateCompany (CompanyManagement) in 640.3647ms 
+2025-02-25 12:31:59.2336 Info Executed endpoint 'CompanyManagement.Controllers.CompanyController.UpdateCompany (CompanyManagement)' 
+2025-02-25 12:31:59.2336 Info Request finished HTTP/1.1 PUT http://localhost:5292/api/Company/2 - 400 - application/json;+charset=utf-8 807.4681ms 
+2025-02-25 12:32:27.0865 Info Request starting HTTP/1.1 POST http://localhost:5292/api/Company - application/json 16 
+2025-02-25 12:32:27.0865 Info CORS policy execution successful. 
+2025-02-25 12:32:27.0865 Info Executing endpoint 'CompanyManagement.Controllers.CompanyController.AddCompany (CompanyManagement)' 
+2025-02-25 12:32:27.1049 Info Route matched with {action = "AddCompany", controller = "Company"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddCompany(CompanyManagement.InputModels.CompanyInputModel, System.Threading.CancellationToken) on controller CompanyManagement.Controllers.CompanyController (CompanyManagement). 
+2025-02-25 12:32:27.1408 Info Executing BadRequestObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ValidationProblemDetails'. 
+2025-02-25 12:32:27.1955 Info Executed action CompanyManagement.Controllers.CompanyController.AddCompany (CompanyManagement) in 90.3458ms 
+2025-02-25 12:32:27.1955 Info Executed endpoint 'CompanyManagement.Controllers.CompanyController.AddCompany (CompanyManagement)' 
+2025-02-25 12:32:27.1955 Info Request finished HTTP/1.1 POST http://localhost:5292/api/Company - 400 - application/problem+json;+charset=utf-8 109.9082ms 
+2025-02-25 12:32:42.2394 Info Request starting HTTP/1.1 POST http://localhost:5292/api/Company - application/json 27 
+2025-02-25 12:32:42.2394 Info CORS policy execution successful. 
+2025-02-25 12:32:42.2394 Info Executing endpoint 'CompanyManagement.Controllers.CompanyController.AddCompany (CompanyManagement)' 
+2025-02-25 12:32:42.2394 Info Route matched with {action = "AddCompany", controller = "Company"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddCompany(CompanyManagement.InputModels.CompanyInputModel, System.Threading.CancellationToken) on controller CompanyManagement.Controllers.CompanyController (CompanyManagement). 
+2025-02-25 12:32:42.2873 Info Executed DbCommand (1ms) [Parameters=[@__name_0='?', @__excludeId_1='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "Companies" AS c
+    WHERE c."Name" = @__name_0 AND c."Id" <> @__excludeId_1) 
+2025-02-25 12:32:42.2873 Info Executing BadRequestObjectResult, writing value of type '<>f__AnonymousType3`1[[System.Collections.Generic.List`1[[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'. 
+2025-02-25 12:32:42.2873 Info Executed action CompanyManagement.Controllers.CompanyController.AddCompany (CompanyManagement) in 41.0173ms 
+2025-02-25 12:32:42.2873 Info Executed endpoint 'CompanyManagement.Controllers.CompanyController.AddCompany (CompanyManagement)' 
+2025-02-25 12:32:42.2873 Info Request finished HTTP/1.1 POST http://localhost:5292/api/Company - 400 - application/json;+charset=utf-8 49.6145ms 
+2025-02-25 12:32:55.7785 Info Application is shutting down... 
