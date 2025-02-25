@@ -43,26 +43,39 @@ namespace CompanyManagement.Controllers
         [HttpPost]
         public async Task<IActionResult> AddEmployee([FromBody] EmployeeInputModel inputModel,CancellationToken cancellationToken)
         {
+            var errors = new List<string>();
+
+            var nameExists = await _employeeService.EmployeeNameExistsAsync(inputModel.FullName, 0, cancellationToken);
+            if (nameExists)
+                errors.Add("An employee with this name already exists.");
+
+            if (errors.Any())
+                return BadRequest(new { Errors = errors });
+
             await _employeeService.AddEmployeeAsync(inputModel,cancellationToken);
             return CreatedAtAction(nameof(GetEmployeeById), new { id = inputModel }, inputModel);
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateEmployee([FromRoute] int id,[FromBody] EmployeeInputModel inputModel,CancellationToken cancellationToken)
+        public async Task<IActionResult> UpdateEmployee([FromRoute] int id, [FromBody] EmployeeInputModel inputModel, CancellationToken cancellationToken)
         {
+            var errors = new List<string>();
+
+            var existingEmployee = await _employeeService.GetEmployeeByIdAsync(id);
+            if (existingEmployee == null)
+                errors.Add($"Employee with ID {id} not found.");
+
+            var nameExists = await _employeeService.EmployeeNameExistsAsync(inputModel.FullName, id, cancellationToken);
+            if (nameExists)
+                errors.Add("An employee with this name already exists.");
+
+            if (errors.Any())
+                return BadRequest(new { Errors = errors });
+
             var updatedEmployee = await _employeeService.UpdateEmployeeAsync(id, inputModel, cancellationToken);
-
-            if (updatedEmployee==null)
-            {
-                return NotFound(new
-                {
-                    StatusCode = StatusCodes.Status404NotFound,
-                    Message = $"Employee with ID {id} not found."
-                });
-            }
-
             return Ok(updatedEmployee);
         }
+
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteEmployee([FromRoute] int id,CancellationToken cancellationToken)

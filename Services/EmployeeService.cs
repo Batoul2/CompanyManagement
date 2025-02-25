@@ -168,6 +168,9 @@ namespace CompanyManagement.Services
             return true;
         }
 
-
+        public async Task<bool> EmployeeNameExistsAsync(string name, int excludeId, CancellationToken cancellationToken)
+        {
+            return await _dbContext.Employees.AnyAsync(e => e.FullName == name && e.Id != excludeId, cancellationToken);
+        }
     }
 }

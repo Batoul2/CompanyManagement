@@ -97,5 +97,10 @@ namespace CompanyManagement.Services
             await _context.SaveChangesAsync(cancellationToken);
             return true;
         }
+
+        public async Task<bool> ProjectTitleExistsAsync(string title, int excludeId, CancellationToken cancellationToken)
+        {
+            return await _context.Projects.AnyAsync(p => p.Title == title && p.Id != excludeId, cancellationToken);
+        }
     }
 }

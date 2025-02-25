@@ -15,6 +15,7 @@ namespace CompanyManagement.Services
 
         Task AssignProjectToEmployeeAsync(int employeeId, int projectId, CancellationToken cancellationToken);
         Task<bool> RemoveProjectFromEmployeeAsync(int employeeId, int projectId, CancellationToken cancellationToken); 
+        Task<bool> EmployeeNameExistsAsync(string name, int excludeId, CancellationToken cancellationToken);
     }
 
 }
