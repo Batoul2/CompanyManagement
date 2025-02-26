@@ -14,6 +14,7 @@ namespace CompanyManagement.Services
     {
         private readonly CompanyDbContext _dbContext;
         private readonly IFileService _fileService;
+        private readonly string _uploadFolderPath = Path.Combine(Directory.GetCurrentDirectory(), "UploadedImages");
 
         public UploadImageService(CompanyDbContext dbContext, IFileService fileService)
         {
@@ -35,15 +36,20 @@ namespace CompanyManagement.Services
             return new ImageDto { Id = image.Id, ImagePath = filePath };
         }
 
-        public async Task<List<ImageDto>> GetEmployeeImagesAsync(int employeeId)
+        public async Task<(string fileName, byte[] fileContent)> GetImageAsync(int imageId, CancellationToken cancellationToken)
         {
-            var images = await _dbContext.Images
-                .Where(img => img.EmployeeId == employeeId)
-                .Select(img => new ImageDto { Id = img.Id, ImagePath = img.ImagePath })
-                .ToListAsync();
+            var image = await _dbContext.Images.FirstOrDefaultAsync(i => i.Id == imageId, cancellationToken);
+            if (image == null)
+                throw new KeyNotFoundException($"Image with ID {imageId} not found.");
 
-            return images;
+            var filePath = Path.Combine(_uploadFolderPath, image.ImagePath);
+            if (!File.Exists(filePath))
+                throw new FileNotFoundException($"File not found at {filePath}");
+
+            var fileContent = await File.ReadAllBytesAsync(filePath);
+            return (image.ImagePath, fileContent);
         }
+
         public async Task<bool> DeleteImageAsync(int imageId, CancellationToken cancellationToken)
         {
             var image = await _dbContext.Images

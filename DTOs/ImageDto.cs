@@ -4,5 +4,6 @@ namespace CompanyManagement.DTOs
     {
         public int Id { get; set; }
         public string ImagePath { get; set; } = string.Empty;
+        
     }
 }

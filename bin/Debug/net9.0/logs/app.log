@@ -12298,3 +12298,316 @@ LIMIT 1
 2025-02-25 15:31:47.6398 Info Request starting HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - - - 
 2025-02-25 15:31:47.7784 Info Request finished HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - 200 - application/json;charset=utf-8 138.5248ms 
 2025-02-25 15:32:07.9742 Info Application is shutting down... 
+2025-02-25 16:45:44.5133 Info Executed DbCommand (36ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-02-25 16:45:44.5724 Info Executed DbCommand (2ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-02-25 16:45:44.5724 Info Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-02-25 16:45:44.6564 Info User profile is available. Using 'C:\Users\hp\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest. 
+2025-02-25 16:45:44.7026 Warn The WebRootPath was not found: C:\Users\hp\CompanyManagement\CompanyManagement\wwwroot. Static files may be unavailable. 
+2025-02-25 16:45:44.7288 Info Now listening on: http://localhost:5292 
+2025-02-25 16:45:44.7288 Info Application started. Press Ctrl+C to shut down. 
+2025-02-25 16:45:44.7288 Info Hosting environment: Development 
+2025-02-25 16:45:44.7288 Info Content root path: C:\Users\hp\CompanyManagement\CompanyManagement 
+2025-02-25 16:45:46.2934 Info Request starting HTTP/1.1 GET http://localhost:5292/index.html - - - 
+2025-02-25 16:45:46.3165 Warn Failed to determine the https port for redirect. 
+2025-02-25 16:45:46.4224 Info Request finished HTTP/1.1 GET http://localhost:5292/index.html - 200 - text/html;charset=utf-8 128.3754ms 
+2025-02-25 16:45:46.4978 Info Request starting HTTP/1.1 GET http://localhost:5292/index.js - - - 
+2025-02-25 16:45:46.4978 Info Request finished HTTP/1.1 GET http://localhost:5292/index.js - 200 - application/javascript;charset=utf-8 2.3015ms 
+2025-02-25 16:45:46.8783 Info Request starting HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - - - 
+2025-02-25 16:45:47.0476 Info Request finished HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - 200 - application/json;charset=utf-8 169.2383ms 
+2025-02-25 16:46:51.3296 Info Request starting HTTP/1.1 POST http://localhost:5292/api/UploadImage - multipart/form-data;+boundary=----WebKitFormBoundaryULBXqIz8UPX8h437 135574 
+2025-02-25 16:46:51.3360 Info CORS policy execution successful. 
+2025-02-25 16:46:51.3840 Info Executing endpoint 'CompanyManagement.Controllers.UploadImageController.UploadImage (CompanyManagement)' 
+2025-02-25 16:46:51.4116 Info Route matched with {action = "UploadImage", controller = "UploadImage"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] UploadImage(Int32, CompanyManagement.InputModels.ImageInputModel, System.Threading.CancellationToken) on controller CompanyManagement.Controllers.UploadImageController (CompanyManagement). 
+2025-02-25 16:46:51.6040 Info Executed DbCommand (7ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT e."Id", e."FullName", e."Position"
+FROM "Employees" AS e
+WHERE e."Id" = @__p_0
+LIMIT 1 
+2025-02-25 16:46:51.6040 Info Executed action CompanyManagement.Controllers.UploadImageController.UploadImage (CompanyManagement) in 197.2157ms 
+2025-02-25 16:46:51.6040 Info Executed endpoint 'CompanyManagement.Controllers.UploadImageController.UploadImage (CompanyManagement)' 
+2025-02-25 16:46:51.6785 Info Request finished HTTP/1.1 POST http://localhost:5292/api/UploadImage - 404 - application/json 348.7918ms 
+2025-02-25 16:47:01.9911 Info Request starting HTTP/1.1 POST http://localhost:5292/api/UploadImage - multipart/form-data;+boundary=----WebKitFormBoundaryotF3wM5gOATJaUqq 135574 
+2025-02-25 16:47:01.9911 Info CORS policy execution successful. 
+2025-02-25 16:47:01.9911 Info Executing endpoint 'CompanyManagement.Controllers.UploadImageController.UploadImage (CompanyManagement)' 
+2025-02-25 16:47:01.9911 Info Route matched with {action = "UploadImage", controller = "UploadImage"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] UploadImage(Int32, CompanyManagement.InputModels.ImageInputModel, System.Threading.CancellationToken) on controller CompanyManagement.Controllers.UploadImageController (CompanyManagement). 
+2025-02-25 16:47:02.0278 Info Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT e."Id", e."FullName", e."Position"
+FROM "Employees" AS e
+WHERE e."Id" = @__p_0
+LIMIT 1 
+2025-02-25 16:47:02.0278 Info Executed action CompanyManagement.Controllers.UploadImageController.UploadImage (CompanyManagement) in 30.1433ms 
+2025-02-25 16:47:02.0278 Info Executed endpoint 'CompanyManagement.Controllers.UploadImageController.UploadImage (CompanyManagement)' 
+2025-02-25 16:47:02.0278 Info Request finished HTTP/1.1 POST http://localhost:5292/api/UploadImage - 404 - application/json 38.9945ms 
+2025-02-25 16:48:03.0951 Info Request starting HTTP/1.1 GET http://localhost:5292/api/Employee/1 - - - 
+2025-02-25 16:48:03.1063 Info Executing endpoint 'CompanyManagement.Controllers.EmployeeController.GetEmployeeById (CompanyManagement)' 
+2025-02-25 16:48:03.1164 Info Route matched with {action = "GetEmployeeById", controller = "Employee"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[CompanyManagement.DTOs.EmployeeDto]] GetEmployeeById(Int32) on controller CompanyManagement.Controllers.EmployeeController (CompanyManagement). 
+2025-02-25 16:48:03.3763 Warn Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'. 
+2025-02-25 16:48:03.4266 Info Executed DbCommand (14ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT e1."Id", e1."FullName", e1."Position", s."CompanyId", s."EmployeeId", s."Id", s."Name", s0."EmployeeId", s0."ProjectId", s0."Id", s0."Duration", s0."Title"
+FROM (
+    SELECT e."Id", e."FullName", e."Position"
+    FROM "Employees" AS e
+    WHERE e."Id" = @__id_0
+    LIMIT 1
+) AS e1
+LEFT JOIN (
+    SELECT c."CompanyId", c."EmployeeId", c0."Id", c0."Name"
+    FROM "CompanyEmployee" AS c
+    INNER JOIN "Companies" AS c0 ON c."CompanyId" = c0."Id"
+) AS s ON e1."Id" = s."EmployeeId"
+LEFT JOIN (
+    SELECT e0."EmployeeId", e0."ProjectId", p."Id", p."Duration", p."Title"
+    FROM "EmployeeProject" AS e0
+    INNER JOIN "Projects" AS p ON e0."ProjectId" = p."Id"
+) AS s0 ON e1."Id" = s0."EmployeeId"
+ORDER BY e1."Id", s."CompanyId", s."EmployeeId", s."Id", s0."EmployeeId", s0."ProjectId" 
+2025-02-25 16:48:03.4794 Info Executing OkObjectResult, writing value of type 'CompanyManagement.DTOs.EmployeeDto'. 
+2025-02-25 16:48:03.5128 Info Executed action CompanyManagement.Controllers.EmployeeController.GetEmployeeById (CompanyManagement) in 396.1639ms 
+2025-02-25 16:48:03.5128 Info Executed endpoint 'CompanyManagement.Controllers.EmployeeController.GetEmployeeById (CompanyManagement)' 
+2025-02-25 16:48:03.5128 Info Request finished HTTP/1.1 GET http://localhost:5292/api/Employee/1 - 200 - application/json;+charset=utf-8 418.2511ms 
+2025-02-25 16:48:47.4096 Info Request starting HTTP/1.1 GET http://localhost:5292/api/UploadImage/1 - - - 
+2025-02-25 16:48:47.4096 Info Executing endpoint 'CompanyManagement.Controllers.UploadImageController.GetImage (CompanyManagement)' 
+2025-02-25 16:48:47.4096 Info Route matched with {action = "GetImage", controller = "UploadImage"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetImage(Int32, System.Threading.CancellationToken) on controller CompanyManagement.Controllers.UploadImageController (CompanyManagement). 
+2025-02-25 16:48:47.4390 Info Executed DbCommand (3ms) [Parameters=[@__imageId_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT i."Id", i."EmployeeId", i."ImagePath"
+FROM "Images" AS i
+WHERE i."Id" = @__imageId_0
+LIMIT 1 
+2025-02-25 16:48:47.4390 Info Executed action CompanyManagement.Controllers.UploadImageController.GetImage (CompanyManagement) in 23.6659ms 
+2025-02-25 16:48:47.4390 Info Executed endpoint 'CompanyManagement.Controllers.UploadImageController.GetImage (CompanyManagement)' 
+2025-02-25 16:48:47.4390 Info Request finished HTTP/1.1 GET http://localhost:5292/api/UploadImage/1 - 404 - application/json 31.7363ms 
+2025-02-25 16:49:20.1080 Info Application is shutting down... 
+2025-02-26 07:58:58.0948 Info Executed DbCommand (30ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-02-26 07:58:58.1437 Info Executed DbCommand (2ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-02-26 07:58:58.1437 Info Executed DbCommand (0ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-02-26 07:58:58.2086 Info User profile is available. Using 'C:\Users\hp\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest. 
+2025-02-26 07:58:58.2503 Warn The WebRootPath was not found: C:\Users\hp\CompanyManagement\CompanyManagement\wwwroot. Static files may be unavailable. 
+2025-02-26 07:58:58.2656 Info Now listening on: http://localhost:5292 
+2025-02-26 07:58:58.2665 Info Application started. Press Ctrl+C to shut down. 
+2025-02-26 07:58:58.2665 Info Hosting environment: Development 
+2025-02-26 07:58:58.2665 Info Content root path: C:\Users\hp\CompanyManagement\CompanyManagement 
+2025-02-26 07:59:07.2200 Info Request starting HTTP/1.1 POST http://localhost:5292/api/UploadImage - multipart/form-data;+boundary=----WebKitFormBoundaryNqfzxprnqZtK8tn3 135574 
+2025-02-26 07:59:07.2605 Warn Failed to determine the https port for redirect. 
+2025-02-26 07:59:07.2869 Info CORS policy execution successful. 
+2025-02-26 07:59:07.3504 Info Executing endpoint 'CompanyManagement.Controllers.UploadImageController.UploadImage (CompanyManagement)' 
+2025-02-26 07:59:07.3908 Info Route matched with {action = "UploadImage", controller = "UploadImage"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] UploadImage(Int32, CompanyManagement.InputModels.ImageInputModel, System.Threading.CancellationToken) on controller CompanyManagement.Controllers.UploadImageController (CompanyManagement). 
+2025-02-26 07:59:07.5944 Info Executed DbCommand (7ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT e."Id", e."FullName", e."Position"
+FROM "Employees" AS e
+WHERE e."Id" = @__p_0
+LIMIT 1 
+2025-02-26 07:59:07.6102 Info Executed action CompanyManagement.Controllers.UploadImageController.UploadImage (CompanyManagement) in 208.2519ms 
+2025-02-26 07:59:07.6102 Info Executed endpoint 'CompanyManagement.Controllers.UploadImageController.UploadImage (CompanyManagement)' 
+2025-02-26 07:59:07.7006 Info Request finished HTTP/1.1 POST http://localhost:5292/api/UploadImage - 404 - application/json 482.6543ms 
+2025-02-26 07:59:31.5984 Info Application is shutting down... 
+2025-02-26 08:00:15.3949 Info Executed DbCommand (33ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-02-26 08:00:15.4571 Info Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-02-26 08:00:15.4571 Info Executed DbCommand (0ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-02-26 08:00:15.5389 Info User profile is available. Using 'C:\Users\hp\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest. 
+2025-02-26 08:00:15.5757 Warn The WebRootPath was not found: C:\Users\hp\CompanyManagement\CompanyManagement\wwwroot. Static files may be unavailable. 
+2025-02-26 08:00:15.5963 Info Now listening on: http://localhost:5292 
+2025-02-26 08:00:15.5963 Info Application started. Press Ctrl+C to shut down. 
+2025-02-26 08:00:15.5963 Info Hosting environment: Development 
+2025-02-26 08:00:15.5963 Info Content root path: C:\Users\hp\CompanyManagement\CompanyManagement 
+2025-02-26 08:00:16.9647 Info Request starting HTTP/1.1 POST http://localhost:5292/api/UploadImage - multipart/form-data;+boundary=----WebKitFormBoundaryodIdeE38vUL1JkH3 135574 
+2025-02-26 08:00:16.9828 Warn Failed to determine the https port for redirect. 
+2025-02-26 08:00:16.9936 Info CORS policy execution successful. 
+2025-02-26 08:00:17.0134 Info Executing endpoint 'CompanyManagement.Controllers.UploadImageController.UploadImage (CompanyManagement)' 
+2025-02-26 08:00:17.0277 Info Route matched with {action = "UploadImage", controller = "UploadImage"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] UploadImage(Int32, CompanyManagement.InputModels.ImageInputModel, System.Threading.CancellationToken) on controller CompanyManagement.Controllers.UploadImageController (CompanyManagement). 
+2025-02-26 08:00:17.1898 Info Executed DbCommand (6ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT e."Id", e."FullName", e."Position"
+FROM "Employees" AS e
+WHERE e."Id" = @__p_0
+LIMIT 1 
+2025-02-26 08:00:17.1898 Info Executed action CompanyManagement.Controllers.UploadImageController.UploadImage (CompanyManagement) in 165.8226ms 
+2025-02-26 08:00:17.1898 Info Executed endpoint 'CompanyManagement.Controllers.UploadImageController.UploadImage (CompanyManagement)' 
+2025-02-26 08:00:17.2584 Info Request finished HTTP/1.1 POST http://localhost:5292/api/UploadImage - 404 - application/json 293.0082ms 
+2025-02-26 08:00:38.0813 Info Request starting HTTP/1.1 GET http://localhost:5292/index.html - - - 
+2025-02-26 08:00:38.1969 Info Request finished HTTP/1.1 GET http://localhost:5292/index.html - 200 - text/html;charset=utf-8 115.7885ms 
+2025-02-26 08:00:38.2165 Info Request starting HTTP/1.1 GET http://localhost:5292/index.js - - - 
+2025-02-26 08:00:38.2165 Info Request finished HTTP/1.1 GET http://localhost:5292/index.js - 200 - application/javascript;charset=utf-8 2.8422ms 
+2025-02-26 08:00:38.4450 Info Request starting HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - - - 
+2025-02-26 08:00:38.6285 Info Request finished HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - 200 - application/json;charset=utf-8 183.4656ms 
+2025-02-26 08:01:13.4487 Info Request starting HTTP/1.1 POST http://localhost:5292/api/UploadImage - multipart/form-data;+boundary=----WebKitFormBoundaryEtABhLmdMngnyYCo 135574 
+2025-02-26 08:01:13.4487 Info CORS policy execution successful. 
+2025-02-26 08:01:13.4551 Info Executing endpoint 'CompanyManagement.Controllers.UploadImageController.UploadImage (CompanyManagement)' 
+2025-02-26 08:01:13.4551 Info Route matched with {action = "UploadImage", controller = "UploadImage"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] UploadImage(Int32, CompanyManagement.InputModels.ImageInputModel, System.Threading.CancellationToken) on controller CompanyManagement.Controllers.UploadImageController (CompanyManagement). 
+2025-02-26 08:01:13.5010 Info Executed DbCommand (2ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT e."Id", e."FullName", e."Position"
+FROM "Employees" AS e
+WHERE e."Id" = @__p_0
+LIMIT 1 
+2025-02-26 08:01:13.5025 Info Executed action CompanyManagement.Controllers.UploadImageController.UploadImage (CompanyManagement) in 46.7584ms 
+2025-02-26 08:01:13.5025 Info Executed endpoint 'CompanyManagement.Controllers.UploadImageController.UploadImage (CompanyManagement)' 
+2025-02-26 08:01:13.5025 Info Request finished HTTP/1.1 POST http://localhost:5292/api/UploadImage - 404 - application/json 57.0242ms 
+2025-02-26 08:09:20.3648 Info Application is shutting down... 
+2025-02-26 08:09:36.6821 Info Executed DbCommand (42ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-02-26 08:09:36.7583 Info Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-02-26 08:09:36.7583 Info Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-02-26 08:09:36.8321 Info User profile is available. Using 'C:\Users\hp\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest. 
+2025-02-26 08:09:36.8696 Warn The WebRootPath was not found: C:\Users\hp\CompanyManagement\CompanyManagement\wwwroot. Static files may be unavailable. 
+2025-02-26 08:09:36.8879 Info Now listening on: http://localhost:5292 
+2025-02-26 08:09:36.8879 Info Application started. Press Ctrl+C to shut down. 
+2025-02-26 08:09:36.8879 Info Hosting environment: Development 
+2025-02-26 08:09:36.8879 Info Content root path: C:\Users\hp\CompanyManagement\CompanyManagement 
+2025-02-26 08:09:40.4914 Info Request starting HTTP/1.1 POST http://localhost:5292/api/UploadImage - multipart/form-data;+boundary=----WebKitFormBoundaryvLUeLFsPlPlDWc4C 135574 
+2025-02-26 08:09:40.5069 Warn Failed to determine the https port for redirect. 
+2025-02-26 08:09:40.5069 Info CORS policy execution successful. 
+2025-02-26 08:09:40.5374 Info Executing endpoint 'CompanyManagement.Controllers.UploadImageController.UploadImage (CompanyManagement)' 
+2025-02-26 08:09:40.5374 Info Route matched with {action = "UploadImage", controller = "UploadImage"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] UploadImage(Int32, CompanyManagement.InputModels.ImageInputModel, System.Threading.CancellationToken) on controller CompanyManagement.Controllers.UploadImageController (CompanyManagement). 
+2025-02-26 08:09:40.6373 Info Executed DbCommand (4ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT e."Id", e."FullName", e."Position"
+FROM "Employees" AS e
+WHERE e."Id" = @__p_0
+LIMIT 1 
+2025-02-26 08:09:40.6428 Info Executed action CompanyManagement.Controllers.UploadImageController.UploadImage (CompanyManagement) in 86.3327ms 
+2025-02-26 08:09:40.6428 Info Executed endpoint 'CompanyManagement.Controllers.UploadImageController.UploadImage (CompanyManagement)' 
+2025-02-26 08:09:40.6832 Info Request finished HTTP/1.1 POST http://localhost:5292/api/UploadImage - 404 - application/json 191.4314ms 
+2025-02-26 08:09:56.3204 Info Request starting HTTP/1.1 GET http://localhost:5292/index.html - - - 
+2025-02-26 08:09:56.3982 Info Request finished HTTP/1.1 GET http://localhost:5292/index.html - 200 - text/html;charset=utf-8 77.7133ms 
+2025-02-26 08:09:56.4313 Info Request starting HTTP/1.1 GET http://localhost:5292/index.js - - - 
+2025-02-26 08:09:56.4313 Info Request finished HTTP/1.1 GET http://localhost:5292/index.js - 200 - application/javascript;charset=utf-8 2.6384ms 
+2025-02-26 08:09:56.6163 Info Request starting HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - - - 
+2025-02-26 08:09:56.7829 Info Request finished HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - 200 - application/json;charset=utf-8 166.5836ms 
+2025-02-26 08:10:22.5212 Info Request starting HTTP/1.1 POST http://localhost:5292/api/UploadImage - multipart/form-data;+boundary=----WebKitFormBoundaryooZFqcuomnZrP6bb 135672 
+2025-02-26 08:10:22.5212 Info CORS policy execution successful. 
+2025-02-26 08:10:22.5340 Info Executing endpoint 'CompanyManagement.Controllers.UploadImageController.UploadImage (CompanyManagement)' 
+2025-02-26 08:10:22.5340 Info Route matched with {action = "UploadImage", controller = "UploadImage"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] UploadImage(Int32, CompanyManagement.InputModels.ImageInputModel, System.Threading.CancellationToken) on controller CompanyManagement.Controllers.UploadImageController (CompanyManagement). 
+2025-02-26 08:10:22.5737 Info Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT e."Id", e."FullName", e."Position"
+FROM "Employees" AS e
+WHERE e."Id" = @__p_0
+LIMIT 1 
+2025-02-26 08:10:22.5737 Info Executed action CompanyManagement.Controllers.UploadImageController.UploadImage (CompanyManagement) in 40.1157ms 
+2025-02-26 08:10:22.5737 Info Executed endpoint 'CompanyManagement.Controllers.UploadImageController.UploadImage (CompanyManagement)' 
+2025-02-26 08:10:22.5763 Info Request finished HTTP/1.1 POST http://localhost:5292/api/UploadImage - 404 - application/json 55.0235ms 
+2025-02-26 08:10:32.2961 Info Application is shutting down... 
+2025-02-26 08:19:46.9160 Info Executed DbCommand (35ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-02-26 08:19:47.0055 Info Executed DbCommand (2ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-02-26 08:19:47.0055 Info Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-02-26 08:19:47.1058 Info User profile is available. Using 'C:\Users\hp\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest. 
+2025-02-26 08:19:47.1545 Warn The WebRootPath was not found: C:\Users\hp\CompanyManagement\CompanyManagement\wwwroot. Static files may be unavailable. 
+2025-02-26 08:19:47.1842 Info Now listening on: http://localhost:5292 
+2025-02-26 08:19:47.1842 Info Application started. Press Ctrl+C to shut down. 
+2025-02-26 08:19:47.1842 Info Hosting environment: Development 
+2025-02-26 08:19:47.1842 Info Content root path: C:\Users\hp\CompanyManagement\CompanyManagement 
+2025-02-26 08:19:50.5920 Info Request starting HTTP/1.1 GET http://localhost:5292/index.html - - - 
+2025-02-26 08:19:50.6077 Warn Failed to determine the https port for redirect. 
+2025-02-26 08:19:50.6726 Info Request finished HTTP/1.1 GET http://localhost:5292/index.html - 200 - text/html;charset=utf-8 78.9383ms 
+2025-02-26 08:19:50.7098 Info Request starting HTTP/1.1 GET http://localhost:5292/index.js - - - 
+2025-02-26 08:19:50.7098 Info Request finished HTTP/1.1 GET http://localhost:5292/index.js - 200 - application/javascript;charset=utf-8 1.5504ms 
+2025-02-26 08:19:50.9400 Info Request starting HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - - - 
+2025-02-26 08:19:51.0418 Info Request finished HTTP/1.1 GET http://localhost:5292/swagger/v1/swagger.json - 200 - application/json;charset=utf-8 101.6932ms 
+2025-02-26 08:20:07.6852 Info Request starting HTTP/1.1 POST http://localhost:5292/api/UploadImage/1/upload - multipart/form-data;+boundary=----WebKitFormBoundarypBatveBuj8agLy5i 135574 
+2025-02-26 08:20:07.6911 Info CORS policy execution successful. 
+2025-02-26 08:20:07.7408 Info Executing endpoint 'CompanyManagement.Controllers.UploadImageController.UploadImage (CompanyManagement)' 
+2025-02-26 08:20:07.7630 Info Route matched with {action = "UploadImage", controller = "UploadImage"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] UploadImage(Int32, CompanyManagement.InputModels.ImageInputModel, System.Threading.CancellationToken) on controller CompanyManagement.Controllers.UploadImageController (CompanyManagement). 
+2025-02-26 08:20:07.9427 Info Executed DbCommand (5ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT e."Id", e."FullName", e."Position"
+FROM "Employees" AS e
+WHERE e."Id" = @__p_0
+LIMIT 1 
+2025-02-26 08:20:08.1810 Info Executed DbCommand (18ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?'], CommandType='Text', CommandTimeout='30']
+INSERT INTO "Images" ("EmployeeId", "ImagePath")
+VALUES (@p0, @p1)
+RETURNING "Id"; 
+2025-02-26 08:20:08.2345 Info Executing OkObjectResult, writing value of type 'CompanyManagement.DTOs.ImageDto'. 
+2025-02-26 08:20:08.2917 Info Executed action CompanyManagement.Controllers.UploadImageController.UploadImage (CompanyManagement) in 515.7851ms 
+2025-02-26 08:20:08.2917 Info Executed endpoint 'CompanyManagement.Controllers.UploadImageController.UploadImage (CompanyManagement)' 
+2025-02-26 08:20:08.3044 Info Request finished HTTP/1.1 POST http://localhost:5292/api/UploadImage/1/upload - 200 - application/json;+charset=utf-8 619.2480ms 
+2025-02-26 08:20:41.1518 Info Application is shutting down... 
+2025-02-26 08:21:05.2268 Info Executed DbCommand (38ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-02-26 08:21:05.3006 Info Executed DbCommand (2ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-02-26 08:21:05.3006 Info Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-02-26 08:21:05.3845 Info User profile is available. Using 'C:\Users\hp\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest. 
+2025-02-26 08:21:05.4207 Warn The WebRootPath was not found: C:\Users\hp\CompanyManagement\CompanyManagement\wwwroot. Static files may be unavailable. 
+2025-02-26 08:21:05.4332 Info Now listening on: http://localhost:5292 
+2025-02-26 08:21:05.4332 Info Application started. Press Ctrl+C to shut down. 
+2025-02-26 08:21:05.4332 Info Hosting environment: Development 
+2025-02-26 08:21:05.4332 Info Content root path: C:\Users\hp\CompanyManagement\CompanyManagement 
+2025-02-26 08:21:14.8858 Info Request starting HTTP/1.1 GET http://localhost:5292/api/UploadImage/1 - - - 
+2025-02-26 08:21:14.9088 Warn Failed to determine the https port for redirect. 
+2025-02-26 08:21:14.9522 Info Executing endpoint 'CompanyManagement.Controllers.UploadImageController.GetImage (CompanyManagement)' 
+2025-02-26 08:21:14.9782 Info Route matched with {action = "GetImage", controller = "UploadImage"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetImage(Int32, System.Threading.CancellationToken) on controller CompanyManagement.Controllers.UploadImageController (CompanyManagement). 
+2025-02-26 08:21:15.1104 Info Executed DbCommand (6ms) [Parameters=[@__imageId_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT i."Id", i."EmployeeId", i."ImagePath"
+FROM "Images" AS i
+WHERE i."Id" = @__imageId_0
+LIMIT 1 
+2025-02-26 08:21:15.1447 Info Executing FileContentResult, sending file with download name '6b5f73bf-b917-4d1d-9952-b002effdbaa3.jpg' ... 
+2025-02-26 08:21:15.1824 Info Executed action CompanyManagement.Controllers.UploadImageController.GetImage (CompanyManagement) in 192.9679ms 
+2025-02-26 08:21:15.1824 Info Executed endpoint 'CompanyManagement.Controllers.UploadImageController.GetImage (CompanyManagement)' 
+2025-02-26 08:21:15.2011 Info Request finished HTTP/1.1 GET http://localhost:5292/api/UploadImage/1 - 200 135355 image/jpeg 313.7226ms 
+2025-02-26 08:21:46.4088 Info Application is shutting down... 
