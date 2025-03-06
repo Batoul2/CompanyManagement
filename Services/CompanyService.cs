@@ -100,5 +100,8 @@ namespace CompanyManagement.Services
         {
             return await _context.Companies.AnyAsync(c => c.Name == name && c.Id != excludeId, cancellationToken);
         }
+
+        
+
     }
 }

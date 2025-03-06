@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "hEMBD1NOvMY=",
+  "dgSpecHash": "uZRg/PZry8g=",
   "success": true,
   "projectFilePath": "C:\\Users\\hp\\CompanyManagement\\CompanyManagement\\CompanyManagement.csproj",
   "expectedPackageFiles": [
@@ -118,6 +118,7 @@
     "C:\\Users\\hp\\.nuget\\packages\\nlog.web.aspnetcore\\5.3.15\\nlog.web.aspnetcore.5.3.15.nupkg.sha512",
     "C:\\Users\\hp\\.nuget\\packages\\npgsql\\9.0.2\\npgsql.9.0.2.nupkg.sha512",
     "C:\\Users\\hp\\.nuget\\packages\\npgsql.entityframeworkcore.postgresql\\9.0.3\\npgsql.entityframeworkcore.postgresql.9.0.3.nupkg.sha512",
+    "C:\\Users\\hp\\.nuget\\packages\\questpdf\\2025.1.4\\questpdf.2025.1.4.nupkg.sha512",
     "C:\\Users\\hp\\.nuget\\packages\\serilog\\4.2.0\\serilog.4.2.0.nupkg.sha512",
     "C:\\Users\\hp\\.nuget\\packages\\serilog.aspnetcore\\9.0.0\\serilog.aspnetcore.9.0.0.nupkg.sha512",
     "C:\\Users\\hp\\.nuget\\packages\\serilog.extensions.hosting\\9.0.0\\serilog.extensions.hosting.9.0.0.nupkg.sha512",

@@ -113,6 +113,18 @@ namespace CompanyManagement.Controllers
 
             return Ok("Project removed successfully from employee.");
         }
+        [HttpGet("generate-report")]
+        public async Task<IActionResult> GenerateEmployeeReport()
+        {
+            var pdfData = await _employeeService.GenerateEmployeeReportAsync();
+
+            if (pdfData == null || pdfData.Length == 0)
+            {
+                return StatusCode(500, "Failed to generate PDF");
+            }
+
+            return File(pdfData, "application/pdf", "EmployeeReport.pdf");
+        }
 
     }
 }

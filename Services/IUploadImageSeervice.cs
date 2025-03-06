@@ -9,7 +9,6 @@ namespace CompanyManagement.Services
     public interface IUploadImageService
     {
         Task<ImageDto> UploadImageAsync(int employeeId, IFormFile imageFile, CancellationToken cancellationToken);
-        //Task<List<ImageDto>> GetEmployeeImagesAsync(int employeeId);
         Task<bool> DeleteImageAsync(int imageId, CancellationToken cancellationToken);
         Task<(string fileName, byte[] fileContent)> GetImageAsync(int imageId, CancellationToken cancellationToken);
     }
