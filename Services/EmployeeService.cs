@@ -174,11 +174,12 @@ namespace CompanyManagement.Services
         public async Task<byte[]> GenerateEmployeeReportAsync()
         {
             QuestPDF.Settings.License = LicenseType.Community;
-            var employees = await _dbContext.Employees
-                .Include(e => e.CompanyEmployee)
-                    .ThenInclude(ce => ce.Company)
-                .Include(e => e.EmployeeProject)
-                    .ThenInclude(ep => ep.Project)
+
+            var companies = await _dbContext.Companies
+                .Include(c => c.CompanyEmployee)
+                    .ThenInclude(ce => ce.Employee)
+                        .ThenInclude(e => e.EmployeeProject)
+                            .ThenInclude(ep => ep.Project)
                 .ToListAsync();
 
             byte[] pdfData = Document.Create(container =>
@@ -187,77 +188,71 @@ namespace CompanyManagement.Services
                 {
                     page.Size(PageSizes.A4);
                     page.Margin(50);
-                    
-                    page.Header()
-                        .Text("Employee Report")
-                        .Bold().FontSize(20).FontColor(Colors.Blue.Medium);
+
+                    page.Header().Row(row =>
+                    {
+                        row.RelativeItem().Column(col =>
+                        {
+                            col.Item().Text("Report").Bold().FontSize(24).FontColor(Colors.Blue.Medium);
+                        });
+
+                        row.ConstantItem(80).Image("C:\\Users\\hp\\Downloads\\logo.jpg"); 
+                    });
 
                     page.Content().Column(column =>
                     {
-                        foreach (var employee in employees)
+                        foreach (var company in companies)
                         {
-                            column.Item().Text($"Employee: {employee.FullName}").Bold().FontSize(16);
-                            column.Item().Text($"Position: {employee.Position}");
+                            column.Item().Text($"Company: {company.Name}").Bold().FontSize(18).FontColor(Colors.Black);
+                            column.Item().LineHorizontal(1); 
 
-                            // Companies Section
-                            column.Item().Text("Companies:").Underline().FontSize(14);
-                            if (employee.CompanyEmployee.Any())
+                            if (company.CompanyEmployee.Any())
                             {
                                 column.Item().Table(table =>
                                 {
                                     table.ColumnsDefinition(columns =>
                                     {
-                                        columns.RelativeColumn();
+                                        columns.RelativeColumn(3); 
+                                        columns.RelativeColumn(2); 
+                                        columns.RelativeColumn(5); 
                                     });
 
                                     table.Header(header =>
                                     {
-                                        header.Cell().Text("Company Name").Bold();
+                                        header.Cell().Text("Employee Name").Bold();
+                                        header.Cell().Text("Position").Bold();
+                                        header.Cell().Text("Projects").Bold();
                                     });
 
-                                    foreach (var ce in employee.CompanyEmployee)
+                                    foreach (var ce in company.CompanyEmployee)
                                     {
-                                        table.Cell().Text(ce.Company.Name);
+                                        var employee = ce.Employee;
+                                        var projects = employee.EmployeeProject.Select(ep => ep.Project.Title).ToList();
+                                        string projectList = projects.Any() ? string.Join(", ", projects) : "No projects assigned";
+
+                                        table.Cell().Text(employee.FullName);
+                                        table.Cell().Text(employee.Position);
+                                        table.Cell().Text(projectList);
                                     }
                                 });
                             }
                             else
                             {
-                                column.Item().Text("No companies assigned.");
+                                column.Item().Text("No employees assigned.").Italic();
                             }
-
-                            // Projects Section
-                            column.Item().Text("Projects:").Underline().FontSize(14);
-                            if (employee.EmployeeProject.Any())
-                            {
-                                column.Item().Table(table =>
-                                {
-                                    table.ColumnsDefinition(columns =>
-                                    {
-                                        columns.RelativeColumn();
-                                    });
-
-                                    table.Header(header =>
-                                    {
-                                        header.Cell().Text("Project Name").Bold();
-                                    });
-
-                                    foreach (var ep in employee.EmployeeProject)
-                                    {
-                                        table.Cell().Text(ep.Project.Title);
-                                    }
-                                });
-                            }
-                            else
-                            {
-                                column.Item().Text("No projects assigned.");
-                            }
-
-                            column.Item().LineHorizontal(1);
+                            column.Item().PaddingBottom(20);
+                            column.Item().LineHorizontal(2);
                         }
                     });
 
-                    page.Footer().AlignCenter().Text("Generated by Company Management System");
+                    page.Footer().AlignCenter().Text(x =>
+                    {
+                        x.Span("Page ");
+                        x.CurrentPageNumber();
+                        x.Span(" of ");
+                        x.TotalPages();
+                    });
+
                 });
             }).GeneratePdf();
 

@@ -13147,3 +13147,634 @@ ORDER BY e."Id", s."CompanyId", s."EmployeeId", s."Id", s0."EmployeeId", s0."Pro
 2025-03-06 08:12:01.8930 Info Executed endpoint 'CompanyManagement.Controllers.EmployeeController.GenerateEmployeeReport (CompanyManagement)' 
 2025-03-06 08:12:01.8930 Info Request finished HTTP/1.1 GET http://localhost:5292/api/Employee/generate-report - 200 30465 application/pdf 1123.3372ms 
 2025-03-06 08:18:48.3515 Info Application is shutting down... 
+2025-03-06 09:15:28.7469 Info Executed DbCommand (38ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-03-06 09:15:28.8119 Info Executed DbCommand (2ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-03-06 09:15:28.8119 Info Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-03-06 09:15:28.9052 Info User profile is available. Using 'C:\Users\hp\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest. 
+2025-03-06 09:15:28.9441 Warn The WebRootPath was not found: C:\Users\hp\CompanyManagement\CompanyManagement\wwwroot. Static files may be unavailable. 
+2025-03-06 09:15:28.9691 Info Now listening on: http://localhost:5292 
+2025-03-06 09:15:28.9691 Info Application started. Press Ctrl+C to shut down. 
+2025-03-06 09:15:28.9691 Info Hosting environment: Development 
+2025-03-06 09:15:28.9691 Info Content root path: C:\Users\hp\CompanyManagement\CompanyManagement 
+2025-03-06 09:15:30.7557 Info Request starting HTTP/1.1 GET http://localhost:5292/api/Employee/generate-report - - - 
+2025-03-06 09:15:30.7717 Warn Failed to determine the https port for redirect. 
+2025-03-06 09:15:30.8069 Info Executing endpoint 'CompanyManagement.Controllers.EmployeeController.GenerateEmployeeReport (CompanyManagement)' 
+2025-03-06 09:15:30.8163 Info Route matched with {action = "GenerateEmployeeReport", controller = "Employee"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GenerateEmployeeReport() on controller CompanyManagement.Controllers.EmployeeController (CompanyManagement). 
+2025-03-06 09:15:31.0028 Warn Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'. 
+2025-03-06 09:15:31.0286 Info Executed DbCommand (8ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT c."Id", c."Name", s0."CompanyId", s0."EmployeeId", s0."Id", s0."FullName", s0."Position", s0."EmployeeId0", s0."ProjectId", s0."Id0", s0."Duration", s0."Title"
+FROM "Companies" AS c
+LEFT JOIN (
+    SELECT c0."CompanyId", c0."EmployeeId", e."Id", e."FullName", e."Position", s."EmployeeId" AS "EmployeeId0", s."ProjectId", s."Id" AS "Id0", s."Duration", s."Title"
+    FROM "CompanyEmployee" AS c0
+    INNER JOIN "Employees" AS e ON c0."EmployeeId" = e."Id"
+    LEFT JOIN (
+        SELECT e0."EmployeeId", e0."ProjectId", p."Id", p."Duration", p."Title"
+        FROM "EmployeeProject" AS e0
+        INNER JOIN "Projects" AS p ON e0."ProjectId" = p."Id"
+    ) AS s ON e."Id" = s."EmployeeId"
+) AS s0 ON c."Id" = s0."CompanyId"
+ORDER BY c."Id", s0."CompanyId", s0."EmployeeId", s0."Id", s0."EmployeeId0", s0."ProjectId" 
+2025-03-06 09:15:31.4847 Info Executing FileContentResult, sending file with download name 'EmployeeReport.pdf' ... 
+2025-03-06 09:15:31.4991 Info Executed action CompanyManagement.Controllers.EmployeeController.GenerateEmployeeReport (CompanyManagement) in 676.6077ms 
+2025-03-06 09:15:31.4991 Info Executed endpoint 'CompanyManagement.Controllers.EmployeeController.GenerateEmployeeReport (CompanyManagement)' 
+2025-03-06 09:15:31.4991 Info Request finished HTTP/1.1 GET http://localhost:5292/api/Employee/generate-report - 200 42723 application/pdf 752.6748ms 
+2025-03-06 09:15:58.8075 Info Application is shutting down... 
+2025-03-06 09:57:21.8077 Info Executed DbCommand (40ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-03-06 09:57:21.8683 Info Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-03-06 09:57:21.8683 Info Executed DbCommand (0ms) [Parameters=[@__normalizedName_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1 
+2025-03-06 09:57:21.9312 Info User profile is available. Using 'C:\Users\hp\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest. 
+2025-03-06 09:57:21.9894 Warn The WebRootPath was not found: C:\Users\hp\CompanyManagement\CompanyManagement\wwwroot. Static files may be unavailable. 
+2025-03-06 09:57:22.0033 Info Now listening on: http://localhost:5292 
+2025-03-06 09:57:22.0033 Info Application started. Press Ctrl+C to shut down. 
+2025-03-06 09:57:22.0033 Info Hosting environment: Development 
+2025-03-06 09:57:22.0033 Info Content root path: C:\Users\hp\CompanyManagement\CompanyManagement 
+2025-03-06 09:57:24.7736 Info Request starting HTTP/1.1 POST http://localhost:5292/api/Employee - application/json 156 
+2025-03-06 09:57:24.7871 Warn Failed to determine the https port for redirect. 
+2025-03-06 09:57:24.7941 Info CORS policy execution successful. 
+2025-03-06 09:57:24.7941 Info Executing endpoint 'CompanyManagement.Controllers.EmployeeController.AddEmployee (CompanyManagement)' 
+2025-03-06 09:57:24.8253 Info Route matched with {action = "AddEmployee", controller = "Employee"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddEmployee(CompanyManagement.InputModels.EmployeeInputModel, System.Threading.CancellationToken) on controller CompanyManagement.Controllers.EmployeeController (CompanyManagement). 
+2025-03-06 09:57:25.0079 Info Executed DbCommand (3ms) [Parameters=[@__name_0='?', @__excludeId_1='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "Employees" AS e
+    WHERE e."FullName" = @__name_0 AND e."Id" <> @__excludeId_1) 
+2025-03-06 09:57:25.1318 Info Executed DbCommand (6ms) [Parameters=[@p0='?', @p1='?'], CommandType='Text', CommandTimeout='30']
+INSERT INTO "Employees" ("FullName", "Position")
+VALUES (@p0, @p1)
+RETURNING "Id"; 
+2025-03-06 09:57:25.1546 Info Executed DbCommand (9ms) [Parameters=[@p2='?' (DbType = Int32), @p3='?' (DbType = Int32), @p4='?' (DbType = Int32), @p5='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+INSERT INTO "CompanyEmployee" ("CompanyId", "EmployeeId")
+VALUES (@p2, @p3);
+INSERT INTO "EmployeeProject" ("EmployeeId", "ProjectId")
+VALUES (@p4, @p5); 
+2025-03-06 09:57:25.1735 Info Executing CreatedAtActionResult, writing value of type 'CompanyManagement.InputModels.EmployeeInputModel'. 
+2025-03-06 09:57:25.2033 Info Executed action CompanyManagement.Controllers.EmployeeController.AddEmployee (CompanyManagement) in 371.5101ms 
+2025-03-06 09:57:25.2033 Info Executed endpoint 'CompanyManagement.Controllers.EmployeeController.AddEmployee (CompanyManagement)' 
+2025-03-06 09:57:25.2033 Info Request finished HTTP/1.1 POST http://localhost:5292/api/Employee - 201 - application/json;+charset=utf-8 436.0505ms 
+2025-03-06 09:58:19.2337 Info Request starting HTTP/1.1 PUT http://localhost:5292/api/Company/3 - application/json 26 
+2025-03-06 09:58:19.2337 Info CORS policy execution successful. 
+2025-03-06 09:58:19.2337 Info Executing endpoint 'CompanyManagement.Controllers.CompanyController.UpdateCompany (CompanyManagement)' 
+2025-03-06 09:58:19.2526 Info Route matched with {action = "UpdateCompany", controller = "Company"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] UpdateCompany(Int32, CompanyManagement.InputModels.CompanyInputModel, System.Threading.CancellationToken) on controller CompanyManagement.Controllers.CompanyController (CompanyManagement). 
+2025-03-06 09:58:19.4718 Info Executed DbCommand (3ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT c1."Id", c1."Name", s."CompanyId", s."EmployeeId", s."Id", s."FullName", s."Position"
+FROM (
+    SELECT c."Id", c."Name"
+    FROM "Companies" AS c
+    WHERE c."Id" = @__id_0
+    LIMIT 1
+) AS c1
+LEFT JOIN (
+    SELECT c0."CompanyId", c0."EmployeeId", e."Id", e."FullName", e."Position"
+    FROM "CompanyEmployee" AS c0
+    INNER JOIN "Employees" AS e ON c0."EmployeeId" = e."Id"
+) AS s ON c1."Id" = s."CompanyId"
+ORDER BY c1."Id", s."CompanyId", s."EmployeeId" 
+2025-03-06 09:58:19.4999 Info Executed DbCommand (1ms) [Parameters=[@__name_0='?', @__excludeId_1='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "Companies" AS c
+    WHERE c."Name" = @__name_0 AND c."Id" <> @__excludeId_1) 
+2025-03-06 09:58:19.5311 Info Executed DbCommand (7ms) [Parameters=[@p1='?' (DbType = Int32), @p0='?'], CommandType='Text', CommandTimeout='30']
+UPDATE "Companies" SET "Name" = @p0
+WHERE "Id" = @p1; 
+2025-03-06 09:58:19.5311 Info Executing OkObjectResult, writing value of type 'CompanyManagement.DTOs.CompanyDto'. 
+2025-03-06 09:58:19.5311 Info Executed action CompanyManagement.Controllers.CompanyController.UpdateCompany (CompanyManagement) in 286.6297ms 
+2025-03-06 09:58:19.5311 Info Executed endpoint 'CompanyManagement.Controllers.CompanyController.UpdateCompany (CompanyManagement)' 
+2025-03-06 09:58:19.5311 Info Request finished HTTP/1.1 PUT http://localhost:5292/api/Company/3 - 200 - application/json;+charset=utf-8 306.2503ms 
+2025-03-06 09:59:18.0279 Info Request starting HTTP/1.1 POST http://localhost:5292/api/Employee - application/json 157 
+2025-03-06 09:59:18.0279 Info CORS policy execution successful. 
+2025-03-06 09:59:18.0279 Info Executing endpoint 'CompanyManagement.Controllers.EmployeeController.AddEmployee (CompanyManagement)' 
+2025-03-06 09:59:18.0279 Info Route matched with {action = "AddEmployee", controller = "Employee"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddEmployee(CompanyManagement.InputModels.EmployeeInputModel, System.Threading.CancellationToken) on controller CompanyManagement.Controllers.EmployeeController (CompanyManagement). 
+2025-03-06 09:59:18.0279 Info Executed DbCommand (1ms) [Parameters=[@__name_0='?', @__excludeId_1='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "Employees" AS e
+    WHERE e."FullName" = @__name_0 AND e."Id" <> @__excludeId_1) 
+2025-03-06 09:59:18.0495 Info Executed DbCommand (1ms) [Parameters=[@p0='?', @p1='?'], CommandType='Text', CommandTimeout='30']
+INSERT INTO "Employees" ("FullName", "Position")
+VALUES (@p0, @p1)
+RETURNING "Id"; 
+2025-03-06 09:59:18.0495 Info Executed DbCommand (2ms) [Parameters=[@p2='?' (DbType = Int32), @p3='?' (DbType = Int32), @p4='?' (DbType = Int32), @p5='?' (DbType = Int32), @p6='?' (DbType = Int32), @p7='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+INSERT INTO "CompanyEmployee" ("CompanyId", "EmployeeId")
+VALUES (@p2, @p3);
+INSERT INTO "EmployeeProject" ("EmployeeId", "ProjectId")
+VALUES (@p4, @p5);
+INSERT INTO "EmployeeProject" ("EmployeeId", "ProjectId")
+VALUES (@p6, @p7); 
+2025-03-06 09:59:18.0495 Info Executing CreatedAtActionResult, writing value of type 'CompanyManagement.InputModels.EmployeeInputModel'. 
+2025-03-06 09:59:18.0495 Info Executed action CompanyManagement.Controllers.EmployeeController.AddEmployee (CompanyManagement) in 20.188ms 
+2025-03-06 09:59:18.0495 Info Executed endpoint 'CompanyManagement.Controllers.EmployeeController.AddEmployee (CompanyManagement)' 
+2025-03-06 09:59:18.0495 Info Request finished HTTP/1.1 POST http://localhost:5292/api/Employee - 201 - application/json;+charset=utf-8 27.0412ms 
+2025-03-06 10:00:24.5381 Info Request starting HTTP/1.1 POST http://localhost:5292/api/Employee - application/json 159 
+2025-03-06 10:00:24.5381 Info CORS policy execution successful. 
+2025-03-06 10:00:24.5381 Info Executing endpoint 'CompanyManagement.Controllers.EmployeeController.AddEmployee (CompanyManagement)' 
+2025-03-06 10:00:24.5381 Info Route matched with {action = "AddEmployee", controller = "Employee"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddEmployee(CompanyManagement.InputModels.EmployeeInputModel, System.Threading.CancellationToken) on controller CompanyManagement.Controllers.EmployeeController (CompanyManagement). 
+2025-03-06 10:00:24.5460 Info Executed DbCommand (1ms) [Parameters=[@__name_0='?', @__excludeId_1='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "Employees" AS e
+    WHERE e."FullName" = @__name_0 AND e."Id" <> @__excludeId_1) 
+2025-03-06 10:00:24.5460 Info Executed DbCommand (1ms) [Parameters=[@p0='?', @p1='?'], CommandType='Text', CommandTimeout='30']
+INSERT INTO "Employees" ("FullName", "Position")
+VALUES (@p0, @p1)
+RETURNING "Id"; 
+2025-03-06 10:00:24.5460 Info Executed DbCommand (1ms) [Parameters=[@p2='?' (DbType = Int32), @p3='?' (DbType = Int32), @p4='?' (DbType = Int32), @p5='?' (DbType = Int32), @p6='?' (DbType = Int32), @p7='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+INSERT INTO "CompanyEmployee" ("CompanyId", "EmployeeId")
+VALUES (@p2, @p3);
+INSERT INTO "EmployeeProject" ("EmployeeId", "ProjectId")
+VALUES (@p4, @p5);
+INSERT INTO "EmployeeProject" ("EmployeeId", "ProjectId")
+VALUES (@p6, @p7); 
+2025-03-06 10:00:24.5460 Info Executing CreatedAtActionResult, writing value of type 'CompanyManagement.InputModels.EmployeeInputModel'. 
+2025-03-06 10:00:24.5460 Info Executed action CompanyManagement.Controllers.EmployeeController.AddEmployee (CompanyManagement) in 15.055ms 
+2025-03-06 10:00:24.5460 Info Executed endpoint 'CompanyManagement.Controllers.EmployeeController.AddEmployee (CompanyManagement)' 
+2025-03-06 10:00:24.5460 Info Request finished HTTP/1.1 POST http://localhost:5292/api/Employee - 201 - application/json;+charset=utf-8 15.7641ms 
+2025-03-06 10:02:04.0777 Info Request starting HTTP/1.1 POST http://localhost:5292/api/Employee - application/json 163 
+2025-03-06 10:02:04.0777 Info CORS policy execution successful. 
+2025-03-06 10:02:04.0777 Info Executing endpoint 'CompanyManagement.Controllers.EmployeeController.AddEmployee (CompanyManagement)' 
+2025-03-06 10:02:04.0777 Info Route matched with {action = "AddEmployee", controller = "Employee"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddEmployee(CompanyManagement.InputModels.EmployeeInputModel, System.Threading.CancellationToken) on controller CompanyManagement.Controllers.EmployeeController (CompanyManagement). 
+2025-03-06 10:02:04.0777 Info Executed DbCommand (1ms) [Parameters=[@__name_0='?', @__excludeId_1='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "Employees" AS e
+    WHERE e."FullName" = @__name_0 AND e."Id" <> @__excludeId_1) 
+2025-03-06 10:02:04.0777 Info Executed DbCommand (1ms) [Parameters=[@p0='?', @p1='?'], CommandType='Text', CommandTimeout='30']
+INSERT INTO "Employees" ("FullName", "Position")
+VALUES (@p0, @p1)
+RETURNING "Id"; 
+2025-03-06 10:02:04.0777 Info Executed DbCommand (1ms) [Parameters=[@p2='?' (DbType = Int32), @p3='?' (DbType = Int32), @p4='?' (DbType = Int32), @p5='?' (DbType = Int32), @p6='?' (DbType = Int32), @p7='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+INSERT INTO "CompanyEmployee" ("CompanyId", "EmployeeId")
+VALUES (@p2, @p3);
+INSERT INTO "CompanyEmployee" ("CompanyId", "EmployeeId")
+VALUES (@p4, @p5);
+INSERT INTO "EmployeeProject" ("EmployeeId", "ProjectId")
+VALUES (@p6, @p7); 
+2025-03-06 10:02:04.0951 Info Executing CreatedAtActionResult, writing value of type 'CompanyManagement.InputModels.EmployeeInputModel'. 
+2025-03-06 10:02:04.0951 Info Executed action CompanyManagement.Controllers.EmployeeController.AddEmployee (CompanyManagement) in 17.3382ms 
+2025-03-06 10:02:04.0951 Info Executed endpoint 'CompanyManagement.Controllers.EmployeeController.AddEmployee (CompanyManagement)' 
+2025-03-06 10:02:04.0951 Info Request finished HTTP/1.1 POST http://localhost:5292/api/Employee - 201 - application/json;+charset=utf-8 18.6371ms 
+2025-03-06 10:02:13.5843 Info Request starting HTTP/1.1 GET http://localhost:5292/api/Employee/generate-report - - - 
+2025-03-06 10:02:13.5950 Info Executing endpoint 'CompanyManagement.Controllers.EmployeeController.GenerateEmployeeReport (CompanyManagement)' 
+2025-03-06 10:02:13.5950 Info Route matched with {action = "GenerateEmployeeReport", controller = "Employee"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GenerateEmployeeReport() on controller CompanyManagement.Controllers.EmployeeController (CompanyManagement). 
+2025-03-06 10:02:14.5949 Warn Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'. 
+2025-03-06 10:02:14.6458 Info Executed DbCommand (5ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT c."Id", c."Name", s0."CompanyId", s0."EmployeeId", s0."Id", s0."FullName", s0."Position", s0."EmployeeId0", s0."ProjectId", s0."Id0", s0."Duration", s0."Title"
+FROM "Companies" AS c
+LEFT JOIN (
+    SELECT c0."CompanyId", c0."EmployeeId", e."Id", e."FullName", e."Position", s."EmployeeId" AS "EmployeeId0", s."ProjectId", s."Id" AS "Id0", s."Duration", s."Title"
+    FROM "CompanyEmployee" AS c0
+    INNER JOIN "Employees" AS e ON c0."EmployeeId" = e."Id"
+    LEFT JOIN (
+        SELECT e0."EmployeeId", e0."ProjectId", p."Id", p."Duration", p."Title"
+        FROM "EmployeeProject" AS e0
+        INNER JOIN "Projects" AS p ON e0."ProjectId" = p."Id"
+    ) AS s ON e."Id" = s."EmployeeId"
+) AS s0 ON c."Id" = s0."CompanyId"
+ORDER BY c."Id", s0."CompanyId", s0."EmployeeId", s0."Id", s0."EmployeeId0", s0."ProjectId" 
+2025-03-06 10:02:15.7500 Info Executing FileContentResult, sending file with download name 'EmployeeReport.pdf' ... 
+2025-03-06 10:02:15.7500 Info Executed action CompanyManagement.Controllers.EmployeeController.GenerateEmployeeReport (CompanyManagement) in 2156.0099ms 
+2025-03-06 10:02:15.7500 Info Executed endpoint 'CompanyManagement.Controllers.EmployeeController.GenerateEmployeeReport (CompanyManagement)' 
+2025-03-06 10:02:15.7500 Info Request finished HTTP/1.1 GET http://localhost:5292/api/Employee/generate-report - 200 45850 application/pdf 2173.9916ms 
+2025-03-06 10:03:15.3374 Info Request starting HTTP/1.1 POST http://localhost:5292/api/Employee - application/json 163 
+2025-03-06 10:03:15.3374 Info CORS policy execution successful. 
+2025-03-06 10:03:15.3374 Info Executing endpoint 'CompanyManagement.Controllers.EmployeeController.AddEmployee (CompanyManagement)' 
+2025-03-06 10:03:15.3374 Info Route matched with {action = "AddEmployee", controller = "Employee"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddEmployee(CompanyManagement.InputModels.EmployeeInputModel, System.Threading.CancellationToken) on controller CompanyManagement.Controllers.EmployeeController (CompanyManagement). 
+2025-03-06 10:03:15.3806 Info Executed DbCommand (2ms) [Parameters=[@__name_0='?', @__excludeId_1='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "Employees" AS e
+    WHERE e."FullName" = @__name_0 AND e."Id" <> @__excludeId_1) 
+2025-03-06 10:03:15.3806 Info Executed DbCommand (2ms) [Parameters=[@p0='?', @p1='?'], CommandType='Text', CommandTimeout='30']
+INSERT INTO "Employees" ("FullName", "Position")
+VALUES (@p0, @p1)
+RETURNING "Id"; 
+2025-03-06 10:03:15.3897 Info Executed DbCommand (4ms) [Parameters=[@p2='?' (DbType = Int32), @p3='?' (DbType = Int32), @p4='?' (DbType = Int32), @p5='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+INSERT INTO "CompanyEmployee" ("CompanyId", "EmployeeId")
+VALUES (@p2, @p3);
+INSERT INTO "EmployeeProject" ("EmployeeId", "ProjectId")
+VALUES (@p4, @p5); 
+2025-03-06 10:03:15.3897 Info Executing CreatedAtActionResult, writing value of type 'CompanyManagement.InputModels.EmployeeInputModel'. 
+2025-03-06 10:03:15.3897 Info Executed action CompanyManagement.Controllers.EmployeeController.AddEmployee (CompanyManagement) in 53.552ms 
+2025-03-06 10:03:15.3897 Info Executed endpoint 'CompanyManagement.Controllers.EmployeeController.AddEmployee (CompanyManagement)' 
+2025-03-06 10:03:15.3897 Info Request finished HTTP/1.1 POST http://localhost:5292/api/Employee - 201 - application/json;+charset=utf-8 54.7616ms 
+2025-03-06 10:03:24.0712 Info Request starting HTTP/1.1 POST http://localhost:5292/api/Employee - application/json 162 
+2025-03-06 10:03:24.0712 Info CORS policy execution successful. 
+2025-03-06 10:03:24.0712 Info Executing endpoint 'CompanyManagement.Controllers.EmployeeController.AddEmployee (CompanyManagement)' 
+2025-03-06 10:03:24.0712 Info Route matched with {action = "AddEmployee", controller = "Employee"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddEmployee(CompanyManagement.InputModels.EmployeeInputModel, System.Threading.CancellationToken) on controller CompanyManagement.Controllers.EmployeeController (CompanyManagement). 
+2025-03-06 10:03:24.0749 Info Executed DbCommand (1ms) [Parameters=[@__name_0='?', @__excludeId_1='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "Employees" AS e
+    WHERE e."FullName" = @__name_0 AND e."Id" <> @__excludeId_1) 
+2025-03-06 10:03:24.0749 Info Executed DbCommand (1ms) [Parameters=[@p0='?', @p1='?'], CommandType='Text', CommandTimeout='30']
+INSERT INTO "Employees" ("FullName", "Position")
+VALUES (@p0, @p1)
+RETURNING "Id"; 
+2025-03-06 10:03:24.0749 Info Executed DbCommand (1ms) [Parameters=[@p2='?' (DbType = Int32), @p3='?' (DbType = Int32), @p4='?' (DbType = Int32), @p5='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+INSERT INTO "CompanyEmployee" ("CompanyId", "EmployeeId")
+VALUES (@p2, @p3);
+INSERT INTO "EmployeeProject" ("EmployeeId", "ProjectId")
+VALUES (@p4, @p5); 
+2025-03-06 10:03:24.0749 Info Executing CreatedAtActionResult, writing value of type 'CompanyManagement.InputModels.EmployeeInputModel'. 
+2025-03-06 10:03:24.0749 Info Executed action CompanyManagement.Controllers.EmployeeController.AddEmployee (CompanyManagement) in 8.2277ms 
+2025-03-06 10:03:24.0749 Info Executed endpoint 'CompanyManagement.Controllers.EmployeeController.AddEmployee (CompanyManagement)' 
+2025-03-06 10:03:24.0749 Info Request finished HTTP/1.1 POST http://localhost:5292/api/Employee - 201 - application/json;+charset=utf-8 8.9880ms 
+2025-03-06 10:03:54.9728 Info Request starting HTTP/1.1 POST http://localhost:5292/api/Employee - application/json 163 
+2025-03-06 10:03:54.9728 Info CORS policy execution successful. 
+2025-03-06 10:03:54.9728 Info Executing endpoint 'CompanyManagement.Controllers.EmployeeController.AddEmployee (CompanyManagement)' 
+2025-03-06 10:03:54.9728 Info Route matched with {action = "AddEmployee", controller = "Employee"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddEmployee(CompanyManagement.InputModels.EmployeeInputModel, System.Threading.CancellationToken) on controller CompanyManagement.Controllers.EmployeeController (CompanyManagement). 
+2025-03-06 10:03:54.9728 Info Executed DbCommand (1ms) [Parameters=[@__name_0='?', @__excludeId_1='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "Employees" AS e
+    WHERE e."FullName" = @__name_0 AND e."Id" <> @__excludeId_1) 
+2025-03-06 10:03:54.9728 Info Executed DbCommand (1ms) [Parameters=[@p0='?', @p1='?'], CommandType='Text', CommandTimeout='30']
+INSERT INTO "Employees" ("FullName", "Position")
+VALUES (@p0, @p1)
+RETURNING "Id"; 
+2025-03-06 10:03:54.9812 Info Executed DbCommand (2ms) [Parameters=[@p2='?' (DbType = Int32), @p3='?' (DbType = Int32), @p4='?' (DbType = Int32), @p5='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+INSERT INTO "CompanyEmployee" ("CompanyId", "EmployeeId")
+VALUES (@p2, @p3);
+INSERT INTO "EmployeeProject" ("EmployeeId", "ProjectId")
+VALUES (@p4, @p5); 
+2025-03-06 10:03:54.9812 Info Executing CreatedAtActionResult, writing value of type 'CompanyManagement.InputModels.EmployeeInputModel'. 
+2025-03-06 10:03:54.9812 Info Executed action CompanyManagement.Controllers.EmployeeController.AddEmployee (CompanyManagement) in 15.9621ms 
+2025-03-06 10:03:54.9812 Info Executed endpoint 'CompanyManagement.Controllers.EmployeeController.AddEmployee (CompanyManagement)' 
+2025-03-06 10:03:54.9812 Info Request finished HTTP/1.1 POST http://localhost:5292/api/Employee - 201 - application/json;+charset=utf-8 16.9146ms 
+2025-03-06 10:04:08.0850 Info Request starting HTTP/1.1 POST http://localhost:5292/api/Employee - application/json 165 
+2025-03-06 10:04:08.0850 Info CORS policy execution successful. 
+2025-03-06 10:04:08.0850 Info Executing endpoint 'CompanyManagement.Controllers.EmployeeController.AddEmployee (CompanyManagement)' 
+2025-03-06 10:04:08.0850 Info Route matched with {action = "AddEmployee", controller = "Employee"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddEmployee(CompanyManagement.InputModels.EmployeeInputModel, System.Threading.CancellationToken) on controller CompanyManagement.Controllers.EmployeeController (CompanyManagement). 
+2025-03-06 10:04:08.0850 Info Executed DbCommand (1ms) [Parameters=[@__name_0='?', @__excludeId_1='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "Employees" AS e
+    WHERE e."FullName" = @__name_0 AND e."Id" <> @__excludeId_1) 
+2025-03-06 10:04:08.0909 Info Executed DbCommand (1ms) [Parameters=[@p0='?', @p1='?'], CommandType='Text', CommandTimeout='30']
+INSERT INTO "Employees" ("FullName", "Position")
+VALUES (@p0, @p1)
+RETURNING "Id"; 
+2025-03-06 10:04:08.0909 Info Executed DbCommand (1ms) [Parameters=[@p2='?' (DbType = Int32), @p3='?' (DbType = Int32), @p4='?' (DbType = Int32), @p5='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+INSERT INTO "CompanyEmployee" ("CompanyId", "EmployeeId")
+VALUES (@p2, @p3);
+INSERT INTO "EmployeeProject" ("EmployeeId", "ProjectId")
+VALUES (@p4, @p5); 
+2025-03-06 10:04:08.0909 Info Executing CreatedAtActionResult, writing value of type 'CompanyManagement.InputModels.EmployeeInputModel'. 
+2025-03-06 10:04:08.0909 Info Executed action CompanyManagement.Controllers.EmployeeController.AddEmployee (CompanyManagement) in 15.0289ms 
+2025-03-06 10:04:08.0909 Info Executed endpoint 'CompanyManagement.Controllers.EmployeeController.AddEmployee (CompanyManagement)' 
+2025-03-06 10:04:08.0909 Info Request finished HTTP/1.1 POST http://localhost:5292/api/Employee - 201 - application/json;+charset=utf-8 15.9886ms 
+2025-03-06 10:04:39.8362 Info Request starting HTTP/1.1 GET http://localhost:5292/api/Employee/generate-report - - - 
+2025-03-06 10:04:39.8362 Info Executing endpoint 'CompanyManagement.Controllers.EmployeeController.GenerateEmployeeReport (CompanyManagement)' 
+2025-03-06 10:04:39.8362 Info Route matched with {action = "GenerateEmployeeReport", controller = "Employee"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GenerateEmployeeReport() on controller CompanyManagement.Controllers.EmployeeController (CompanyManagement). 
+2025-03-06 10:04:39.8435 Info Executed DbCommand (4ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT c."Id", c."Name", s0."CompanyId", s0."EmployeeId", s0."Id", s0."FullName", s0."Position", s0."EmployeeId0", s0."ProjectId", s0."Id0", s0."Duration", s0."Title"
+FROM "Companies" AS c
+LEFT JOIN (
+    SELECT c0."CompanyId", c0."EmployeeId", e."Id", e."FullName", e."Position", s."EmployeeId" AS "EmployeeId0", s."ProjectId", s."Id" AS "Id0", s."Duration", s."Title"
+    FROM "CompanyEmployee" AS c0
+    INNER JOIN "Employees" AS e ON c0."EmployeeId" = e."Id"
+    LEFT JOIN (
+        SELECT e0."EmployeeId", e0."ProjectId", p."Id", p."Duration", p."Title"
+        FROM "EmployeeProject" AS e0
+        INNER JOIN "Projects" AS p ON e0."ProjectId" = p."Id"
+    ) AS s ON e."Id" = s."EmployeeId"
+) AS s0 ON c."Id" = s0."CompanyId"
+ORDER BY c."Id", s0."CompanyId", s0."EmployeeId", s0."Id", s0."EmployeeId0", s0."ProjectId" 
+2025-03-06 10:04:39.8926 Info Executing FileContentResult, sending file with download name 'EmployeeReport.pdf' ... 
+2025-03-06 10:04:39.8926 Info Executed action CompanyManagement.Controllers.EmployeeController.GenerateEmployeeReport (CompanyManagement) in 55.4405ms 
+2025-03-06 10:04:39.8926 Info Executed endpoint 'CompanyManagement.Controllers.EmployeeController.GenerateEmployeeReport (CompanyManagement)' 
+2025-03-06 10:04:39.8926 Info Request finished HTTP/1.1 GET http://localhost:5292/api/Employee/generate-report - 200 46788 application/pdf 57.4379ms 
+2025-03-06 10:05:32.9061 Info Request starting HTTP/1.1 POST http://localhost:5292/api/Project - application/json 52 
+2025-03-06 10:05:32.9061 Info CORS policy execution successful. 
+2025-03-06 10:05:32.9061 Info Executing endpoint 'CompanyManagement.Controllers.ProjectController.AddProject (CompanyManagement)' 
+2025-03-06 10:05:32.9061 Info Route matched with {action = "AddProject", controller = "Project"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddProject(CompanyManagement.InputModels.ProjectInputModel, System.Threading.CancellationToken) on controller CompanyManagement.Controllers.ProjectController (CompanyManagement). 
+2025-03-06 10:05:32.9616 Info Executed DbCommand (1ms) [Parameters=[@__title_0='?', @__excludeId_1='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "Projects" AS p
+    WHERE p."Title" = @__title_0 AND p."Id" <> @__excludeId_1) 
+2025-03-06 10:05:32.9804 Info Executed DbCommand (3ms) [Parameters=[@p0='?' (DbType = Object), @p1='?'], CommandType='Text', CommandTimeout='30']
+INSERT INTO "Projects" ("Duration", "Title")
+VALUES (@p0, @p1)
+RETURNING "Id"; 
+2025-03-06 10:05:32.9868 Info Executing CreatedAtActionResult, writing value of type 'CompanyManagement.DTOs.ProjectDto'. 
+2025-03-06 10:05:32.9971 Info Executed action CompanyManagement.Controllers.ProjectController.AddProject (CompanyManagement) in 81.7623ms 
+2025-03-06 10:05:32.9971 Info Executed endpoint 'CompanyManagement.Controllers.ProjectController.AddProject (CompanyManagement)' 
+2025-03-06 10:05:32.9971 Info Request finished HTTP/1.1 POST http://localhost:5292/api/Project - 201 - application/json;+charset=utf-8 91.3138ms 
+2025-03-06 10:05:53.4318 Info Request starting HTTP/1.1 POST http://localhost:5292/api/Project - application/json 55 
+2025-03-06 10:05:53.4318 Info CORS policy execution successful. 
+2025-03-06 10:05:53.4318 Info Executing endpoint 'CompanyManagement.Controllers.ProjectController.AddProject (CompanyManagement)' 
+2025-03-06 10:05:53.4318 Info Route matched with {action = "AddProject", controller = "Project"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddProject(CompanyManagement.InputModels.ProjectInputModel, System.Threading.CancellationToken) on controller CompanyManagement.Controllers.ProjectController (CompanyManagement). 
+2025-03-06 10:05:53.4366 Info Executed DbCommand (1ms) [Parameters=[@__title_0='?', @__excludeId_1='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "Projects" AS p
+    WHERE p."Title" = @__title_0 AND p."Id" <> @__excludeId_1) 
+2025-03-06 10:05:53.4366 Info Executed DbCommand (1ms) [Parameters=[@p0='?' (DbType = Object), @p1='?'], CommandType='Text', CommandTimeout='30']
+INSERT INTO "Projects" ("Duration", "Title")
+VALUES (@p0, @p1)
+RETURNING "Id"; 
+2025-03-06 10:05:53.4366 Info Executing CreatedAtActionResult, writing value of type 'CompanyManagement.DTOs.ProjectDto'. 
+2025-03-06 10:05:53.4366 Info Executed action CompanyManagement.Controllers.ProjectController.AddProject (CompanyManagement) in 6.2015ms 
+2025-03-06 10:05:53.4366 Info Executed endpoint 'CompanyManagement.Controllers.ProjectController.AddProject (CompanyManagement)' 
+2025-03-06 10:05:53.4366 Info Request finished HTTP/1.1 POST http://localhost:5292/api/Project - 201 - application/json;+charset=utf-8 7.4322ms 
+2025-03-06 10:06:31.9825 Info Request starting HTTP/1.1 POST http://localhost:5292/api/Project - application/json 47 
+2025-03-06 10:06:31.9825 Info CORS policy execution successful. 
+2025-03-06 10:06:31.9825 Info Executing endpoint 'CompanyManagement.Controllers.ProjectController.AddProject (CompanyManagement)' 
+2025-03-06 10:06:31.9825 Info Route matched with {action = "AddProject", controller = "Project"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddProject(CompanyManagement.InputModels.ProjectInputModel, System.Threading.CancellationToken) on controller CompanyManagement.Controllers.ProjectController (CompanyManagement). 
+2025-03-06 10:06:31.9825 Info Executed DbCommand (1ms) [Parameters=[@__title_0='?', @__excludeId_1='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "Projects" AS p
+    WHERE p."Title" = @__title_0 AND p."Id" <> @__excludeId_1) 
+2025-03-06 10:06:31.9825 Info Executed DbCommand (8ms) [Parameters=[@p0='?' (DbType = Object), @p1='?'], CommandType='Text', CommandTimeout='30']
+INSERT INTO "Projects" ("Duration", "Title")
+VALUES (@p0, @p1)
+RETURNING "Id"; 
+2025-03-06 10:06:31.9967 Info Executing CreatedAtActionResult, writing value of type 'CompanyManagement.DTOs.ProjectDto'. 
+2025-03-06 10:06:31.9967 Info Executed action CompanyManagement.Controllers.ProjectController.AddProject (CompanyManagement) in 14.0832ms 
+2025-03-06 10:06:31.9967 Info Executed endpoint 'CompanyManagement.Controllers.ProjectController.AddProject (CompanyManagement)' 
+2025-03-06 10:06:31.9967 Info Request finished HTTP/1.1 POST http://localhost:5292/api/Project - 201 - application/json;+charset=utf-8 14.6834ms 
+2025-03-06 10:07:02.1829 Info Request starting HTTP/1.1 POST http://localhost:5292/api/Employee - application/json 171 
+2025-03-06 10:07:02.1829 Info CORS policy execution successful. 
+2025-03-06 10:07:02.1837 Info Executing endpoint 'CompanyManagement.Controllers.EmployeeController.AddEmployee (CompanyManagement)' 
+2025-03-06 10:07:02.1837 Info Route matched with {action = "AddEmployee", controller = "Employee"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddEmployee(CompanyManagement.InputModels.EmployeeInputModel, System.Threading.CancellationToken) on controller CompanyManagement.Controllers.EmployeeController (CompanyManagement). 
+2025-03-06 10:07:02.1837 Info Executed DbCommand (1ms) [Parameters=[@__name_0='?', @__excludeId_1='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "Employees" AS e
+    WHERE e."FullName" = @__name_0 AND e."Id" <> @__excludeId_1) 
+2025-03-06 10:07:02.1837 Info Executed DbCommand (1ms) [Parameters=[@p0='?', @p1='?'], CommandType='Text', CommandTimeout='30']
+INSERT INTO "Employees" ("FullName", "Position")
+VALUES (@p0, @p1)
+RETURNING "Id"; 
+2025-03-06 10:07:02.1837 Info Executed DbCommand (1ms) [Parameters=[@p2='?' (DbType = Int32), @p3='?' (DbType = Int32), @p4='?' (DbType = Int32), @p5='?' (DbType = Int32), @p6='?' (DbType = Int32), @p7='?' (DbType = Int32), @p8='?' (DbType = Int32), @p9='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+INSERT INTO "CompanyEmployee" ("CompanyId", "EmployeeId")
+VALUES (@p2, @p3);
+INSERT INTO "EmployeeProject" ("EmployeeId", "ProjectId")
+VALUES (@p4, @p5);
+INSERT INTO "EmployeeProject" ("EmployeeId", "ProjectId")
+VALUES (@p6, @p7);
+INSERT INTO "EmployeeProject" ("EmployeeId", "ProjectId")
+VALUES (@p8, @p9); 
+2025-03-06 10:07:02.1996 Info Executing CreatedAtActionResult, writing value of type 'CompanyManagement.InputModels.EmployeeInputModel'. 
+2025-03-06 10:07:02.1996 Info Executed action CompanyManagement.Controllers.EmployeeController.AddEmployee (CompanyManagement) in 15.6708ms 
+2025-03-06 10:07:02.1996 Info Executed endpoint 'CompanyManagement.Controllers.EmployeeController.AddEmployee (CompanyManagement)' 
+2025-03-06 10:07:02.1996 Info Request finished HTTP/1.1 POST http://localhost:5292/api/Employee - 201 - application/json;+charset=utf-8 17.0942ms 
+2025-03-06 10:07:20.6013 Info Request starting HTTP/1.1 POST http://localhost:5292/api/Employee - application/json 171 
+2025-03-06 10:07:20.6013 Info CORS policy execution successful. 
+2025-03-06 10:07:20.6013 Info Executing endpoint 'CompanyManagement.Controllers.EmployeeController.AddEmployee (CompanyManagement)' 
+2025-03-06 10:07:20.6013 Info Route matched with {action = "AddEmployee", controller = "Employee"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddEmployee(CompanyManagement.InputModels.EmployeeInputModel, System.Threading.CancellationToken) on controller CompanyManagement.Controllers.EmployeeController (CompanyManagement). 
+2025-03-06 10:07:20.6013 Info Executed DbCommand (1ms) [Parameters=[@__name_0='?', @__excludeId_1='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "Employees" AS e
+    WHERE e."FullName" = @__name_0 AND e."Id" <> @__excludeId_1) 
+2025-03-06 10:07:20.6073 Info Executed DbCommand (1ms) [Parameters=[@p0='?', @p1='?'], CommandType='Text', CommandTimeout='30']
+INSERT INTO "Employees" ("FullName", "Position")
+VALUES (@p0, @p1)
+RETURNING "Id"; 
+2025-03-06 10:07:20.6073 Info Executed DbCommand (1ms) [Parameters=[@p2='?' (DbType = Int32), @p3='?' (DbType = Int32), @p4='?' (DbType = Int32), @p5='?' (DbType = Int32), @p6='?' (DbType = Int32), @p7='?' (DbType = Int32), @p8='?' (DbType = Int32), @p9='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+INSERT INTO "CompanyEmployee" ("CompanyId", "EmployeeId")
+VALUES (@p2, @p3);
+INSERT INTO "EmployeeProject" ("EmployeeId", "ProjectId")
+VALUES (@p4, @p5);
+INSERT INTO "EmployeeProject" ("EmployeeId", "ProjectId")
+VALUES (@p6, @p7);
+INSERT INTO "EmployeeProject" ("EmployeeId", "ProjectId")
+VALUES (@p8, @p9); 
+2025-03-06 10:07:20.6073 Info Executing CreatedAtActionResult, writing value of type 'CompanyManagement.InputModels.EmployeeInputModel'. 
+2025-03-06 10:07:20.6073 Info Executed action CompanyManagement.Controllers.EmployeeController.AddEmployee (CompanyManagement) in 9.4994ms 
+2025-03-06 10:07:20.6073 Info Executed endpoint 'CompanyManagement.Controllers.EmployeeController.AddEmployee (CompanyManagement)' 
+2025-03-06 10:07:20.6073 Info Request finished HTTP/1.1 POST http://localhost:5292/api/Employee - 201 - application/json;+charset=utf-8 10.4642ms 
+2025-03-06 10:07:45.5089 Info Request starting HTTP/1.1 POST http://localhost:5292/api/Employee - application/json 169 
+2025-03-06 10:07:45.5089 Info CORS policy execution successful. 
+2025-03-06 10:07:45.5089 Info Executing endpoint 'CompanyManagement.Controllers.EmployeeController.AddEmployee (CompanyManagement)' 
+2025-03-06 10:07:45.5089 Info Route matched with {action = "AddEmployee", controller = "Employee"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddEmployee(CompanyManagement.InputModels.EmployeeInputModel, System.Threading.CancellationToken) on controller CompanyManagement.Controllers.EmployeeController (CompanyManagement). 
+2025-03-06 10:07:45.5120 Info Executed DbCommand (1ms) [Parameters=[@__name_0='?', @__excludeId_1='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "Employees" AS e
+    WHERE e."FullName" = @__name_0 AND e."Id" <> @__excludeId_1) 
+2025-03-06 10:07:45.5120 Info Executed DbCommand (8ms) [Parameters=[@p0='?', @p1='?'], CommandType='Text', CommandTimeout='30']
+INSERT INTO "Employees" ("FullName", "Position")
+VALUES (@p0, @p1)
+RETURNING "Id"; 
+2025-03-06 10:07:45.5120 Info Executed DbCommand (1ms) [Parameters=[@p2='?' (DbType = Int32), @p3='?' (DbType = Int32), @p4='?' (DbType = Int32), @p5='?' (DbType = Int32), @p6='?' (DbType = Int32), @p7='?' (DbType = Int32), @p8='?' (DbType = Int32), @p9='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+INSERT INTO "CompanyEmployee" ("CompanyId", "EmployeeId")
+VALUES (@p2, @p3);
+INSERT INTO "EmployeeProject" ("EmployeeId", "ProjectId")
+VALUES (@p4, @p5);
+INSERT INTO "EmployeeProject" ("EmployeeId", "ProjectId")
+VALUES (@p6, @p7);
+INSERT INTO "EmployeeProject" ("EmployeeId", "ProjectId")
+VALUES (@p8, @p9); 
+2025-03-06 10:07:45.5120 Info Executing CreatedAtActionResult, writing value of type 'CompanyManagement.InputModels.EmployeeInputModel'. 
+2025-03-06 10:07:45.5120 Info Executed action CompanyManagement.Controllers.EmployeeController.AddEmployee (CompanyManagement) in 14.4966ms 
+2025-03-06 10:07:45.5120 Info Executed endpoint 'CompanyManagement.Controllers.EmployeeController.AddEmployee (CompanyManagement)' 
+2025-03-06 10:07:45.5120 Info Request finished HTTP/1.1 POST http://localhost:5292/api/Employee - 201 - application/json;+charset=utf-8 15.9098ms 
+2025-03-06 10:07:56.5197 Info Request starting HTTP/1.1 GET http://localhost:5292/api/Employee/generate-report - - - 
+2025-03-06 10:07:56.5197 Info Executing endpoint 'CompanyManagement.Controllers.EmployeeController.GenerateEmployeeReport (CompanyManagement)' 
+2025-03-06 10:07:56.5197 Info Route matched with {action = "GenerateEmployeeReport", controller = "Employee"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GenerateEmployeeReport() on controller CompanyManagement.Controllers.EmployeeController (CompanyManagement). 
+2025-03-06 10:07:56.5197 Info Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT c."Id", c."Name", s0."CompanyId", s0."EmployeeId", s0."Id", s0."FullName", s0."Position", s0."EmployeeId0", s0."ProjectId", s0."Id0", s0."Duration", s0."Title"
+FROM "Companies" AS c
+LEFT JOIN (
+    SELECT c0."CompanyId", c0."EmployeeId", e."Id", e."FullName", e."Position", s."EmployeeId" AS "EmployeeId0", s."ProjectId", s."Id" AS "Id0", s."Duration", s."Title"
+    FROM "CompanyEmployee" AS c0
+    INNER JOIN "Employees" AS e ON c0."EmployeeId" = e."Id"
+    LEFT JOIN (
+        SELECT e0."EmployeeId", e0."ProjectId", p."Id", p."Duration", p."Title"
+        FROM "EmployeeProject" AS e0
+        INNER JOIN "Projects" AS p ON e0."ProjectId" = p."Id"
+    ) AS s ON e."Id" = s."EmployeeId"
+) AS s0 ON c."Id" = s0."CompanyId"
+ORDER BY c."Id", s0."CompanyId", s0."EmployeeId", s0."Id", s0."EmployeeId0", s0."ProjectId" 
+2025-03-06 10:07:56.5889 Info Executing FileContentResult, sending file with download name 'EmployeeReport.pdf' ... 
+2025-03-06 10:07:56.5895 Info Executed action CompanyManagement.Controllers.EmployeeController.GenerateEmployeeReport (CompanyManagement) in 69.0941ms 
+2025-03-06 10:07:56.5895 Info Executed endpoint 'CompanyManagement.Controllers.EmployeeController.GenerateEmployeeReport (CompanyManagement)' 
+2025-03-06 10:07:56.5895 Info Request finished HTTP/1.1 GET http://localhost:5292/api/Employee/generate-report - 200 40676 application/pdf 69.9968ms 
+2025-03-06 10:09:10.9788 Info Request starting HTTP/1.1 POST http://localhost:5292/api/Employee - application/json 162 
+2025-03-06 10:09:10.9788 Info CORS policy execution successful. 
+2025-03-06 10:09:10.9788 Info Executing endpoint 'CompanyManagement.Controllers.EmployeeController.AddEmployee (CompanyManagement)' 
+2025-03-06 10:09:10.9788 Info Route matched with {action = "AddEmployee", controller = "Employee"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddEmployee(CompanyManagement.InputModels.EmployeeInputModel, System.Threading.CancellationToken) on controller CompanyManagement.Controllers.EmployeeController (CompanyManagement). 
+2025-03-06 10:09:11.1285 Info Executed DbCommand (2ms) [Parameters=[@__name_0='?', @__excludeId_1='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "Employees" AS e
+    WHERE e."FullName" = @__name_0 AND e."Id" <> @__excludeId_1) 
+2025-03-06 10:09:11.1285 Info Executed DbCommand (1ms) [Parameters=[@p0='?', @p1='?'], CommandType='Text', CommandTimeout='30']
+INSERT INTO "Employees" ("FullName", "Position")
+VALUES (@p0, @p1)
+RETURNING "Id"; 
+2025-03-06 10:09:11.1399 Info Executed DbCommand (9ms) [Parameters=[@p2='?' (DbType = Int32), @p3='?' (DbType = Int32), @p4='?' (DbType = Int32), @p5='?' (DbType = Int32), @p6='?' (DbType = Int32), @p7='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+INSERT INTO "CompanyEmployee" ("CompanyId", "EmployeeId")
+VALUES (@p2, @p3);
+INSERT INTO "EmployeeProject" ("EmployeeId", "ProjectId")
+VALUES (@p4, @p5);
+INSERT INTO "EmployeeProject" ("EmployeeId", "ProjectId")
+VALUES (@p6, @p7); 
+2025-03-06 10:09:11.1399 Info Executing CreatedAtActionResult, writing value of type 'CompanyManagement.InputModels.EmployeeInputModel'. 
+2025-03-06 10:09:11.1399 Info Executed action CompanyManagement.Controllers.EmployeeController.AddEmployee (CompanyManagement) in 162.5613ms 
+2025-03-06 10:09:11.1399 Info Executed endpoint 'CompanyManagement.Controllers.EmployeeController.AddEmployee (CompanyManagement)' 
+2025-03-06 10:09:11.1399 Info Request finished HTTP/1.1 POST http://localhost:5292/api/Employee - 201 - application/json;+charset=utf-8 163.6251ms 
+2025-03-06 10:09:41.5018 Info Request starting HTTP/1.1 POST http://localhost:5292/api/Employee - application/json 165 
+2025-03-06 10:09:41.5018 Info CORS policy execution successful. 
+2025-03-06 10:09:41.5018 Info Executing endpoint 'CompanyManagement.Controllers.EmployeeController.AddEmployee (CompanyManagement)' 
+2025-03-06 10:09:41.5018 Info Route matched with {action = "AddEmployee", controller = "Employee"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddEmployee(CompanyManagement.InputModels.EmployeeInputModel, System.Threading.CancellationToken) on controller CompanyManagement.Controllers.EmployeeController (CompanyManagement). 
+2025-03-06 10:09:41.5018 Info Executed DbCommand (1ms) [Parameters=[@__name_0='?', @__excludeId_1='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "Employees" AS e
+    WHERE e."FullName" = @__name_0 AND e."Id" <> @__excludeId_1) 
+2025-03-06 10:09:41.5018 Info Executed DbCommand (1ms) [Parameters=[@p0='?', @p1='?'], CommandType='Text', CommandTimeout='30']
+INSERT INTO "Employees" ("FullName", "Position")
+VALUES (@p0, @p1)
+RETURNING "Id"; 
+2025-03-06 10:09:41.5018 Info Executed DbCommand (1ms) [Parameters=[@p2='?' (DbType = Int32), @p3='?' (DbType = Int32), @p4='?' (DbType = Int32), @p5='?' (DbType = Int32), @p6='?' (DbType = Int32), @p7='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+INSERT INTO "CompanyEmployee" ("CompanyId", "EmployeeId")
+VALUES (@p2, @p3);
+INSERT INTO "EmployeeProject" ("EmployeeId", "ProjectId")
+VALUES (@p4, @p5);
+INSERT INTO "EmployeeProject" ("EmployeeId", "ProjectId")
+VALUES (@p6, @p7); 
+2025-03-06 10:09:41.5018 Info Executing CreatedAtActionResult, writing value of type 'CompanyManagement.InputModels.EmployeeInputModel'. 
+2025-03-06 10:09:41.5018 Info Executed action CompanyManagement.Controllers.EmployeeController.AddEmployee (CompanyManagement) in 8.9374ms 
+2025-03-06 10:09:41.5018 Info Executed endpoint 'CompanyManagement.Controllers.EmployeeController.AddEmployee (CompanyManagement)' 
+2025-03-06 10:09:41.5018 Info Request finished HTTP/1.1 POST http://localhost:5292/api/Employee - 201 - application/json;+charset=utf-8 9.7246ms 
+2025-03-06 10:10:04.7261 Info Request starting HTTP/1.1 POST http://localhost:5292/api/Employee - application/json 168 
+2025-03-06 10:10:04.7261 Info CORS policy execution successful. 
+2025-03-06 10:10:04.7261 Info Executing endpoint 'CompanyManagement.Controllers.EmployeeController.AddEmployee (CompanyManagement)' 
+2025-03-06 10:10:04.7261 Info Route matched with {action = "AddEmployee", controller = "Employee"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddEmployee(CompanyManagement.InputModels.EmployeeInputModel, System.Threading.CancellationToken) on controller CompanyManagement.Controllers.EmployeeController (CompanyManagement). 
+2025-03-06 10:10:04.7261 Info Executed DbCommand (1ms) [Parameters=[@__name_0='?', @__excludeId_1='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "Employees" AS e
+    WHERE e."FullName" = @__name_0 AND e."Id" <> @__excludeId_1) 
+2025-03-06 10:10:04.7318 Info Executed DbCommand (1ms) [Parameters=[@p0='?', @p1='?'], CommandType='Text', CommandTimeout='30']
+INSERT INTO "Employees" ("FullName", "Position")
+VALUES (@p0, @p1)
+RETURNING "Id"; 
+2025-03-06 10:10:04.7318 Info Executed DbCommand (1ms) [Parameters=[@p2='?' (DbType = Int32), @p3='?' (DbType = Int32), @p4='?' (DbType = Int32), @p5='?' (DbType = Int32), @p6='?' (DbType = Int32), @p7='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+INSERT INTO "CompanyEmployee" ("CompanyId", "EmployeeId")
+VALUES (@p2, @p3);
+INSERT INTO "EmployeeProject" ("EmployeeId", "ProjectId")
+VALUES (@p4, @p5);
+INSERT INTO "EmployeeProject" ("EmployeeId", "ProjectId")
+VALUES (@p6, @p7); 
+2025-03-06 10:10:04.7318 Info Executing CreatedAtActionResult, writing value of type 'CompanyManagement.InputModels.EmployeeInputModel'. 
+2025-03-06 10:10:04.7318 Info Executed action CompanyManagement.Controllers.EmployeeController.AddEmployee (CompanyManagement) in 14.982ms 
+2025-03-06 10:10:04.7318 Info Executed endpoint 'CompanyManagement.Controllers.EmployeeController.AddEmployee (CompanyManagement)' 
+2025-03-06 10:10:04.7318 Info Request finished HTTP/1.1 POST http://localhost:5292/api/Employee - 201 - application/json;+charset=utf-8 16.1929ms 
+2025-03-06 10:10:17.8260 Info Request starting HTTP/1.1 GET http://localhost:5292/api/Employee/generate-report - - - 
+2025-03-06 10:10:17.8260 Info Executing endpoint 'CompanyManagement.Controllers.EmployeeController.GenerateEmployeeReport (CompanyManagement)' 
+2025-03-06 10:10:17.8260 Info Route matched with {action = "GenerateEmployeeReport", controller = "Employee"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GenerateEmployeeReport() on controller CompanyManagement.Controllers.EmployeeController (CompanyManagement). 
+2025-03-06 10:10:17.8260 Info Executed DbCommand (8ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT c."Id", c."Name", s0."CompanyId", s0."EmployeeId", s0."Id", s0."FullName", s0."Position", s0."EmployeeId0", s0."ProjectId", s0."Id0", s0."Duration", s0."Title"
+FROM "Companies" AS c
+LEFT JOIN (
+    SELECT c0."CompanyId", c0."EmployeeId", e."Id", e."FullName", e."Position", s."EmployeeId" AS "EmployeeId0", s."ProjectId", s."Id" AS "Id0", s."Duration", s."Title"
+    FROM "CompanyEmployee" AS c0
+    INNER JOIN "Employees" AS e ON c0."EmployeeId" = e."Id"
+    LEFT JOIN (
+        SELECT e0."EmployeeId", e0."ProjectId", p."Id", p."Duration", p."Title"
+        FROM "EmployeeProject" AS e0
+        INNER JOIN "Projects" AS p ON e0."ProjectId" = p."Id"
+    ) AS s ON e."Id" = s."EmployeeId"
+) AS s0 ON c."Id" = s0."CompanyId"
+ORDER BY c."Id", s0."CompanyId", s0."EmployeeId", s0."Id", s0."EmployeeId0", s0."ProjectId" 
+2025-03-06 10:10:17.8879 Info Executing FileContentResult, sending file with download name 'EmployeeReport.pdf' ... 
+2025-03-06 10:10:17.8879 Info Executed action CompanyManagement.Controllers.EmployeeController.GenerateEmployeeReport (CompanyManagement) in 61.7865ms 
+2025-03-06 10:10:17.8879 Info Executed endpoint 'CompanyManagement.Controllers.EmployeeController.GenerateEmployeeReport (CompanyManagement)' 
+2025-03-06 10:10:17.8879 Info Request finished HTTP/1.1 GET http://localhost:5292/api/Employee/generate-report - 200 42298 application/pdf 62.5109ms 
+2025-03-06 10:11:13.2219 Info Request starting HTTP/1.1 POST http://localhost:5292/api/Employee - application/json 162 
+2025-03-06 10:11:13.2219 Info CORS policy execution successful. 
+2025-03-06 10:11:13.2219 Info Executing endpoint 'CompanyManagement.Controllers.EmployeeController.AddEmployee (CompanyManagement)' 
+2025-03-06 10:11:13.2219 Info Route matched with {action = "AddEmployee", controller = "Employee"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddEmployee(CompanyManagement.InputModels.EmployeeInputModel, System.Threading.CancellationToken) on controller CompanyManagement.Controllers.EmployeeController (CompanyManagement). 
+2025-03-06 10:11:13.2219 Info Executed DbCommand (1ms) [Parameters=[@__name_0='?', @__excludeId_1='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "Employees" AS e
+    WHERE e."FullName" = @__name_0 AND e."Id" <> @__excludeId_1) 
+2025-03-06 10:11:13.2219 Info Executed DbCommand (2ms) [Parameters=[@p0='?', @p1='?'], CommandType='Text', CommandTimeout='30']
+INSERT INTO "Employees" ("FullName", "Position")
+VALUES (@p0, @p1)
+RETURNING "Id"; 
+2025-03-06 10:11:13.2338 Info Executed DbCommand (3ms) [Parameters=[@p2='?' (DbType = Int32), @p3='?' (DbType = Int32), @p4='?' (DbType = Int32), @p5='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+INSERT INTO "CompanyEmployee" ("CompanyId", "EmployeeId")
+VALUES (@p2, @p3);
+INSERT INTO "EmployeeProject" ("EmployeeId", "ProjectId")
+VALUES (@p4, @p5); 
+2025-03-06 10:11:13.2338 Info Executing CreatedAtActionResult, writing value of type 'CompanyManagement.InputModels.EmployeeInputModel'. 
+2025-03-06 10:11:13.2338 Info Executed action CompanyManagement.Controllers.EmployeeController.AddEmployee (CompanyManagement) in 12.8229ms 
+2025-03-06 10:11:13.2338 Info Executed endpoint 'CompanyManagement.Controllers.EmployeeController.AddEmployee (CompanyManagement)' 
+2025-03-06 10:11:13.2338 Info Request finished HTTP/1.1 POST http://localhost:5292/api/Employee - 201 - application/json;+charset=utf-8 13.7583ms 
+2025-03-06 10:11:42.7370 Info Request starting HTTP/1.1 POST http://localhost:5292/api/Employee - application/json 165 
+2025-03-06 10:11:42.7370 Info CORS policy execution successful. 
+2025-03-06 10:11:42.7370 Info Executing endpoint 'CompanyManagement.Controllers.EmployeeController.AddEmployee (CompanyManagement)' 
+2025-03-06 10:11:42.7370 Info Route matched with {action = "AddEmployee", controller = "Employee"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddEmployee(CompanyManagement.InputModels.EmployeeInputModel, System.Threading.CancellationToken) on controller CompanyManagement.Controllers.EmployeeController (CompanyManagement). 
+2025-03-06 10:11:42.7370 Info Executed DbCommand (1ms) [Parameters=[@__name_0='?', @__excludeId_1='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "Employees" AS e
+    WHERE e."FullName" = @__name_0 AND e."Id" <> @__excludeId_1) 
+2025-03-06 10:11:42.7370 Info Executed DbCommand (1ms) [Parameters=[@p0='?', @p1='?'], CommandType='Text', CommandTimeout='30']
+INSERT INTO "Employees" ("FullName", "Position")
+VALUES (@p0, @p1)
+RETURNING "Id"; 
+2025-03-06 10:11:42.7370 Info Executed DbCommand (1ms) [Parameters=[@p2='?' (DbType = Int32), @p3='?' (DbType = Int32), @p4='?' (DbType = Int32), @p5='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+INSERT INTO "CompanyEmployee" ("CompanyId", "EmployeeId")
+VALUES (@p2, @p3);
+INSERT INTO "EmployeeProject" ("EmployeeId", "ProjectId")
+VALUES (@p4, @p5); 
+2025-03-06 10:11:42.7523 Info Executing CreatedAtActionResult, writing value of type 'CompanyManagement.InputModels.EmployeeInputModel'. 
+2025-03-06 10:11:42.7523 Info Executed action CompanyManagement.Controllers.EmployeeController.AddEmployee (CompanyManagement) in 15.335ms 
+2025-03-06 10:11:42.7523 Info Executed endpoint 'CompanyManagement.Controllers.EmployeeController.AddEmployee (CompanyManagement)' 
+2025-03-06 10:11:42.7523 Info Request finished HTTP/1.1 POST http://localhost:5292/api/Employee - 201 - application/json;+charset=utf-8 16.1324ms 
+2025-03-06 10:11:47.7260 Info Request starting HTTP/1.1 GET http://localhost:5292/api/Employee/generate-report - - - 
+2025-03-06 10:11:47.7260 Info Executing endpoint 'CompanyManagement.Controllers.EmployeeController.GenerateEmployeeReport (CompanyManagement)' 
+2025-03-06 10:11:47.7260 Info Route matched with {action = "GenerateEmployeeReport", controller = "Employee"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GenerateEmployeeReport() on controller CompanyManagement.Controllers.EmployeeController (CompanyManagement). 
+2025-03-06 10:11:47.7260 Info Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT c."Id", c."Name", s0."CompanyId", s0."EmployeeId", s0."Id", s0."FullName", s0."Position", s0."EmployeeId0", s0."ProjectId", s0."Id0", s0."Duration", s0."Title"
+FROM "Companies" AS c
+LEFT JOIN (
+    SELECT c0."CompanyId", c0."EmployeeId", e."Id", e."FullName", e."Position", s."EmployeeId" AS "EmployeeId0", s."ProjectId", s."Id" AS "Id0", s."Duration", s."Title"
+    FROM "CompanyEmployee" AS c0
+    INNER JOIN "Employees" AS e ON c0."EmployeeId" = e."Id"
+    LEFT JOIN (
+        SELECT e0."EmployeeId", e0."ProjectId", p."Id", p."Duration", p."Title"
+        FROM "EmployeeProject" AS e0
+        INNER JOIN "Projects" AS p ON e0."ProjectId" = p."Id"
+    ) AS s ON e."Id" = s."EmployeeId"
+) AS s0 ON c."Id" = s0."CompanyId"
+ORDER BY c."Id", s0."CompanyId", s0."EmployeeId", s0."Id", s0."EmployeeId0", s0."ProjectId" 
+2025-03-06 10:11:47.7727 Info Executing FileContentResult, sending file with download name 'EmployeeReport.pdf' ... 
+2025-03-06 10:11:47.7727 Info Executed action CompanyManagement.Controllers.EmployeeController.GenerateEmployeeReport (CompanyManagement) in 46.0977ms 
+2025-03-06 10:11:47.7727 Info Executed endpoint 'CompanyManagement.Controllers.EmployeeController.GenerateEmployeeReport (CompanyManagement)' 
+2025-03-06 10:11:47.7727 Info Request finished HTTP/1.1 GET http://localhost:5292/api/Employee/generate-report - 200 43093 application/pdf 47.3191ms 
+2025-03-06 10:56:25.8346 Info Application is shutting down... 
