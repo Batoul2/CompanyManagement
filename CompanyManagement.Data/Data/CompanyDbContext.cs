@@ -10,9 +10,11 @@ namespace CompanyManagement.Data.Data
 {
     public class CompanyDbContext : IdentityDbContext<ApplicationUser>
     {
-        public CompanyDbContext(DbContextOptions<CompanyDbContext> options)
+        private readonly IConfiguration _configuration;
+        public CompanyDbContext(DbContextOptions<CompanyDbContext> options, IConfiguration configuration)
             : base(options)
         {
+             _configuration = configuration;
         }
         public DbSet<Company> Companies { get; set; }
         public DbSet<Employee> Employees { get; set; }

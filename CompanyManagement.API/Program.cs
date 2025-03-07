@@ -20,6 +20,7 @@ using CompanyManagement.API.InputModels;
 using FluentValidation;
 using CompanyManagement.API.Validators;
 using CompanyManagement.Utils;
+using CompanyManagement.Data.Configurations;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -33,17 +34,18 @@ builder.Logging.AddNLog();
 var environment = builder.Environment.EnvironmentName;
 var config = new ConfigurationBuilder()
     .AddJsonFile("appsettings.json", optional: false)
-    .AddJsonFile($"appsettings.{environment}.json", optional: true) // Load appsettings.Test.json for tests
+    .AddJsonFile($"appsettings.{environment}.json", optional: true) 
     .AddEnvironmentVariables()
     .Build();
 builder.Configuration.AddConfiguration(config);
 // builder.Services.AddDbContext<CompanyDbContext>(options =>
 //     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
+//var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+// builder.Services.AddDbContext<CompanyDbContext>(options =>
+//     options.UseNpgsql(connectionString));
 
-var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-
-builder.Services.AddDbContext<CompanyDbContext>(options =>
-    options.UseNpgsql(connectionString));
+builder.Services.Configure<DataSettings>(builder.Configuration);
+builder.Services.AddDatabaseConfiguration(builder.Configuration);
 
 builder.Services.AddControllers();
 builder.Services.AddFluentValidationAutoValidation()
@@ -179,64 +181,3 @@ app.MapControllers();
 app.Run();
 
 public partial class Program { }
-
-// builder.Services.AddSwaggerGen(c =>
-// {
-//     c.SwaggerDoc("v1", new OpenApiInfo { Title = "Company Management API", Version = "v1" });
-
-//     c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
-//     {
-//         In = ParameterLocation.Header,
-//         Description = "Enter 'Bearer <your-token>'",
-//         Name = "Authorization",
-//         Type = SecuritySchemeType.ApiKey
-//     });
-
-//     c.AddSecurityRequirement(new OpenApiSecurityRequirement
-//     {
-//         {
-//             new OpenApiSecurityScheme
-//             {
-//                 Reference = new OpenApiReference
-//                 {
-//                     Type = ReferenceType.SecurityScheme,
-//                     Id = "Bearer"
-//                 }
-//             },
-//             new string[] {}
-//         }
-//     });
-// });
-
-// var jwtSettings = builder.Configuration.GetSection("Jwt");
-
-// string? secretKey = jwtSettings["SecretKey"];
-// if (string.IsNullOrEmpty(secretKey))
-// {
-//     throw new InvalidOperationException("JWT SecretKey is missing in appsettings.json");
-// }
-
-// var key = Encoding.UTF8.GetBytes(secretKey);
-
-// builder.Services.AddAuthentication(options =>
-// {
-//     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-//     options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-//     options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
-// })
-// .AddJwtBearer(options =>
-// {
-//     options.RequireHttpsMetadata = false;
-//     options.SaveToken = true;
-//     options.TokenValidationParameters = new TokenValidationParameters
-//     {
-//         ValidateIssuerSigningKey = true,
-//         IssuerSigningKey = new SymmetricSecurityKey(key),
-//         ValidateIssuer = true,
-//         ValidateAudience = true,
-//         ValidIssuer = jwtSettings["Issuer"],
-//         ValidAudience = jwtSettings["Audience"],
-//         ValidateLifetime = true,
-//         RoleClaimType = "role" 
-//     };
-// });
