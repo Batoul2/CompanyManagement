@@ -17,6 +17,7 @@ namespace CompanyManagement.API.Services
         Task<bool> RemoveProjectFromEmployeeAsync(int employeeId, int projectId, CancellationToken cancellationToken); 
         Task<bool> EmployeeNameExistsAsync(string name, int excludeId, CancellationToken cancellationToken);
         Task<byte[]> GenerateEmployeeReportAsync();
+        Task<byte[]> GenerateEmployeeExcelReportAsync();
     }
 
 }

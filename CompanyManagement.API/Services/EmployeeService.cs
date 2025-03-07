@@ -9,6 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using QuestPDF.Fluent;
 using QuestPDF.Helpers;
 using QuestPDF.Infrastructure;
+using ClosedXML.Excel;
 
 namespace CompanyManagement.API.Services
 {
@@ -258,6 +259,67 @@ namespace CompanyManagement.API.Services
             }).GeneratePdf();
 
             return pdfData;
+        }
+
+        public async Task<byte[]> GenerateEmployeeExcelReportAsync()
+        {
+            var companies = await _dbContext.Companies
+                .Include(c => c.CompanyEmployee)
+                    .ThenInclude(ce => ce.Employee)
+                        .ThenInclude(e => e.EmployeeProject)
+                            .ThenInclude(ep => ep.Project)
+                .ToListAsync();
+
+            using var workbook = new XLWorkbook();
+            var worksheet = workbook.Worksheets.Add("Employee Report");
+
+            int row = 1;
+
+            worksheet.Cell(row, 1).Value = "Company Employee Report";
+            worksheet.Range(row, 1, row, 4).Merge().Style.Font.Bold = true;
+            row += 2;
+
+            foreach (var company in companies)
+            {
+                worksheet.Cell(row, 1).Value = $"Company: {company.Name}";
+                worksheet.Range(row, 1, row, 4).Style.Font.Bold = true;
+                row++;
+
+                worksheet.Cell(row, 1).Value = "Employee Name";
+                worksheet.Cell(row, 2).Value = "Position";
+                worksheet.Cell(row, 3).Value = "Projects";
+
+                worksheet.Range(row, 1, row, 3).Style.Font.Bold = true;
+                worksheet.Range(row, 1, row, 3).Style.Fill.BackgroundColor = XLColor.LightGray;
+                row++;
+
+                if (company.CompanyEmployee.Any())
+                {
+                    foreach (var ce in company.CompanyEmployee)
+                    {
+                        var employee = ce.Employee;
+                        var projects = employee.EmployeeProject.Select(ep => ep.Project.Title).ToList();
+                        string projectList = projects.Any() ? string.Join(", ", projects) : "No projects assigned";
+
+                        worksheet.Cell(row, 1).Value = employee.FullName;
+                        worksheet.Cell(row, 2).Value = employee.Position;
+                        worksheet.Cell(row, 3).Value = projectList;
+                        row++;
+                    }
+                }
+                else
+                {
+                    worksheet.Cell(row, 1).Value = "No employees assigned.";
+                    worksheet.Range(row, 1, row, 3).Merge();
+                    row++;
+                }
+                row++;
+            }
+
+            worksheet.Columns().AdjustToContents();
+            using var stream = new MemoryStream();
+            workbook.SaveAs(stream);
+            return stream.ToArray();
         }
     }
 }

@@ -127,5 +127,12 @@ namespace CompanyManagement.API.Controllers
             return File(pdfData, "application/pdf", "EmployeeReport.pdf");
         }
 
+        [HttpGet("generate-excel-report")]
+        public async Task<IActionResult> GenerateEmployeeExcelReport()
+        {
+            var excelData = await _employeeService.GenerateEmployeeExcelReportAsync();
+            return File(excelData, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "EmployeeReport.xlsx");
+        }
+
     }
 }
