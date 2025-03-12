@@ -275,6 +275,12 @@ namespace CompanyManagement.API.Services
 
             int row = 1;
 
+            worksheet.AddPicture(@"C:\Users\hp\Downloads\logo.jpg")
+                .MoveTo(worksheet.Cell(row, 5)) 
+                .Scale(0.5);
+
+            row += 2;
+
             worksheet.Cell(row, 1).Value = "Company Employee Report";
             worksheet.Range(row, 1, row, 4).Merge().Style.Font.Bold = true;
             row += 2;
@@ -291,6 +297,7 @@ namespace CompanyManagement.API.Services
 
                 worksheet.Range(row, 1, row, 3).Style.Font.Bold = true;
                 worksheet.Range(row, 1, row, 3).Style.Fill.BackgroundColor = XLColor.LightGray;
+                int tableStartRow = row;
                 row++;
 
                 if (company.CompanyEmployee.Any())
@@ -306,6 +313,13 @@ namespace CompanyManagement.API.Services
                         worksheet.Cell(row, 3).Value = projectList;
                         row++;
                     }
+                    var tableRange = worksheet.Range($"A{tableStartRow}:C{row - 1}");
+                    tableRange.Style.Border.OutsideBorder = XLBorderStyleValues.Thick;
+                    tableRange.Style.Border.OutsideBorderColor = XLColor.Black;
+                    tableRange.Style.Border.InsideBorder = XLBorderStyleValues.Thin;
+                    tableRange.Style.Border.InsideBorderColor = XLColor.Gray;
+
+                    row++;
                 }
                 else
                 {
